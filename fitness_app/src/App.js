@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
+import { Login } from './components/Login/Login';
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(process.env.REACT_APP_SUPABASE_URL,process.env.REACT_APP_ANON_KEY);
+console.log(supabase)
+console.log(process.env.REACT_APP_SUPABASE_URL)
+console.log(process.env.REACT_APP_ANON_KEY) 
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="login">
+      <Login />
     </div>
   );
 }
