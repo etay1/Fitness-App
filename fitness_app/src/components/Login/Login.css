@@ -1,13 +1,6 @@
-* {
-    /* border: red solid 1px; */
-}
-/* refernece the page / login.jsx */
 
-/* .body {
-    overflow: hidden;
-} */
 
-.page {
+.login {
     display: flex;
     justify-content: center;
     align-items: center;

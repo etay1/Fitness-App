@@ -4,8 +4,8 @@ import photo from '../../images/photo.jpg'
 
 export const Login = () => {
     return (
-        <div className="page">
-            {/*  */}
+        <div className="login">
+
             <div className='container'>
 
                 {/* container item 1 */}
