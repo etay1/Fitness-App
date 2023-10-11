@@ -1,11 +1,15 @@
 import React from 'react';
 import './Login.css';
 import photo from '../../images/photo.jpg'
+import { Link } from 'react-router-dom';
+
+
+  
 
 export const Login = () => {
     return (
-        <div className="page">
-            {/*  */}
+        <div className="login">
+
             <div className='container'>
 
                 {/* container item 1 */}
@@ -15,7 +19,8 @@ export const Login = () => {
                         <div className="form">
                             <input type="text" id="username" placeholder="Username" className="input-field" />
                             <input type="password" id="password" placeholder="Password" className="input-field" />
-                            <button type="submit" id="login_btn" className="login-btn">Login</button>                
+                            <button type="submit" id="login_btn" className="login-btn">Login</button>
+                            <Link to="/signup"> <p className='signup-link'>Don't have an account?</p></Link>
                         </div>
 
                 </div>

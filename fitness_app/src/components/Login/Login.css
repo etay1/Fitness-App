@@ -1,14 +1,10 @@
-* {
-    /* border: red solid 1px; */
-}
-/* refernece the page / login.jsx */
-
-.page {
+.login {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100vh;
+
 }
 
 .container {
@@ -18,7 +14,9 @@
     height: 400px;
     width: 600px;
     background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Adjust the box-shadow properties */
+    border-radius: 10px; /* Optional: Add rounded corners to the container */
+
 }
 
 .box {
@@ -26,7 +24,7 @@
 }
 
 .left-box {
-    background-color: #ffcccc; /* Adjust background color as needed */
+    /* background-color: #ffcccc; Adjust background color as needed */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,7 +33,7 @@
 
 .right-box {
 
-    background-color: #ccffcc; /* Adjust background color as needed */
+    /* background-color: #ccffcc; Adjust background color as needed */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,6 +44,10 @@
 .img {
     width: 80%;
     object-fit: contain; /* To maintain the image's aspect ratio */
+}
+
+.signup {
+    font-size: x-small;
 }
 
 /* Login form */
@@ -64,7 +66,10 @@
     padding: 10px; /* Add some padding to the input fields */
     border: none; /* Remove default input borders */
     border-radius: 3px; /* Optional: Add rounded corners to input fields */
+    outline: none; /* Remove the default focus outline */
+
 }
+
 
 .login-btn {
     background-color: #ffffff;
@@ -81,3 +86,18 @@
     background-color: #047aed;
     color: #ffffff;
 }
+
+.signup-link {
+    font-size: 10px;
+    /* margin-top: 20px; */
+  }
+  
+  .signup-link p {
+    text-decoration: none;
+    color: #0077FF; /* Change this color to your preferred link color */
+    font-weight: bold;
+  }
+  
+  .signup-link p:hover {
+    text-decoration: underline; /* Underline the link on hover for better user feedback */
+  }
