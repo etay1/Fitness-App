@@ -4,17 +4,18 @@
     align-items: center;
     width: 100%;
     height: 100vh;
-
+    background-color: #047aed;
 }
 
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 400px;
-    width: 600px;
+    height: 500px;
+    width: 650px;
     background-color: #fff;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Adjust the box-shadow properties */
+    background: linear-gradient(to right, #fff, transparent), #6A6E6E;
     border-radius: 10px; /* Optional: Add rounded corners to the container */
 
 }
@@ -38,66 +39,26 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    width: 100%;
 
 }
 
 .img {
-    width: 80%;
-    object-fit: contain; /* To maintain the image's aspect ratio */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* To maintain the image's aspect ratio */
+    border-radius: 0 10px 10px 0; /* Top-right and bottom-right corners rounded */
 }
 
-.signup {
-    font-size: x-small;
+@media (max-width: 480px) {
+    .container {
+        flex-direction: column;
+        padding-bottom: 15px;
+        height: 90%;
+        width: 90%;
+    }
+ 
+    .right-box {
+        display: none;
+    }
 }
-
-/* Login form */
-.form {
-    display: flex;
-    flex-direction: column;
-    background-color: #047aed;
-    max-width: 350px;
-    height: fit-content;
-    padding: 20px; /* Add padding to create spacing around form elements */
-    border-radius: 5px; /* Optional: Add rounded corners to the form */
-}
-
-.input-field {
-    margin-bottom: 15px; /* Add spacing between input fields */
-    padding: 10px; /* Add some padding to the input fields */
-    border: none; /* Remove default input borders */
-    border-radius: 3px; /* Optional: Add rounded corners to input fields */
-    outline: none; /* Remove the default focus outline */
-
-}
-
-
-.login-btn {
-    background-color: #ffffff;
-    color: #047aed;
-    border: none;
-    border-radius: 3px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.login-btn:hover {
-    background-color: #047aed;
-    color: #ffffff;
-}
-
-.signup-link {
-    font-size: 10px;
-    /* margin-top: 20px; */
-  }
-  
-  .signup-link p {
-    text-decoration: none;
-    color: #0077FF; /* Change this color to your preferred link color */
-    font-weight: bold;
-  }
-  
-  .signup-link p:hover {
-    text-decoration: underline; /* Underline the link on hover for better user feedback */
-  }
