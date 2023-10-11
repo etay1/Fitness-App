@@ -25,7 +25,7 @@ export const Login = () => {
                         <div className="form">
                         <Auth
                             supabaseClient={supabase}
-                            providers={['google']}
+                            providers={[]}
                             appearance={{ theme: ThemeSupa,
                                 style: {
                                     button: { background: '#047aed', color: 'white' },
