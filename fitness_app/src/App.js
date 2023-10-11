@@ -11,9 +11,7 @@ console.log(process.env.REACT_APP_ANON_KEY)
 
 function App() {
   return (
-    <div>
       <Login />
-    </div>
   );
 }
 
