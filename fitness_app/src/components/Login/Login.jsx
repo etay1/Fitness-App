@@ -2,8 +2,14 @@ import React from 'react';
 import './Login.css';
 import photo from '../../images/photo.jpg'
 import { Link } from 'react-router-dom';
+import { createClient } from '@supabase/supabase-js'
+import { Auth } from '@supabase/auth-ui-react'
+import { ThemeSupa } from '@supabase/auth-ui-shared'
 
-
+const supabase = createClient(
+    process.env.REACT_APP_SUPABASE_URL,
+    process.env.REACT_APP_ANON_KEY
+  )
   
 
 export const Login = () => {
@@ -17,10 +23,17 @@ export const Login = () => {
 
                         {/* left-box item 1 */}
                         <div className="form">
-                            <input type="text" id="username" placeholder="Username" className="input-field" />
-                            <input type="password" id="password" placeholder="Password" className="input-field" />
-                            <button type="submit" id="login_btn" className="login-btn">Login</button>
-                            <Link to="/signup"> <p className='signup-link'>Don't have an account?</p></Link>
+                        <Auth
+                            supabaseClient={supabase}
+                            providers={['google']}
+                            appearance={{ theme: ThemeSupa,
+                                style: {
+                                    button: { background: '#047aed', color: 'white' },
+                                    anchor: { color: '#047aed' },
+                                    },
+                            }}
+                            
+                            />
                         </div>
 
                 </div>
