@@ -1,23 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { Login } from './components/Login/Login'
+import { Auth } from '@supabase/auth-ui-react';
+import { Dashboard } from './components/Dashboard/Dashboard';
 
-import { createClient } from '@supabase/supabase-js'
+function App({ supabase }) {
+  const [session, setSession] = useState(null);
 
-import { Auth } from '@supabase/auth-ui-react'
-
-import { ThemeSupa } from '@supabase/auth-ui-shared'
-
-import { Login } from './components/Login/Login.jsx'
-
-
-const supabase = createClient(
-  process.env.REACT_APP_SUPABASE_URL,
-  process.env.REACT_APP_ANON_KEY
-)
-
-function App() {
+  useEffect(() => {
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+  }, [supabase]);
 
   return (
-    <Login/>
+    <div>
+      {session ? (
+        <Dashboard supabase={supabase} session={session} />
+      ) : (
+        <Login supabase={supabase} />
+      )}
+    </div>
   );
 }
 

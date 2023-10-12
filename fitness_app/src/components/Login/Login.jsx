@@ -12,7 +12,7 @@ const supabase = createClient(
   )
   
 
-export const Login = () => {
+export const Login = ({supabase}) => {
     return (
         <div className="login">
 
