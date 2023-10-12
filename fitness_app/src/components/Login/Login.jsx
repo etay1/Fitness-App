@@ -20,7 +20,10 @@ export const Login = () => {
 
                 {/* container item 1 */}
                 <div className='box left-box'>
-
+                    <Link to="/dashboard">Go to Dashboard</Link>
+                    <button onClick={() => supabase.auth.signOut()}>Sign Out</button>   
+                    
+    
                         {/* left-box item 1 */}
                         <div className="form">
                         <Auth
