@@ -12,20 +12,17 @@ const supabase = createClient(
   )
   
 
-export const Login = () => {
+export const Login = ({supabase}) => {
     return (
         <div className="login">
 
-            <div className='container'>
+            <div className='container-login'>
 
                 {/* container item 1 */}
-                <div className='box left-box'>
-                    <Link to="/dashboard">Go to Dashboard</Link>
-                    <button onClick={() => supabase.auth.signOut()}>Sign Out</button>   
-                    
-    
+                <div className='box-login left-box-login'>
+
                         {/* left-box item 1 */}
-                        <div className="form">
+                        <div className="form-login">
                         <Auth
                             supabaseClient={supabase}
                             providers={[]}
@@ -42,11 +39,11 @@ export const Login = () => {
                 </div>
 
                 {/* container item 2 */}
-                <div className='box right-box'>
+                <div className='box-login right-box-login'>
 
                     
                     {/* right-box item 1 */}
-                    <img src={photo} alt="gym_photo" className='img'/>
+                    <img src={photo} alt="gym_photo" className='img-login'/>
 
                 </div>
 
