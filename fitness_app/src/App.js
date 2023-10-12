@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Login } from './components/Login/Login'
 import { Auth } from '@supabase/auth-ui-react';
+import { Dashboard } from './components/Dashboard/Dashboard';
 
 function App({ supabase }) {
   const [session, setSession] = useState(null);
@@ -13,12 +15,9 @@ function App({ supabase }) {
   return (
     <div>
       {session ? (
-        <div>
-          <h2>Welcome, {session.user.email}</h2>
-          <button onClick={() => supabase.auth.signOut()}>Sign Out</button>
-        </div>
+        <Dashboard supabase={supabase} session={session} />
       ) : (
-        <Auth supabaseClient={supabase} />
+        <Login supabase={supabase} />
       )}
     </div>
   );
