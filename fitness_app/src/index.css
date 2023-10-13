@@ -15,6 +15,12 @@ code {
 }
 
 /* Custom CSS */
+/* make a --primary color var */
+
+:root {
+  --primary-color: #047aed;
+  --white-color: #fff;
+}
 
 .page {
   display: flex;
@@ -22,7 +28,7 @@ code {
   align-items: center;
   width: 100%;
   height: 100vh;
-  background-color: #047aed;
+  background-color: var(--primary-color);
   
 }
 
@@ -32,7 +38,7 @@ code {
   align-items: center;
   height: 500px;
   width: 650px;
-  background-color: #fff;
+  background-color: var(--white-color);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   border-radius: 10px; 
 
@@ -45,8 +51,6 @@ code {
 
 .left-box {
   display: flex;
-  justify-content: center; /*these may need to be changed in the future and applied locally*/
-  align-items: center; /*these may need to be changed in the future and applied locally*/
   height: 100%;
   width: 100%;
 
@@ -54,8 +58,6 @@ code {
 
 .right-box {
   display: flex;
-  justify-content: center; /*these may need to be changed in the future and applied locally*/
-  align-items: center; /*these may need to be changed in the future and applied locally*/
   height: 100%;
   width: 100%;
 
