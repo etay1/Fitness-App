@@ -1,13 +1,11 @@
 import React from 'react'
 
-const AddExercise = () => {
+export const AddSubSession = () => {
   return (
     <div className='page'>
         <div className='container'>
-                <p>Exercise boiler plate</p>
+            <p>Add sub session boiler plate</p>
         </div>
     </div>
-  )
+    )
 }
-
-export default AddExercise

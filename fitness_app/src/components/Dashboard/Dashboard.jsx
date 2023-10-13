@@ -17,6 +17,7 @@ export const Dashboard = ({supabase, session}) => {
             <button onClick={() => supabase.auth.signOut()}>Sign Out</button>
             {/* link to AddExercise */}
             <Link to="/add-exercise">Add Exercise</Link>
+            <Link to="/add-sub-session">Add Sub Session</Link>
 
             
         </div>
