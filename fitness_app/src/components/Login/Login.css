@@ -1,6 +1,17 @@
 .ctn-login {
-    background: linear-gradient(to right, #fff, transparent), #6A6E6E;
+    background: linear-gradient(to right, --white-color, transparent), #6A6E6E;
 
+}
+
+.left-box-lgn {
+    justify-content: center; /*these may need to be changed in the future and applied locally*/
+    align-items: center; /*these may need to be changed in the future and applied locally*/
+
+}
+
+.right-box-lgn {
+    justify-content: center; /*these may need to be changed in the future and applied locally*/
+    align-items: center; /*these may need to be changed in the future and applied locally*/
 }
 .img-lgn {
     width: 100%;
