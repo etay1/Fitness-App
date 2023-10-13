@@ -8,6 +8,7 @@ import { createClient } from '@supabase/supabase-js';
 
 import AddExercise from './components/AddExercise/AddExercise';
 import { AddSubSession } from './components/AddSubSession/AddSubSession';
+import { AddUserWeight } from './components/AddUserWeight/AddUserWeight';
 
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
@@ -22,6 +23,7 @@ ReactDOM.createRoot(root).render(
         <Route path="/" element={<App supabase={supabase} />} />
         <Route path="/add-exercise" element={<AddExercise/>} />
         <Route path="/add-sub-session" element={<AddSubSession/>} />
+        <Route path="/add-user-weight" element={<AddUserWeight/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
