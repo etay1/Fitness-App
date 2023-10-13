@@ -6,12 +6,6 @@ import { createClient } from '@supabase/supabase-js'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 
-const supabase = createClient(
-    process.env.REACT_APP_SUPABASE_URL,
-    process.env.REACT_APP_ANON_KEY
-  )
-  
-
 export const Login = ({supabase}) => {
     const passwordPolicy = {
         minLength: process.env.GOTRUE_PASSWORD_MIN_LENGTH || 6, 
@@ -23,7 +17,7 @@ export const Login = ({supabase}) => {
             <div className='container ctn-login'>
 
                 {/* container item 1 */}
-                <div className='box left-box'>
+                <div className='box left-box left-box-lgn'>
 
                         {/* left-box item 1 */}
                         <div className="form-login">
@@ -45,7 +39,7 @@ export const Login = ({supabase}) => {
                 </div>
 
                 {/* container item 2 */}
-                <div className='box right-box img-rbox'>
+                <div className='box right-box right-box-lgn img-rbox'>
 
                     
                     {/* right-box item 1 */}
