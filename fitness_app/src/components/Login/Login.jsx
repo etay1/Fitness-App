@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Login.css';
-import photo from '../../images/photo.jpg'
+import photo2 from '../../images/photo2.webp';
 import { Link } from 'react-router-dom';
 import { createClient } from '@supabase/supabase-js'
 import { Auth } from '@supabase/auth-ui-react'
@@ -13,6 +13,15 @@ const supabase = createClient(
   
 
 export const Login = ({supabase}) => {
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    useEffect(() => {
+        const img = new Image();
+        img.src = photo2;
+        img.onload = () => {
+            setImageLoaded(true);
+        };
+    }, []); 
     return (
         <div className="login">
 
@@ -40,10 +49,15 @@ export const Login = ({supabase}) => {
 
                 {/* container item 2 */}
                 <div className='box-login right-box-login'>
-
+                 
+                    {imageLoaded ? (
                     
-                    {/* right-box item 1 */}
-                    <img src={photo} alt="gym_photo" className='img-login'/>
+                    <img src={photo2} alt="gym_photo" className='img-login' preload ="lazy" />
+                    ) : (
+                    <div> Loading Image ...</div>
+                    )}
+
+                   
 
                 </div>
 
@@ -51,4 +65,5 @@ export const Login = ({supabase}) => {
 
         </div>
     );
+    
 }
