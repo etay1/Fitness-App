@@ -10,6 +10,8 @@ import AddExercise from './components/AddExercise/AddExercise';
 import { AddSubSession } from './components/AddSubSession/AddSubSession';
 import { AddUserWeight } from './components/AddUserWeight/AddUserWeight';
 
+import  PrivateRoute  from './utils/PrivateRoute';
+
 const supabase = createClient(
   process.env.REACT_APP_SUPABASE_URL,
   process.env.REACT_APP_ANON_KEY
@@ -21,9 +23,15 @@ ReactDOM.createRoot(root).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App supabase={supabase} />} />
-        <Route path="/add-exercise" element={<AddExercise/>} />
-        <Route path="/add-sub-session" element={<AddSubSession/>} />
-        <Route path="/add-user-weight" element={<AddUserWeight/>} />
+        <Route element={<PrivateRoute supabase={supabase} />}>
+          <Route path="/add-exercise" element={<AddExercise/>} />
+        </Route>
+        <Route element={<PrivateRoute supabase={supabase} />}>
+          <Route path="/add-sub-session" exact element={<AddSubSession/>} />
+        </Route>
+        <Route element={<PrivateRoute supabase={supabase} />}>
+          <Route path="/add-user-weight" element={<AddUserWeight/>} />
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
