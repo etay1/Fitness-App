@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './AddExercise.css'
 const AddExercise = () => {
   return (
     <div className='page'>
