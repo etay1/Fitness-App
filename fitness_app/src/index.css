@@ -5,9 +5,59 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+
+}
+
+/* Custom CSS */
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #047aed;
+  
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 650px;
+  background-color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  /* background: linear-gradient(to right, #fff, transparent), #6A6E6E; */
+  border-radius: 10px; 
+
+}
+
+.box {
+  flex: 1; 
+
+}
+
+.left-box {
+  display: flex;
+  justify-content: center; /*these may need to be changed in the future and applied locally*/
+  align-items: center; /*these may need to be changed in the future and applied locally*/
+  height: 100%;
+  width: 100%;
+
+}
+
+.right-box {
+  display: flex;
+  justify-content: center; /*these may need to be changed in the future and applied locally*/
+  align-items: center; /*these may need to be changed in the future and applied locally*/
+  height: 100%;
+  width: 100%;
+
 }

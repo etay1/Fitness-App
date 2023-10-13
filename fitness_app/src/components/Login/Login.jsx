@@ -13,19 +13,25 @@ const supabase = createClient(
   
 
 export const Login = ({supabase}) => {
-    return (
-        <div className="login">
+    const passwordPolicy = {
+        minLength: process.env.GOTRUE_PASSWORD_MIN_LENGTH || 6, 
+    };
 
-            <div className='container-login'>
+    return (
+        <div className="page">
+
+            <div className='container ctn-login'>
 
                 {/* container item 1 */}
-                <div className='box-login left-box-login'>
+                <div className='box left-box'>
 
                         {/* left-box item 1 */}
                         <div className="form-login">
                         <Auth
                             supabaseClient={supabase}
                             providers={[]}
+                            passwordPolicy={ passwordPolicy }
+
                             appearance={{ theme: ThemeSupa,
                                 style: {
                                     button: { background: '#047aed', color: 'white' },
@@ -39,11 +45,11 @@ export const Login = ({supabase}) => {
                 </div>
 
                 {/* container item 2 */}
-                <div className='box-login right-box-login'>
+                <div className='box right-box img-rbox'>
 
                     
                     {/* right-box item 1 */}
-                    <img src={photo} alt="gym_photo" className='img-login'/>
+                    <img src={photo} alt="gym_photo" className='img-lgn'/>
 
                 </div>
 
