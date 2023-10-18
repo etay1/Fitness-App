@@ -1,24 +1,12 @@
 import { Outlet, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import CheckAuthroization from './CheckAuthorized';
+
 
 const PrivateRoute =  ({ supabase }) => {
-   
-     const [error, setError] = useState(null);
-     const [isAuthenticated, setIsAuthenticated] = useState(false);
-
     
-    useEffect(() => {
-        const checkUser = async () => {
-            const user = await supabase.auth.getUser();
-            setError(user.error != null);
-            setIsAuthenticated(true);
-        };
-
-        checkUser();
-    }, [supabase]);
-
-    console.log(error);
-
+    const { error, isAuthenticated } = CheckAuthroization(supabase);
+    // console.log(error, isAuthenticated);
 
     if (!isAuthenticated) {
         return null;
