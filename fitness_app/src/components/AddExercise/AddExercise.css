@@ -1,0 +1,87 @@
+/* AddExercise.css */
+
+.main-menu-button {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 20px;
+}
+.exercise-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20x;
+}
+
+.exercise-form {
+  background-color: #f0f0f0;
+  padding: 10%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.category-toggle {
+  display: flex; 
+}
+
+.category-button {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.category-button.active {
+  background-color: #0056b3;
+}
+
+.category-button.inactive {
+  background-color: #ccc;
+}
+
+.form-field {
+  margin: 10px 0;
+}
+
+label {
+  font-weight: bold;
+  display: flex;
+}
+
+input {
+  width: 40%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-button {
+  background-color: #0b6fdb;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.add-button:hover {
+  background-color: #0056b3;
+}
+.main-menu-button:hover {
+  background-color: #0056b3;
+}
+
+.success-message {
+  color: rgb(32, 128, 0);
+  font-weight: bold;
+  margin: 10px 0;
+}
