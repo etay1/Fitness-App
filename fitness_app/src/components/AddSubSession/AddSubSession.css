@@ -44,7 +44,7 @@
   form {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
   }
   
   .input-container label {
@@ -52,10 +52,13 @@
   }
   
   .input-container {
-    width: 100%;
+    width: 90%;
     margin: 5px 0; /* Added margin to separate elements */
     display: flex;
     flex-direction: column;
+    align-items: center; /* Add this line */
+
+
   }
   
   input[type="text"],
@@ -69,7 +72,7 @@
   .message-add-subsession {
     color: var(--primary-color);
     font-weight: bold;
-    margin: 10px 0;
+    padding0bottom: 10px;
     text-align: center;
   }
   
