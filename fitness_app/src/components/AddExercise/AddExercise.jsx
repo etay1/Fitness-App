@@ -104,6 +104,7 @@ function AddExercise() {
                 onChange={handleInputChange}
               />
             </div>
+          </form>
 
             <div className="form-buttons-add-exercise">
               <button className="button-add-exercise" onClick={navigateToMainMenu}>
@@ -113,10 +114,11 @@ function AddExercise() {
                 Add {category === 'cardio' ? 'Cardio' : 'Strength'} Exercise
               </button>
             </div>
+
             {isSuccess && (
               <div className="message-add-exercise">{successMessage}</div>
             )}
-          </form>
+            
         </div>
       </div>
     </div>
