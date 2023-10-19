@@ -6,8 +6,7 @@ function AddSubSession() {
     const [category, setCategory] = useState('cardio');
   const [subSessionData, setSubSessionData] = useState({
     sessionName: '',
-    description: '',
-    category: 'strength',
+    category: '',
     exercises: [],
     startTime: '',
     endTime: '',
@@ -18,8 +17,8 @@ function AddSubSession() {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setSubSessionData({ ...subSessionData, [name]: value });
+
+
   };
 
   const handleCategoryChange = (newCategory) => {
@@ -34,8 +33,7 @@ function AddSubSession() {
     setIsSuccess(true);
     setSubSessionData({
       sessionName: '',
-      description: '',
-      category: 'strength',
+      category: subSessionData.category,
       exercises: [],
       startTime: '',
       endTime: '',
@@ -46,7 +44,6 @@ function AddSubSession() {
 
   const navigateToMainMenu = () => {
     // Use React Router for navigation to the main menu.
-    // Example: history.push('/dashboard') if you have access to the history object.
   };
 
   return (
@@ -80,7 +77,7 @@ function AddSubSession() {
               />
             </div>
 
-            <div className="input-container">
+            <div className="input-container time-subsession">
               <label>Start Time:</label>
               <input
                 type="time"
@@ -89,7 +86,7 @@ function AddSubSession() {
                 onChange={handleInputChange}
               />
             </div>
-            <div className="input-container">
+            <div className="input-container time-subsession">
               <label>End Time:</label>
               <input
                 type="time"
@@ -137,6 +134,7 @@ function AddSubSession() {
           {isSuccess && (
             <div className="message-add-subsession">{successMessage}</div>
           )}
+
         </div>
       </div>
     </div>
