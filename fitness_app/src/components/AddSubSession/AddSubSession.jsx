@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
 import './AddSubSession.css'; // Create a CSS file for this component
 
 function AddSubSession() {
@@ -8,7 +7,7 @@ function AddSubSession() {
     sessionName: '',
     description: '',
     category: 'strength', //default
-    exercises: [], 
+    exercises: [],
     startTime: '',
     endTime: '',
   });
@@ -25,14 +24,11 @@ function AddSubSession() {
     setSubSessionData({ ...subSessionData, category: newCategory });
   };
 
-  const navigateToMainMenu = () => {
-    // Navigate to the main menu page.
-    // You can use React Router as well here.
-  };
-
   const handleAddSubSession = () => {
     // Code to send the subsession data to the server will go here.
-    setSuccessMessage(`Successfully added ${subSessionData.category === 'cardio' ? 'Cardio' : 'Strength'} Subsession.`);
+    setSuccessMessage(
+      `Successfully added ${subSessionData.category === 'cardio' ? 'Cardio' : 'Strength'} Subsession.`
+    );
     setIsSuccess(true);
     setSubSessionData({
       sessionName: '',
@@ -85,34 +81,30 @@ function AddSubSession() {
               />
             </div>
             <div className="input-container">
-                <label>Start Time:</label>
-                <input
-                    type="time"
-                    name="startTime"
-                    value={subSessionData.startTime}
-                    onChange={handleInputChange}
-                />
+              <label>Start Time:</label>
+              <input
+                type="time"
+                name="startTime"
+                value={subSessionData.startTime}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="input-container">
-                <label>End Time:</label>
-                <input
-                    type="time"
-                    name="endTime"
-                    value={subSessionData.endTime}
-                    onChange={handleInputChange}
-                />
+              <label>End Time:</label>
+              <input
+                type="time"
+                name="endTime"
+                value={subSessionData.endTime}
+                onChange={handleInputChange}
+              />
             </div>
 
             <div className="form-buttons-add-subsession">
-                <button className="button-add-subsession" onClick={navigateToMainMenu}>
-                Done
-                </button>
-                <button className="button-add-subsession" type="button" onClick={handleAddSubSession}>
+              <button className="button-add-subsession" onClick={handleAddSubSession}>
                 Add {subSessionData.category === 'cardio' ? 'Cardio' : 'Strength'} Subsession
-                </button>
+              </button>
             </div>
           </form>
-
 
           {isSuccess && (
             <div className="message-add-subsession">{successMessage}</div>

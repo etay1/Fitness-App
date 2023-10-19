@@ -1,25 +1,26 @@
+  /* * {
+    border: 1px solid red;
+  } */
+
+  /* AddSubSession.css */
 .subsession-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    text-align: center;
   }
   
   .title-add-subsession {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px 0;
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--primary-color);
-    text-align: center;
-
   }
   
   .category-toggle {
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
-
+    margin: 10px 0;
   }
   
   .category-button {
@@ -29,64 +30,54 @@
     border-radius: 4px;
     cursor: pointer;
     border: 2px solid var(--primary-color);
-
   }
   
   .active {
     background-color: var(--primary-color);
     color: var(--white-color);
-
   }
   
   .inactive {
     background-color: var(--white-color);
-
   }
   
-  .form {
+  form {
     display: flex;
     flex-direction: column;
     width: 100%;
-
   }
   
   .input-container label {
     color: var(--primary-color);
-
-  }
-  
-  input[type="text"],
-  textarea {
-    width: 200px;
-    padding: 8px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-
   }
   
   .input-container {
     width: 100%;
+    margin: 5px 0; /* Added margin to separate elements */
     display: flex;
     flex-direction: column;
-
+  }
+  
+  input[type="text"],
+  textarea,
+  input[type="time"] {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
   }
   
   .message-add-subsession {
     color: var(--primary-color);
     font-weight: bold;
-    margin-top: 10px;
+    margin: 10px 0;
     text-align: center;
-    flex: 1;
-
   }
-
-  .form-buttons-add-exercise {
+  
+  .form-buttons-add-subsession {
     display: flex;
     justify-content: center;
-  
   }
-
+  
   .button-add-subsession {
     background-color: var(--primary-color);
     color: white;
@@ -94,66 +85,6 @@
     border-radius: 4px;
     padding: 10px;
     cursor: pointer;
-    margin-top: 10px;
-    margin-right: 10px;
-  
+    margin: 10px 0;
   }
   
-  @media (max-width: 450) {
-    .container {
-      flex-direction: column;
-      padding-bottom: 15px;
-      height: 90%;
-      width: 90%;
-  
-    }
-  
-    .title-add-subsession {
-      height: 90%;
-    
-    }
-    .exercise-form {
-      width: 90%;
-
-    }
-  
-    .form {
-      max-width: 100%; /* Adjust the maximum width of the form for smaller screens */
-
-    }
-  
-    input[type="text"],
-    input[type="number"],
-    textarea {
-      width: 100%; /* Make input fields and textareas full width on smaller screens */
-
-    }
-  
-    .category-button {
-      font-size: 0.9rem; /* Adjust the font size of category buttons for smaller screens */
-
-    }
-  
-    .message-add-subsession {
-      font-size: 0.9rem; /* Adjust the font size of the message for smaller screens */
-      display: flex;
-      flex-wrap: wrap;
-
-    }
-
-    .form-buttons-add-exercise {
-      display: flex;
-      justify-content: center;
-    
-    }
-  
-  }
-  
-  @media (max-width: 768px) {
-    .container {
-      padding-bottom: 15px;
-      height: 85%;
-      width: 90%;
-  
-    }
-  }  
