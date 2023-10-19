@@ -5,9 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { createClient } from '@supabase/supabase-js';
-
+import AddSubSession from './components/AddSubSession/AddSubSession';
 import AddExercise from './components/AddExercise/AddExercise';
-import { AddSubSession } from './components/AddSubSession/AddSubSession';
 import { AddUserWeight } from './components/AddUserWeight/AddUserWeight';
 
 import  PrivateRoute  from './utils/PrivateRoute';
