@@ -22,6 +22,8 @@ function AddExercise() {
 
   const handleCategoryChange = (newCategory) => {
     setCategory(newCategory);
+    // erase error message
+    setIsSuccess(false);
   };
 
   const navigateToMainMenu = () => {

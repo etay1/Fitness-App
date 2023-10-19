@@ -23,6 +23,8 @@ function AddSubSession() {
 
   const handleCategoryChange = (newCategory) => {
     setSubSessionData({ ...subSessionData, category: newCategory });
+    // erase error message
+    setIsSuccess(false);
   };
 
   const handleAddSubSession = () => {
