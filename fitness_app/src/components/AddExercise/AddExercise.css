@@ -11,6 +11,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--primary-color);
+  text-align: center;
 
 }
 
@@ -100,4 +101,42 @@ textarea {
 .main-menu-button:hover {
   background-color: #333;
 
+}
+
+
+@media (max-width: 450) {
+  .container {
+    flex-direction: column;
+    padding-bottom: 15px;
+    height: 90%;
+    width: 90%;
+
+  }
+
+  .exercise-form {
+    width: 100%;
+  }
+
+  .form {
+    max-width: 100%; /* Adjust the maximum width of the form for smaller screens */
+  }
+
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    width: 100%; /* Make input fields and textareas full width on smaller screens */
+  }
+
+  .category-button {
+    font-size: 0.9rem; /* Adjust the font size of category buttons for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-bottom: 15px;
+    height: 85%;
+    width: 90%;
+
+  }
 }
