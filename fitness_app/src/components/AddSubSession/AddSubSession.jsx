@@ -21,6 +21,13 @@ function AddSubSession() {
 
   };
 
+  const handleToggleChange = () => {
+    const newCategory = category === 'strength' ? 'cardio' : 'strength';
+    setSubSessionData({ ...subSessionData, category: newCategory });
+    setCategory(newCategory);
+    setIsSuccess(false);
+  };
+  
   const handleCategoryChange = (newCategory) => {
     setSubSessionData({ ...subSessionData, category: newCategory });
     // erase error message
@@ -54,18 +61,15 @@ function AddSubSession() {
         <div className="subsession-form">
           <h1 className="title-add-subsession">Add A Workout</h1>
           <div className="category-toggle">
-            <button
-              className={`category-button ${subSessionData.category === 'strength' ? 'active' : 'inactive'}`}
-              onClick={() => handleCategoryChange('strength')}
-            >
-              Strength
-            </button>
-            <button
-              className={`category-button ${subSessionData.category === 'cardio' ? 'active' : 'inactive'}`}
-              onClick={() => handleCategoryChange('cardio')}
-            >
-              Cardio
-            </button>
+            <div className="toggle-container">
+                <label className={`toggle-label left-label ${category === 'strength' ? 'active' : 'inactive'}`}>Strength</label>
+                <input
+                    type="checkbox"
+                    className={`toggle-switch ${category === 'strength' ? 'active' : 'inactive'}`}
+                    onChange={handleToggleChange}
+                />
+                <label className={`toggle-label right-label ${category === 'cardio' ? 'active' : 'inactive'}`}>Cardio</label>
+                </div>
           </div>
 
           <form>

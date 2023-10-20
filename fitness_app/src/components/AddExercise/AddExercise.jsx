@@ -20,6 +20,12 @@ function AddExercise() {
     setExerciseData({ ...exerciseData, [name]: value });
   };
 
+  const handleToggleChange = () => {
+    const newCategory = category === 'strength' ? 'cardio' : 'strength';
+    setCategory(newCategory);
+    setIsSuccess(false);
+  };
+
   const handleCategoryChange = (newCategory) => {
     setCategory(newCategory);
     // erase error message
@@ -50,18 +56,15 @@ function AddExercise() {
         <div className="exercise-form">
           <h1 className='title-add-exercise'>Create a New Exercise</h1>
           <div className="category-toggle">
-            <button
-              className={`category-button ${category === 'strength' ? 'active' : 'inactive'}`}
-              onClick={() => handleCategoryChange('strength')}
-            >
-              Strength
-            </button>
-            <button
-              className={`category-button ${category === 'cardio' ? 'active' : 'inactive'}`}
-              onClick={() => handleCategoryChange('cardio')}
-            >
-              Cardio
-            </button>
+            <div className="toggle-container">
+              <label className={`toggle-label left-label ${category === 'strength' ? 'active' : 'inactive'}`}>Strength</label>
+              <input
+                type="checkbox"
+                className={`toggle-switch ${category === 'strength' ? 'active' : 'inactive'}`}
+                onChange={handleToggleChange}
+              />
+              <label className={`toggle-label right-label ${category === 'cardio' ? 'active' : 'inactive'}`}>Cardio</label>
+            </div>
           </div>
 
           {/* Form */}

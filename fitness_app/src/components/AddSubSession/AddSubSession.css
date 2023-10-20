@@ -74,7 +74,7 @@
 .form-buttons-add-subsession {
   display: flex;
   justify-content: space-around;
-  align-items: center; /* Change to 'center' for vertical alignment */
+  align-items: center; 
   margin-top: 10px;
 }
 
@@ -95,3 +95,49 @@
     font-weight: bold;
     text-align: center;
 }
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.toggle-label {
+  font-size: 16px;
+  padding: 8px 16px;
+  user-select: none;
+}
+
+.toggle-label.inactive {
+  font-weight: 500;
+  color: #047aed;
+}
+
+.toggle-switch {
+  appearance: none;
+  width: 40px;
+  height: 20px;
+  background: #ccc;
+  border-radius: 20px; 
+  position: relative;
+  cursor: pointer;
+  height: 20px;
+}
+
+.toggle-switch:before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff; 
+  top: 1px;
+  left: 1px;
+  transition: 0.3s; 
+}
+
+.toggle-switch:checked:before {
+  transform: translateX(20px);
+}
+
