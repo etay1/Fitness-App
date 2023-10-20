@@ -3,7 +3,7 @@ import './AddSubSession.css';
 import { Navigate } from 'react-router-dom';
 
 function AddSubSession() {
-    const [category, setCategory] = useState('cardio');
+  const [category, setCategory] = useState('strength');
   const [subSessionData, setSubSessionData] = useState({
     sessionName: '',
     category: '',
@@ -65,7 +65,7 @@ function AddSubSession() {
                 <label className={`toggle-label left-label ${category === 'strength' ? 'active' : 'inactive'}`}>Strength</label>
                 <input
                     type="checkbox"
-                    className={`toggle-switch ${category === 'strength' ? 'active' : 'inactive'}`}
+                    className={`toggle-switch ${category === 'cardio' ? 'active' : 'inactive'}`}
                     onChange={handleToggleChange}
                 />
                 <label className={`toggle-label right-label ${category === 'cardio' ? 'active' : 'inactive'}`}>Cardio</label>

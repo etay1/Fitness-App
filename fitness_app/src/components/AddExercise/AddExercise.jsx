@@ -4,7 +4,7 @@ import './AddExercise.css';
 
 function AddExercise() {
   // State initialization
-  const [category, setCategory] = useState('cardio');
+  const [category, setCategory] = useState('strength');
   const [exerciseData, setExerciseData] = useState({
     exerciseName: '',
     description: '',
@@ -22,12 +22,13 @@ function AddExercise() {
 
   const handleToggleChange = () => {
     const newCategory = category === 'strength' ? 'cardio' : 'strength';
+    setExerciseData({ ...exerciseData, category: newCategory });
     setCategory(newCategory);
     setIsSuccess(false);
   };
 
   const handleCategoryChange = (newCategory) => {
-    setCategory(newCategory);
+    setExerciseData({ ...exerciseData, category: newCategory });
     // erase error message
     setIsSuccess(false);
   };
@@ -60,7 +61,7 @@ function AddExercise() {
               <label className={`toggle-label left-label ${category === 'strength' ? 'active' : 'inactive'}`}>Strength</label>
               <input
                 type="checkbox"
-                className={`toggle-switch ${category === 'strength' ? 'active' : 'inactive'}`}
+                className={`toggle-switch ${category === 'cardio' ? 'active' : 'inactive'}`}
                 onChange={handleToggleChange}
               />
               <label className={`toggle-label right-label ${category === 'cardio' ? 'active' : 'inactive'}`}>Cardio</label>
