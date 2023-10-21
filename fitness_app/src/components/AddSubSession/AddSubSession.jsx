@@ -3,10 +3,9 @@ import './AddSubSession.css';
 import { Navigate } from 'react-router-dom';
 
 function AddSubSession() {
-    const [category, setCategory] = useState('cardio');
+  const [category, setCategory] = useState('strength');
   const [subSessionData, setSubSessionData] = useState({
     sessionName: '',
-    category: '',
     exercises: [],
     startTime: '',
     endTime: '',
@@ -17,25 +16,24 @@ function AddSubSession() {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const handleInputChange = (event) => {
-
-
+    const { name, value } = event.target;
+    setSubSessionData({ ...subSessionData, [name]: value });
   };
 
   const handleCategoryChange = (newCategory) => {
-    setSubSessionData({ ...subSessionData, category: newCategory });
-    // erase error message
+    setCategory(newCategory);
+    // Erase error message
     setIsSuccess(false);
   };
 
   const handleAddSubSession = () => {
     // Code to send the subsession data to the server goes here.
     setSuccessMessage(
-      `Successfully added ${subSessionData.category === 'cardio' ? 'Cardio' : 'Strength'} Subsession.`
+      `Successfully added ${category === 'cardio' ? 'Cardio' : 'Strength'} Subsession.`
     );
     setIsSuccess(true);
     setSubSessionData({
       sessionName: '',
-      category: subSessionData.category,
       exercises: [],
       startTime: '',
       endTime: '',
@@ -55,13 +53,13 @@ function AddSubSession() {
           <h1 className="title-add-subsession">Add A Workout</h1>
           <div className="category-toggle">
             <button
-              className={`category-button ${subSessionData.category === 'strength' ? 'active' : 'inactive'}`}
+              className={`category-button ${category === 'strength' ? 'active' : 'inactive'}`}
               onClick={() => handleCategoryChange('strength')}
             >
               Strength
             </button>
             <button
-              className={`category-button ${subSessionData.category === 'cardio' ? 'active' : 'inactive'}`}
+              className={`category-button ${category === 'cardio' ? 'active' : 'inactive'}`}
               onClick={() => handleCategoryChange('cardio')}
             >
               Cardio
@@ -98,7 +96,7 @@ function AddSubSession() {
               />
             </div>
 
-            {subSessionData.category === 'strength' && (
+            {category === 'strength' && (
               <div className="input-container">
                 <label>Sets:</label>
                 <input
@@ -110,7 +108,7 @@ function AddSubSession() {
               </div>
             )}
 
-            {subSessionData.category === 'strength' && (
+            {category === 'strength' && (
               <div className="input-container">
                 <label>Reps per Set:</label>
                 <input
@@ -121,7 +119,6 @@ function AddSubSession() {
                 />
               </div>
             )}
-
           </form>
 
           <div className="form-buttons-add-subsession">
@@ -129,14 +126,13 @@ function AddSubSession() {
               Done
             </button>
             <button className="button-add-subsession" onClick={handleAddSubSession}>
-              Add {subSessionData.category === 'cardio' ? 'Cardio' : 'Strength'} Subsession
+              Add {category === 'cardio' ? 'Cardio' : 'Strength'} Subsession
             </button>
           </div>
 
           {isSuccess && (
             <div className="message-add-subsession">{successMessage}</div>
           )}
-
         </div>
       </div>
     </div>
@@ -144,4 +140,3 @@ function AddSubSession() {
 }
 
 export default AddSubSession;
-

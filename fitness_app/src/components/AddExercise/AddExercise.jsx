@@ -4,7 +4,7 @@ import './AddExercise.css';
 
 function AddExercise() {
   // State initialization
-  const [category, setCategory] = useState('cardio');
+  const [category, setCategory] = useState('strength');
   const [exerciseData, setExerciseData] = useState({
     exerciseName: '',
     description: '',
