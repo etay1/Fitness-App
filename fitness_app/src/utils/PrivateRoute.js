@@ -1,27 +1,18 @@
-import { Outlet, Navigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Outlet, Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import CheckAuthroization from "./CheckAuthorized";
 
-const PrivateRoute =  ({ supabase }) => {
-   
-     const [error, setError] = useState(null);
-    
-    useEffect(() => {
-        const checkUser = async () => {
-            const user = await supabase.auth.getUser();
-            setError(user.error != null);
-        };
+const PrivateRoute = ({ supabase }) => {
+  const { error, isAuthenticated } = CheckAuthroization(supabase);
+  // console.log(error, isAuthenticated);
 
-        checkUser();
-    }, [supabase]);
+  if (!isAuthenticated) {
+    return null;
+  }
+  if (error) {
+    return <Navigate to="/" />;
+  }
+  return <Outlet />;
+};
 
-    console.log(error);
-
-
-
-    if (error) {
-        return <Navigate to="/" />;
-    }
-    return <Outlet />;
-    }
-
-export default PrivateRoute
+export default PrivateRoute;
