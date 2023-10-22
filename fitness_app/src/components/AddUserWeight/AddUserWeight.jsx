@@ -2,6 +2,16 @@ import React from 'react';
 import './AddUserWeight.css';
 
 export const AddUserWeight = () => {
+
+  //function (){
+  
+  //}
+
+  const navigateToMainMenu = () => {
+
+
+  };
+
   return (
     <div className='page'>
         <div className='container'>
