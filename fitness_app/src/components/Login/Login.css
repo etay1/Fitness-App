@@ -4,15 +4,23 @@
 }
 
 .left-box-lgn {
-    justify-content: center; /*these may need to be changed in the future and applied locally*/
-    align-items: center; /*these may need to be changed in the future and applied locally*/
-
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    
 }
 
 .right-box-lgn {
-    justify-content: center; /*these may need to be changed in the future and applied locally*/
-    align-items: center; /*these may need to be changed in the future and applied locally*/
+    justify-content: center;
+    align-items: center; 
+    display: flex;
+    height: 100%;
+    width: 100%;
+
 }
+
 .img-lgn {
     width: 100%;
     height: 100%;

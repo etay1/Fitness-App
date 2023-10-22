@@ -36,7 +36,7 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  height: 550px;
   width: 650px;
   background-color: var(--white-color);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -46,19 +46,5 @@ code {
 
 .box {
   flex: 1; 
-
-}
-
-.left-box {
-  display: flex;
-  height: 100%;
-  width: 100%;
-
-}
-
-.right-box {
-  display: flex;
-  height: 100%;
-  width: 100%;
 
 }
