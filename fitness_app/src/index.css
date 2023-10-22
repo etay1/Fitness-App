@@ -48,17 +48,3 @@ code {
   flex: 1; 
 
 }
-
-.left-box {
-  display: flex;
-  height: 100%;
-  width: 100%;
-
-}
-
-.right-box {
-  display: flex;
-  height: 100%;
-  width: 100%;
-
-}
