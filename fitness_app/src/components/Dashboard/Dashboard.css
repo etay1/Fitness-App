@@ -14,3 +14,28 @@
   height: 10px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
+
+.radio-button {
+    display: inline-block;
+    margin-right: 10px; /* Adjust the spacing between radio buttons */
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .radio-button input[type="radio"] {
+    display: none; /* Hide the actual radio input */
+  }
+  
+  .radio-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .radio-button input[type="radio"]:checked + label {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
