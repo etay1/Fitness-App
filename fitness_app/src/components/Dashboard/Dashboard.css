@@ -5,3 +5,12 @@
     align-items: center;
     
 }
+
+.weight_chart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300;
+}

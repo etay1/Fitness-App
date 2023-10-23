@@ -41,12 +41,10 @@ code {
   background-color: var(--white-color);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   border-radius: 10px; 
-
 }
 
 .box {
   flex: 1; 
-
 }
 
 .left-box {

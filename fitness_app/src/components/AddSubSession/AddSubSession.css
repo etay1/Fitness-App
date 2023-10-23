@@ -111,8 +111,12 @@
 
 .toggle-label.inactive {
   font-weight: 500;
-  color: #047aed;
 }
+
+.toggle-label.active {
+  font-weight: 500;
+}
+
 
 .toggle-switch {
   appearance: none;
