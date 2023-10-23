@@ -1,65 +1,84 @@
-import React from 'react';
-import './Dashboard.css';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Chart from "chart.js/auto";
 
-import { useEffect, useState } from 'react';
-import Chart from 'chart.js/auto';
+export const Dashboard = ({ supabase, session }) => {
+  const [weights, setWeights] = useState([]);
+  const [dates, setDates] = useState([]);
+  const [chartData, setChartData] = useState({});
 
-export const Dashboard = ({supabase, session}) => {
-    const [chartData, setChartData] = useState({});
+  useEffect(() => {
+    async function fetchWeightData() {
+      // Fetch all weights and dates for the user
+      const { data, error } = await supabase
+      .from("user_weight")
+      .select("weight, date") 
+      .eq("user_id", session.user.id);
 
-    const [weights, setWeights] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            // Fetch all weights for the user
-            const { data: weights, error } = await supabase
-                .from('user_weight')
-                .select('*')
-                .eq('user_id', session.user.id);
+        if (error) {
+          console.error(error);
+        } else {
+          const weightValues = data.map((item) => item.weight);
+          setWeights(weightValues);
+          const dateValues = data.map((item) => item.date);
+          setDates(dateValues);
 
-            if (error) {
-                console.error(error);
-            } else {
-                setWeights(weights);
-            }
-
-            const data = {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [
-                    {
-                        label: 'My First Dataset',
-                        data: [65, 59, 80, 81, 56, 55, 40],
-                        fill: false,
-                        borderColor: 'rgb(75, 192, 192)',
-                        tension: 0.1
-                    }
-                ]
-            };
-            setChartData(data);
-        };
-        fetchData();
-        }, []);
-
-        useEffect(() => {
-            const chart = new Chart('myChart', {
-                type: 'line',
-                data: chartData
-            });
-            return () => chart.destroy();
-        }, [chartData]);
-
-        return (
-            <div className='dashboard'>
-                <h1>Welcome {session.user.email}</h1>
-                <button onClick={() => supabase.auth.signOut()}>Sign Out</button>
-                <Link to="/add-exercise">Add Exercise</Link>
-                <Link to="/add-sub-session">Add Sub Session</Link>
-                <Link to="/add-user-weight">Add User Weight</Link>
-                <div className="weight_chart">
-                    <canvas id="myChart" width="300" height="300"></canvas>
-                </div>
-            </div>
-        );
+        }
     }
+    fetchWeightData();
+  }, [supabase, session.user.id]);
 
+  const monthNames = {
+    1: "January",
+    2: "February",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December",
+  };
+
+  useEffect(() => {
+    const data = {
+      labels: dates,
+      datasets: [
+        {
+          label: "Weight",
+          data: weights,
+          fill: false,
+          borderColor: "rgb(75, 192, 192)",
+          tension: 0.1,
+        },
+      ],
+    };
+    setChartData(data);
+  }, [weights]);
+
+  useEffect(() => {
+    const chart = new Chart("myChart", {
+      type: "line",
+      data: chartData,
+    });
+    return () => chart.destroy();
+  }, [chartData]);
+
+  return (
+    
+    <div className="dashboard">
+      <h1>Welcome {session.user.email}</h1>
+      <button onClick={() => supabase.auth.signOut()}>Sign Out</button>
+      <Link to="/add-exercise">Add Exercise</Link>
+      <Link to="/add-sub-session">Add Sub Session</Link>
+      <Link to="/add-user-weight">Add User Weight</Link>
+      <div className="weight_chart">
+        <canvas id="myChart" width={100} height={50}></canvas>
+      </div>
+    </div>
+  );
+};

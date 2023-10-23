@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .title-add-exercise {
@@ -12,14 +11,12 @@
   font-weight: bold;
   color: var(--primary-color);
   text-align: center;
-
 }
 
 .category-toggle {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
-
 }
 
 .category-button {
@@ -28,37 +25,31 @@
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
-  border: 2px solid var(--primary-color); 
-
+  border: 2px solid var(--primary-color);
 }
 
 .active {
   background-color: var(--primary-color);
   color: var(--white-color);
-
 }
 
 .inactive {
   background-color: var(--white-color);
-
 }
 
 .form {
   display: flex;
   flex-direction: column;
   width: 100%;
-
 }
 
 .form-buttons-add-exercise {
   display: flex;
   justify-content: center;
-
 }
 
 .input-container label {
   color: var(--primary-color);
-
 }
 
 input[type="text"],
@@ -69,22 +60,19 @@ textarea {
   margin: 5px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
-
 }
 
 .input-container {
   width: 100%;
   display: flex;
   flex-direction: column;
-
 }
 .message-add-exercise {
   color: #007bff;
   font-weight: bold;
   margin-top: 10px;
   text-align: center; /* Center the text within the message container */
-  flex: 1; 
-
+  flex: 1;
 }
 
 .button-add-exercise {
@@ -96,9 +84,7 @@ textarea {
   cursor: pointer;
   margin-top: 10px;
   margin-right: 10px;
-
 }
-
 
 @media (max-width: 450) {
   .container {
@@ -106,12 +92,10 @@ textarea {
     padding-bottom: 15px;
     height: 90%;
     width: 90%;
-
   }
 
   .title-add-exercise {
     height: 90%;
-  
   }
   .exercise-form {
     width: 90%;
@@ -136,7 +120,6 @@ textarea {
     display: flex;
     flex-wrap: wrap;
   }
-
 }
 
 @media (max-width: 768px) {
@@ -144,10 +127,8 @@ textarea {
     padding-bottom: 15px;
     height: 85%;
     width: 90%;
-
   }
 }
-
 
 .toggle-container {
   display: flex;
@@ -172,22 +153,22 @@ textarea {
   width: 40px;
   height: 20px;
   background: #ccc;
-  border-radius: 20px; 
+  border-radius: 20px;
   position: relative;
   cursor: pointer;
   height: 20px;
 }
 
 .toggle-switch:before {
-  content: '';
+  content: "";
   position: absolute;
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #fff; 
+  background: #fff;
   top: 1px;
   left: 1px;
-  transition: 0.3s; 
+  transition: 0.3s;
 }
 
 .toggle-switch:checked:before {
