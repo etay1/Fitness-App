@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useState} from 'react';
 import './AddUserWeight.css';
 
 export const AddUserWeight = () => {
 
-  //function (){
-  
-  //}
+  const date = new Date();
+  const currentDate = date.getDate();
 
+  const [userSessionWeight, setUserSessionWeight] = useState({
+    sessionWeight: '',
+    sessionDate: currentDate, //This is probably incorrectly done
+  });
+
+  const [successMessage, setSuccessMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleAddWeight = () => {
+    setSuccessMessage(
+      'Successfully added weight'
+    );
+    setIsSuccess(true);
+    setUserSessionWeight({
+      sessionWeight: '',
+      sessionDate: currentDate,
+    });
+  };
   const navigateToMainMenu = () => {
-
-
+    // Use React Router for navigation to the main menu.
   };
 
   return (
@@ -24,11 +40,26 @@ export const AddUserWeight = () => {
                 <input
                   type="number"
                   name="weight"
-                  //TODO: add value along the lines of value={foo.bar}
+                  min="50"
+                  max="1000"
+                  value={userSessionWeight.weight}
                 />
+
+                <div className='form-buttons-add-weight'>
+                  <button className='button-add-weight' onClick={navigateToMainMenu}>
+                    Exit without saving
+                  </button>
+                  <button className='button-add-weight' onClick={handleAddWeight}>
+                    Save weight and exit
+                  </button>
+                </div>
+                {isSuccess && (
+                  <div className='success-message'>
+                    {successMessage}
+                  </div>
+                )}
               </div>
             </form>
-            <p>Add user weight boiler plate</p>
           </div>
         </div>
     </div>

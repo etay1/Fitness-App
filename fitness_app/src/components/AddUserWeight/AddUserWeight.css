@@ -14,3 +14,20 @@
     text-align: center;
 
 }
+
+.form-buttons-add-weight {
+    display: flex;
+    justify-content: center;
+
+}
+
+.button-add-weight {
+    border-radius: 4px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 5% 0 5% 0;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 10px;
+
+}
