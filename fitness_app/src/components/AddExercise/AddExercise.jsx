@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import NavigateHome from "../../utils/NavigateHome";
 import "./AddExercise.css";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  process.env.REACT_APP_SUPABASE_URL,
+  process.env.REACT_APP_ANON_KEY
+);
 
 function AddExercise() {
   // State initialization
@@ -16,6 +22,30 @@ function AddExercise() {
   const [isSuccess, setIsSuccess] = useState(false);
   const handleNavigate = NavigateHome();
 
+  const [messageColor, styleMessage] = useState("var(--black-color)");
+
+  const validateInput = (name, calories) => {
+    if (!name) {
+      setSuccessMessage(
+        `Invalid field: ${
+          !name
+            ? "Exercise Name"
+            : category === "cardio"
+            ? "Calories / 15 minutes"
+            : "Calories / rep"
+        } is empty.`
+      );
+
+      return false;
+    }
+    setSuccessMessage(
+      `Successfully added ${
+        category === "cardio" ? "Cardio" : "Strength"
+      } Exercise.`
+    );
+    return true;
+  };
+
   // Event handlers
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -28,29 +58,57 @@ function AddExercise() {
     setIsSuccess(false);
   };
 
-  // Function to navigate to the main menu
+  const handleInsertion = async (name, description, calories) => {
+    try {
+      const tableName =
+        category === "cardio" ? "cardio_exercise" : "weight_exercise";
+      const columnName =
+        category === "cardio" ? "calories_per_15" : "calories_per_rep";
+      console.log("working");
+      const { data, error } = await supabase
+        .from(tableName)
+        .insert([{ name, description, [columnName]: calories }]);
+      
+      if (error) {
+        throw error;
+      }
 
-  // const navigateToMainMenu = () => {
-  //   const path = '/'; // Adjust the path as needed
-  //   navigate(path);
+      setIsSuccess(true);
+      setSuccessMessage(
+        `Successfully added ${
+          category === "cardio" ? "Cardio" : "Strength"
+        } Exercise.`
+      );
 
-  // };
+      styleMessage("var(--black-color)");
+    } catch (error) {
+      setSuccessMessage("Failed to add exercise.");
+      styleMessage("red");
+      setIsSuccess(true);
+      
+    }
+  };
 
   const handleAddExercise = () => {
-    // Code to send the exercise data to the server will go here.
-    setSuccessMessage(
-      `Successfully added ${
-        category === "cardio" ? "Cardio" : "Strength"
-      } Exercise.`
-    );
-    setIsSuccess(true);
-    setExerciseData({
-      exerciseName: "",
-      description: "",
-      caloriesPerRep: 0,
-      caloriesPerDuration: 0,
-    });
+    let name = exerciseData.exerciseName;
+    let calories =
+      category === "cardio"
+        ? exerciseData.caloriesPerDuration
+        : exerciseData.caloriesPerRep;
+    let description = exerciseData.description;
+    const isValid = validateInput(name, calories);
+
+    if (isValid) {
+      handleInsertion(name, description, calories);
+      setExerciseData({
+        exerciseName: "",
+        description: "",
+        caloriesPerRep: 0,
+        caloriesPerDuration: 0,
+      });
+    }
   };
+
 
   return (
     <div className="page">
@@ -134,7 +192,13 @@ function AddExercise() {
           </div>
 
           {isSuccess && (
-            <div className="message-add-exercise">{successMessage}</div>
+            <div
+              id="message-add-exercise"
+              className="message-add-exercise"
+              style={{ color: messageColor }}
+            >
+              {successMessage}
+            </div>
           )}
         </div>
       </div>

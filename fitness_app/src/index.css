@@ -20,6 +20,7 @@ code {
 :root {
   --primary-color: #047aed;
   --white-color: #fff;
+  --black-color: #000;
 }
 
 .page {
