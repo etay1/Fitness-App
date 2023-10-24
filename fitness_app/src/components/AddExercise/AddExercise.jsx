@@ -19,30 +19,51 @@ function AddExercise() {
     caloriesPerDuration: 0,
   });
   const [successMessage, setSuccessMessage] = useState("");
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [showMessage, setshowMessage] = useState(false);
   const handleNavigate = NavigateHome();
 
   const [messageColor, styleMessage] = useState("var(--black-color)");
 
   const validateInput = (name, calories) => {
-    if (!name) {
-      setSuccessMessage(
-        `Invalid field: ${
-          !name
-            ? "Exercise Name"
-            : category === "cardio"
-            ? "Calories / 15 minutes"
-            : "Calories / rep"
-        } is empty.`
+    // if (!name || calories < 1) {
+
+    if (!name || calories < 1) {
+      const errorMessages = [];
+
+      if (!name) {
+        errorMessages.push("Exercise Name is empty");
+      }
+
+      if (calories < 1) {
+        errorMessages.push(
+          category === "cardio"
+            ? "Calories / 15 minutes must be greater than 0"
+            : "Calories / rep must be greater than 0"
+        );
+      }
+
+      const errorMessageList = (
+        <ul>
+          {errorMessages.map((message, index) => (
+            <li key={index}>{message}</li>
+          ))}
+        </ul>
       );
 
+      console.log(errorMessageList);
+
+      setSuccessMessage(
+        <div>
+          <p>Invalid field(s):</p>
+          {errorMessageList}
+        </div>
+      );
+
+      setshowMessage(true);
+      styleMessage("red");
       return false;
     }
-    setSuccessMessage(
-      `Successfully added ${
-        category === "cardio" ? "Cardio" : "Strength"
-      } Exercise.`
-    );
+
     return true;
   };
 
@@ -55,7 +76,7 @@ function AddExercise() {
   const handleCategoryChange = (newCategory) => {
     setCategory(newCategory);
     // erase error message
-    setIsSuccess(false);
+    setshowMessage(false);
   };
 
   const handleInsertion = async (name, description, calories) => {
@@ -64,28 +85,40 @@ function AddExercise() {
         category === "cardio" ? "cardio_exercise" : "weight_exercise";
       const columnName =
         category === "cardio" ? "calories_per_15" : "calories_per_rep";
-      console.log("working");
       const { data, error } = await supabase
         .from(tableName)
         .insert([{ name, description, [columnName]: calories }]);
-      
-      if (error) {
-        throw error;
-      }
 
-      setIsSuccess(true);
+      if (error) throw error;
+
+      setshowMessage(true);
       setSuccessMessage(
         `Successfully added ${
           category === "cardio" ? "Cardio" : "Strength"
         } Exercise.`
       );
 
+      setExerciseData({
+        exerciseName: "",
+        description: "",
+        caloriesPerRep: 0,
+        caloriesPerDuration: 0,
+      });
+
+      //not sure if this should be black to stand out or blue to match rest of page
       styleMessage("var(--black-color)");
     } catch (error) {
-      setSuccessMessage("Failed to add exercise.");
-      styleMessage("red");
-      setIsSuccess(true);
-      
+      console.log(error);
+      if (error.code === "23505") {
+        setSuccessMessage("Exercise already exists.");
+        styleMessage("red");
+        setshowMessage(true);
+      } else {
+        console.log(error);
+        setSuccessMessage("Failed to add exercise.");
+        styleMessage("red");
+        setshowMessage(true);
+      }
     }
   };
 
@@ -100,15 +133,8 @@ function AddExercise() {
 
     if (isValid) {
       handleInsertion(name, description, calories);
-      setExerciseData({
-        exerciseName: "",
-        description: "",
-        caloriesPerRep: 0,
-        caloriesPerDuration: 0,
-      });
     }
   };
-
 
   return (
     <div className="page">
@@ -191,7 +217,7 @@ function AddExercise() {
             </button>
           </div>
 
-          {isSuccess && (
+          {showMessage && (
             <div
               id="message-add-exercise"
               className="message-add-exercise"
