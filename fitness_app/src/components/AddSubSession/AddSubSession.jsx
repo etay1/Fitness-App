@@ -1,49 +1,17 @@
 import React, { useState } from "react";
 import "./AddSubSession.css";
-import NavigateHome from "../../utils/NavigateHome";
+import { useAddSubSession } from "../../hooks/useAddSubSession";
 
 function AddSubSession() {
-  const [category, setCategory] = useState("strength");
-  const [subSessionData, setSubSessionData] = useState({
-    sessionName: "",
-    exercises: [],
-    startTime: "",
-    endTime: "",
-    sets: 0,
-    repsPerSet: 0,
-  });
-  const [successMessage, setSuccessMessage] = useState("");
-  const [isSuccess, setIsSuccess] = useState(false);
-  const handleNavigate = NavigateHome();
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setSubSessionData({ ...subSessionData, [name]: value });
-  };
-
-  const handleCategoryChange = (newCategory) => {
-    setCategory(newCategory);
-    // Erase error message
-    setIsSuccess(false);
-  };
-
-  const handleAddSubSession = () => {
-    // Code to send the subsession data to the server goes here.
-    setSuccessMessage(
-      `Successfully added ${
-        category === "cardio" ? "Cardio" : "Strength"
-      } Subsession.`
-    );
-    setIsSuccess(true);
-    setSubSessionData({
-      sessionName: "",
-      exercises: [],
-      startTime: "",
-      endTime: "",
-      sets: 0,
-      repsPerSet: 0,
-    });
-  };
+  const {
+    category,
+    subSessionData,
+    successMessage,
+    isSuccess,
+    handleInputChange,
+    handleCategoryChange,
+    handleAddSubSession,
+  } = useAddSubSession();
 
   return (
     <div className="page">
@@ -125,7 +93,7 @@ function AddSubSession() {
           </form>
 
           <div className="form-buttons-add-subsession">
-            <button className="button-add-subsession" onClick={handleNavigate}>
+            <button className="button-add-subsession" >
               Done
             </button>
             <button
