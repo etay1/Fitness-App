@@ -1,6 +1,6 @@
-import React from 'react';
-import './Dashboard.css';
-import { Link } from 'react-router-dom';
+import React from "react";
+import "./Dashboard.css";
+import { Link } from "react-router-dom";
 
 export const Dashboard = ({supabase, session}) => {
     // console.log(session)
@@ -21,5 +21,4 @@ export const Dashboard = ({supabase, session}) => {
             <Link to="/add-user-weight">Add User Weight</Link>
         </div>
     );
-}
-
+};
