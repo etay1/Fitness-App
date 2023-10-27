@@ -8,6 +8,10 @@ export const Dashboard = ({ supabase, session }) => {
   const [chartData, setChartData] = useState({});
   const [weightMap, setWeightMap] = useState({});
   const [selectedTimeRange, setSelectedTimeRange] = useState("weekly"); // Default to "weekly"
+  const [weeklyWeightMap, setWeeklyWeightMap] = useState({});
+  const[monthlyWeightMap, setMonthlyWeightMap] = useState({});
+  const [weeklyWeightValues, setWeeklyWeightValues] = useState({});
+  const[monthlyWeight, setMonthlyWeightValues] = useState({});
 
   useEffect(() => {
     async function fetchWeightData() {
@@ -22,11 +26,15 @@ export const Dashboard = ({ supabase, session }) => {
       } else {
         const weightValues = data.map((item) => item.weight);
         let dateValues = data.map((item) => item.date);
-        dateValues = dateValues.sort((a, b) => new Date(b) - new Date(a));
+        dateValues = dateValues.sort((a, b) => new Date(a) - new Date(b));
         const weightMap = {};
         dateValues.forEach((date, index) => {
           weightMap[date] = weightValues[index];
         });
+
+        weeklyWeightMap = {};
+
+        monthlyWeightMap = {};
 
         setWeights(weightValues);
         setDates(dateValues);
