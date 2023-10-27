@@ -1,10 +1,14 @@
-function useSession() {  // State initialization
-    const location = useLocation();
-    const searchParams = new URLSearchParams(location.search);
+import { useLocation } from 'react-router-dom';
 
-    // Retrieve the session data from the query parameters
-    const userId = searchParams.get('userId');
-    console.log(userId);
+function useQueryParams() {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+
+  const getQueryParam = (paramName) => searchParams.get(paramName);
+
+  return {
+    getQueryParam,
+  };
 }
 
-export default useSession;
+export default useQueryParams;
