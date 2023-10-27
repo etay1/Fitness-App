@@ -1,67 +1,15 @@
-import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import NavigateHome from "../../utils/NavigateHome";
 import "./AddExercise.css";
-import { useLocation } from "react-router-dom";
-
+import { useExerciseForm } from "../../hooks/useExerciseForm"; 
 function AddExercise() {
-  // State initialization
-  const location = useLocation();
-
-  // Parse the query parameters from the location's search property
-  const queryParams = new URLSearchParams(location.search);
-
-  // Get the value of the "sessionVariable" query parameter
-  const sessionVariable = queryParams.get("sessionVariable");
-
-  console.log(sessionVariable);
-
-  const [category, setCategory] = useState("strength");
-  const [exerciseData, setExerciseData] = useState({
-    exerciseName: "",
-    description: "",
-    caloriesPerRep: 0,
-    caloriesPerDuration: 0,
-  });
-  const [successMessage, setSuccessMessage] = useState("");
-  const [isSuccess, setIsSuccess] = useState(false);
-  const handleNavigate = NavigateHome();
-
-  // Event handlers
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setExerciseData({ ...exerciseData, [name]: value });
-  };
-
-  const handleCategoryChange = (newCategory) => {
-    setCategory(newCategory);
-    // erase error message
-    setIsSuccess(false);
-  };
-
-  // Function to navigate to the main menu
-
-  // const navigateToMainMenu = () => {
-  //   const path = '/'; // Adjust the path as needed
-  //   navigate(path);
-
-  // };
-
-  const handleAddExercise = () => {
-    // Code to send the exercise data to the server will go here.
-    setSuccessMessage(
-      `Successfully added ${
-        category === "cardio" ? "Cardio" : "Strength"
-      } Exercise.`
-    );
-    setIsSuccess(true);
-    setExerciseData({
-      exerciseName: "",
-      description: "",
-      caloriesPerRep: 0,
-      caloriesPerDuration: 0,
-    });
-  };
+  const {
+    category,
+    exerciseData,
+    successMessage,
+    isSuccess,
+    handleInputChange,
+    handleCategoryChange,
+    handleAddExercise,
+  } = useExerciseForm();
 
   return (
     <div className="page">
@@ -132,7 +80,7 @@ function AddExercise() {
           </form>
 
           <div className="form-buttons-add-exercise">
-            <button className="button-add-exercise" onClick={handleNavigate}>
+            <button className="button-add-exercise" >
               Done
             </button>
             <button
