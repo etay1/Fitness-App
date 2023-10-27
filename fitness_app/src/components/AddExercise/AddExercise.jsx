@@ -1,10 +1,11 @@
 import "./AddExercise.css";
-import { useExerciseForm } from "../../hooks/useExerciseForm"; 
+import { useExerciseForm } from "../../hooks/useExerciseForm";
 import useQueryParams from "../../hooks/useSession";
+import NavigateHome from "../../utils/NavigateHome";
 
 function AddExercise() {
   const queryParams = useQueryParams();
-  const userId = queryParams.getQueryParam('userId');
+  const userId = queryParams.getQueryParam("userId");
   const {
     category,
     exerciseData,
@@ -14,6 +15,8 @@ function AddExercise() {
     handleCategoryChange,
     handleAddExercise,
   } = useExerciseForm();
+
+  const handleNavigateHome = NavigateHome();
 
   return (
     <div className="page">
@@ -84,7 +87,12 @@ function AddExercise() {
           </form>
 
           <div className="form-buttons-add-exercise">
-            <button className="button-add-exercise">Done</button>
+            <button
+              className="button-add-exercise"
+              onClick={handleNavigateHome}
+            >
+              Done
+            </button>
             <button
               className="button-add-exercise"
               type="button"
