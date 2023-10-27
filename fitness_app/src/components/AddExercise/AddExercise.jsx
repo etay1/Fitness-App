@@ -2,9 +2,20 @@ import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import NavigateHome from "../../utils/NavigateHome";
 import "./AddExercise.css";
+import { useLocation } from "react-router-dom";
 
 function AddExercise() {
   // State initialization
+  const location = useLocation();
+
+  // Parse the query parameters from the location's search property
+  const queryParams = new URLSearchParams(location.search);
+
+  // Get the value of the "sessionVariable" query parameter
+  const sessionVariable = queryParams.get("sessionVariable");
+
+  console.log(sessionVariable);
+
   const [category, setCategory] = useState("strength");
   const [exerciseData, setExerciseData] = useState({
     exerciseName: "",
