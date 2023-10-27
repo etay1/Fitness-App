@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./AddSubSession.css";
-import { Navigate } from "react-router-dom";
 import NavigateHome from "../../utils/NavigateHome";
 
 function AddSubSession() {

@@ -1,140 +1,15 @@
-import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import NavigateHome from "../../utils/NavigateHome";
 import "./AddExercise.css";
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  process.env.REACT_APP_SUPABASE_URL,
-  process.env.REACT_APP_ANON_KEY
-);
-
+import { useExerciseForm } from "../../hooks/useExerciseForm"; 
 function AddExercise() {
-  // State initialization
-  const [category, setCategory] = useState("strength");
-  const [exerciseData, setExerciseData] = useState({
-    exerciseName: "",
-    description: "",
-    caloriesPerRep: 0,
-    caloriesPerDuration: 0,
-  });
-  const [successMessage, setSuccessMessage] = useState("");
-  const [showMessage, setshowMessage] = useState(false);
-  const handleNavigate = NavigateHome();
-
-  const [messageColor, styleMessage] = useState("var(--black-color)");
-
-  const validateInput = (name, calories) => {
-    // if (!name || calories < 1) {
-
-    if (!name || calories < 1) {
-      const errorMessages = [];
-
-      if (!name) {
-        errorMessages.push("Exercise Name is empty");
-      }
-
-      if (calories < 1) {
-        errorMessages.push(
-          category === "cardio"
-            ? "Calories / 15 minutes must be greater than 0"
-            : "Calories / rep must be greater than 0"
-        );
-      }
-
-      const errorMessageList = (
-        <ul>
-          {errorMessages.map((message, index) => (
-            <li key={index}>{message}</li>
-          ))}
-        </ul>
-      );
-
-      console.log(errorMessageList);
-
-      setSuccessMessage(
-        <div>
-          <p>Invalid field(s):</p>
-          {errorMessageList}
-        </div>
-      );
-
-      setshowMessage(true);
-      styleMessage("red");
-      return false;
-    }
-
-    return true;
-  };
-
-  // Event handlers
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setExerciseData({ ...exerciseData, [name]: value });
-  };
-
-  const handleCategoryChange = (newCategory) => {
-    setCategory(newCategory);
-    // erase error message
-    setshowMessage(false);
-  };
-
-  const handleInsertion = async (name, description, calories) => {
-    try {
-      const tableName =
-        category === "cardio" ? "cardio_exercise" : "weight_exercise";
-      const columnName =
-        category === "cardio" ? "calories_per_15" : "calories_per_rep";
-      const { data, error } = await supabase
-        .from(tableName)
-        .insert([{ name, description, [columnName]: calories }]);
-
-      if (error) throw error;
-
-      setshowMessage(true);
-      setSuccessMessage(
-        `Successfully added ${
-          category === "cardio" ? "Cardio" : "Strength"
-        } Exercise.`
-      );
-
-      setExerciseData({
-        exerciseName: "",
-        description: "",
-        caloriesPerRep: 0,
-        caloriesPerDuration: 0,
-      });
-
-      //not sure if this should be black to stand out or blue to match rest of page
-      styleMessage("var(--black-color)");
-    } catch (error) {
-      console.log(error);
-      if (error.code === "23505") {
-        setSuccessMessage("Exercise already exists.");
-        styleMessage("red");
-        setshowMessage(true);
-      } else {
-        console.log(error);
-        setSuccessMessage("Failed to add exercise.");
-        styleMessage("red");
-        setshowMessage(true);
-      }
-    }
-  };
-
-  const handleAddExercise = () => {
-    let name = exerciseData.exerciseName;
-    let calories =
-      category === "cardio"
-        ? exerciseData.caloriesPerDuration
-        : exerciseData.caloriesPerRep;
-    let description = exerciseData.description;
-    const isValid = validateInput(name, calories);
-
-    if (isValid) {
-      handleInsertion(name, description, calories);
-    }
-  };
+  const {
+    category,
+    exerciseData,
+    successMessage,
+    isSuccess,
+    handleInputChange,
+    handleCategoryChange,
+    handleAddExercise,
+  } = useExerciseForm();
 
   return (
     <div className="page">
@@ -205,7 +80,7 @@ function AddExercise() {
           </form>
 
           <div className="form-buttons-add-exercise">
-            <button className="button-add-exercise" onClick={handleNavigate}>
+            <button className="button-add-exercise" >
               Done
             </button>
             <button

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Login } from "./components/Login/Login";
-import { Auth } from "@supabase/auth-ui-react";
 import { Dashboard } from "./components/Dashboard/Dashboard";
 import { useAuthStateListener } from "./supbase/session";
 
