@@ -1,5 +1,5 @@
 import "./AddExercise.css";
-import { useExerciseForm } from "../../hooks/useExerciseForm"; 
+import { useExerciseForm } from "../../hooks/useExerciseForm";
 function AddExercise() {
   const {
     category,
@@ -80,9 +80,7 @@ function AddExercise() {
           </form>
 
           <div className="form-buttons-add-exercise">
-            <button className="button-add-exercise" >
-              Done
-            </button>
+            <button className="button-add-exercise">Done</button>
             <button
               className="button-add-exercise"
               type="button"
@@ -92,14 +90,8 @@ function AddExercise() {
             </button>
           </div>
 
-          {showMessage && (
-            <div
-              id="message-add-exercise"
-              className="message-add-exercise"
-              style={{ color: messageColor }}
-            >
-              {successMessage}
-            </div>
+          {isSuccess && (
+            <div className="message-add-exercise">{successMessage}</div>
           )}
         </div>
       </div>
