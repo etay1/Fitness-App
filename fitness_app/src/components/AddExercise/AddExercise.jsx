@@ -90,9 +90,7 @@ function AddExercise() {
           </form>
 
           <div className="form-buttons-add-exercise">
-            <button className="button-add-exercise" >
-              Done
-            </button>
+            <button className="button-add-exercise">Done</button>
             <button
               className="button-add-exercise"
               type="button"
