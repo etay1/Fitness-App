@@ -2,15 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Login } from "./components/Login/Login";
 import { Auth } from "@supabase/auth-ui-react";
 import { Dashboard } from "./components/Dashboard/Dashboard";
+import { useAuthStateListener } from "./supbase/session";
 
 function App({ supabase }) {
-  const [session, setSession] = useState(null);
-
-  useEffect(() => {
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-  }, [supabase]);
+  const session = useAuthStateListener();
 
   return (
     <div>
