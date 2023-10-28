@@ -2,6 +2,7 @@ import "./AddExercise.css";
 import { useExerciseForm } from "../../hooks/useExerciseForm";
 import useQueryParams from "../../hooks/useSession";
 import { Link } from "react-router-dom";
+import { supabase } from '../../supabase/client';
 
 function AddExercise() {
   const queryParams = useQueryParams();
@@ -14,7 +15,7 @@ function AddExercise() {
     handleInputChange,
     handleCategoryChange,
     handleAddExercise,
-  } = useExerciseForm();
+  } = useExerciseForm(supabase);
 
   return (
     <div className="page">
