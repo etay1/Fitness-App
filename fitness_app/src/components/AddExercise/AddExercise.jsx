@@ -23,7 +23,7 @@ function AddExercise({ isAddExercisePopupOpen, closeAddExercisePopup, session })
       <div className="overlay"></div>
       <div className="container">
         <div className="exercise-form">
-          <h1 className="title-add-exercise">Create a New Exercise</h1>
+          <h1 className="title-form">Create a New Exercise</h1>
           <div className="category-toggle">
             <button
               className={`category-button ${

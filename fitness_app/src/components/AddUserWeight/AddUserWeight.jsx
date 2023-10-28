@@ -19,7 +19,7 @@ function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup }) {
       <div className="overlay"></div>
       <div className="container">
         <div className="user-weight-form">
-          <h1 className="title-add-user-weight">Add User Weight</h1>
+          <h1 className="title-form">Add User Weight</h1>
           <form>
             <div className="input-container">
               <label>Date:</label>
@@ -45,7 +45,7 @@ function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup }) {
               className="button-add-user-weight"
               onClick={closeAddUserWeightPopup}
             >
-              Cancel
+              Done
             </button>
             <button
               className="button-add-user-weight"

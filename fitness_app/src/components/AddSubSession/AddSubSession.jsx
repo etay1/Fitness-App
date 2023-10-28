@@ -18,7 +18,7 @@ function AddSubSession() {
     <div className="page">
       <div className="container">
         <div className="subsession-form">
-          <h1 className="title-add-subsession">Add A Workout</h1>
+          <h1 className="title-form">Add A Workout</h1>
           <div className="category-toggle">
             <button
               className={`category-button ${
