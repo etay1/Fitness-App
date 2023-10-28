@@ -2,7 +2,16 @@ import React from "react";
 import { useExerciseForm } from "../../hooks/useExerciseForm";
 import { supabase } from "../../supabase/client";
 
-function AddExercise({ isAddExercisePopupOpen, closeAddExercisePopup }) {
+function AddExercise({
+  isAddExercisePopupOpen,
+  closeAddExercisePopup,
+  session,
+}) {
+  console.log("AddExercisePopup");
+  console.log(session);
+  console.log(session.user.email);
+  console.log(session.user.id);
+
   const {
     category,
     exerciseData,
