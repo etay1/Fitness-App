@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./AddSubSession.css";
 import { useAddSubSession } from "../../hooks/useAddSubSession";
-import NavigateHome from "../../utils/NavigateHome";
+import { Link } from "react-router-dom";
 
 function AddSubSession() {
   const {
@@ -13,8 +13,6 @@ function AddSubSession() {
     handleCategoryChange,
     handleAddSubSession,
   } = useAddSubSession();
-
-  const handleNavigateHome = NavigateHome();
 
   return (
     <div className="page">
@@ -96,12 +94,9 @@ function AddSubSession() {
           </form>
 
           <div className="form-buttons-add-subsession">
-            <button
-              className="button-add-subsession"
-              onClick={handleNavigateHome}
-            >
-              Done
-            </button>
+            <Link to="/">
+              <button className="button-add-subsession">Done</button>
+            </Link>
             <button
               className="button-add-subsession"
               onClick={handleAddSubSession}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Login } from "./components/Login/Login";
 import { Dashboard } from "./components/Dashboard/Dashboard";
-import { useAuthStateListener } from "./supbase/session";
+import { useAuthStateListener } from "./supabase/session";
 
 function App({ supabase }) {
   const session = useAuthStateListener();

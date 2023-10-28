@@ -1,7 +1,7 @@
 import "./AddExercise.css";
 import { useExerciseForm } from "../../hooks/useExerciseForm";
 import useQueryParams from "../../hooks/useSession";
-import NavigateHome from "../../utils/NavigateHome";
+import { Link } from "react-router-dom";
 
 function AddExercise() {
   const queryParams = useQueryParams();
@@ -15,8 +15,6 @@ function AddExercise() {
     handleCategoryChange,
     handleAddExercise,
   } = useExerciseForm();
-
-  const handleNavigateHome = NavigateHome();
 
   return (
     <div className="page">
@@ -87,12 +85,9 @@ function AddExercise() {
           </form>
 
           <div className="form-buttons-add-exercise">
-            <button
-              className="button-add-exercise"
-              onClick={handleNavigateHome}
-            >
-              Done
-            </button>
+            <Link to="/">
+              <button className="button-add-exercise">Done</button>
+            </Link>
             <button
               className="button-add-exercise"
               type="button"
