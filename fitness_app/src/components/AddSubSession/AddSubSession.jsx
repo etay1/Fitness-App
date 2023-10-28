@@ -17,7 +17,7 @@ function AddSubSession() {
   return (
     <div className="page">
       <div className="container">
-        <div className="subsession-form">
+        <div className="form-ctn">
           <h1 className="title-form">Add A Workout</h1>
           <div className="category-toggle">
             <button
@@ -49,7 +49,7 @@ function AddSubSession() {
               />
             </div>
 
-            <div className="input-container time-subsession">
+            <div className="input-container">
               <label>Start Time:</label>
               <input
                 type="time"
@@ -58,7 +58,7 @@ function AddSubSession() {
                 onChange={handleInputChange}
               />
             </div>
-            <div className="input-container time-subsession">
+            <div className="input-container">
               <label>End Time:</label>
               <input
                 type="time"
@@ -97,17 +97,12 @@ function AddSubSession() {
             <Link to="/">
               <button className="form-btn">Done</button>
             </Link>
-            <button
-              className="form-btn"
-              onClick={handleAddSubSession}
-            >
+            <button className="form-btn" onClick={handleAddSubSession}>
               Add {category === "cardio" ? "Cardio" : "Strength"} Subsession
             </button>
           </div>
 
-          {isSuccess && (
-            <div className="message-add-subsession">{successMessage}</div>
-          )}
+          {isSuccess && <div className="message">{successMessage}</div>}
         </div>
       </div>
     </div>

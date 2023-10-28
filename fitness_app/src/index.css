@@ -46,6 +46,18 @@ code {
   flex: 1;
 }
 
+.form-ctn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 /* Title for Forms*/
 .title-form {
   margin-top: 10px;
@@ -55,14 +67,6 @@ code {
   color: var(--primary-color);
   text-align: center;
 }
-
-/* Inputs for Forms */
-/* .input-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: 5px 0;
-} */
 
 /* Category Button CSS */
 .category-toggle {
@@ -89,6 +93,28 @@ code {
   background-color: var(--white-color);
 }
 
+/* Inputs for Forms */
+.input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container label {
+  color: var(--primary-color);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+textarea {
+  padding: 8px;
+  margin: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 /* Modals */
 .modal {
   display: none;
@@ -113,18 +139,15 @@ code {
 /* Buttons */
 .form-btn-ctn {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between; /* Distribute buttons evenly */
   margin-top: 10px;
 }
 
-.form-btn{
+.form-btn {
   background-color: var(--primary-color);
   padding: 8px;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 4px 4px;
-  margin: 4px;
 }

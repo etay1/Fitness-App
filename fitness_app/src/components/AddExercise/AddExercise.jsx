@@ -2,12 +2,16 @@ import React from "react";
 import { useExerciseForm } from "../../hooks/useExerciseForm";
 import { supabase } from "../../supabase/client";
 import "./AddExercise.css";
-function AddExercise({ isAddExercisePopupOpen, closeAddExercisePopup, session }) {
-  console.log("AddExercisepopup")
-  console.log(session)
-  console.log(session.user.email)
-  console.log(session.user.id)
-    
+function AddExercise({
+  isAddExercisePopupOpen,
+  closeAddExercisePopup,
+  session,
+}) {
+  console.log("AddExercisepopup");
+  console.log(session);
+  console.log(session.user.email);
+  console.log(session.user.id);
+
   const {
     category,
     exerciseData,
@@ -22,7 +26,7 @@ function AddExercise({ isAddExercisePopupOpen, closeAddExercisePopup, session })
     <div className={`modal ${isAddExercisePopupOpen ? "active" : ""}`}>
       <div className="overlay"></div>
       <div className="container">
-        <div className="exercise-form">
+        <div className="form-ctn">
           <h1 className="title-form">Create a New Exercise</h1>
           <div className="category-toggle">
             <button
@@ -88,10 +92,7 @@ function AddExercise({ isAddExercisePopupOpen, closeAddExercisePopup, session })
           </form>
 
           <div className="form-btn-ctn">
-            <button
-              className="form-btn"
-              onClick={closeAddExercisePopup}
-            >
+            <button className="form-btn" onClick={closeAddExercisePopup}>
               Done
             </button>
             <button
@@ -103,9 +104,7 @@ function AddExercise({ isAddExercisePopupOpen, closeAddExercisePopup, session })
             </button>
           </div>
 
-          {isSuccess && (
-            <div className="message-add-exercise">{successMessage}</div>
-          )}
+          {isSuccess && <div className="message">{successMessage}</div>}
         </div>
       </div>
     </div>

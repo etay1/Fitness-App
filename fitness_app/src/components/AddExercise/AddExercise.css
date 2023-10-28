@@ -1,46 +1,3 @@
-.exercise-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.form-buttons-add-exercise {
-  display: flex;
-  justify-content: center;
-}
-
-.input-container label {
-  color: var(--primary-color);
-}
-
-input[type="text"],
-input[type="number"],
-textarea {
-  width: 100%; /* Set all inputs and textarea to 100% width */
-  padding: 8px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.input-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.message-add-exercise {
-  color: #007bff;
-  font-weight: bold;
-  margin-top: 10px;
-  text-align: center; /* Center the text within the message container */
-  flex: 1;
-}
 
 @media (max-width: 450) {
   .container {
@@ -51,44 +8,17 @@ textarea {
     margin: 0; /* Remove any margin if present */
     padding: 0;
   }
-
-  .title-add-exercise {
-    height: 90%;
-  }
-  .exercise-form {
+  .form-btn-ctn {
     width: 90%;
   }
 
   .form {
     max-width: 100%; /* Adjust the maximum width of the form for smaller screens */
   }
-
-  input[type="text"],
-  input[type="number"],
-  textarea {
-    width: 100%; /* Make input fields and textareas full width on smaller screens */
-  }
-
-  .category-button {
-    font-size: 0.9rem; /* Adjust the font size of category buttons for smaller screens */
-  }
-
-  .message-add-exercise {
+  .mess {
     font-size: 0.9rem; /* Adjust the font size of the message for smaller screens */
     display: flex;
     flex-wrap: wrap;
   }
 }
 
-@media (max-width: 768px) {
-  .container {
-    border-radius: 0; /* Set border-radius to 0 for smaller screens */
-    flex-direction: column;
-    height: auto;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    border-radius: 10px;
-    padding: 10px;
-  }
-}

@@ -41,10 +41,7 @@ function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup }) {
             </div>
           </form>
           <div className="form-btn-ctn">
-            <button
-              className="form-btn"
-              onClick={closeAddUserWeightPopup}
-            >
+            <button className="form-btn" onClick={closeAddUserWeightPopup}>
               Done
             </button>
             <button
@@ -57,7 +54,7 @@ function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup }) {
           </div>
 
           {isSuccess && (
-            <div className="message-add-user-weight">{successMessage}</div>
+            <div className="message">{successMessage}</div>
           )}
         </div>
       </div>
