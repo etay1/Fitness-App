@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { supabase } from '../supabase/client';
+import { useState } from "react";
+import { supabase } from "../supabase/client";
 
 export function useExerciseForm() {
   const [category, setCategory] = useState("strength");
@@ -39,7 +39,9 @@ export function useExerciseForm() {
 
       setIsSuccess(true);
       setSuccessMessage(
-        `Successfully added ${category === "cardio" ? "Cardio" : "Strength"} Exercise.`
+        `Successfully added ${
+          category === "cardio" ? "Cardio" : "Strength"
+        } Exercise.`
       );
     } catch (error) {
       setSuccessMessage("Failed to add exercise.");
@@ -62,7 +64,7 @@ export function useExerciseForm() {
       return false;
     }
 
-    return true; 
+    return true;
   };
 
   const handleAddExercise = () => {

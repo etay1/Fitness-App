@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddSubSession from "./components/AddSubSession/AddSubSession";
 import AddExercise from "./components/AddExercise/AddExercise";
-import { AddUserWeight } from "./components/AddUserWeight/AddUserWeight";
+import AddUserWeight from "./components/AddUserWeight/AddUserWeight";
 import { supabase } from "./supabase/client";
 
 import PrivateRoute from "./utils/PrivateRoute";

@@ -1,12 +1,18 @@
-import "./AddExercise.css";
+import React from "react";
+import { supabase } from "../../supabase/client";
 import { useExerciseForm } from "../../hooks/useExerciseForm";
-import useQueryParams from "../../hooks/useSession";
-import { Link } from "react-router-dom";
-import { supabase } from '../../supabase/client';
+import "./AddExercise.css";
 
-function AddExercise() {
-  const queryParams = useQueryParams();
-  const userId = queryParams.getQueryParam("userId");
+function AddExercise({
+  isAddExercisePopupOpen,
+  closeAddExercisePopup,
+  session,
+}) {
+  console.log("AddExercisepopup");
+  console.log(session);
+  console.log(session.user.email);
+  console.log(session.user.id);
+
   const {
     category,
     exerciseData,
@@ -18,10 +24,11 @@ function AddExercise() {
   } = useExerciseForm(supabase);
 
   return (
-    <div className="page">
+    <div className={`modal ${isAddExercisePopupOpen ? "active" : ""}`}>
+      <div className="overlay"></div>
       <div className="container">
-        <div className="exercise-form">
-          <h1 className="title-add-exercise">Create a New Exercise</h1>
+        <div className="form-ctn">
+          <h1 className="title-form">Create a New Exercise</h1>
           <div className="category-toggle">
             <button
               className={`category-button ${
@@ -85,22 +92,20 @@ function AddExercise() {
             </div>
           </form>
 
-          <div className="form-buttons-add-exercise">
-            <Link to="/">
-              <button className="button-add-exercise">Done</button>
-            </Link>
+          <div className="form-btn-ctn">
+            <button className="form-btn" onClick={closeAddExercisePopup}>
+              Done
+            </button>
             <button
-              className="button-add-exercise"
+              className="form-btn"
               type="button"
               onClick={handleAddExercise}
             >
               Add {category === "cardio" ? "Cardio" : "Strength"} Exercise
             </button>
           </div>
-
-          {isSuccess && (
-            <div className="message-add-exercise">{successMessage}</div>
-          )}
+              
+          {isSuccess && <div className="message">{successMessage}</div>}
         </div>
       </div>
     </div>

@@ -1,24 +1,53 @@
 import React from "react";
+import AddExercise from "../AddExercise/AddExercise";
+import AddUserWeight from "../AddUserWeight/AddUserWeight";
+import AddSubSession from "../AddSubSession/AddSubSession";
+import { useModalState } from "../../hooks/useModalState";
 import "./Dashboard.css";
-import { Link } from "react-router-dom";
 
-export const Dashboard = ({supabase, session}) => {
-    // console.log(session)
-    // console.log(session.user.email)
-    // console.log(session.user.id)
-    
-    // const userId = session.user.id;
-    // console.log(userId)
+const Dashboard = ({ supabase, session }) => {
+  const {
+    isOpen: isExerciseModalOpen,
+    openModal: openExerciseModal,
+    closeModal: closeExerciseModal,
+  } = useModalState(false);
+  const {
+    isOpen: isUserWeightModalOpen,
+    openModal: openUserWeightModal,
+    closeModal: closeWeightModal,
+  } = useModalState(false);
+  const {
+    isOpen: isAddSubSessionModalOpen,
+    openModal: openAddSubSessionModal,
+    closeModal: closeAddSubSessionModal,
+  } = useModalState(false);
+  return (
+    <div className="dashboard">
+      <h1>Welcome {session.user.email}</h1>
+      <button onClick={() => supabase.auth.signOut()}>Sign Out</button>
+      <button onClick={openExerciseModal}>Add Exercise</button>
+      <button onClick={openAddSubSessionModal}>Add Sub Session</button>
+      <button onClick={openUserWeightModal}>Add User Weight</button>
 
-    return (
-        <div className='dashboard'>
-            <h1>Welcome {session.user.email}</h1>
-            <button onClick={() => supabase.auth.signOut()}>Sign Out</button>
-            <Link to={`/add-exercise?userId=${session.user.id}`}>
-            Add Exercise
-          </Link>
-            <Link to="/add-sub-session">Add Sub Session</Link>
-            <Link to="/add-user-weight">Add User Weight</Link>
-        </div>
-    );
+      <AddExercise
+        isAddExercisePopupOpen={isExerciseModalOpen}
+        closeAddExercisePopup={closeExerciseModal}
+        session={session}
+      />
+
+      <AddSubSession
+        isAddSubSessionPopupOpen={isAddSubSessionModalOpen}
+        closeAddSubSessionPopup={closeAddSubSessionModal}
+        session={session}
+      />
+
+      <AddUserWeight
+        isAddUserWeightPopupOpen={isUserWeightModalOpen}
+        closeAddUserWeightPopup={closeWeightModal}
+        session={session}
+      />
+    </div>
+  );
 };
+
+export default Dashboard;
