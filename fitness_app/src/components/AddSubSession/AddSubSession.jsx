@@ -93,12 +93,12 @@ function AddSubSession() {
             )}
           </form>
 
-          <div className="form-buttons-add-subsession">
+          <div className="form-btn-ctn">
             <Link to="/">
-              <button className="button-add-subsession">Done</button>
+              <button className="form-btn">Done</button>
             </Link>
             <button
-              className="button-add-subsession"
+              className="form-btn"
               onClick={handleAddSubSession}
             >
               Add {category === "cardio" ? "Cardio" : "Strength"} Subsession

@@ -87,15 +87,15 @@ function AddExercise({ isAddExercisePopupOpen, closeAddExercisePopup, session })
             </div>
           </form>
 
-          <div className="form-buttons-add-exercise">
+          <div className="form-btn-ctn">
             <button
-              className="button-add-exercise"
+              className="form-btn"
               onClick={closeAddExercisePopup}
             >
               Done
             </button>
             <button
-              className="button-add-exercise"
+              className="form-btn"
               type="button"
               onClick={handleAddExercise}
             >

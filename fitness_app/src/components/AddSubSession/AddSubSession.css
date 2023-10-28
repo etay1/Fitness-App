@@ -32,26 +32,7 @@ input[type="time"] {
   width: 100%;
   border: 1px solid --white-color;
   border-radius: 4px;
-}
-
-.form-buttons-add-subsession {
-  display: flex;
-  justify-content: space-around;
-  align-items: center; /* Change to 'center' for vertical alignment */
-  margin-top: 10px;
-}
-
-.button-add-subsession {
-  background-color: var(--primary-color);
-  padding: 8px;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 4px 4px;
-  margin: 4px;
-}
-    
+}    
 .message-add-subsession {
     color: var(--primary-color);
     font-weight: bold;

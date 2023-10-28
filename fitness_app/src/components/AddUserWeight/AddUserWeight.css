@@ -10,10 +10,6 @@
   width: 100%;
 }
 
-.form-buttons-add-user-weight {
-  display: flex;
-  justify-content: center;
-}
 
 .input-container {
   width: 100%;
@@ -34,17 +30,6 @@
   font-weight: bold;
   margin-top: 10px;
   text-align: center;
-}
-
-.button-add-user-weight {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 10px;
-  cursor: pointer;
-  margin-top: 10px;
-  margin-right: 10px;
 }
 
 /* Media queries and other styles... */

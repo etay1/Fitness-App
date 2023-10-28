@@ -42,17 +42,6 @@ textarea {
   flex: 1;
 }
 
-.button-add-exercise {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 10px;
-  cursor: pointer;
-  margin-top: 10px;
-  margin-right: 10px;
-}
-
 @media (max-width: 450) {
   .container {
     flex-direction: column;

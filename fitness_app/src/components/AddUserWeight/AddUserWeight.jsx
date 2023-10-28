@@ -40,15 +40,15 @@ function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup }) {
               />
             </div>
           </form>
-          <div className="form-buttons-add-user-weight">
+          <div className="form-btn-ctn">
             <button
-              className="button-add-user-weight"
+              className="form-btn"
               onClick={closeAddUserWeightPopup}
             >
               Done
             </button>
             <button
-              className="button-add-user-weight"
+              className="form-btn"
               type="button"
               onClick={handleAddWeight}
             >
