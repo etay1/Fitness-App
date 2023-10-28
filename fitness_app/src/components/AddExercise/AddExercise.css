@@ -1,8 +1,27 @@
+.modal {
+  display: none;
+  z-index: 1;
+}
+
+.modal.active {
+  display: flex;
+  border-radius: 10px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65); /* Semi-transparent background */
+  z-index: -1; /* Place the overlay behind the popup */
+}
+
 .exercise-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .title-add-exercise {
@@ -12,14 +31,12 @@
   font-weight: bold;
   color: var(--primary-color);
   text-align: center;
-
 }
 
 .category-toggle {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
-
 }
 
 .category-button {
@@ -28,63 +45,54 @@
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
-  border: 2px solid var(--primary-color); 
-
+  border: 2px solid var(--primary-color);
 }
 
 .active {
   background-color: var(--primary-color);
   color: var(--white-color);
-
 }
 
 .inactive {
   background-color: var(--white-color);
-
 }
 
 .form {
   display: flex;
   flex-direction: column;
   width: 100%;
-
 }
 
 .form-buttons-add-exercise {
   display: flex;
   justify-content: center;
-
 }
 
 .input-container label {
   color: var(--primary-color);
-
 }
 
 input[type="text"],
 input[type="number"],
 textarea {
-  width: 200px;
+  width: 100%; /* Set all inputs and textarea to 100% width */
   padding: 8px;
   margin: 5px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
-
 }
 
 .input-container {
   width: 100%;
   display: flex;
   flex-direction: column;
-
 }
 .message-add-exercise {
   color: #007bff;
   font-weight: bold;
   margin-top: 10px;
   text-align: center; /* Center the text within the message container */
-  flex: 1; 
-
+  flex: 1;
 }
 
 .button-add-exercise {
@@ -96,22 +104,20 @@ textarea {
   cursor: pointer;
   margin-top: 10px;
   margin-right: 10px;
-
 }
-
 
 @media (max-width: 450) {
   .container {
     flex-direction: column;
     padding-bottom: 15px;
-    height: 90%;
+    height: auto;
     width: 90%;
-
+    margin: 0; /* Remove any margin if present */
+    padding: 0;
   }
 
   .title-add-exercise {
     height: 90%;
-  
   }
   .exercise-form {
     width: 90%;
@@ -136,14 +142,17 @@ textarea {
     display: flex;
     flex-wrap: wrap;
   }
-
 }
 
 @media (max-width: 768px) {
   .container {
-    padding-bottom: 15px;
-    height: 85%;
-    width: 90%;
-
+    border-radius: 0; /* Set border-radius to 0 for smaller screens */
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    padding: 10px;
   }
 }

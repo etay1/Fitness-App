@@ -12,9 +12,6 @@ code {
     monospace;
 }
 
-/* Custom CSS */
-/* make a --primary color var */
-
 :root {
   --primary-color: #047aed;
   --white-color: #fff;

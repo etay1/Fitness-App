@@ -1,12 +1,8 @@
-import "./AddExercise.css";
+import React from "react";
 import { useExerciseForm } from "../../hooks/useExerciseForm";
-import useQueryParams from "../../hooks/useSession";
-import { Link } from "react-router-dom";
-import { supabase } from '../../supabase/client';
+import { supabase } from "../../supabase/client";
 
-function AddExercise() {
-  const queryParams = useQueryParams();
-  const userId = queryParams.getQueryParam("userId");
+function AddExercise({ isAddExercisePopupOpen, closeAddExercisePopup }) {
   const {
     category,
     exerciseData,
@@ -18,7 +14,8 @@ function AddExercise() {
   } = useExerciseForm(supabase);
 
   return (
-    <div className="page">
+    <div className={`modal ${isAddExercisePopupOpen ? "active" : ""}`}>
+      <div className="overlay"></div>
       <div className="container">
         <div className="exercise-form">
           <h1 className="title-add-exercise">Create a New Exercise</h1>
@@ -86,9 +83,12 @@ function AddExercise() {
           </form>
 
           <div className="form-buttons-add-exercise">
-            <Link to="/">
-              <button className="button-add-exercise">Done</button>
-            </Link>
+            <button
+              className="button-add-exercise"
+              onClick={closeAddExercisePopup}
+            >
+              Done
+            </button>
             <button
               className="button-add-exercise"
               type="button"
