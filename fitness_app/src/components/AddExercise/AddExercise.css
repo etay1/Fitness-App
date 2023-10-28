@@ -14,7 +14,8 @@
   .form {
     max-width: 100%; /* Adjust the maximum width of the form for smaller screens */
   }
-  .mess {
+
+  .message {
     font-size: 0.9rem; /* Adjust the font size of the message for smaller screens */
     display: flex;
     flex-wrap: wrap;

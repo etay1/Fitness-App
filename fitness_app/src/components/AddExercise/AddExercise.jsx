@@ -101,7 +101,7 @@ function AddExercise({
               type="button"
               onClick={handleAddExercise}
             >
-              Add {category === "cardio" ? "Cardio" : "Strength"} Exercise
+              Add Exercise
             </button>
           </div>
               

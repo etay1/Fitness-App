@@ -24,10 +24,10 @@ const Dashboard = ({ supabase, session }) => {
   return (
     <div className="dashboard">
       <h1>Welcome {session.user.email}</h1>
-      <button onClick={() => supabase.auth.signOut()}>Sign Out</button>
-      <button onClick={openExerciseModal}>Add Exercise</button>
-      <button onClick={openAddSubSessionModal}>Add Sub Session</button>
-      <button onClick={openUserWeightModal}>Add User Weight</button>
+      <button className="form-btn" onClick={() => supabase.auth.signOut()}>Sign Out</button>
+      <button className="form-btn" onClick={openExerciseModal}>Add Exercise</button>
+      <button className="form-btn" onClick={openAddSubSessionModal}>Add Sub Session</button>
+      <button className="form-btn" onClick={openUserWeightModal}>Add User Weight</button>
 
       <AddExercise
         isAddExercisePopupOpen={isExerciseModalOpen}

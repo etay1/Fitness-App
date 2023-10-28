@@ -18,7 +18,7 @@ function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup }) {
       <div className="overlay"></div>
       <div className="container">
         <div className="user-weight-form">
-          <h1 className="title-form">Add User Weight</h1>
+          <h1 className="title-form">Record Weight</h1>
           <form>
             <div className="input-container">
               <label>Date:</label>
@@ -41,20 +41,18 @@ function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup }) {
           </form>
           <div className="form-btn-ctn">
             <button className="form-btn" onClick={closeAddUserWeightPopup}>
-              Done
+              Cancel
             </button>
             <button
               className="form-btn"
               type="button"
               onClick={handleAddWeight}
             >
-              Add Weight
+              Record Weight
             </button>
           </div>
 
-          {isSuccess && (
-            <div className="message">{successMessage}</div>
-          )}
+          {isSuccess && <div className="message">{successMessage}</div>}
         </div>
       </div>
     </div>
