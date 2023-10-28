@@ -1,7 +1,8 @@
 import React from "react";
-import { useExerciseForm } from "../../hooks/useExerciseForm";
 import { supabase } from "../../supabase/client";
+import { useExerciseForm } from "../../hooks/useExerciseForm";
 import "./AddExercise.css";
+
 function AddExercise({
   isAddExercisePopupOpen,
   closeAddExercisePopup,
@@ -103,7 +104,7 @@ function AddExercise({
               Add {category === "cardio" ? "Cardio" : "Strength"} Exercise
             </button>
           </div>
-
+              
           {isSuccess && <div className="message">{successMessage}</div>}
         </div>
       </div>

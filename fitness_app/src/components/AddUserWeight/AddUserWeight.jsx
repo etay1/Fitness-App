@@ -1,7 +1,6 @@
 import React from "react";
-// import { useUserWeightForm } from "../../hooks/useUserWeightForm"; // Import your custom hook
-import "./AddUserWeight.css";
 import useUserWeightForm from "../../hooks/useUserWeightForm";
+import "./AddUserWeight.css";
 
 function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup }) {
   const {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export function useAddSubSession() {
   const [category, setCategory] = useState("strength");
@@ -47,7 +47,9 @@ export function useAddSubSession() {
       };
       
       export default useUserWeightForm;
-      essfully added ${category === "cardio" ? "Cardio" : "Strength"} Subsession.`
+      essfully added ${
+        category === "cardio" ? "Cardio" : "Strength"
+      } Subsession.`
     );
     setIsSuccess(true);
     setSubSessionData({

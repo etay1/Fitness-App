@@ -151,3 +151,8 @@ textarea {
   border-radius: 4px;
   cursor: pointer;
 }
+
+.message {
+  color: var(--primary-color);
+  font-weight: bold;
+}

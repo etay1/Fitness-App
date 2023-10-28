@@ -1,9 +1,11 @@
 import React from "react";
-import "./AddSubSession.css";
 import { useAddSubSession } from "../../hooks/useAddSubSession";
-import { Link } from "react-router-dom";
+import "./AddSubSession.css";
 
-function AddSubSession() {
+function AddSubSession({
+  isAddSubSessionPopupOpen,
+  closeAddSubSessionPopup
+}) {
   const {
     category,
     subSessionData,
@@ -15,7 +17,8 @@ function AddSubSession() {
   } = useAddSubSession();
 
   return (
-    <div className="page">
+    <div className={`modal ${isAddSubSessionPopupOpen ? "active" : ""}`}>
+      <div className="overlay"></div>
       <div className="container">
         <div className="form-ctn">
           <h1 className="title-form">Add A Workout</h1>
@@ -94,9 +97,7 @@ function AddSubSession() {
           </form>
 
           <div className="form-btn-ctn">
-            <Link to="/">
-              <button className="form-btn">Done</button>
-            </Link>
+            <button className="form-btn" onClick={closeAddSubSessionPopup}>Done</button>
             <button className="form-btn" onClick={handleAddSubSession}>
               Add {category === "cardio" ? "Cardio" : "Strength"} Subsession
             </button>
