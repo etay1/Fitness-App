@@ -1,25 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { supabase } from "../../supabase/client";
 import "./Dashboard.css";
 import AddExercise from "../AddExercise/AddExercise";
-import "../AddExercise/AddExercise.css";
-import { useModalState } from "../../hooks/useModalState"; // Import your custom hook
+import { useModalState } from "../../hooks/useModalState";
+import AddUserWeight from "../AddUserWeight/AddUserWeight";
 
 const Dashboard = ({ supabase, session }) => {
-  const { isOpen, openModal, closeModal } = useModalState(false);
+  const { isOpen: isExerciseModalOpen, openModal: openExerciseModal, closeModal: closeExerciseModal } = useModalState(false);
+  const { isOpen: isUserWeightModalOpen, openModal: openUserWeightModal, closeModal: closeWeightModal } = useModalState(false);
 
   return (
     <div className="dashboard">
       <h1>Welcome {session.user.email}</h1>
       <button onClick={() => supabase.auth.signOut()}>Sign Out</button>
-      <button onClick={openModal}>Add Exercise</button>
+      <button onClick={openExerciseModal}>Add Exercise</button>
       <Link to="/add-sub-session">Add Sub Session</Link>
-      <Link to="/add-user-weight">Add User Weight</Link>
+      <button onClick={openUserWeightModal}>Add User Weight</button>
 
       <AddExercise
-        isAddExercisePopupOpen={isOpen}
-        closeAddExercisePopup={closeModal}
+        isAddExercisePopupOpen={isExerciseModalOpen}
+        closeAddExercisePopup={closeExerciseModal}
+        session={session}
+      />
+
+      <AddUserWeight
+        isAddUserWeightPopupOpen={isUserWeightModalOpen}
+        closeAddUserWeightPopup={closeWeightModal}
         session={session}
       />
     </div>

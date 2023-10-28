@@ -1,0 +1,79 @@
+.modal {
+  display: none;
+  z-index: 1;
+}
+
+.modal.active {
+  display: flex;
+  border-radius: 10px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: -1; /* Place the overlay behind the popup */
+}
+
+.user-weight-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-add-user-weight {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-buttons-add-user-weight {
+  display: flex;
+  justify-content: center;
+}
+
+.input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.message-add-user-weight {
+  color: #007bff;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.button-add-user-weight {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+/* Media queries and other styles... */
