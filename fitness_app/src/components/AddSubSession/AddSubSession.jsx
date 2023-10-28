@@ -1,11 +1,8 @@
 import React from "react";
-import { useAddSubSession } from "../../hooks/useAddSubSession";
+import { useSubSessionForm } from "../../hooks/useSubSessionForm";
 import "./AddSubSession.css";
 
-function AddSubSession({
-  isAddSubSessionPopupOpen,
-  closeAddSubSessionPopup
-}) {
+function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
   const {
     category,
     subSessionData,
@@ -14,7 +11,7 @@ function AddSubSession({
     handleInputChange,
     handleCategoryChange,
     handleAddSubSession,
-  } = useAddSubSession();
+  } = useSubSessionForm();
 
   return (
     <div className={`modal ${isAddSubSessionPopupOpen ? "active" : ""}`}>
@@ -97,9 +94,11 @@ function AddSubSession({
           </form>
 
           <div className="form-btn-ctn">
-            <button className="form-btn" onClick={closeAddSubSessionPopup}>Done</button>
+            <button className="form-btn" onClick={closeAddSubSessionPopup}>
+              Done
+            </button>
             <button className="form-btn" onClick={handleAddSubSession}>
-              Add {category === "cardio" ? "Cardio" : "Strength"} Subsession
+              Add Workout
             </button>
           </div>
 

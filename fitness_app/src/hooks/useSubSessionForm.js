@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function useAddSubSession() {
+export function useSubSessionForm() {
   const [category, setCategory] = useState("strength");
   const [subSessionData, setSubSessionData] = useState({
     sessionName: "",
