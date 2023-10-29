@@ -1,3 +1,7 @@
+/* * {
+  border: 1px solid red;
+} */
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -41,4 +45,128 @@ code {
 
 .box {
   flex: 1;
+}
+
+.form-ctn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Title for Forms*/
+.title-form {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+/* Category Button CSS */
+.category-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.category-button {
+  color: var(--primary-color);
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 2px solid var(--primary-color);
+}
+
+.active {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+.inactive {
+  background-color: var(--white-color);
+}
+
+/* Inputs for Forms */
+.input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container label {
+  color: var(--primary-color);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+textarea {
+  padding: 8px;
+  margin: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Modals */
+.modal {
+  display: none;
+  z-index: 1;
+}
+
+.modal.active {
+  display: flex;
+  border-radius: 10px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: -1; /* Place the overlay behind the popup */
+}
+
+/* Buttons */
+.form-btn-ctn {
+  display: flex;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between; /* This should be justify-content */
+  align-items: center;
+}
+
+.form-btn {
+  background-color: var(--primary-color);
+  padding: 8px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Target the first button */
+.form-btn:first-child {
+  margin-right: 10px;
+}
+
+/* Target the second button */
+.form-btn:nth-child(2) {
+  margin-left: 10px;
+}
+
+
+.message {
+  color: var(--primary-color);
+  font-weight: bold;
 }
