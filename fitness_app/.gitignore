@@ -11,6 +11,10 @@
 # production
 /build
 
+# cache
+**/.cache/
+
+
 # misc
 .DS_Store
 .env.local
@@ -23,5 +27,4 @@ yarn-debug.log*
 yarn-error.log*
 
 .env
-
 .vscode

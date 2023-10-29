@@ -1,67 +1,94 @@
-import React, { useState} from 'react';
-import './AddUserWeight.css';
+import { useState } from "react";
+import { supabase } from "../supabase/client";
 
-export const AddUserWeight = () => {
 
-  const date = new Date();
-  const currentDate = date.getDate();
-
-  const [userSessionWeight, setUserSessionWeight] = useState({
-    sessionWeight: '',
-    sessionDate: currentDate, //This is probably incorrectly done
-  });
-
-  const [successMessage, setSuccessMessage] = useState('');
+const useUserWeightForm = (
+  initialDate = new Date().toISOString().slice(0, 10)
+) => {
+  const [date, setDate] = useState(initialDate);
+  const [userId, setUserId] = useState("");
+  const [weight, setUserWeight] = useState("");
+  const [weightData, setWeightSessionData] = useState({
+    userId: "",
+    date: initialDate,
+    weight: "",
+  })
+  const [successMessage, setSuccessMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
 
+
+  const handleGetUserId = (e) => {
+    setUserId(e.session.user.id);
+  }
+
+
+  const handleDateChange = (e) => {
+    setDate(e.target.value);
+  };
+
+
+  const handleWeightChange = (e) => {
+      setUserWeight(e.target.value);
+  };
+
+
+  const handleInputChange = (e) => {
+    const {date, weight, userId } = e.target;
+    setWeightSessionData({...weightData})
+  }
+
+
+  const handleInsertion = async (date, weight, userId) => {
+    try{
+      const tableName = "user_weight";
+      console.log("working");
+      const {data, error } = await supabase
+        .from(tableName)
+        .insert([{date, weight, userId}])
+
+
+      if (error) {
+        throw error;
+      }
+   
+      setIsSuccess(true);
+      setSuccessMessage(`Successfully added weight`);
+    } catch (e) {
+      setSuccessMessage("Failed to add weight");
+      setIsSuccess(false);
+    }
+
+
+  }
+
+
   const handleAddWeight = () => {
+    let date = weightData.date;
+    let weight = weightData.weight;
+    let userId = weightData.userId;
     setSuccessMessage(
-      'Successfully added weight'
-    );
+      'Successfully added current weight'
+    )
+
+
     setIsSuccess(true);
-    setUserSessionWeight({
-      sessionWeight: '',
-      sessionDate: currentDate,
-    });
   };
-  const navigateToMainMenu = () => {
-    // Use React Router for navigation to the main menu.
+ 
+
+
+  return {
+    date,
+    weight,
+    userId,
+    successMessage,
+    isSuccess,
+    handleDateChange,
+    handleWeightChange,
+    handleAddWeight,
+    handleGetUserId,
+    handleInsertion
   };
+};
 
-  return (
-    <div className='page'>
-        <div className='container'>
-          <div className='weight-add-form'>
-            <h1 className='weight-add-title'> Add a weight </h1>
 
-            <form>
-              <div className='input-container'>
-                <label>Current Weight:</label>
-                <input
-                  type="number"
-                  name="weight"
-                  min="50"
-                  max="1000"
-                  value={userSessionWeight.weight}
-                />
-
-                <div className='form-buttons-add-weight'>
-                  <button className='button-add-weight' onClick={navigateToMainMenu}>
-                    Exit without saving
-                  </button>
-                  <button className='button-add-weight' onClick={handleAddWeight}>
-                    Save weight and exit
-                  </button>
-                </div>
-                {isSuccess && (
-                  <div className='success-message'>
-                    {successMessage}
-                  </div>
-                )}
-              </div>
-            </form>
-          </div>
-        </div>
-    </div>
-  )
-}
+export default useUserWeightForm;
