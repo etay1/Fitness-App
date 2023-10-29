@@ -13,9 +13,9 @@ export const Login = ({ supabase }) => {
     <div className="page">
       <div className="container ctn-login">
         {/* container item 1 */}
-        <div className="box left-box left-box-lgn">
+        <div className="box left-box-lgn">
           {/* left-box item 1 */}
-          <div className="form-login">
+          <div>
             <Auth
               supabaseClient={supabase}
               providers={[]}
@@ -31,7 +31,7 @@ export const Login = ({ supabase }) => {
           </div>
         </div>
 
-        <div className="box right-box right-box-lgn">
+        <div className="box right-box-lgn">
           <img src={photo} alt="gym_photo" className="img-lgn" />
         </div>
       </div>
