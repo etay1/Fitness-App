@@ -16,6 +16,7 @@ code {
   --primary-color: #047aed;
   --white-color: #fff;
   --black-color: #000;
+  --error-color: #e63946;
 }
 
 .page {

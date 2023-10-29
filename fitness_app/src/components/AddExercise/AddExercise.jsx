@@ -1,13 +1,19 @@
 import React from "react";
 import { useExerciseForm } from "../../hooks/useExerciseForm";
 import { supabase } from "../../supabase/client";
+import ExerciseForm from "../Form/ExerciseForm";
 import "./AddExercise.css";
-function AddExercise({ isAddExercisePopupOpen, closeAddExercisePopup, session }) {
-  console.log("AddExercisepopup")
-  console.log(session)
-  console.log(session.user.email)
-  console.log(session.user.id)
-    
+
+function AddExercise({
+  isAddExercisePopupOpen,
+  closeAddExercisePopup,
+  session,
+}) {
+  console.log("AddExercisepopup");
+  console.log(session);
+  console.log(session.user.email);
+  console.log(session.user.id);
+
   const {
     category,
     exerciseData,
@@ -43,65 +49,10 @@ function AddExercise({ isAddExercisePopupOpen, closeAddExercisePopup, session })
             </button>
           </div>
 
-          {/* Form */}
-          <form>
-            <div className="input-container">
-              <label>Exercise Name:</label>
-              <input
-                type="text"
-                name="exerciseName"
-                value={exerciseData.exerciseName}
-                onChange={handleInputChange}
-              />
-            </div>
-
-            {category === "strength" && (
-              <div className="input-container">
-                <label>Calories / rep:</label>
-                <input
-                  type="number"
-                  name="caloriesPerRep"
-                  value={exerciseData.caloriesPerRep}
-                  onChange={handleInputChange}
-                />
-              </div>
-            )}
-            {category === "cardio" && (
-              <div className="input-container">
-                <label>Calories / 15 minutes:</label>
-                <input
-                  type="number"
-                  name="caloriesPerDuration"
-                  value={exerciseData.caloriesPerDuration}
-                  onChange={handleInputChange}
-                />
-              </div>
-            )}
-            <div className="input-container">
-              <label>Description:</label>
-              <textarea
-                name="description"
-                value={exerciseData.description}
-                onChange={handleInputChange}
-              />
-            </div>
-          </form>
-
-          <div className="form-buttons-add-exercise">
-            <button
-              className="button-add-exercise"
-              onClick={closeAddExercisePopup}
-            >
-              Done
-            </button>
-            <button
-              className="button-add-exercise"
-              type="button"
-              onClick={handleAddExercise}
-            >
-              Add {category === "cardio" ? "Cardio" : "Strength"} Exercise
-            </button>
-          </div>
+          <ExerciseForm
+            closeAddExercisePopup={closeAddExercisePopup}
+            category={category}
+          />
 
           {isSuccess && (
             <div className="message-add-exercise">{successMessage}</div>
