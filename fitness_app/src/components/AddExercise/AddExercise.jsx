@@ -2,7 +2,6 @@ import React from "react";
 import { supabase } from "../../supabase/client";
 import ExerciseForm from "../Form/ExerciseForm";
 import { useExerciseForm } from "../../hooks/useExerciseForm";
-import ExerciseForm from "../Form/ExerciseForm";
 import "./AddExercise.css";
 
 function AddExercise({
