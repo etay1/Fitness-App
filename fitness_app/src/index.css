@@ -170,3 +170,19 @@ textarea {
   color: var(--primary-color);
   font-weight: bold;
 }
+
+/* Form Validating */
+.error {
+  color: var(--error-color);
+  font-size: 1rem;
+  margin-top: 0.3rem;
+}
+
+.input-error {
+  border-color: var(--error-color);
+}
+
+.disabled-btn {
+  cursor: not-allowed;
+  background-color: rgba(128, 128, 128, 0.5);
+}

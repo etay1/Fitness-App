@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import useExerciseValidationSchema from "../../hooks/useExerciseValidationSchema";
 import "./ExerciseForm.css";
 
-const initialValues = {
+const initialFormValues = {
   exerciseName: "",
   caloriesPerRep: 0,
   caloriesPerDuration: 0,
@@ -11,12 +11,13 @@ const initialValues = {
 };
 
 const ExerciseForm = ({ closeAddExercisePopup, category }) => {
-  const addExerciseSchema = useExerciseValidationSchema(category);
+  const { validationSchema, key } = useExerciseValidationSchema(category);
 
   return (
     <Formik
-      initialValues={initialValues}
-      validationSchema={addExerciseSchema}
+      key={key}
+      initialValues={initialFormValues}
+      validationSchema={validationSchema}
       enableReinitialize={true}
       onSubmit={(values) => {
         console.log(values);
@@ -103,26 +104,27 @@ const ExerciseForm = ({ closeAddExercisePopup, category }) => {
                   className="error"
                 />
               </div>
-              <div className="form-buttons-add-exercise">
+              <div className="form-btn-ctn">
                 <button
-                  className="button-add-exercise"
-                  onClick={closeAddExercisePopup}
+                  className="form-btn"
+                  type="button"
+                  onClick={() => {
+                    formik.resetForm();
+                    closeAddExercisePopup();
+                  }}
                 >
                   Done
                 </button>
                 <button
                   type="submit"
-                  className={
-                    !(dirty && isValid)
-                      ? "button-add-exercise disabled-btn "
-                      : "button-add-exercise"
-                  }
+                  className={`form-btn ${
+                    !(dirty && isValid) ? "disabled-btn" : ""
+                  }`}
                   disabled={!(dirty && isValid)}
                 >
-                  Add {category === "cardio" ? "Cardio" : "Strength"} Exercise
+                  Add Exercise
                 </button>
               </div>
-              ;
             </div>
           </Form>
         );
