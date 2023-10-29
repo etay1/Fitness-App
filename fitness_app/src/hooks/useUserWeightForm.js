@@ -1,6 +1,8 @@
 import { useState } from "react";
 
-const useUserWeightForm = (initialDate = new Date().toISOString().slice(0, 10)) => {
+const useUserWeightForm = (
+  initialDate = new Date().toISOString().slice(0, 10)
+) => {
   const [date, setDate] = useState(initialDate);
   const [weight, setWeight] = useState("");
 
@@ -16,7 +18,13 @@ const useUserWeightForm = (initialDate = new Date().toISOString().slice(0, 10)) 
     // You can add the logic to handle weight submission here
   };
 
-  return { date, weight, handleDateChange, handleWeightChange, handleAddWeight };
+  return {
+    date,
+    weight,
+    handleDateChange,
+    handleWeightChange,
+    handleAddWeight,
+  };
 };
 
 export default useUserWeightForm;

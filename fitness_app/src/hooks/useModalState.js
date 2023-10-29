@@ -1,4 +1,3 @@
-// Create a custom hook for managing modal state
 import { useState } from 'react';
 
 export function useModalState(initialState = false) {

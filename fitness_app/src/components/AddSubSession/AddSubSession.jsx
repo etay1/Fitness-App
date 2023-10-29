@@ -1,9 +1,8 @@
 import React from "react";
+import { useSubSessionForm } from "../../hooks/useSubSessionForm";
 import "./AddSubSession.css";
-import { useAddSubSession } from "../../hooks/useAddSubSession";
-import { Link } from "react-router-dom";
 
-function AddSubSession() {
+function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
   const {
     category,
     subSessionData,
@@ -12,13 +11,14 @@ function AddSubSession() {
     handleInputChange,
     handleCategoryChange,
     handleAddSubSession,
-  } = useAddSubSession();
+  } = useSubSessionForm();
 
   return (
-    <div className="page">
+    <div className={`modal ${isAddSubSessionPopupOpen ? "active" : ""}`}>
+      <div className="overlay"></div>
       <div className="container">
-        <div className="subsession-form">
-          <h1 className="title-add-subsession">Add A Workout</h1>
+        <div className="form-ctn">
+          <h1 className="title-form">Add A Workout</h1>
           <div className="category-toggle">
             <button
               className={`category-button ${
@@ -49,7 +49,7 @@ function AddSubSession() {
               />
             </div>
 
-            <div className="input-container time-subsession">
+            <div className="input-container">
               <label>Start Time:</label>
               <input
                 type="time"
@@ -58,7 +58,7 @@ function AddSubSession() {
                 onChange={handleInputChange}
               />
             </div>
-            <div className="input-container time-subsession">
+            <div className="input-container">
               <label>End Time:</label>
               <input
                 type="time"
@@ -93,21 +93,16 @@ function AddSubSession() {
             )}
           </form>
 
-          <div className="form-buttons-add-subsession">
-            <Link to="/">
-              <button className="button-add-subsession">Done</button>
-            </Link>
-            <button
-              className="button-add-subsession"
-              onClick={handleAddSubSession}
-            >
-              Add {category === "cardio" ? "Cardio" : "Strength"} Subsession
+          <div className="form-btn-ctn">
+            <button className="form-btn" onClick={closeAddSubSessionPopup}>
+              Done
+            </button>
+            <button className="form-btn" onClick={handleAddSubSession}>
+              Add Workout
             </button>
           </div>
 
-          {isSuccess && (
-            <div className="message-add-subsession">{successMessage}</div>
-          )}
+          {isSuccess && <div className="message">{successMessage}</div>}
         </div>
       </div>
     </div>

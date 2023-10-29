@@ -1,7 +1,6 @@
 import React from "react";
-// import { useUserWeightForm } from "../../hooks/useUserWeightForm"; // Import your custom hook
-import "./AddUserWeight.css";
 import useUserWeightForm from "../../hooks/useUserWeightForm";
+import "./AddUserWeight.css";
 
 function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup }) {
   const {
@@ -19,7 +18,7 @@ function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup }) {
       <div className="overlay"></div>
       <div className="container">
         <div className="user-weight-form">
-          <h1 className="title-add-user-weight">Add User Weight</h1>
+          <h1 className="title-form">Record Weight</h1>
           <form>
             <div className="input-container">
               <label>Date:</label>
@@ -40,25 +39,20 @@ function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup }) {
               />
             </div>
           </form>
-          <div className="form-buttons-add-user-weight">
-            <button
-              className="button-add-user-weight"
-              onClick={closeAddUserWeightPopup}
-            >
+          <div className="form-btn-ctn">
+            <button className="form-btn" onClick={closeAddUserWeightPopup}>
               Cancel
             </button>
             <button
-              className="button-add-user-weight"
+              className="form-btn"
               type="button"
               onClick={handleAddWeight}
             >
-              Add Weight
+              Record Weight
             </button>
           </div>
 
-          {isSuccess && (
-            <div className="message-add-user-weight">{successMessage}</div>
-          )}
+          {isSuccess && <div className="message">{successMessage}</div>}
         </div>
       </div>
     </div>

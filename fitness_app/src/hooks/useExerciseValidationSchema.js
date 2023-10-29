@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import * as Yup from "yup";
 
-// Custom hook to manage the validation schema
-function useExerciseValidationSchema(category) {
+// Custom hook to manage the validation schema and form values
+export default function useExerciseValidationSchema(category) {
   const [validationSchema, setValidationSchema] = useState(null);
+  const [key, setKey] = useState(0);
 
   useEffect(() => {
     if (category === "strength") {
@@ -29,9 +30,9 @@ function useExerciseValidationSchema(category) {
         })
       );
     }
+    // Update the key when the category changes
+    setKey((prevKey) => prevKey + 1);
   }, [category]);
 
-  return validationSchema;
+  return { validationSchema, key };
 }
-
-export default useExerciseValidationSchema;
