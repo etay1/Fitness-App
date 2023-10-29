@@ -1,6 +1,8 @@
 import React from "react";
 import { supabase } from "../../supabase/client";
+import ExerciseForm from "../Form/ExerciseForm";
 import { useExerciseForm } from "../../hooks/useExerciseForm";
+import ExerciseForm from "../Form/ExerciseForm";
 import "./AddExercise.css";
 
 function AddExercise({
@@ -48,64 +50,14 @@ function AddExercise({
             </button>
           </div>
 
-          {/* Form */}
-          <form>
-            <div className="input-container">
-              <label>Exercise Name:</label>
-              <input
-                type="text"
-                name="exerciseName"
-                value={exerciseData.exerciseName}
-                onChange={handleInputChange}
-              />
-            </div>
+          <ExerciseForm
+            closeAddExercisePopup={closeAddExercisePopup}
+            category={category}
+          />
 
-            {category === "strength" && (
-              <div className="input-container">
-                <label>Calories / rep:</label>
-                <input
-                  type="number"
-                  name="caloriesPerRep"
-                  value={exerciseData.caloriesPerRep}
-                  onChange={handleInputChange}
-                />
-              </div>
-            )}
-            {category === "cardio" && (
-              <div className="input-container">
-                <label>Calories / 15 minutes:</label>
-                <input
-                  type="number"
-                  name="caloriesPerDuration"
-                  value={exerciseData.caloriesPerDuration}
-                  onChange={handleInputChange}
-                />
-              </div>
-            )}
-            <div className="input-container">
-              <label>Description:</label>
-              <textarea
-                name="description"
-                value={exerciseData.description}
-                onChange={handleInputChange}
-              />
-            </div>
-          </form>
-
-          <div className="form-btn-ctn">
-            <button className="form-btn" onClick={closeAddExercisePopup}>
-              Done
-            </button>
-            <button
-              className="form-btn"
-              type="button"
-              onClick={handleAddExercise}
-            >
-              Add Exercise
-            </button>
-          </div>
-              
-          {isSuccess && <div className="message">{successMessage}</div>}
+          {isSuccess && (
+            <div className="message-add-exercise">{successMessage}</div>
+          )}
         </div>
       </div>
     </div>
