@@ -1,62 +1,35 @@
-import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import NavigateHome from "../../utils/NavigateHome";
+import React from "react";
+import { supabase } from "../../supabase/client";
+import ExerciseForm from "../Form/ExerciseForm";
+import { useExerciseForm } from "../../hooks/useExerciseForm";
 import "./AddExercise.css";
 
-function AddExercise() {
-  // State initialization
-  const [category, setCategory] = useState("strength");
-  const [exerciseData, setExerciseData] = useState({
-    exerciseName: "",
-    description: "",
-    caloriesPerRep: 0,
-    caloriesPerDuration: 0,
-  });
-  const [successMessage, setSuccessMessage] = useState("");
-  const [isSuccess, setIsSuccess] = useState(false);
-  const handleNavigate = NavigateHome();
+function AddExercise({
+  isAddExercisePopupOpen,
+  closeAddExercisePopup,
+  session,
+}) {
+  console.log("AddExercisepopup");
+  console.log(session);
+  console.log(session.user.email);
+  console.log(session.user.id);
 
-  // Event handlers
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setExerciseData({ ...exerciseData, [name]: value });
-  };
-
-  const handleCategoryChange = (newCategory) => {
-    setCategory(newCategory);
-    // erase error message
-    setIsSuccess(false);
-  };
-
-  // Function to navigate to the main menu
-
-  // const navigateToMainMenu = () => {
-  //   const path = '/'; // Adjust the path as needed
-  //   navigate(path);
-
-  // };
-
-  const handleAddExercise = () => {
-    // Code to send the exercise data to the server will go here.
-    setSuccessMessage(
-      `Successfully added ${
-        category === "cardio" ? "Cardio" : "Strength"
-      } Exercise.`
-    );
-    setIsSuccess(true);
-    setExerciseData({
-      exerciseName: "",
-      description: "",
-      caloriesPerRep: 0,
-      caloriesPerDuration: 0,
-    });
-  };
+  const {
+    category,
+    exerciseData,
+    successMessage,
+    isSuccess,
+    handleInputChange,
+    handleCategoryChange,
+    handleAddExercise,
+  } = useExerciseForm(supabase);
 
   return (
-    <div className="page">
+    <div className={`modal ${isAddExercisePopupOpen ? "active" : ""}`}>
+      <div className="overlay"></div>
       <div className="container">
-        <div className="exercise-form">
-          <h1 className="title-add-exercise">Create a New Exercise</h1>
+        <div className="form-ctn">
+          <h1 className="title-form">Create a New Exercise</h1>
           <div className="category-toggle">
             <button
               className={`category-button ${
@@ -76,62 +49,10 @@ function AddExercise() {
             </button>
           </div>
 
-          {/* Form */}
-          <form>
-            <div className="input-container">
-              <label>Exercise Name:</label>
-              <input
-                type="text"
-                name="exerciseName"
-                value={exerciseData.exerciseName}
-                onChange={handleInputChange}
-              />
-            </div>
-
-            {category === "strength" && (
-              <div className="input-container">
-                <label>Calories / rep:</label>
-                <input
-                  type="number"
-                  name="caloriesPerRep"
-                  value={exerciseData.caloriesPerRep}
-                  onChange={handleInputChange}
-                />
-              </div>
-            )}
-            {category === "cardio" && (
-              <div className="input-container">
-                <label>Calories / 15 minutes:</label>
-                <input
-                  type="number"
-                  name="caloriesPerDuration"
-                  value={exerciseData.caloriesPerDuration}
-                  onChange={handleInputChange}
-                />
-              </div>
-            )}
-            <div className="input-container">
-              <label>Description:</label>
-              <textarea
-                name="description"
-                value={exerciseData.description}
-                onChange={handleInputChange}
-              />
-            </div>
-          </form>
-
-          <div className="form-buttons-add-exercise">
-            <button className="button-add-exercise" onClick={handleNavigate}>
-              Done
-            </button>
-            <button
-              className="button-add-exercise"
-              type="button"
-              onClick={handleAddExercise}
-            >
-              Add {category === "cardio" ? "Cardio" : "Strength"} Exercise
-            </button>
-          </div>
+          <ExerciseForm
+            closeAddExercisePopup={closeAddExercisePopup}
+            category={category}
+          />
 
           {isSuccess && (
             <div className="message-add-exercise">{successMessage}</div>
