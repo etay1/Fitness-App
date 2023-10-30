@@ -1,94 +1,67 @@
-import { useState } from "react";
-import { supabase } from "../supabase/client";
+import React from "react";
+import useUserWeightForm from "../../hooks/useUserWeightForm";
+import "./AddUserWeight.css";
 
 
-const useUserWeightForm = (
-  initialDate = new Date().toISOString().slice(0, 10)
-) => {
-  const [date, setDate] = useState(initialDate);
-  const [userId, setUserId] = useState("");
-  const [weight, setUserWeight] = useState("");
-  const [weightData, setWeightSessionData] = useState({
-    userId: "",
-    date: initialDate,
-    weight: "",
-  })
-  const [successMessage, setSuccessMessage] = useState("");
-  const [isSuccess, setIsSuccess] = useState(false);
-
-
-  const handleGetUserId = (e) => {
-    setUserId(e.session.user.id);
-  }
-
-
-  const handleDateChange = (e) => {
-    setDate(e.target.value);
-  };
-
-
-  const handleWeightChange = (e) => {
-      setUserWeight(e.target.value);
-  };
-
-
-  const handleInputChange = (e) => {
-    const {date, weight, userId } = e.target;
-    setWeightSessionData({...weightData})
-  }
-
-
-  const handleInsertion = async (date, weight, userId) => {
-    try{
-      const tableName = "user_weight";
-      console.log("working");
-      const {data, error } = await supabase
-        .from(tableName)
-        .insert([{date, weight, userId}])
-
-
-      if (error) {
-        throw error;
-      }
-   
-      setIsSuccess(true);
-      setSuccessMessage(`Successfully added weight`);
-    } catch (e) {
-      setSuccessMessage("Failed to add weight");
-      setIsSuccess(false);
-    }
-
-
-  }
-
-
-  const handleAddWeight = () => {
-    let date = weightData.date;
-    let weight = weightData.weight;
-    let userId = weightData.userId;
-    setSuccessMessage(
-      'Successfully added current weight'
-    )
-
-
-    setIsSuccess(true);
-  };
- 
-
-
-  return {
+function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup, session }) {
+  const {
     date,
     weight,
     userId,
-    successMessage,
-    isSuccess,
     handleDateChange,
     handleWeightChange,
     handleAddWeight,
-    handleGetUserId,
-    handleInsertion
-  };
-};
+    successMessage,
+    isSuccess,
+  } = useUserWeightForm();
 
 
-export default useUserWeightForm;
+  return (
+    <div className={`modal ${isAddUserWeightPopupOpen ? "active" : ""}`}>
+      <div className="overlay"></div>
+      <div className="container">
+        <div className="user-weight-form">
+          <h1 className="title-form">Record Weight</h1>
+          <form>
+            <div className="input-container">
+              <label>Date:</label>
+              <input
+                type="date"
+                name="date"
+                value={date}
+                onChange={handleDateChange}
+              />
+            </div>
+            <div className="input-container">
+              <label>Weight (in lbs):</label>
+              <input
+                type="number"
+                name="weight"
+                value={weight}
+                onChange={handleWeightChange}
+              />
+            </div>
+          </form>
+          <div className="form-btn-ctn">
+            <button className="form-btn" onClick={closeAddUserWeightPopup}>
+              Cancel
+            </button>
+            <button
+              className="form-btn"
+              type="button"
+              onClick={handleAddWeight}
+            >
+              Record Weight
+            </button>
+          </div>
+
+
+          {isSuccess && <div className="message">{successMessage}</div>}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+export default AddUserWeight;
