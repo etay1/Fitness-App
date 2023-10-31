@@ -8,15 +8,12 @@ export function useExerciseRegistry() {
   useEffect(() => {
     async function fetchExercises() {
       try {
-        console.log("hitting");
-
         const { data: cardioData, error: cardioError } = await supabase
           .from("cardio_exercise")
-          .select("name");
-
+          .select("name", "description");
         const { data: strengthData, error: strengthError } = await supabase
           .from("weight_exercise")
-          .select("name");
+          .select("name", "description");
 
         if (cardioError || strengthError) {
           setError(cardioError || strengthError);
@@ -30,9 +27,6 @@ export function useExerciseRegistry() {
     }
     fetchExercises();
   }, []);
-  console.log(exercises);
-  // console.log("log first item");
-  // console.log(exercises[0]);
 
   return { exercises, error };
 }
