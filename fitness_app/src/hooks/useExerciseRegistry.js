@@ -11,15 +11,12 @@ export function useExerciseRegistry() {
         console.log("hitting");
 
         const { data: cardioData, error: cardioError } = await supabase
-        .from('cardio_exercise')
-        .select('*')
-
-        console.log("cardioData", cardioData);
+          .from("cardio_exercise")
+          .select("name");
 
         const { data: strengthData, error: strengthError } = await supabase
-          .from('weight_exercise')
-          .select('*')
-          console.log("StrengthData", strengthData);
+          .from("weight_exercise")
+          .select("name");
 
         if (cardioError || strengthError) {
           setError(cardioError || strengthError);
@@ -33,9 +30,9 @@ export function useExerciseRegistry() {
     }
     fetchExercises();
   }, []);
-  
-  console.log("log first item")
-  console.log(exercises[0]);
-  
+  console.log(exercises);
+  // console.log("log first item");
+  // console.log(exercises[0]);
+
   return { exercises, error };
 }
