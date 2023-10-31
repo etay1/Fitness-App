@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { supabase } from "../supabase/client";
+import { HandleDatabaseError } from "../utils/HandleDatabaseError";
 
-export function useExerciseForm() {
+export function useExerciseForm(supabase) {
   const [category, setCategory] = useState("strength");
   const [exerciseData, setExerciseData] = useState({
     exerciseName: "",
@@ -9,7 +9,6 @@ export function useExerciseForm() {
     caloriesPerRep: 0,
     caloriesPerDuration: 0,
   });
-  const [successMessage, setSuccessMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
 
   const handleInputChange = (event) => {
@@ -22,79 +21,53 @@ export function useExerciseForm() {
     setIsSuccess(false);
   };
 
-  const handleInsertion = async (name, description, calories) => {
+  const handleInsertion = async (
+    values,
+    categoryName,
+    updateSuccessMessage
+  ) => {
+    console.log(category);
+    const { exerciseName, caloriesPerRep, caloriesPerDuration, description } =
+      values;
+
+    const tableName =
+      categoryName === "cardio" ? "cardio_exercise" : "weight_exercise";
+    const calorieColumn =
+      categoryName === "cardio"
+        ? "calories_per_unit_duration"
+        : "calories_per_rep";
+    const calories =
+      categoryName === "cardio" ? caloriesPerDuration : caloriesPerRep;
+
     try {
-      const tableName =
-        category === "cardio" ? "cardio_exercise" : "weight_exercise";
-      const columnName =
-        category === "cardio" ? "calories_per_15" : "calories_per_rep";
-      console.log("working");
       const { data, error } = await supabase
         .from(tableName)
-        .insert([{ name, description, [columnName]: calories }]);
-
+        .insert([
+          { name: exerciseName, [calorieColumn]: calories, description },
+        ]);
       if (error) {
         throw error;
       }
-
       setIsSuccess(true);
-      setSuccessMessage(
+      updateSuccessMessage(
         `Successfully added ${
-          category === "cardio" ? "Cardio" : "Strength"
+          categoryName === "cardio" ? "Cardio" : "Strength"
         } Exercise.`
       );
     } catch (error) {
-      setSuccessMessage("Failed to add exercise.");
-      setIsSuccess(true);
-    }
-  };
-
-  const validateInput = (name, calories, setSuccessMessage) => {
-    if (!name) {
-      setSuccessMessage(
-        `Invalid field: ${
-          !name
-            ? "Exercise Name"
-            : category === "cardio"
-            ? "Calories / 15 minutes"
-            : "Calories / rep"
-        } is empty.`
-      );
-
-      return false;
-    }
-
-    return true;
-  };
-
-  const handleAddExercise = () => {
-    let name = exerciseData.exerciseName;
-    let calories =
-      category === "cardio"
-        ? exerciseData.caloriesPerDuration
-        : exerciseData.caloriesPerRep;
-    let description = exerciseData.description;
-    const isValid = validateInput(name, calories, setSuccessMessage); // Pass setSuccessMessage here
-
-    if (isValid) {
-      handleInsertion(name, description, calories);
-      setExerciseData({
-        exerciseName: "",
-        description: "",
-        caloriesPerRep: 0,
-        caloriesPerDuration: 0,
-      });
+      console.log("db error: ", error);
+      const errorCode = error.code;
+      HandleDatabaseError(errorCode, updateSuccessMessage);
+      setIsSuccess(false);
     }
   };
 
   return {
     category,
     exerciseData,
-    successMessage,
     isSuccess,
     handleInputChange,
     handleCategoryChange,
-    handleAddExercise,
     handleInsertion,
   };
 }
