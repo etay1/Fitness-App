@@ -4,6 +4,7 @@ import AddUserWeight from "../AddUserWeight/AddUserWeight";
 import AddSubSession from "../AddSubSession/AddSubSession";
 import { useModalState } from "../../hooks/useModalState";
 import "./Dashboard.css";
+import { Link } from "react-router-dom";
 
 const Dashboard = ({ supabase, session }) => {
   const {
@@ -28,6 +29,8 @@ const Dashboard = ({ supabase, session }) => {
       <button className="form-btn" onClick={openExerciseModal}>Add Exercise</button>
       <button className="form-btn" onClick={openAddSubSessionModal}>Add Sub Session</button>
       <button className="form-btn" onClick={openUserWeightModal}>Add User Weight</button>
+      <Link to="/exercise-registry">Exercise Registry</Link>
+
 
       <AddExercise
         isAddExercisePopupOpen={isExerciseModalOpen}
