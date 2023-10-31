@@ -5,13 +5,7 @@ import { supabase } from "../supabase/client";
 const useUserWeightForm = (
   userId) => {
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
-  const [weight, setUserWeight] = useState("");
-  // const [weightData, setWeightSessionData] = useState({
-  //   userId: userId,
-  //   date: initialDate,
-  //   weight: "",
-  // })
-  
+  const [weight, setUserWeight] = useState(""); 
   const [successMessage, setSuccessMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -24,13 +18,6 @@ const useUserWeightForm = (
       setUserWeight(e.target.value);
   };
 
-
-  // const handleInputChange = (e) => {
-  //   const {date, weight, userId } = e.target;
-  //   setWeightSessionData({...weightData})
-  // }
-
-
   const handleInsertion = async () => {
     try{
       const tableName = "user_weight";
@@ -40,7 +27,7 @@ const useUserWeightForm = (
       console.log(weight);
       const {data, error } = await supabase
         .from(tableName)
-        .insert([{"user_id":userId, weight, date}])
+        .insert([{user_id:userId, weight, date}]);
 
       if (error) {
         console.log(error);
@@ -50,27 +37,13 @@ const useUserWeightForm = (
    
       setIsSuccess(true);
       setSuccessMessage(`Successfully added weight`);
-      console.log("succ");
     } catch (e) {
+      console.log(e)
       setSuccessMessage("Failed to add weight");
       setIsSuccess(false);
     }
 
   }
-
-  // const handleAddWeight = () => {
-  //   let date = date;
-  //   let weight = weight;
-  //    let userId = userId;
-  //   setSuccessMessage(
-  //     'Successfully added current weight'
-  //   )
-
-
-  //   setIsSuccess(true);
-  // };
- 
-
 
   return {
     date,
@@ -82,6 +55,5 @@ const useUserWeightForm = (
     handleInsertion
   };
 };
-
 
 export default useUserWeightForm;
