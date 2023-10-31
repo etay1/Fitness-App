@@ -21,16 +21,11 @@ const useUserWeightForm = (
   const handleInsertion = async () => {
     try{
       const tableName = "user_weight";
-      console.log("working");
-      console.log(userId);
-      console.log(date);
-      console.log(weight);
       const {data, error } = await supabase
         .from(tableName)
         .insert([{user_id:userId, weight, date}]);
 
       if (error) {
-        console.log(error);
         throw error;
 
       }
@@ -38,7 +33,6 @@ const useUserWeightForm = (
       setIsSuccess(true);
       setSuccessMessage(`Successfully added weight`);
     } catch (e) {
-      console.log(e)
       setSuccessMessage("Failed to add weight");
       setIsSuccess(false);
     }
