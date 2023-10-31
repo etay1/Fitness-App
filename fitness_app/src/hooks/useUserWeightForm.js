@@ -40,10 +40,10 @@ const useUserWeightForm = (
       console.log(weight);
       const {data, error } = await supabase
         .from(tableName)
-        .insert([{date, weight, "user_id":userId}])
+        .insert([{"user_id":userId, weight, date}])
 
       if (error) {
-        console.log("error");
+        console.log(error);
         throw error;
 
       }
