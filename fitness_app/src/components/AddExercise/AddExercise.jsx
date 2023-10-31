@@ -52,11 +52,8 @@ function AddExercise({
           <ExerciseForm
             closeAddExercisePopup={closeAddExercisePopup}
             category={category}
+            supabase={supabase}
           />
-
-          {isSuccess && (
-            <div className="message-add-exercise">{successMessage}</div>
-          )}
         </div>
       </div>
     </div>
