@@ -146,10 +146,10 @@ textarea {
 .form-btn-ctn {
   display: flex;
   margin-top: 10px;
-  display: flex;
-  justify-content: space-between; /* This should be justify-content */
+  justify-content: space-between;
   align-items: center;
 }
+
 
 .form-btn {
   background-color: var(--primary-color);
@@ -160,15 +160,6 @@ textarea {
   cursor: pointer;
 }
 
-/* Target the first button */
-.form-btn:first-child {
-  margin-right: 10px;
-}
-
-/* Target the second button */
-.form-btn:nth-child(2) {
-  margin-left: 10px;
-}
 
 .message {
   color: var(--primary-color);
