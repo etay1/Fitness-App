@@ -11,7 +11,7 @@ function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup, sess
     handleWeightChange,
     handleInsertion,
     successMessage,
-    isSuccess,
+    isClicked,
   } = useUserWeightForm(session.user.id);
 
 
@@ -55,7 +55,7 @@ function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup, sess
           </div>
 
 
-          {isSuccess && <div className="message">{successMessage}</div>}
+          {isClicked && <div className="message">{successMessage}</div>}
         </div>
       </div>
     </div>
