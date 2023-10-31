@@ -14,7 +14,7 @@ export function useExerciseRegistry() {
         const { data: strengthData, error: strengthError } = await supabase
           .from("weight_exercise")
           .select("name, description");
-
+        
         if (cardioError || strengthError) {
           setError(cardioError || strengthError);
         } else {
