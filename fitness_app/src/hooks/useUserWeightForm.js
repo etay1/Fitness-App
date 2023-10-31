@@ -7,7 +7,7 @@ const useUserWeightForm = (
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [weight, setUserWeight] = useState(""); 
   const [successMessage, setSuccessMessage] = useState("");
-  const [isSuccess, setIsClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   const handleDateChange = (e) => {
     setDate(e.target.value);
@@ -32,12 +32,11 @@ const useUserWeightForm = (
       setSuccessMessage(`Successfully added weight`);
     } catch (e) {
       console.log(e.code);
-      if (e.code === 23514){
-        setSuccessMessage("Failed to add weight: please enter weight within range (51-1499");
+      if (e.code === "23514"){
+        setSuccessMessage("Please enter weight within range 51-1499");
       } else {
         setSuccessMessage("Failed to add weight");
       }
-      
       
     }
     setIsClicked(true);
@@ -48,7 +47,7 @@ const useUserWeightForm = (
     date,
     weight,
     successMessage,
-    isSuccess,
+    isClicked,
     handleDateChange,
     handleWeightChange,
     handleInsertion
