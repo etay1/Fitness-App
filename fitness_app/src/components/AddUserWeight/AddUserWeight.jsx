@@ -7,13 +7,12 @@ function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup, sess
   const {
     date,
     weight,
-    userId,
     handleDateChange,
     handleWeightChange,
-    handleAddWeight,
+    handleInsertion,
     successMessage,
     isSuccess,
-  } = useUserWeightForm();
+  } = useUserWeightForm(session.user.id);
 
 
   return (
@@ -49,7 +48,7 @@ function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup, sess
             <button
               className="form-btn"
               type="button"
-              onClick={handleAddWeight}
+              onClick={handleInsertion}
             >
               Record Weight
             </button>
