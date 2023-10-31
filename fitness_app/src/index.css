@@ -53,11 +53,6 @@ code {
   align-items: center;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
 
 /* Title for Forms*/
 .title-form {

@@ -17,6 +17,10 @@ function ExerciseRegistryView() {
             <li className="exercise-item" key={exercise.id}>
               <div className="exercise-name">{exercise.name}</div>
               <div className="exercise-description">{exercise.description}</div>
+              <div className="exercise-calories-per_unit">
+                {exercise.calories_per_rep}
+                {exercise.calories_per_unit_duration}
+              </div>
             </li>
           ))}
         </ul>
