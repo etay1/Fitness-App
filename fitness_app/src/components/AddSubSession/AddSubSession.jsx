@@ -2,17 +2,47 @@ import React from "react";
 import { useSubSessionForm } from "../../hooks/useSubSessionForm";
 import "./AddSubSession.css";
 
+function FlattenList(list) {
+  
+}
+
 function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
+  
   const {
     category,
     subSessionData,
     successMessage,
     isSuccess,
+    cardioList,
+    strengthList,
     handleInputChange,
     handleCategoryChange,
+    fetchExerciseData,
     handleAddSubSession,
   } = useSubSessionForm();
+  
 
+  const dropdown = document.getElementById("dropdown");
+
+  // Populate the options using a loop
+  // if(category === "strength") {
+  //   strengthListNames.forEach(exercise => {
+  //       const option = document.createElement("option");
+  //       option.value = exercise.weight_exercise_id; // Use the exercise ID as the value
+  //       option.text = exercise.name;
+  //       dropdown.appendChild(option);
+  //   });
+  // }
+    
+  // if(category === "cardio") {
+  //   cardioListNames.forEach(exercise => {
+  //       const option = document.createElement("option");
+  //       option.value = exercise.cardio_exercise_id; // Use the exercise ID as the value
+  //       option.text = exercise.name;
+  //       dropdown.appendChild(option);
+  //   });
+  // }
+    
   return (
     <div className={`modal ${isAddSubSessionPopupOpen ? "active" : ""}`}>
       <div className="overlay"></div>
@@ -41,12 +71,14 @@ function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
           <form>
             <div className="input-container">
               <label>Workout:</label>
-              <input
+              {/* <input
                 type="text"
                 name="sessionName"
                 value={subSessionData.sessionName}
                 onChange={handleInputChange}
-              />
+              /> */}
+              <select id="dropdown" type="text" name="sessionName" value={subSessionData.sessionName} onChange={handleInputChange}>
+              </select>
             </div>
 
             <div className="input-container">
@@ -110,3 +142,4 @@ function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
 }
 
 export default AddSubSession;
+
