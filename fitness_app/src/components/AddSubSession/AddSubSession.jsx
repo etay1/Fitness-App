@@ -86,16 +86,15 @@ function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
                 />
               </div>
             )}
+            <div className="form-btn-ctn">
+              <button className="form-btn" onClick={closeAddSubSessionPopup}>
+                Done
+              </button>
+              <button className="form-btn" onClick={handleAddSubSession}>
+                Add Workout
+              </button>
+            </div>
           </form>
-
-          <div className="form-btn-ctn">
-            <button className="form-btn" onClick={closeAddSubSessionPopup}>
-              Done
-            </button>
-            <button className="form-btn" onClick={handleAddSubSession}>
-              Add Workout
-            </button>
-          </div>
 
           {isSuccess && <div className="message">{successMessage}</div>}
         </div>
