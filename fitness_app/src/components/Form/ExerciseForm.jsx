@@ -123,6 +123,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
                   className="form-btn"
                   type="button"
                   onClick={() => {
+                    updateSuccessMessage("");
                     formik.resetForm();
                     closeAddExercisePopup();
                   }}
