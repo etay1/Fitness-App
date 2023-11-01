@@ -1,6 +1,7 @@
 import React from "react";
 import { useSubSessionForm } from "../../hooks/useSubSessionForm";
 import "./AddSubSession.css";
+import CategoryToggle from "../CategoryToggle/CategoryToggle";
 
 function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
   const {
@@ -13,30 +14,24 @@ function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
     handleAddSubSession,
   } = useSubSessionForm();
 
+  // Once we implement the ExerciseForm here, we can remove the useSubSessionForm hook above
+  // and replace it with the hook useCategoryChange
+  // since the ExerciseForm itself will call useSubSessionForm
+  // we can also remove handleCategoryChange from the useExerciseForm hook!!
+  // const [category, handleCategoryChange] = useCategoryChange("strength");
+  // See AddExercise for how the code was condensed
+
   return (
     <div className={`modal ${isAddSubSessionPopupOpen ? "active" : ""}`}>
       <div className="overlay"></div>
       <div className="container">
         <div className="form-ctn">
           <h1 className="title-form">Add A Workout</h1>
-          <div className="category-toggle">
-            <button
-              className={`category-button ${
-                category === "strength" ? "active" : "inactive"
-              }`}
-              onClick={() => handleCategoryChange("strength")}
-            >
-              Strength
-            </button>
-            <button
-              className={`category-button ${
-                category === "cardio" ? "active" : "inactive"
-              }`}
-              onClick={() => handleCategoryChange("cardio")}
-            >
-              Cardio
-            </button>
-          </div>
+
+          <CategoryToggle
+            category={category}
+            handleCategoryChange={handleCategoryChange}
+          />
 
           <form>
             <div className="input-container">
