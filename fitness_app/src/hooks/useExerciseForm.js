@@ -71,3 +71,4 @@ export function useExerciseForm(supabase) {
     handleInsertion,
   };
 }
+export default useExerciseForm;

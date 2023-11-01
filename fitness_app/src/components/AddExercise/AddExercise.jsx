@@ -2,6 +2,7 @@ import React from "react";
 import { supabase } from "../../supabase/client";
 import ExerciseForm from "../Form/ExerciseForm";
 import { useExerciseForm } from "../../hooks/useExerciseForm";
+import CategoryToggle from "../CategoryToggle/CategoryToggle";
 import "./AddExercise.css";
 
 function AddExercise({
@@ -30,24 +31,8 @@ function AddExercise({
       <div className="container">
         <div className="form-ctn">
           <h1 className="title-form">Create a New Exercise</h1>
-          <div className="category-toggle">
-            <button
-              className={`category-button ${
-                category === "strength" ? "active" : "inactive"
-              }`}
-              onClick={() => handleCategoryChange("strength")}
-            >
-              Strength
-            </button>
-            <button
-              className={`category-button ${
-                category === "cardio" ? "active" : "inactive"
-              }`}
-              onClick={() => handleCategoryChange("cardio")}
-            >
-              Cardio
-            </button>
-          </div>
+          
+          <CategoryToggle category={category} handleCategoryChange={handleCategoryChange} />
 
           <ExerciseForm
             closeAddExercisePopup={closeAddExercisePopup}
