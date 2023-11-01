@@ -3,7 +3,7 @@ import AddExercise from "../AddExercise/AddExercise";
 import AddUserWeight from "../AddUserWeight/AddUserWeight";
 import AddSubSession from "../AddSubSession/AddSubSession";
 import { useModalState } from "../../hooks/useModalState";
-import styles from "./Dashboard.module.css";
+import styles from "./dashboard.module.css";
 
 const Dashboard = ({ supabase, session }) => {
   const {
