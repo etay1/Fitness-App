@@ -3,7 +3,7 @@ import AddExercise from "../AddExercise/AddExercise";
 import AddUserWeight from "../AddUserWeight/AddUserWeight";
 import AddSubSession from "../AddSubSession/AddSubSession";
 import { useModalState } from "../../hooks/useModalState";
-import "./Dashboard.css";
+import styles from "./Dashboard.module.css";
 
 const Dashboard = ({ supabase, session }) => {
   const {
@@ -21,13 +21,18 @@ const Dashboard = ({ supabase, session }) => {
     openModal: openAddSubSessionModal,
     closeModal: closeAddSubSessionModal,
   } = useModalState(false);
+
+  const formBtnCss = `${styles["form-btn"]} form-btn`;
+
+  console.log(styles);
   return (
-    <div className="dashboard">
+    // console.log(styles);
+    <div className={styles.dashboard} id="dashboard">
       <h1>Welcome {session.user.email}</h1>
-      <button className="form-btn" onClick={() => supabase.auth.signOut()}>Sign Out</button>
-      <button className="form-btn" onClick={openExerciseModal}>Add Exercise</button>
-      <button className="form-btn" onClick={openAddSubSessionModal}>Add Sub Session</button>
-      <button className="form-btn" onClick={openUserWeightModal}>Add User Weight</button>
+      <button className={formBtnCss} onClick={() => supabase.auth.signOut()}>Sign Out</button>
+      <button className={formBtnCss} onClick={openExerciseModal}>Add Exercise</button>
+      <button className={formBtnCss} onClick={openAddSubSessionModal}>Add Sub Session</button>
+      <button className={formBtnCss} onClick={openUserWeightModal}>Add User Weight</button>
 
       <AddExercise
         isAddExercisePopupOpen={isExerciseModalOpen}

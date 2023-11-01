@@ -1,6 +1,5 @@
 import React from "react";
 import { useSubSessionForm } from "../../hooks/useSubSessionForm";
-import "./AddSubSession.css";
 import CategoryToggle from "../CategoryToggle/CategoryToggle";
 
 function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {

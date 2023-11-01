@@ -3,7 +3,6 @@ import { supabase } from "../../supabase/client";
 import ExerciseForm from "../Form/ExerciseForm";
 import { useCategoryChange } from "../../hooks/useCategoryChange"; // Import the new hook
 import CategoryToggle from "../CategoryToggle/CategoryToggle";
-import "./AddExercise.css";
 
 function AddExercise({ isAddExercisePopupOpen, closeAddExercisePopup }) {
   const [category, handleCategoryChange] = useCategoryChange("strength");

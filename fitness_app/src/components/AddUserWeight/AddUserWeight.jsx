@@ -1,6 +1,5 @@
 import React from "react";
 import useUserWeightForm from "../../hooks/useUserWeightForm";
-import "./AddUserWeight.css";
 
 function AddUserWeight({
   isAddUserWeightPopupOpen,
