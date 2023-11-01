@@ -31,7 +31,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
       enableReinitialize={true}
       onSubmit={(values, formik) => {
         handleInsertion(values, category, updateSuccessMessage);
-        console.log(isSuccess)
+        console.log(isSuccess);
         if (isSuccess) {
           formik.resetForm();
         }
@@ -140,8 +140,9 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
                   Add Exercise
                 </button>
               </div>
-
-              <div className="success-message">{successMessage}</div>
+              <div className="success-ctn">
+                <div className="success-message">{successMessage}</div>
+              </div>
             </div>
           </Form>
         );
