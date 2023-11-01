@@ -142,8 +142,9 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
                   Add Exercise
                 </button>
               </div>
-
-              <div className="success-message">{successMessage}</div>
+              <div className="success-ctn">
+                <div className="success-message">{successMessage}</div>
+              </div>
             </div>
           </Form>
         );
