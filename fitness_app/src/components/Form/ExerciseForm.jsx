@@ -31,7 +31,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
       enableReinitialize={true}
       onSubmit={(values, formik) => {
         handleInsertion(values, category, updateSuccessMessage);
-        console.log(isSuccess)
+        console.log(isSuccess);
         if (isSuccess) {
           formik.resetForm();
         }
@@ -65,6 +65,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
                   <label>Calories / rep:</label>
                   <Field
                     type="number"
+                    min="0"
                     name="caloriesPerRep"
                     id="caloriesPerRep"
                     className={
@@ -85,6 +86,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
                   <label>Calories / 15 minutes:</label>
                   <Field
                     type="number"
+                    min="0"
                     name="caloriesPerDuration"
                     id="caloriesPerDuration"
                     className={
