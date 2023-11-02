@@ -38,6 +38,7 @@ function AddUserWeight({
               <input
                 type="number"
                 name="weight"
+                min="0"
                 value={weight}
                 onChange={handleWeightChange}
               />

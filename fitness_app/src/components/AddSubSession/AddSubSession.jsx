@@ -69,6 +69,7 @@ function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
                 <input
                   type="number"
                   name="sets"
+                  min="0"
                   value={subSessionData.sets}
                   onChange={handleInputChange}
                 />
@@ -81,6 +82,7 @@ function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
                 <input
                   type="number"
                   name="repsPerSet"
+                  min="0"
                   value={subSessionData.repsPerSet}
                   onChange={handleInputChange}
                 />
