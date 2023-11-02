@@ -1,0 +1,77 @@
+/* Form*/
+.form-ctn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Inputs for Forms */
+.input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container label {
+  color: var(--primary-color);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+textarea {
+  padding: 8px;
+  margin: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Buttons */
+.form-btn-ctn {
+  display: flex;
+  margin-top: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-btn {
+  background-color: var(--primary-color);
+  padding: 8px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Form Validating*/
+.error {
+  color: var(--error-color);
+  font-size: 1rem;
+  margin-top: 0.3rem;
+}
+
+.input-error {
+  border-color: var(--error-color);
+}
+
+.disabled-btn {
+  cursor: not-allowed;
+  background-color: rgba(128, 128, 128, 0.5);
+}
+
+/* Form Statis Messaging */
+.form-success-ctn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--white-color);
+}
+
+.form-success-message {
+  color: var(--primary-color);
+  text-align: center;
+  margin-left: 15px;
+}

@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import useExerciseValidationSchema from "../../hooks/useExerciseValidationSchema";
 import { useExerciseForm } from "../../hooks/useExerciseForm";
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
-import styles from "./exerciseForm.module.css";
+import styles from "./form.module.css";
 
 const initialFormValues = {
   exerciseName: "",
@@ -40,8 +40,8 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
         const { errors, touched, isValid, dirty } = formik;
         return (
           <Form>
-            <div className="form-container">
-              <div className="input-container">
+            <div className={styles["form-container"]}>
+              <div className={styles["input-container"]}>
                 <label>Exercise Name:</label>
                 <Field
                   type="text"
@@ -49,7 +49,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
                   id="exerciseName"
                   className={
                     errors.exerciseName && touched.exerciseName
-                      ? "input-error"
+                      ? styles["input-error"]
                       : null
                   }
                 />
@@ -60,7 +60,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
                 />
               </div>
               {category === "strength" && (
-                <div className="input-container">
+                <div className={styles["input-container"]}>
                   <label>Calories / rep:</label>
                   <Field
                     type="number"
@@ -69,7 +69,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
                     id="caloriesPerRep"
                     className={
                       errors.caloriesPerRep && touched.caloriesPerRep
-                        ? "input-error"
+                        ? styles["input-error"]
                         : null
                     }
                   />
@@ -81,7 +81,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
                 </div>
               )}
               {category === "cardio" && (
-                <div className="input-container">
+                <div className={styles["input-container"]}>
                   <label>Calories / 15 minutes:</label>
                   <Field
                     type="number"
@@ -90,7 +90,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
                     id="caloriesPerDuration"
                     className={
                       errors.caloriesPerDuration && touched.caloriesPerDuration
-                        ? "input-error"
+                        ? styles["input-error"]
                         : null
                     }
                   />
@@ -101,7 +101,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
                   />
                 </div>
               )}
-              <div className="input-container">
+              <div className={styles["input-container"]}>
                 <label>Description:</label>
                 <Field
                   as="textarea"
@@ -109,7 +109,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
                   id="description"
                   className={
                     errors.description && touched.description
-                      ? "input-error"
+                      ? styles["input-error"]
                       : null
                   }
                 />
@@ -119,9 +119,9 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
                   className="error"
                 />
               </div>
-              <div className="form-btn-ctn">
+              <div className={styles["form-btn-ctn"]}>
                 <button
-                  className="form-btn"
+                  className={styles["form-btn"]}
                   type="button"
                   onClick={() => {
                     updateSuccessMessage("");
@@ -133,16 +133,18 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
                 </button>
                 <button
                   type="submit"
-                  className={`form-btn ${
-                    !(dirty && isValid) ? "disabled-btn" : ""
+                  className={`${styles["form-btn"]} ${
+                    !(dirty && isValid) ? styles["disabled-btn"] : ""
                   }`}
                   disabled={!(dirty && isValid)}
                 >
                   Add Exercise
                 </button>
               </div>
-              <div className="success-ctn">
-                <div className="success-message">{successMessage}</div>
+              <div className={styles["form-success-ctn"]}>
+                <div className={styles["form-success-message"]}>
+                  {successMessage}
+                </div>
               </div>
             </div>
           </Form>

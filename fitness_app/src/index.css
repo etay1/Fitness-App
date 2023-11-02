@@ -47,74 +47,6 @@ code {
   flex: 1;
 }
 
-.form-ctn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-/* Title for Forms*/
-.title-form {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--primary-color);
-  text-align: center;
-}
-
-/* Category Button CSS */
-.category-toggle {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.category-button {
-  color: var(--primary-color);
-  margin: 5px;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  border: 2px solid var(--primary-color);
-}
-
-.active {
-  background-color: var(--primary-color);
-  color: var(--white-color);
-}
-
-.inactive {
-  background-color: var(--white-color);
-}
-
-/* Inputs for Forms */
-.input-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.input-container label {
-  color: var(--primary-color);
-}
-
-input[type="text"],
-input[type="number"],
-input[type="date"],
-input[type="time"],
-textarea {
-  padding: 8px;
-  margin: 5px 0px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
 
 /* Modals */
 .modal {
@@ -140,59 +72,6 @@ textarea {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.65);
   z-index: -1; /* Place the overlay behind the popup */
-}
-
-/* Buttons */
-.form-btn-ctn {
-  display: flex;
-  margin-top: 10px;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.form-btn {
-  background-color: var(--primary-color);
-  padding: 8px;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.message {
-  color: var(--primary-color);
-  font-weight: bold;
-}
-
-/* Form Validating */
-.error {
-  color: var(--error-color);
-  font-size: 1rem;
-  margin-top: 0.3rem;
-}
-
-.input-error {
-  border-color: var(--error-color);
-}
-
-.disabled-btn {
-  cursor: not-allowed;
-  background-color: rgba(128, 128, 128, 0.5);
-}
-
-.success-ctn {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: var(--white-color);
-}
-
-.success-message {
-  color: var(--primary-color);
-  text-align: center;
-  margin-left: 15px;
 }
 
 /* Media Queries */

@@ -1,0 +1,25 @@
+/* Category Button CSS */
+.category-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .category-button {
+    color: var(--primary-color);
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid var(--primary-color);
+  }
+  
+  .active {
+    background-color: var(--primary-color);
+    color: var(--white-color) !important;
+  }
+  
+  .inactive {
+    background-color: var(--white-color);
+  }
+  
