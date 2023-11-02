@@ -24,7 +24,7 @@ function AddUserWeight({
         <div className="user-weight-form">
           <h1 className="title-form">Record Weight</h1>
           <form>
-            <div className="input-container">
+            <div className="input-ctn">
               <label>Date:</label>
               <input
                 type="date"
@@ -33,7 +33,7 @@ function AddUserWeight({
                 onChange={handleDateChange}
               />
             </div>
-            <div className="input-container">
+            <div className="input-ctn">
               <label>Weight (in lbs):</label>
               <input
                 type="number"

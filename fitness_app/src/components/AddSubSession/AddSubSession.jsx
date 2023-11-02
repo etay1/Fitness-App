@@ -34,7 +34,7 @@ function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
           />
 
           <form>
-            <div className="input-container">
+            <div className="input-ctn">
               <label>Workout:</label>
               <input
                 type="text"
@@ -44,7 +44,7 @@ function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
               />
             </div>
 
-            <div className="input-container">
+            <div className="input-ctn">
               <label>Start Time:</label>
               <input
                 type="time"
@@ -53,7 +53,7 @@ function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
                 onChange={handleInputChange}
               />
             </div>
-            <div className="input-container">
+            <div className="input-ctn">
               <label>End Time:</label>
               <input
                 type="time"
@@ -64,7 +64,7 @@ function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
             </div>
 
             {category === "strength" && (
-              <div className="input-container">
+              <div className="input-ctn">
                 <label>Sets:</label>
                 <input
                   type="number"
@@ -76,7 +76,7 @@ function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
             )}
 
             {category === "strength" && (
-              <div className="input-container">
+              <div className="input-ctn">
                 <label>Reps per Set:</label>
                 <input
                   type="number"

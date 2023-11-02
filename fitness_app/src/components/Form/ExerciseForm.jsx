@@ -40,8 +40,8 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
         const { errors, touched, isValid, dirty } = formik;
         return (
           <Form>
-            <div className={styles["form-container"]}>
-              <div className={styles["input-container"]}>
+            <div className={styles["form-ctn"]}>
+              <div className={styles["input-ctn"]}>
                 <label>Exercise Name:</label>
                 <Field
                   type="text"
@@ -60,7 +60,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
                 />
               </div>
               {category === "strength" && (
-                <div className={styles["input-container"]}>
+                <div className={styles["input-ctn"]}>
                   <label>Calories / rep:</label>
                   <Field
                     type="number"
@@ -81,7 +81,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
                 </div>
               )}
               {category === "cardio" && (
-                <div className={styles["input-container"]}>
+                <div className={styles["input-ctn"]}>
                   <label>Calories / 15 minutes:</label>
                   <Field
                     type="number"
@@ -101,7 +101,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
                   />
                 </div>
               )}
-              <div className={styles["input-container"]}>
+              <div className={styles["input-ctn"]}>
                 <label>Description:</label>
                 <Field
                   as="textarea"

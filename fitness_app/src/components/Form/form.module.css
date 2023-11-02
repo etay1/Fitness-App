@@ -6,13 +6,13 @@
 }
 
 /* Inputs for Forms */
-.input-container {
+.input-ctn {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.input-container label {
+.input-ctn label {
   color: var(--primary-color);
 }
 
@@ -31,6 +31,7 @@ textarea {
 .form-btn-ctn {
   display: flex;
   margin-top: 10px;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
 }
@@ -62,16 +63,16 @@ textarea {
 
 /* Form Statis Messaging */
 .form-success-ctn {
-  position: absolute;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  justify-content: center;
   background-color: var(--white-color);
+  width: 100%;
 }
 
 .form-success-message {
   color: var(--primary-color);
+  width: 100%;
   text-align: center;
-  margin-left: 15px;
+  margin-top: 10px;
 }
