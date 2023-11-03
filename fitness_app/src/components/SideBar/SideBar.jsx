@@ -172,6 +172,7 @@ const Sidebar = ({supabase}) => {
               title="Sign Out"
               icon={<LogoutIcon />}
               selected={selected}
+              to={""}
               onClick={() => supabase.auth.signOut()}
               setSelected={setSelected}
             />
