@@ -1,20 +1,21 @@
 import { useState } from "react";
+import { HandleDatabaseError } from "../utils/HandleDatabaseError";
+import { supabase } from "../supabase/client";
 
-export function useSubSessionForm(supabase) {
+export function useSubSessionForm() {
   const [category, setCategory] = useState("strength");
-  const [subSessionData, setSubSessionData] = useState({
+  const [exerciseData, setExerciseData] = useState({
     exerciseName: "",
-    startTime: "",
-    endTime: "",
+    startTime: 0,
+    endTime: 0,
     sets: 0,
     repsPerSet: 0,
   });
-  const [successMessage, setSuccessMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setSubSessionData({ ...subSessionData, [name]: value });
+    setExerciseData({ ...exerciseData, [name]: value });
   };
 
   const handleCategoryChange = (newCategory) => {
@@ -22,53 +23,61 @@ export function useSubSessionForm(supabase) {
     setIsSuccess(false);
   };
 
-  const handleInsertion = async (values, category, updateSuccessMessage) => {
-    // You should add your Supabase logic for data insertion here
-    // Make API calls to insert data into your database using Supabase
+  const handleInsertion = async (
+    values,
+    categoryName,
+    updateSuccessMessage,
+  ) => {
     try {
-      // Example code (you need to adapt this to your Supabase setup)
-      const { data, error } = await supabase
-        .from("your_table_name")
-        .insert([
-          {
-            exerciseName: values.exerciseName,
-            startTime: values.startTime,
-            endTime: values.endTime,
-            sets: values.sets,
-            repsPerSet: values.repsPerSet,
-            category: category,
-          },
-        ]);
-      if (error) {
-        // Handle the error
-        console.error("Error inserting data:", error);
-        setIsSuccess(false);
-        updateSuccessMessage("Failed to insert data.");
-      } else {
-        // Data inserted successfully
+      const { exerciseName, startTime, endTime, sets, repsPerSet } = values;
+
+      // Define the common data to insert into both tables
+      const commonData = {
+        name: exerciseName,
+        startTime,
+        endTime,
+      };
+
+      if (categoryName === "cardio") {
+        const { data, error } = await supabase
+          .from("cardio_session")
+          .insert([commonData]);
+        
+        if (error) {
+          throw error;
+        }
+
         setIsSuccess(true);
-        updateSuccessMessage("Data inserted successfully.");
+        updateSuccessMessage("Successfully added Cardio Exercise.");
+      } else if (categoryName === "strength") {
+        const { data, error } = await supabase
+          .from("weight_session")
+          .insert([{ ...commonData, sets, repsPerSet }]);
+        
+        if (error) {
+          throw error;
+        }
+
+        setIsSuccess(true);
+        updateSuccessMessage("Successfully added Strength Exercise.");
+      } else {
+        // Handle an unsupported category
+        throw new Error("Unsupported category");
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.log("db error: ", error);
+      const errorCode = error.code;
+      HandleDatabaseError(errorCode, updateSuccessMessage);
       setIsSuccess(false);
-      updateSuccessMessage("An error occurred.");
     }
-  };
-
-  const handleAddSubSession = () => {
-    // You can call the handleInsertion function here to insert data
-    handleInsertion(subSessionData, category, setSuccessMessage);
   };
 
   return {
     category,
-    subSessionData,
-    successMessage,
+    exerciseData,
     isSuccess,
     handleInputChange,
     handleCategoryChange,
-    handleAddSubSession,
-    handleInsertion, // Export this function if needed in other components
+    handleInsertion,
   };
 }
