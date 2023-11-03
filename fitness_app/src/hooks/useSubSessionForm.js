@@ -40,33 +40,57 @@ export function useSubSessionForm() {
       };
 
       if (categoryName === "cardio") {
-        const cardioData = {
-          cardio_exercise_id: 5,
-        };
+        // SELECT id based on exercise name------------------------------------WIP1
+        const { data1, error1 } = await supabase
+          .from("cardio_exercise")
+          .select("cardio_exercise_id")
+          .eq("name", exerciseName);
 
-        const { data, error } = await supabase
+        if (error1) {
+          throw error1;
+        }
+
+        const cardioData = {
+          cardio_exercise_id: data1.cardio_exercise_id,
+        };
+        console.log(cardioData)
+        // --------------------------------------------------------------------WIP1
+        // INSERT INTO cardio_session
+        const { data2, error2 } = await supabase
           .from("cardio_session")
           .insert([{ ...commonData, ...cardioData }]);
-        console.log(commonData, cardioData);
 
-        if (error) {
-          throw error;
+        if (error2) {
+          throw error2;
         }
         setIsSuccess(true);
         updateSuccessMessage("Successfully added Cardio Exercise.");
       } else {
+        // SELECT id based on exercise name-------------------------------------WIP2
+        const { data1, error1 } = await supabase
+          .from("weight_exercise")
+          .select("weight_exercise_id")
+          .eq("name", exerciseName);
+
+        if (error1) {
+          throw error1;
+        }
+        // -----------------------------------------------------------------------WIP2
         const strengthData = {
           //weight_exercise_id is hardcoded for insertion
-          weight_exercise_id: 135,
+          weight_exercise_id: data1,
           sets: sets,
           reps_per_set: repsPerSet,
         };
-        const { data, error } = await supabase
+        // console.log(strengthData)
+
+        // INSERT INTO weight_session
+        const { data, error2 } = await supabase
           .from("weight_session")
           .insert([{ ...commonData, ...strengthData }]);
-        console.log(commonData, strengthData);
-        if (error) {
-          throw error;
+        // console.log(commonData, strengthData);
+        if (error2) {
+          throw error2;
         }
 
         setIsSuccess(true);
