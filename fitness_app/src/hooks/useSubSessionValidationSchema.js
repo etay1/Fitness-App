@@ -6,7 +6,7 @@ export default function useSubSessionValidationSchema(
     category, updateSuccessMessage) {
     const [validationSchema, setValidationSchema] = useState(null);
     const [key, setKey] = useState(0);
-I
+
     useEffect(() => {    
         if (category === "strength") {
             setValidationSchema(

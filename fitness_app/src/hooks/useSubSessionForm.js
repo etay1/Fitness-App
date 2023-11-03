@@ -1,10 +1,9 @@
 import { useState } from "react";
 
-export function useSubSessionForm() {
+export function useSubSessionForm(supabase) {
   const [category, setCategory] = useState("strength");
   const [subSessionData, setSubSessionData] = useState({
-    sessionName: "",
-    exercises: [],
+    exerciseName: "",
     startTime: "",
     endTime: "",
     sets: 0,
@@ -23,43 +22,43 @@ export function useSubSessionForm() {
     setIsSuccess(false);
   };
 
-  const handleAddSubSession = () => {
-    setSuccessMessage(
-      `Succimport { useState } from "react";
+  const handleInsertion = async (values, category, updateSuccessMessage) => {
+    // You should add your Supabase logic for data insertion here
+    // Make API calls to insert data into your database using Supabase
+    try {
+      // Example code (you need to adapt this to your Supabase setup)
+      const { data, error } = await supabase
+        .from("your_table_name")
+        .insert([
+          {
+            exerciseName: values.exerciseName,
+            startTime: values.startTime,
+            endTime: values.endTime,
+            sets: values.sets,
+            repsPerSet: values.repsPerSet,
+            category: category,
+          },
+        ]);
+      if (error) {
+        // Handle the error
+        console.error("Error inserting data:", error);
+        setIsSuccess(false);
+        updateSuccessMessage("Failed to insert data.");
+      } else {
+        // Data inserted successfully
+        setIsSuccess(true);
+        updateSuccessMessage("Data inserted successfully.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setIsSuccess(false);
+      updateSuccessMessage("An error occurred.");
+    }
+  };
 
-      const useUserWeightForm = (initialDate = new Date().toISOString().slice(0, 10)) => {
-        const [date, setDate] = useState(initialDate);
-        const [weight, setWeight] = useState("");
-      
-        const handleDateChange = (e) => {
-          setDate(e.target.value);
-        };
-      
-        const handleWeightChange = (e) => {
-          setWeight(e.target.value);
-        };
-      
-        const handleAddWeight = () => {
-          // You can add the logic to handle weight submission here
-        };
-      
-        return { date, weight, handleDateChange, handleWeightChange, handleAddWeight };
-      };
-      
-      export default useUserWeightForm;
-      essfully added ${
-        category === "cardio" ? "Cardio" : "Strength"
-      } Subsession.`
-    );
-    setIsSuccess(true);
-    setSubSessionData({
-      sessionName: "",
-      exercises: [],
-      startTime: "",
-      endTime: "",
-      sets: 0,
-      repsPerSet: 0,
-    });
+  const handleAddSubSession = () => {
+    // You can call the handleInsertion function here to insert data
+    handleInsertion(subSessionData, category, setSuccessMessage);
   };
 
   return {
@@ -70,5 +69,6 @@ export function useSubSessionForm() {
     handleInputChange,
     handleCategoryChange,
     handleAddSubSession,
+    handleInsertion, // Export this function if needed in other components
   };
 }
