@@ -40,7 +40,11 @@ export function useSubSessionForm() {
       };
 
       if (categoryName === "cardio") {
-        // SELECT id based on exercise name------------------------------------WIP1
+        // SELECT id based on exercise name------------------------------------WIP1-Start
+        // Corey all you have to do is get the id from the name we have exerciseName
+        // do this for both cardio and weight, the insert does not need to be touched 
+        // all you have to do is make sure that cardioData and strengthData 
+        // has cardio_exercise_id and weight_exercise_id consts (line 57,84)
         const { data1, error1 } = await supabase
           .from("cardio_exercise")
           .select("cardio_exercise_id")
@@ -54,7 +58,7 @@ export function useSubSessionForm() {
           cardio_exercise_id: data1.cardio_exercise_id,
         };
         console.log(cardioData)
-        // --------------------------------------------------------------------WIP1
+        // --------------------------------------------------------------------WIP1-End
         // INSERT INTO cardio_session
         const { data2, error2 } = await supabase
           .from("cardio_session")
@@ -66,7 +70,7 @@ export function useSubSessionForm() {
         setIsSuccess(true);
         updateSuccessMessage("Successfully added Cardio Exercise.");
       } else {
-        // SELECT id based on exercise name-------------------------------------WIP2
+        // SELECT id based on exercise name-------------------------------------WIP2-Start
         const { data1, error1 } = await supabase
           .from("weight_exercise")
           .select("weight_exercise_id")
@@ -75,15 +79,15 @@ export function useSubSessionForm() {
         if (error1) {
           throw error1;
         }
-        // -----------------------------------------------------------------------WIP2
         const strengthData = {
           //weight_exercise_id is hardcoded for insertion
           weight_exercise_id: data1,
           sets: sets,
           reps_per_set: repsPerSet,
         };
+        
         // console.log(strengthData)
-
+        // -----------------------------------------------------------------------WIP2-End
         // INSERT INTO weight_session
         const { data, error2 } = await supabase
           .from("weight_session")
