@@ -33,6 +33,7 @@ export function useSubSessionForm() {
 
       // Define the common data to insert into both tables
       const commonData = {
+        // session is hardcoded for insertion
         session_id: 1,
         start_time: startTime,
         end_time: endTime,
@@ -46,6 +47,7 @@ export function useSubSessionForm() {
         const { data, error } = await supabase
           .from("cardio_session")
           .insert([{ ...commonData, ...cardioData }]);
+        console.log(commonData, cardioData);
 
         if (error) {
           throw error;
@@ -54,6 +56,7 @@ export function useSubSessionForm() {
         updateSuccessMessage("Successfully added Cardio Exercise.");
       } else {
         const strengthData = {
+          //weight_exercise_id is hardcoded for insertion
           weight_exercise_id: 135,
           sets: sets,
           reps_per_set: repsPerSet,
