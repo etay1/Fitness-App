@@ -19,9 +19,9 @@ function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
             handleCategoryChange={handleCategoryChange}
           />
           <SubSessionForm
-          closeAddSubSessionPopup={closeAddSubSessionPopup}
-          category={category}
-          supabase={supabase}
+            closeAddSubSessionPopup={closeAddSubSessionPopup}
+            category={category}
+            supabase={supabase}
           />
         </div>
       </div>

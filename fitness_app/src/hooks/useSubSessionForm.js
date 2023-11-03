@@ -53,17 +53,15 @@ export function useSubSessionForm() {
         setIsSuccess(true);
         updateSuccessMessage("Successfully added Cardio Exercise.");
       } else {
-        const strengthData = {          
+        const strengthData = {
           weight_exercise_id: 135,
           sets: sets,
           reps_per_set: repsPerSet,
         };
-        
-
         const { data, error } = await supabase
           .from("weight_session")
           .insert([{ ...commonData, ...strengthData }]);
-          console.log(commonData, strengthData)
+        console.log(commonData, strengthData);
         if (error) {
           throw error;
         }
