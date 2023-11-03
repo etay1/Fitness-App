@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HandleDatabaseError } from "../utils/HandleDatabaseError";
+import { HandleDatabaseError } from "../../../utils/HandleDatabaseError";
 
 export function useExerciseForm(supabase) {
   const [category, setCategory] = useState("strength");

@@ -1,108 +1,69 @@
 import React from "react";
-import { useSubSessionForm } from "../../hooks/useSubSessionForm";
+import { useSubSessionForm } from "../../hooks/forms/SubSession/useSubSessionForm";
 import CategoryToggle from "../CategoryToggle/CategoryToggle";
 import styles from "./addSubSession.module.css";
+import SubSessionForm from "../Form/SubSessionForm";
+import { supabase } from "../../supabase/client";
+
+function FlattenList(list) {}
 
 function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
-  const {
-    category,
-    subSessionData,
-    successMessage,
-    isSuccess,
-    handleInputChange,
-    handleCategoryChange,
-    handleAddSubSession,
-  } = useSubSessionForm();
+	const {
+		category,
+		subSessionData,
+		successMessage,
+		isSuccess,
+		cardioList,
+		strengthList,
+		handleInputChange,
+		handleCategoryChange,
+		fetchExerciseData,
+		handleAddSubSession,
+	} = useSubSessionForm();
 
-  // Once we implement the ExerciseForm here, we can remove the useSubSessionForm hook above
-  // and replace it with the hook useCategoryChange
-  // since the ExerciseForm itself will call useSubSessionForm
-  // we can also remove handleCategoryChange from the useExerciseForm hook!!
-  // const [category, handleCategoryChange] = useCategoryChange("strength");
-  // See AddExercise for how the code was condensed
+	const dropdown = document.getElementById("dropdown");
 
-  return (
-    <div className={`modal ${isAddSubSessionPopupOpen ? "active" : ""}`}>
-      <div className="overlay"></div>
-      <div className="container">
-        <div className="form-ctn">
-          <h1 className="title-form">Add A Workout</h1>
+	// Populate the options using a loop
+	// if(category === "strength") {
+	//   strengthListNames.forEach(exercise => {
+	//       const option = document.createElement("option");
+	//       option.value = exercise.weight_exercise_id; // Use the exercise ID as the value
+	//       option.text = exercise.name;
+	//       dropdown.appendChild(option);
+	//   });
+	// }
 
-          <CategoryToggle
-            category={category}
-            handleCategoryChange={handleCategoryChange}
-          />
+	// if(category === "cardio") {
+	//   cardioListNames.forEach(exercise => {
+	//       const option = document.createElement("option");
+	//       option.value = exercise.cardio_exercise_id; // Use the exercise ID as the value
+	//       option.text = exercise.name;
+	//       dropdown.appendChild(option);
+	//   });
+	// }
 
-          <form>
-            <div className="input-ctn">
-              <label>Workout:</label>
-              <input
-                type="text"
-                name="sessionName"
-                value={subSessionData.sessionName}
-                onChange={handleInputChange}
-              />
-            </div>
+	return (
+		<div className={`modal ${isAddSubSessionPopupOpen ? "active" : ""}`}>
+			<div className='overlay'>
+				<div className='container'>
+					<div>
+						<h1 className='title-form'>Create a new workout</h1>
 
-            <div className="input-ctn">
-              <label>Start Time:</label>
-              <input
-                type="time"
-                name="startTime"
-                value={subSessionData.startTime}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="input-ctn">
-              <label>End Time:</label>
-              <input
-                type="time"
-                name="endTime"
-                value={subSessionData.endTime}
-                onChange={handleInputChange}
-              />
-            </div>
+						<CategoryToggle
+							category={category}
+							handleCategoryChange={handleCategoryChange}
+						/>
 
-            {category === "strength" && (
-              <div className="input-ctn">
-                <label>Sets:</label>
-                <input
-                  type="number"
-                  name="sets"
-                  min="0"
-                  value={subSessionData.sets}
-                  onChange={handleInputChange}
-                />
-              </div>
-            )}
-
-            {category === "strength" && (
-              <div className="input-ctn">
-                <label>Reps per Set:</label>
-                <input
-                  type="number"
-                  name="repsPerSet"
-                  min="0"
-                  value={subSessionData.repsPerSet}
-                  onChange={handleInputChange}
-                />
-              </div>
-            )}
-            <div className="form-btn-ctn">
-              <button className="form-btn" onClick={closeAddSubSessionPopup}>
-                Done
-              </button>
-              <button className="form-btn" onClick={handleAddSubSession}>
-                Add Workout
-              </button>
-            </div>
-          </form>
-
-          {isSuccess && <div className="message">{successMessage}</div>}
-        </div>
-      </div>
-    </div>
-  );
+						<SubSessionForm
+							closeAddSubSessionPopup={closeAddSubSessionPopup}
+							category={category}
+							supabase={supabase}
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default AddSubSession;

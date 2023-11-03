@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import * as Yup from "yup";
-import { useSuccessMessage } from "./useSuccessMessage";
+import { useSuccessMessage } from "../../useSuccessMessage";
 
 // Custom hook to manage the validation schema and form values
 export default function useExerciseValidationSchema(
