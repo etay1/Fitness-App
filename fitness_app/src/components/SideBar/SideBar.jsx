@@ -3,7 +3,6 @@ import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
-import { tokens } from "./theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
@@ -16,13 +15,13 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import TimelineIcon from '@mui/icons-material/Timeline';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
+  var style = getComputedStyle(document.body)
+
   return (
     <MenuItem
       active={selected === title}
       style={{
-        color: colors.grey[100],
+        color: style.getPropertyValue("--black-color"),
       }}
       onClick={() => setSelected(title)}
       icon={icon}
@@ -34,8 +33,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 };
 
 const Sidebar = ({supabase}) => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
+  var style = getComputedStyle(document.body)
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
 
@@ -43,7 +41,7 @@ const Sidebar = ({supabase}) => {
     <Box
       sx={{
         "& .pro-sidebar-inner": {
-          background: `${colors.primary[400]} !important`,
+          background: `${style.getPropertyValue("--white-color")} !important`,
           height: "100vh",
         },
         "& .pro-icon-wrapper": {
@@ -73,7 +71,8 @@ const Sidebar = ({supabase}) => {
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
               margin: "10px 0 20px 0",
-              color: colors.grey[100],
+              color: style.getPropertyValue("--black-color"),
+              
             }}
           >
             {!isCollapsed && (
@@ -100,7 +99,7 @@ const Sidebar = ({supabase}) => {
 
             <Typography
               variant="h6"
-              color={colors.grey[300]}
+              color={style.getPropertyValue("--light-grey-color")}
               sx={{ m: "15px 0 5px 10px" }}
             >
               Data
@@ -126,7 +125,7 @@ const Sidebar = ({supabase}) => {
 
             <Typography
               variant="h6"
-              color={colors.grey[300]}
+              color={style.getPropertyValue("--light-grey-color")}
               sx={{ m: "15px 0 5px 10px" }}
             >
               Pages
@@ -152,7 +151,7 @@ const Sidebar = ({supabase}) => {
 
             <Typography
               variant="h6"
-              color={colors.grey[300]}
+              color={style.getPropertyValue("--light-grey-color")}
               sx={{ m: "15px 0 5px 10px" }}
             >
               Charts
