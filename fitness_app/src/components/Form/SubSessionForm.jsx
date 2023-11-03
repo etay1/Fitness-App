@@ -59,7 +59,7 @@ const SubSessionForm = ({ closeSubSessionPopup, category, supabase }) => {
               <div className="input-container">
                 <label>Start Time: </label>
                 <Field
-                  type="text"
+                  type="time"
                   name="startTime"
                   id="startTime"
                   className={
@@ -75,7 +75,7 @@ const SubSessionForm = ({ closeSubSessionPopup, category, supabase }) => {
               <div className="input-container">
                 <label>End Time: </label>
                 <Field
-                  type="text"
+                  type="time"
                   name="endTime"
                   id="endTime"
                   className={
