@@ -4,6 +4,7 @@ import { supabase } from "../supabase/client";
 
 export function useSubSessionForm() {
   const [category, setCategory] = useState("strength");
+  const [isSuccess, setIsSuccess] = useState(false);
   const [exerciseData, setExerciseData] = useState({
     exerciseName: "",
     startTime: 0,
@@ -11,7 +12,6 @@ export function useSubSessionForm() {
     sets: 0,
     repsPerSet: 0,
   });
-  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -26,41 +26,51 @@ export function useSubSessionForm() {
   const handleInsertion = async (
     values,
     categoryName,
-    updateSuccessMessage,
+    updateSuccessMessage
   ) => {
     try {
       const { exerciseName, startTime, endTime, sets, repsPerSet } = values;
 
       // Define the common data to insert into both tables
       const commonData = {
-        name: exerciseName,
-        startTime,
-        endTime,
+        session_id: 1,
+        start_time: startTime,
+        end_time: endTime,
       };
 
       if (categoryName === "cardio") {
+        const cardioData = {
+          cardio_exercise_id: 5,
+        };
+
         const { data, error } = await supabase
           .from("cardio_session")
-          .insert([commonData]);
-        
+          .insert([{ ...commonData, ...cardioData }]);
+
         if (error) {
           throw error;
         }
-
         setIsSuccess(true);
         updateSuccessMessage("Successfully added Cardio Exercise.");
-      } else if (categoryName === "strength") {
+      } else {
+        const strengthData = {          
+          weight_exercise_id: 135,
+          sets: sets,
+          reps_per_set: repsPerSet,
+        };
+        
+
         const { data, error } = await supabase
           .from("weight_session")
-          .insert([{ ...commonData, sets, repsPerSet }]);
-        
+          .insert([{ ...commonData, ...strengthData }]);
+          console.log(commonData, strengthData)
         if (error) {
           throw error;
         }
 
         setIsSuccess(true);
         updateSuccessMessage("Successfully added Strength Exercise.");
-      } 
+      }
     } catch (error) {
       console.log("db error: ", error);
       const errorCode = error.code;

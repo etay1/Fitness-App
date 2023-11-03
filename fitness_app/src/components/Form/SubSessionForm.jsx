@@ -12,7 +12,7 @@ const initialFormValues = {
   repsPerSet: "0",
 };
 
-const SubSessionForm = ({ closeSubSessionPopup, category, supabase }) => {
+const SubSessionForm = ({ closeAddSubSessionPopup, category, supabase }) => {
   const { isSuccess, handleInsertion } = useSubSessionForm(supabase);
   const { successMessage, updateSuccessMessage } = useSuccessMessage();
   const { validationSchema, key } = useSubSessionValidationSchema(
@@ -135,7 +135,7 @@ const SubSessionForm = ({ closeSubSessionPopup, category, supabase }) => {
                   onClick={() => {
                     updateSuccessMessage("");
                     formik.resetForm();
-                    closeSubSessionPopup();
+                    closeAddSubSessionPopup();
                   }}
                 >
                   Done
