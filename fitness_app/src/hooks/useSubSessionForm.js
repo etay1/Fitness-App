@@ -60,10 +60,7 @@ export function useSubSessionForm() {
 
         setIsSuccess(true);
         updateSuccessMessage("Successfully added Strength Exercise.");
-      } else {
-        // Handle an unsupported category
-        throw new Error("Unsupported category");
-      }
+      } 
     } catch (error) {
       console.log("db error: ", error);
       const errorCode = error.code;
