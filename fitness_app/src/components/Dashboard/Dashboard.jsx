@@ -32,7 +32,6 @@ const Dashboard = ({ supabase, session }) => {
         <div className="sidebar">
           <Sidebar supabase={supabase} />
         </div>
-
         <div className="dashboard-content">
           <h1>Welcome {session.user.email} </h1>
           <button className="form-btn" onClick={() => supabase.auth.signOut()}>Sign Out</button>

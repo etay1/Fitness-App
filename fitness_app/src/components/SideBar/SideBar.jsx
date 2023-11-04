@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
-import { Box, IconButton, Typography, useTheme } from "@mui/material";
+import { Box, IconButton, Typography} from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -13,8 +13,9 @@ import AddIcon from '@mui/icons-material/Add';
 import LogoutIcon from '@mui/icons-material/Logout';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import TimelineIcon from '@mui/icons-material/Timeline';
+import { supabase } from "../../supabase/client";
 
-const Item = ({ title, to, icon, selected, setSelected }) => {
+const Item = ({ title, to, icon, selected, setSelected}) => {
   var style = getComputedStyle(document.body)
 
   return (
@@ -23,12 +24,13 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
       style={{
         color: style.getPropertyValue("--black-color"),
       }}
-      onClick={() => setSelected(title)}
+      onClick={title === "Sign Out" ? () => supabase.auth.signOut() : () => setSelected(title)} 
       icon={icon}
     >
       <Typography>{title}</Typography>
       <Link to={to} />
     </MenuItem>
+    
   );
 };
 
@@ -167,14 +169,13 @@ const Sidebar = ({supabase}) => {
             <br/>
             <br/>
             <br/>
+            <br/>
             <Item
-              title="Sign Out"
-              icon={<LogoutIcon />}
-              selected={selected}
-              to={""}
-              onClick={() => supabase.auth.signOut()}
-              setSelected={setSelected}
-            />
+            title="Sign Out"
+            icon={<LogoutIcon />}
+            selected={selected}
+            setSelected={setSelected}
+          />
           </Box>
         </Menu>
       </ProSidebar>
