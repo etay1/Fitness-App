@@ -3,7 +3,6 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import useExerciseValidationSchema from "../../hooks/useExerciseValidationSchema";
 import { useExerciseForm } from "../../hooks/useExerciseForm";
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
-import styles from "./exerciseForm.module.css";
 
 const initialFormValues = {
   exerciseName: "",

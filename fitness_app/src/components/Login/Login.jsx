@@ -11,9 +11,9 @@ export const Login = ({ supabase }) => {
   };
   return (
     <div className="page">
-      <div className={`container ${styles["ctn-login"]}`}>
+      <div className={`container ${styles["ctn"]}`}>
         {/* container item 1 */}
-        <div className={`box ${styles["left-box-lgn"]}`}>
+        <div className={`box ${styles["left-box"]}`}>
           {/* left-box item 1 */}
           <div>
             <Auth
@@ -31,8 +31,8 @@ export const Login = ({ supabase }) => {
           </div>
         </div>
 
-        <div className={`box ${styles["left-box-lgn"]}`}>
-          <img src={photo} alt="gym_photo" className={styles["img-lgn"]} />
+        <div className={`box ${styles["right-box"]}`}>
+          <img src={photo} alt="gym_photo" className={styles["img"]} />
         </div>
       </div>
     </div>
