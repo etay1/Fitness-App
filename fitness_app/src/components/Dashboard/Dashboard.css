@@ -1,17 +1,29 @@
 .dashboard {
   background-color: var(--primary-color);
-  display: flex;
-  align-items: center;
-}
-.form-btn {
-  margin: 10px;
-  border-radius: 7px;
-  border: 2px solid var(--white-color);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 0px;
 }
 
-.dashboard-content {
-  flex: 1;
-  text-align: center; 
+.sidebar {
+  grid-area: 1 / 1 / 6 / 2; 
+  overflow: hidden;
+  height: 100vh;
 }
 
+.header {
+  grid-area: 1 / 1 / 2 / 6; 
+}
+
+.user-weight-chart { 
+  grid-area: 2 / 2 / 4 / 4; 
+}
+.user-calories-chart { 
+  grid-area: 2 / 4 / 4 / 6; 
+}
+.another-item { 
+  grid-area: 4 / 2 / 6 / 6; 
+}
 

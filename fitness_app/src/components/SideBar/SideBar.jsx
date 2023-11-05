@@ -168,8 +168,6 @@ const Sidebar = ({supabase}) => {
             <br/>
             <br/>
             <br/>
-            <br/>
-            <br/>
             <Item
             title="Sign Out"
             icon={<LogoutIcon />}
