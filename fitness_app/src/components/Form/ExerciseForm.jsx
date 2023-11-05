@@ -3,6 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import useExerciseValidationSchema from "../../hooks/useExerciseValidationSchema";
 import { useExerciseForm } from "../../hooks/useExerciseForm";
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
+import Button from "../Button/Button";
+import EnterKeyHandler from "../Button/EnterKeyHandler";
 import styles from "./exerciseForm.module.css";
 
 const initialFormValues = {
@@ -39,6 +41,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
       {(formik) => {
         const { errors, touched, isValid, dirty } = formik;
         return (
+          <EnterKeyHandler onSubmit={formik.handleSubmit}>
           <Form>
             <div className="form-container">
               <div className="input-container">
@@ -120,32 +123,30 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
                 />
               </div>
               <div className="form-btn-ctn">
-                <button
-                  className="form-btn"
-                  type="button"
+                <Button
+                  text ="Done"
                   onClick={() => {
                     updateSuccessMessage("");
                     formik.resetForm();
                     closeAddExercisePopup();
                   }}
-                >
-                  Done
-                </button>
-                <button
-                  type="submit"
+                ></Button>
+                <Button
+                  text ="Add Exercise"
                   className={`form-btn ${
                     !(dirty && isValid) ? "disabled-btn" : ""
                   }`}
                   disabled={!(dirty && isValid)}
                 >
-                  Add Exercise
-                </button>
+                
+                </Button>
               </div>
               <div className="success-ctn">
                 <div className="success-message">{successMessage}</div>
               </div>
             </div>
           </Form>
+          </EnterKeyHandler>
         );
       }}
     </Formik>

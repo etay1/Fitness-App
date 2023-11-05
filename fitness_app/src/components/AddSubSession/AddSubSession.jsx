@@ -1,7 +1,9 @@
 import React from "react";
 import { useSubSessionForm } from "../../hooks/useSubSessionForm";
 import CategoryToggle from "../CategoryToggle/CategoryToggle";
+import EnterKeyHandler from "../Button/EnterKeyHandler";
 import styles from "./addSubSession.module.css";
+import SubSessionForm from "../Form/SubSessionForm";
 
 function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
   const {
@@ -32,76 +34,17 @@ function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
             category={category}
             handleCategoryChange={handleCategoryChange}
           />
-
-          <form>
-            <div className="input-container">
-              <label>Workout:</label>
-              <input
-                type="text"
-                name="sessionName"
-                value={subSessionData.sessionName}
-                onChange={handleInputChange}
-              />
-            </div>
-
-            <div className="input-container">
-              <label>Start Time:</label>
-              <input
-                type="time"
-                name="startTime"
-                value={subSessionData.startTime}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="input-container">
-              <label>End Time:</label>
-              <input
-                type="time"
-                name="endTime"
-                value={subSessionData.endTime}
-                onChange={handleInputChange}
-              />
-            </div>
-
-            {category === "strength" && (
-              <div className="input-container">
-                <label>Sets:</label>
-                <input
-                  type="number"
-                  name="sets"
-                  min="0"
-                  value={subSessionData.sets}
-                  onChange={handleInputChange}
-                />
-              </div>
-            )}
-
-            {category === "strength" && (
-              <div className="input-container">
-                <label>Reps per Set:</label>
-                <input
-                  type="number"
-                  name="repsPerSet"
-                  min="0"
-                  value={subSessionData.repsPerSet}
-                  onChange={handleInputChange}
-                />
-              </div>
-            )}
-            <div className="form-btn-ctn">
-              <button className="form-btn" onClick={closeAddSubSessionPopup}>
-                Done
-              </button>
-              <button className="form-btn" onClick={handleAddSubSession}>
-                Add Workout
-              </button>
-            </div>
-          </form>
-
-          {isSuccess && <div className="message">{successMessage}</div>}
-        </div>
+          <SubSessionForm
+            subSessionData={subSessionData}
+            handleInputChange={handleInputChange}
+            handleAddSubSession={handleAddSubSession}
+            closeAddSubSessionPopup={closeAddSubSessionPopup}
+            category={category}
+          />
+              {isSuccess && <div className="message">{successMessage}</div>}
+          </div>
+       </div>
       </div>
-    </div>
   );
 }
 
