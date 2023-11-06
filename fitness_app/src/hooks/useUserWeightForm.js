@@ -6,8 +6,9 @@ const useUserWeightForm = (
   userId) => {
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [weight, setUserWeight] = useState(""); 
-  const [successMessage, setSuccessMessage] = useState("");
+  const [successMessage, updateSuccessMessage] = useState("");
   const [isClicked, setIsClicked] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleDateChange = (e) => {
     setDate(e.target.value);
@@ -29,12 +30,16 @@ const useUserWeightForm = (
       if (error) {
         throw error;
       }
-      setSuccessMessage(`Successfully added weight`);
+      setIsSuccess(true);
+      updateSuccessMessage(`Successfully added weight`);
     } catch (e) {
       console.log(e.code);
       
+      
     }
     setIsClicked(true);
+
+    updateSuccessMessage(`fuck`);
 
   }
 
@@ -42,6 +47,7 @@ const useUserWeightForm = (
     date,
     weight,
     successMessage,
+    isSuccess,
     isClicked,
     handleDateChange,
     handleWeightChange,

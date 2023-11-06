@@ -1,4 +1,5 @@
 import React from "react";
+import { supabase } from "../../supabase/client"
 import useUserWeightForm from "../../hooks/useUserWeightForm";
 import WeightForm from "../Form/WeightForm";
 import styles from "./addUserWeight.module.css";
@@ -22,7 +23,10 @@ function AddUserWeight({
     <div className={`modal ${isAddUserWeightPopupOpen ? "active" : ""}`}>
       <div className="overlay"></div>
       <div className="container">
-          <WeightForm/>
+          <WeightForm
+            closeAddUserWeightPopup={closeAddUserWeightPopup}
+            supabase={supabase}
+          />
         </div>
     </div>
   );

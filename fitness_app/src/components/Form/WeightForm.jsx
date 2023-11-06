@@ -3,8 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import useWeightValidationSchema from "../../hooks/useWeightValidationSchema";
 import  useUserWeightForm  from "../../hooks/useUserWeightForm";
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
-//import "./WeightForm.css";
-import { useEffect } from "react";
+import styles from "./weightForm.module.css";
 
 
 // const getLastWeight = () => {
@@ -31,7 +30,7 @@ const WeightForm = ({ closeAddUserWeightPopup, supabase }) => {
             initialValues={initialFormValues}
             validationSchema={validationSchema}
             enableReinitialize={true}
-            onsubmit={(values, formik) => {
+            onSubmit={(values, formik) => {
                 handleInsertion(values, updateSuccessMessage);
                 if (isSuccess) {
                     formik.resetForm();
@@ -100,8 +99,12 @@ const WeightForm = ({ closeAddUserWeightPopup, supabase }) => {
                                         }`}
                                     disabled={!(dirty && isValid)}
                                 >
-                                    Add Exercise
+                                    Add Weight
                                 </button>
+
+                                <div className="success-ctn">
+                                    <div className="success-message">{successMessage}</div>
+                                </div>
                             </div>
                         </div>
                     </Form>
