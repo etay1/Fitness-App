@@ -32,11 +32,6 @@ const useUserWeightForm = (
       setSuccessMessage(`Successfully added weight`);
     } catch (e) {
       console.log(e.code);
-      if (e.code === "23514"){
-        setSuccessMessage("Please enter weight within range 51-1499");
-      } else {
-        setSuccessMessage("Failed to add weight");
-      }
       
     }
     setIsClicked(true);

@@ -1,14 +1,13 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import useWeightValidationSchema from "../../hooks/useWeightValidationSchema";
-import { useWeightForm } from "../../hooks/useExerciseForm";
+import  useUserWeightForm  from "../../hooks/useUserWeightForm";
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
-import "./WeightForm.css";
+//import "./WeightForm.css";
 import { useEffect } from "react";
 
 
 // const getLastWeight = () => {
-
 
 // }
 
@@ -19,8 +18,8 @@ const initialFormValues = {
 };
 
 
-const WeightForm = ({ closeAddWeightPopup, supabase }) => {
-    const { isSuccess, handleInsertion } = useWeightForm(supabase);
+const WeightForm = ({ closeAddUserWeightPopup, supabase }) => {
+    const { isSuccess, handleInsertion } = useUserWeightForm(supabase);
     const { successMessage, updateSuccessMessage } = useSuccessMessage();
     const { validationSchema, key } = useWeightValidationSchema(updateSuccessMessage);
 
@@ -90,7 +89,7 @@ const WeightForm = ({ closeAddWeightPopup, supabase }) => {
                                     onClick={() => {
                                         updateSuccessMessage("");
                                         formik.resetForm();
-                                        closeAddWeightPopup();
+                                        closeAddUserWeightPopup();
                                     }}
                                 >
                                     Done
@@ -111,3 +110,5 @@ const WeightForm = ({ closeAddWeightPopup, supabase }) => {
         </Formik>
     )
 }
+
+export default WeightForm;

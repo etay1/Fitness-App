@@ -1,5 +1,6 @@
 import React from "react";
 import useUserWeightForm from "../../hooks/useUserWeightForm";
+import WeightForm from "../Form/WeightForm";
 import styles from "./addUserWeight.module.css";
 
 function AddUserWeight({
@@ -21,46 +22,8 @@ function AddUserWeight({
     <div className={`modal ${isAddUserWeightPopupOpen ? "active" : ""}`}>
       <div className="overlay"></div>
       <div className="container">
-        <div className="user-weight-form">
-          <h1 className="title-form">Record Weight</h1>
-          <form>
-            <div className="input-container">
-              <label>Date:</label>
-              <input
-                type="date"
-                name="date"
-                value={date}
-                onChange={handleDateChange}
-              />
-            </div>
-            <div className="input-container">
-              <label>Weight (in lbs):</label>
-              <input
-                type="number"
-                name="weight"
-                min="0"
-                value={weight}
-                onChange={handleWeightChange}
-              />
-            </div>
-          </form>
-          <div className="form-btn-ctn">
-            <button className="form-btn" onClick={closeAddUserWeightPopup}>
-              Cancel
-            </button>
-            <button
-              className="form-btn"
-              type="button"
-              onClick={handleInsertion}
-            >
-              Record Weight
-            </button>
-          </div>
-
-
-          {isClicked && <div className="message">{successMessage}</div>}
+          <WeightForm/>
         </div>
-      </div>
     </div>
   );
 }
