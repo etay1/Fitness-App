@@ -8,7 +8,50 @@ import { Chart } from "chart.js";
 
 const UserWeightChart = ({ supabase, session }) => {
     const { weights, dates } = useFetchWeightData({ supabase, session });
+    
     var style = getComputedStyle(document.body)
+    const data = {
+      labels: ["January", "February", "March", "April", "May"],
+      datasets: [{
+          label: "Monthly Sales",
+          data: [10, 15, 7, 12, 20],
+          borderColor: "blue",
+          borderWidth: 2,
+          fill: false,
+      }]
+  };
+  
+  // // Chart configuration
+  // const config = {
+  //     type: 'line',
+  //     data: data,
+  //     options: {
+  //         scales: {
+  //             x: {
+  //                 display: true,
+  //                 title: {
+  //                     display: true,
+  //                     text: 'Month'
+  //                 }
+  //             },
+  //             y: {
+  //                 display: true,
+  //                 title: {
+  //                     display: true,
+  //                     text: 'Sales'
+  //                 }
+  //             }
+  //         }
+  //     },
+  // };
+  
+  // // Create the line chart
+  // useEffect(() => {
+  //   // Update the document title using the browser API
+   
+  // });
+  // const ctx = document.getElementById('myLineChart');
+  // const myChart = new Chart(ctx, config);
 
     return (
         <div>
@@ -42,6 +85,7 @@ const UserWeightChart = ({ supabase, session }) => {
                     width={500}
                     height={300}
                     />
+                    
                 </Box>
             </Container>
             </React.Fragment>

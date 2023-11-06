@@ -16,7 +16,6 @@ const useFetchWeightData = async ({ supabase, session }) => {
         const dates = data.map((weightObj) => weightObj.date);
         setWeights(weights);
         setDates(dates);
-        
 
     }
 
