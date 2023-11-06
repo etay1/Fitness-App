@@ -45,9 +45,14 @@ export function useSubSessionForm() {
         // do this for both cardio and weight, the insert does not need to be touched 
         // all you have to do is make sure that cardioData and strengthData 
         // has cardio_exercise_id and weight_exercise_id consts (line 57,84)
+
+  //  const { data, error } = await supabase
+  // .from('cities')
+  // .select('name, country_id')
+  // .eq('name', 'The Shire')    // Correct
         const { data1, error1 } = await supabase
           .from("cardio_exercise")
-          .select("cardio_exercise_id")
+          .select('name, cardio_exercise_id')
           .eq("name", exerciseName);
 
         if (error1) {
