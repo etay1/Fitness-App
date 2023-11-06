@@ -1,28 +1,12 @@
 import React from "react";
 import { supabase } from "../../supabase/client";
 import ExerciseForm from "../Form/ExerciseForm";
-import { useExerciseForm } from "../../hooks/useExerciseForm";
-import "./AddExercise.css";
+import { useCategoryChange } from "../../hooks/useCategoryChange"; // Import the new hook
+import CategoryToggle from "../CategoryToggle/CategoryToggle";
+import styles from "./addExercise.module.css";
 
-function AddExercise({
-  isAddExercisePopupOpen,
-  closeAddExercisePopup,
-  session,
-}) {
-  console.log("AddExercisepopup");
-  console.log(session);
-  console.log(session.user.email);
-  console.log(session.user.id);
-
-  const {
-    category,
-    exerciseData,
-    successMessage,
-    isSuccess,
-    handleInputChange,
-    handleCategoryChange,
-    handleAddExercise,
-  } = useExerciseForm(supabase);
+function AddExercise({ isAddExercisePopupOpen, closeAddExercisePopup }) {
+  const [category, handleCategoryChange] = useCategoryChange("strength");
 
   return (
     <div className={`modal ${isAddExercisePopupOpen ? "active" : ""}`}>
@@ -30,33 +14,17 @@ function AddExercise({
       <div className="container">
         <div className="form-ctn">
           <h1 className="title-form">Create a New Exercise</h1>
-          <div className="category-toggle">
-            <button
-              className={`category-button ${
-                category === "strength" ? "active" : "inactive"
-              }`}
-              onClick={() => handleCategoryChange("strength")}
-            >
-              Strength
-            </button>
-            <button
-              className={`category-button ${
-                category === "cardio" ? "active" : "inactive"
-              }`}
-              onClick={() => handleCategoryChange("cardio")}
-            >
-              Cardio
-            </button>
-          </div>
+
+          <CategoryToggle
+            category={category}
+            handleCategoryChange={handleCategoryChange}
+          />
 
           <ExerciseForm
             closeAddExercisePopup={closeAddExercisePopup}
             category={category}
+            supabase={supabase}
           />
-
-          {isSuccess && (
-            <div className="message-add-exercise">{successMessage}</div>
-          )}
         </div>
       </div>
     </div>

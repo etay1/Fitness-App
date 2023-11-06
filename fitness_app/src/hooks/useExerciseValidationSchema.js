@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
 import * as Yup from "yup";
+import { useSuccessMessage } from "./useSuccessMessage";
 
 // Custom hook to manage the validation schema and form values
-export default function useExerciseValidationSchema(category) {
+export default function useExerciseValidationSchema(
+  category,
+  updateSuccessMessage
+) {
   const [validationSchema, setValidationSchema] = useState(null);
   const [key, setKey] = useState(0);
 
@@ -30,8 +34,9 @@ export default function useExerciseValidationSchema(category) {
         })
       );
     }
-    // Update the key when the category changes
+    console.log(category);
     setKey((prevKey) => prevKey + 1);
+    updateSuccessMessage("");
   }, [category]);
 
   return { validationSchema, key };

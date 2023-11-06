@@ -1,7 +1,9 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import useExerciseValidationSchema from "../../hooks/useExerciseValidationSchema";
-import "./ExerciseForm.css";
+import { useExerciseForm } from "../../hooks/useExerciseForm";
+import { useSuccessMessage } from "../../hooks/useSuccessMessage";
+import styles from "./exerciseForm.module.css";
 
 const initialFormValues = {
   exerciseName: "",
@@ -10,8 +12,15 @@ const initialFormValues = {
   description: "",
 };
 
-const ExerciseForm = ({ closeAddExercisePopup, category }) => {
-  const { validationSchema, key } = useExerciseValidationSchema(category);
+const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
+  const { isSuccess, handleInsertion } = useExerciseForm(supabase);
+
+  const { successMessage, updateSuccessMessage } = useSuccessMessage();
+
+  const { validationSchema, key } = useExerciseValidationSchema(
+    category,
+    updateSuccessMessage
+  );
 
   return (
     <Formik
@@ -19,8 +28,12 @@ const ExerciseForm = ({ closeAddExercisePopup, category }) => {
       initialValues={initialFormValues}
       validationSchema={validationSchema}
       enableReinitialize={true}
-      onSubmit={(values) => {
-        console.log(values);
+      onSubmit={(values, formik) => {
+        handleInsertion(values, category, updateSuccessMessage);
+        console.log(isSuccess);
+        if (isSuccess) {
+          formik.resetForm();
+        }
       }}
     >
       {(formik) => {
@@ -51,6 +64,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category }) => {
                   <label>Calories / rep:</label>
                   <Field
                     type="number"
+                    min="0"
                     name="caloriesPerRep"
                     id="caloriesPerRep"
                     className={
@@ -71,6 +85,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category }) => {
                   <label>Calories / 15 minutes:</label>
                   <Field
                     type="number"
+                    min="0"
                     name="caloriesPerDuration"
                     id="caloriesPerDuration"
                     className={
@@ -109,6 +124,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category }) => {
                   className="form-btn"
                   type="button"
                   onClick={() => {
+                    updateSuccessMessage("");
                     formik.resetForm();
                     closeAddExercisePopup();
                   }}
@@ -124,6 +140,9 @@ const ExerciseForm = ({ closeAddExercisePopup, category }) => {
                 >
                   Add Exercise
                 </button>
+              </div>
+              <div className="success-ctn">
+                <div className="success-message">{successMessage}</div>
               </div>
             </div>
           </Form>

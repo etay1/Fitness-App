@@ -1,9 +1,12 @@
 import React from "react";
 import useUserWeightForm from "../../hooks/useUserWeightForm";
-import "./AddUserWeight.css";
+import styles from "./addUserWeight.module.css";
 
-
-function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup, session }) {
+function AddUserWeight({
+  isAddUserWeightPopupOpen,
+  closeAddUserWeightPopup,
+  session,
+}) {
   const {
     date,
     weight,
@@ -13,7 +16,6 @@ function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup, sess
     successMessage,
     isClicked,
   } = useUserWeightForm(session.user.id);
-
 
   return (
     <div className={`modal ${isAddUserWeightPopupOpen ? "active" : ""}`}>
@@ -36,6 +38,7 @@ function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup, sess
               <input
                 type="number"
                 name="weight"
+                min="0"
                 value={weight}
                 onChange={handleWeightChange}
               />
@@ -61,6 +64,5 @@ function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup, sess
     </div>
   );
 }
-
 
 export default AddUserWeight;
