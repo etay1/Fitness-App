@@ -7,6 +7,7 @@ import "./Dashboard.css";
 import { useEffect } from "react";
 import Sidebar from "../SideBar/SideBar";
 import UserWeightChart from "../UserWeightChart/UserWeightChart";
+import UserCaloriesChart from "../UserCaloriesChart/UserCalories";
 
 const Dashboard = ({ supabase, session }) => {
   const {
@@ -40,22 +41,14 @@ const Dashboard = ({ supabase, session }) => {
 
 
         </div>
-        <div class="user-weight-chart"> 
-          <div className="LineChart">
-              <UserWeightChart supabase={supabase} session={session}/>
-          </div>
+        <div class="another-item-chart"> 
+            <UserCaloriesChart supabase={supabase} session={session}/>
         </div>
         <div class="user-calories-chart"> 
-        <div className="LineChart">
-            <UserWeightChart supabase={supabase} session={session}/>
-          </div>
-
+            <UserCaloriesChart supabase={supabase} session={session}/>
         </div>
-        <div class="another-item">
-        <div className="LineChart">
+        <div class="user-weight-chart">
             <UserWeightChart supabase={supabase} session={session}/>
-          </div>
-
         </div>
 
 
