@@ -1,10 +1,9 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import useWeightValidationSchema from "../../hooks/useWeightValidationSchema";
 import  useUserWeightForm  from "../../hooks/useUserWeightForm";
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
-import styles from "./weightForm.module.css";
+//import styles from "./weightForm.module.css";
 
 ///// This would be used to get the last submitted weight from the database
 ///// This also seems like it would be a lot of work that I could potentially fuck up
@@ -22,19 +21,12 @@ import styles from "./weightForm.module.css";
 
     
 
-const WeightForm = ({ closeAddUserWeightPopup, supabase, userId }) => {
-    const [formValues, setFormValues] = useState({
+const WeightForm = ({ closeAddUserWeightPopup, supabase, session }) => {
+    const initialValues = {
         date: new Date().toISOString().slice(0, 10),
-        weight: 0,
-        user_id: userId,
-    })
-
-    useEffect(() => {
-        setFormValues({
-            ...formValues,
-            user_id: userId,
-        })
-    },[userId]);
+        weight: 51,
+        user_id: session.user.id
+    }
 
 
     const { isSuccess, handleInsertion } = useUserWeightForm(supabase);
@@ -46,7 +38,7 @@ const WeightForm = ({ closeAddUserWeightPopup, supabase, userId }) => {
     return (
         <Formik
             key={key}
-            formValues={formValues}
+            initialValues={initialValues}
             validationSchema={validationSchema}
             enableReinitialize={true}
             onSubmit={(values, formik) => {
@@ -107,6 +99,7 @@ const WeightForm = ({ closeAddUserWeightPopup, supabase, userId }) => {
                                     onClick={() => {
                                         updateSuccessMessage("");
                                         formik.resetForm();
+                                        console.log("test");
                                         closeAddUserWeightPopup();
                                         
                                     }}

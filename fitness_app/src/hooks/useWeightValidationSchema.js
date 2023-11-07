@@ -13,11 +13,9 @@ export default function useWeightValidationSchema(
                 weight: Yup.number()
                     .min(51,"Please enter a weight above 50lbs")
                     .max(1499, "Please enter a weight below 1499lbs"),
-                user_id: Yup.lazy(),
+                user_id: Yup.string(),
             })
         );
-
-        updateSuccessMessage("");
     }, [updateSuccessMessage]);
 
     return { validationSchema };

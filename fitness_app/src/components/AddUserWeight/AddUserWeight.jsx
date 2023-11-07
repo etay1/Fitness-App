@@ -1,6 +1,6 @@
 import React from "react";
 import { supabase } from "../../supabase/client"
-import useUserWeightForm from "../../hooks/useUserWeightForm";
+//import useUserWeightForm from "../../hooks/useUserWeightForm";
 import WeightForm from "../Form/WeightForm";
 import styles from "./addUserWeight.module.css";
 
@@ -27,7 +27,7 @@ function AddUserWeight({
           <WeightForm
             closeAddUserWeightPopup={closeAddUserWeightPopup}
             supabase={supabase}
-            userId = {session.user.id}
+            session = {session}
           />
         </div>
     </div>
