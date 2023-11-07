@@ -89,10 +89,21 @@ const WeightForm = ({ closeAddUserWeightPopup, supabase }) => {
                                         updateSuccessMessage("");
                                         formik.resetForm();
                                         closeAddUserWeightPopup();
+                                        
                                     }}
                                 >
                                     Done
                                 </button>
+                                <div className="form-btn-ctn">
+                                    <button
+                                        className="form-btn"
+                                        type="button"
+                                        onClick={() => {
+                                            console.log(Formik.values);
+                                        }}
+                                    />
+
+                                </div>
                                 <button
                                     type="submit"
                                     className={`form-btn ${!(dirty && isValid) ? "disabled-btn" : ""
