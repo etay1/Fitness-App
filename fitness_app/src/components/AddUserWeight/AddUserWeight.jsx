@@ -9,15 +9,15 @@ function AddUserWeight({
   closeAddUserWeightPopup,
   session,
 }) {
-  const {
-    date,
-    weight,
-    handleDateChange,
-    handleWeightChange,
-    handleInsertion,
-    successMessage,
-    isClicked,
-  } = useUserWeightForm(session.user.id);
+  // const {
+  //   date,
+  //   weight,
+  //   handleDateChange,
+  //   handleWeightChange,
+  //   handleInsertion,
+  //   successMessage,
+  //   isClicked,
+  // } = useUserWeightForm(session.user.id);
 
   return (
     <div className={`modal ${isAddUserWeightPopupOpen ? "active" : ""}`}>

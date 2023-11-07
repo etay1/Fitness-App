@@ -1,13 +1,10 @@
 import { useState, useEffect } from "react";
 import * as Yup from "yup";
-import { useSuccessMessage } from "./useSuccessMessage";
-import * as Help from "../../src/components/AddUserWeight"
 
-export default function useWeightExcerciseSchema(
+export default function useWeightValidationSchema(
     updateSuccessMessage, session
 ) {
     const [validationSchema, setValidationSchema] = useState(null);
-
 
     useEffect(() => {
         setValidationSchema(
@@ -16,13 +13,11 @@ export default function useWeightExcerciseSchema(
                 weight: Yup.number()
                     .min(51,"Please enter a weight above 50lbs")
                     .max(1499, "Please enter a weight below 1499lbs"),
-                user_id:Help.userId,
-
             })
         );
+
         updateSuccessMessage("");
+    }, [session.user.id, updateSuccessMessage]);
 
-    });
-
-    return {validationSchema};
+    return { validationSchema };
 }
