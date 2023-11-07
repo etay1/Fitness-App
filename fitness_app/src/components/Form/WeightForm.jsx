@@ -1,23 +1,42 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import useWeightValidationSchema from "../../hooks/useWeightValidationSchema";
 import  useUserWeightForm  from "../../hooks/useUserWeightForm";
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
 import styles from "./weightForm.module.css";
 
-
+///// This would be used to get the last submitted weight from the database
+///// This also seems like it would be a lot of work that I could potentially fuck up
 // const getLastWeight = () => {
 
 // }
 
+//// Below code has been updated to be put inside the form itself in an effort to
+//// make userId function again
+// const initialFormValues = {
+//     date: new Date().toISOString().slice(0, 10),
+//     weight: 0,
+//     userId: null,
+// };
 
-const initialFormValues = {
-    date: new Date().toISOString().slice(0, 10),
-    weight: 0,
-};
+    
+
+const WeightForm = ({ closeAddUserWeightPopup, supabase, userId }) => {
+    const [formValues, setFormValues] = useState({
+        date: new Date().toISOString().slice(0, 10),
+        weight: 0,
+        user_id: userId,
+    })
+
+    useEffect(() => {
+        setFormValues({
+            ...formValues,
+            user_id: userId,
+        })
+    },[userId]);
 
 
-const WeightForm = ({ closeAddUserWeightPopup, supabase }) => {
     const { isSuccess, handleInsertion } = useUserWeightForm(supabase);
     const { successMessage, updateSuccessMessage } = useSuccessMessage();
     const { validationSchema, key } = useWeightValidationSchema(updateSuccessMessage);
@@ -27,7 +46,7 @@ const WeightForm = ({ closeAddUserWeightPopup, supabase }) => {
     return (
         <Formik
             key={key}
-            initialValues={initialFormValues}
+            formValues={formValues}
             validationSchema={validationSchema}
             enableReinitialize={true}
             onSubmit={(values, formik) => {

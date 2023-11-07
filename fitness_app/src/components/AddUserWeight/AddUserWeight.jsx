@@ -19,6 +19,7 @@ function AddUserWeight({
   //   isClicked,
   // } = useUserWeightForm(session.user.id);
 
+
   return (
     <div className={`modal ${isAddUserWeightPopupOpen ? "active" : ""}`}>
       <div className="overlay"></div>
@@ -26,6 +27,7 @@ function AddUserWeight({
           <WeightForm
             closeAddUserWeightPopup={closeAddUserWeightPopup}
             supabase={supabase}
+            userId = {session.user.id}
           />
         </div>
     </div>
