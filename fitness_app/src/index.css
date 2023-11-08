@@ -74,11 +74,11 @@ code {
   z-index: -1; /* Place the overlay behind the popup */
 }
 
-/* Media Queries */
+/* Media Queries
 @media screen and (max-width: 768px) {
   .container {
     width: 100%;
     height: 100%;
     padding: 20px;
   }
-}
+} */

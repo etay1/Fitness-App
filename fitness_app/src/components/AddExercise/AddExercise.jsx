@@ -12,11 +12,13 @@ function AddExercise({ isAddExercisePopupOpen, closeAddExercisePopup }) {
 		<div className={`modal ${isAddExercisePopupOpen ? "active" : ""}`}>
 			<div className='overlay'>
 				<div className='container'>
-					<div>
+					<div className='form-ctn'>
 						<h1 className='title-form'>Create a New Exercise</h1>
 
 						<CategoryToggle
 							category={category}
+							Add A Workout
+							
 							changeCategory={changeCategory}
 						/>
 
