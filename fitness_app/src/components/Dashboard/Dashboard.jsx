@@ -7,61 +7,61 @@ import { useModalState } from "../../hooks/useModalState";
 import styles from "./dashboard.module.css";
 
 const Dashboard = ({ supabase, session }) => {
-  const {
-    isOpen: isExerciseModalOpen,
-    openModal: openExerciseModal,
-    closeModal: closeExerciseModal,
-  } = useModalState(false);
-  const {
-    isOpen: isUserWeightModalOpen,
-    openModal: openUserWeightModal,
-    closeModal: closeWeightModal,
-  } = useModalState(false);
-  const {
-    isOpen: isAddSubSessionModalOpen,
-    openModal: openAddSubSessionModal,
-    closeModal: closeAddSubSessionModal,
-  } = useModalState(false);
+	const {
+		isOpen: isExerciseModalOpen,
+		openModal: openExerciseModal,
+		closeModal: closeExerciseModal,
+	} = useModalState(false);
+	const {
+		isOpen: isUserWeightModalOpen,
+		openModal: openUserWeightModal,
+		closeModal: closeWeightModal,
+	} = useModalState(false);
+	const {
+		isOpen: isAddSubSessionModalOpen,
+		openModal: openAddSubSessionModal,
+		closeModal: closeAddSubSessionModal,
+	} = useModalState(false);
 
-  const formBtnCss = styles["form-btn"];
+	const formBtnCss = styles["form-btn"];
 
-  return (
-    <div className={styles.dashboard} id="dashboard">
-      <h1>Welcome {session.user.email}</h1>
-      <button className={formBtnCss} onClick={() => supabase.auth.signOut()}>
-        Sign Out
-      </button>
-      <button className={formBtnCss} onClick={openExerciseModal}>
-        Add Exercise
-      </button>
-      <button className={formBtnCss} onClick={openAddSubSessionModal}>
-        Add Sub Session
-      </button>
-      <button className={formBtnCss} onClick={openUserWeightModal}>
-        Add User Weight
-      </button>
+	return (
+		<div className={styles.dashboard} id='dashboard'>
+			<h1>Welcome {session.user.email}</h1>
+			<button className={formBtnCss} onClick={() => supabase.auth.signOut()}>
+				Sign Out
+			</button>
+			<button className={formBtnCss} onClick={openExerciseModal}>
+				Add Exercise
+			</button>
+			<button className={formBtnCss} onClick={openAddSubSessionModal}>
+				Add Sub Session
+			</button>
+			<button className={formBtnCss} onClick={openUserWeightModal}>
+				Add User Weight
+			</button>
 
-      <Link to="/exercise-registry">Exercise Registry</Link>
-      
-      <AddExercise
-        isAddExercisePopupOpen={isExerciseModalOpen}
-        closeAddExercisePopup={closeExerciseModal}
-        session={session}
-      />
+			<Link to='/exercise-registry'>Exercise Registry</Link>
 
-      <AddSubSession
-        isAddSubSessionPopupOpen={isAddSubSessionModalOpen}
-        closeAddSubSessionPopup={closeAddSubSessionModal}
-        session={session}
-      />
+			<AddExercise
+				isAddExercisePopupOpen={isExerciseModalOpen}
+				closeAddExercisePopup={closeExerciseModal}
+				session={session}
+			/>
 
-      <AddUserWeight
-        isAddUserWeightPopupOpen={isUserWeightModalOpen}
-        closeAddUserWeightPopup={closeWeightModal}
-        session={session}
-      />
-    </div>
-  );
+			<AddSubSession
+				isAddSubSessionPopupOpen={isAddSubSessionModalOpen}
+				closeAddSubSessionPopup={closeAddSubSessionModal}
+				session={session}
+			/>
+
+			{/* <AddUserWeight
+				isAddUserWeightPopupOpen={isUserWeightModalOpen}
+				closeAddUserWeightPopup={closeWeightModal}
+				session={session}
+			/> */}
+		</div>
+	);
 };
 
 export default Dashboard;
