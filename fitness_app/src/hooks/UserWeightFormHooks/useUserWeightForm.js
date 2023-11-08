@@ -1,41 +1,37 @@
 import { useState } from "react";
 import { supabase } from "../../supabase/client";
 
-export function useUserWeightForm( session, updateSuccessMessage ) {
+export function useUserWeightForm(session, updateSuccessMessage) {
+	const [isSuccess, setIsSuccess] = useState(false);
 
-  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
-  const [weight, setUserWeight] = useState("");
-  const [isSuccess, setIsSuccess] = useState(false);
+	const userId = session.user.id;
 
-  const userId = 2;
-
-
-
-  const handleInsertion = async () => {
-    try {
+	const handleInsertion = async (values) => {
+		try {
+			const { weight, date } = values;
+      console.log(values);
       const tableName = "user_weight";
-      const { data, error } = await supabase
-        .from(tableName)
-        .insert([{ user_id: userId, weight, date }]);
+			const { data, error } = await supabase
+				.from(tableName)
+				.insert([{ user_id: userId, weight, date }]);
 
-      if (error) {
-        throw error;
-      }
+			if (error) {
+				throw error;
+			}
 
-      setIsSuccess(true);
-      updateSuccessMessage(`Successfully added weight`);
-    } catch (e) {
-      updateSuccessMessage("Failed to add weight");
-      setIsSuccess(false);
-    }
-  };
+			setIsSuccess(true);
+			updateSuccessMessage(`Successfully added weight`);
+		} catch (e) {
+			console.log("db error", e);
+			updateSuccessMessage("Failed to add weight");
+			setIsSuccess(false);
+		}
+	};
 
-  return {
-    date,
-    weight,
-    isSuccess,
-    handleInsertion,
-  };
+	return {
+		isSuccess,
+		handleInsertion,
+	};
 }
 
 export default useUserWeightForm;

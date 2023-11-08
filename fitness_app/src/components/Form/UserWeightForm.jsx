@@ -7,7 +7,7 @@ import styles from "./form.module.css";
 
 const initialFormValues = {
 	date: "",
-	weight: 0,
+	weight: 30,
 };
 
 const UserWeightForm = ({ closeAddUserWeightPopup, session }) => {
