@@ -27,6 +27,17 @@ textarea {
   border-radius: 4px;
 }
 
+/* Title for Forms*/
+.title-form {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+
 /* Buttons */
 .form-btn-ctn {
   display: flex;

@@ -2,7 +2,7 @@ import React from "react";
 import { supabase } from "../../supabase/client";
 import CategoryToggle from "../CategoryToggle/CategoryToggle";
 import SubSessionForm from "../Form/SubSessionForm";
-import styles from "./addSubSession.module.css";
+import styles from "../Form/form.module.css";
 import { useCategory } from "../../hooks/useCategory";
 
 function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
@@ -11,8 +11,9 @@ function AddSubSession({ isAddSubSessionPopupOpen, closeAddSubSessionPopup }) {
 		<div className={`modal ${isAddSubSessionPopupOpen ? "active" : ""}`}>
 			<div className='overlay'></div>
 			<div className='container'>
-				<div className='form-ctn'>
-					<h1 className='title-form'>Add A Workout</h1>
+				{/* <div className={styles['form-ctn']}> this is whats causing the form to look weird */}
+				<div>
+					<h1 className={styles['title-form']}>Add A Workout</h1>
 
 					<CategoryToggle category={category} changeCategory={changeCategory} />
 					<SubSessionForm
