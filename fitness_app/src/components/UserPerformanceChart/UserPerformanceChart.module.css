@@ -3,9 +3,18 @@
     justify-content: center;
     align-items: center;
     height: 325px;
-    width: 100%;
+    width: 125vh;
     background-color:var(--white-color);
     box-shadow: 0 0 6px 2px rgba(0,0,0,.1);
     border-bottom: 2px solid transparent;
     border-radius: 10px;
 }
+
+@media screen and (max-width: 768px) {
+    .userPerformanceChartContainer {
+        width: 500px;
+        height: 300px;
+    }
+
+}
+

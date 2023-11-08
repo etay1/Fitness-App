@@ -6,7 +6,6 @@ import { useModalState } from "../../hooks/useModalState";
 import styles from "./Dashboard.module.css";
 import { useEffect } from "react";
 import Sidebar from "../SideBar/SideBar";
-import UserWeightChart from "../UserWeightChart/UserWeightChart";
 import UserCaloriesChart from "../UserCaloriesChart/UserCaloriesChart";
 import Header from "../Header/Header";
 import UserPerformanceChart from "../UserPerformanceChart/UserPerformanceChart";
@@ -55,13 +54,9 @@ const Dashboard = ({ supabase, session }) => {
           <div className={styles.bottomContainer}>
 
             <div className={styles.bottomChart}>
-              <UserWeightChart supabase={supabase} session={session}/>
-            </div>
-            
-            <div className={styles.bottomChart}>
               <UserPerformanceChart supabase={supabase} session={session}/>
             </div>
-
+            
           </div>
 
         </div>

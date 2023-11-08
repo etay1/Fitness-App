@@ -8,7 +8,9 @@
 
 .bottomChart {
   width: 580px;
+  right: 100px;
 }
+
 .sidebarContainer {
   display: flex;
   position: relative;
