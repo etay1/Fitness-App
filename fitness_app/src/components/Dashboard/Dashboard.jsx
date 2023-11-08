@@ -2,6 +2,7 @@ import React from "react";
 import AddExercise from "../AddExercise/AddExercise";
 import AddUserWeight from "../AddUserWeight/AddUserWeight";
 import AddSubSession from "../AddSubSession/AddSubSession";
+import { Link } from "react-router-dom";
 import { useModalState } from "../../hooks/useModalState";
 import styles from "./dashboard.module.css";
 
@@ -22,7 +23,7 @@ const Dashboard = ({ supabase, session }) => {
     closeModal: closeAddSubSessionModal,
   } = useModalState(false);
 
-  const formBtnCss = `${styles["form-btn"]} form-btn`;
+  const formBtnCss = styles["form-btn"];
 
   return (
     <div className={styles.dashboard} id="dashboard">
@@ -40,6 +41,8 @@ const Dashboard = ({ supabase, session }) => {
         Add User Weight
       </button>
 
+      <Link to="/exercise-registry">Exercise Registry</Link>
+      
       <AddExercise
         isAddExercisePopupOpen={isExerciseModalOpen}
         closeAddExercisePopup={closeExerciseModal}
