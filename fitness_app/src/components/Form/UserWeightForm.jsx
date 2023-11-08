@@ -6,7 +6,7 @@ import { useSuccessMessage } from "../../hooks/useSuccessMessage";
 import styles from "./form.module.css";
 
 const initialFormValues = {
-	date: "",
+	date: new Date().toISOString().slice(0, 10),
 	weight: 30,
 };
 
