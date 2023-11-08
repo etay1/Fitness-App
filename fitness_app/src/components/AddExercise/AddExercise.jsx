@@ -17,8 +17,6 @@ function AddExercise({ isAddExercisePopupOpen, closeAddExercisePopup }) {
 
 						<CategoryToggle
 							category={category}
-							Add A Workout
-							
 							changeCategory={changeCategory}
 						/>
 
