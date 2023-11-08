@@ -10,7 +10,7 @@ const initialFormValues = {
 	weight: 0,
 };
 
-const UserWeightForm = ({closeAddUserWeightPopup, session}) => {
+const UserWeightForm = ({ closeAddUserWeightPopup, session }) => {
 	const { successMessage, updateSuccessMessage } = useSuccessMessage();
 
 	const { isSuccess, handleInsertion } = useUserWeightForm(
@@ -61,7 +61,7 @@ const UserWeightForm = ({closeAddUserWeightPopup, session}) => {
 							<div className={styles["input-ctn"]}>
 								<label>Weight:</label>
 								<Field
-									as='number'
+									type='number'
 									name='weight'
 									id='weight'
 									className={
@@ -69,6 +69,8 @@ const UserWeightForm = ({closeAddUserWeightPopup, session}) => {
 											? styles["input-error"]
 											: null
 									}
+									min='30'
+									max='1499'
 								/>
 								<ErrorMessage
 									name='weight'
