@@ -60,7 +60,6 @@ const ExerciseForm = ({ closeAddExercisePopup, supabase, category }) => {
 									name='exerciseName'
 									component='span'
 									className={styles.error}
-									r
 								/>
 							</div>
 							{category === "strength" && (
@@ -81,7 +80,6 @@ const ExerciseForm = ({ closeAddExercisePopup, supabase, category }) => {
 										name='caloriesPerRep'
 										component='span'
 										className={styles.error}
-										r
 									/>
 								</div>
 							)}
@@ -103,7 +101,6 @@ const ExerciseForm = ({ closeAddExercisePopup, supabase, category }) => {
 										name='caloriesPerDuration'
 										component='span'
 										className={styles.error}
-										r
 									/>
 								</div>
 							)}
@@ -123,7 +120,6 @@ const ExerciseForm = ({ closeAddExercisePopup, supabase, category }) => {
 									name='description'
 									component='span'
 									className={styles.error}
-									r
 								/>
 							</div>
 							<div className={styles["form-btn-ctn"]}>

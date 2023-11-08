@@ -81,12 +81,11 @@ const SubSessionForm = ({ closeAddSubSessionPopup, category, supabase }) => {
 										);
 									})}
 								</Field>
-			
+
 								<ErrorMessage
 									name='exerciseName'
 									component='span'
 									className={styles.error}
-									r
 								/>
 							</div>
 							<div className={styles["input-ctn"]}>
@@ -105,7 +104,6 @@ const SubSessionForm = ({ closeAddSubSessionPopup, category, supabase }) => {
 									name='startTime'
 									component='span'
 									className={styles.error}
-									r
 								/>
 							</div>
 							<div className={styles["input-ctn"]}>
@@ -124,7 +122,6 @@ const SubSessionForm = ({ closeAddSubSessionPopup, category, supabase }) => {
 									name='endTime'
 									component='span'
 									className={styles.error}
-									r
 								/>
 							</div>
 							{category === "strength" && (
@@ -143,7 +140,6 @@ const SubSessionForm = ({ closeAddSubSessionPopup, category, supabase }) => {
 										name='sets'
 										component='span'
 										className={styles.error}
-										r
 									/>
 								</div>
 							)}
@@ -165,7 +161,6 @@ const SubSessionForm = ({ closeAddSubSessionPopup, category, supabase }) => {
 										name='repsPerSet'
 										component='span'
 										className={styles.error}
-										r
 									/>
 								</div>
 							)}
