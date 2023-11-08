@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useSubSessionForm } from "../../hooks/useSubSessionForm";
-import useSubSessionValidationSchema from "../../hooks/useSubSessionValidationSchema";
+import { useSubSessionForm } from "../../hooks/SubSessionFormHooks/useSubSessionForm";
+import useSubSessionValidationSchema from "../../hooks/SubSessionFormHooks/useSubSessionValidationSchema";
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
 import styles from "./form.module.css";
 

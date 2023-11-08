@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import * as Yup from "yup";
-import { isStartTimeBeforeEndTime } from "../utils/IsStartTimeBeforeEndTime";
+import { isStartTimeBeforeEndTime } from "../../utils/IsStartTimeBeforeEndTime";
 
 export default function useSubSessionValidationSchema(
 	category,

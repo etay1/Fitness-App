@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { HandleDatabaseError } from "../utils/HandleDatabaseError";
+import { HandleDatabaseError } from "../../utils/HandleDatabaseError";
 
 export function useSubSessionForm(supabase, category, updateSuccessMessage) {
 	const [exerciseList, setExerciseList] = useState([]);
