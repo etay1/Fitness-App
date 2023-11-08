@@ -3,11 +3,14 @@ import AddExercise from "../AddExercise/AddExercise";
 import AddUserWeight from "../AddUserWeight/AddUserWeight";
 import AddSubSession from "../AddSubSession/AddSubSession";
 import { useModalState } from "../../hooks/useModalState";
-import "./Dashboard.css";
+import styles from "./Dashboard.module.css";
 import { useEffect } from "react";
 import Sidebar from "../SideBar/SideBar";
 import UserWeightChart from "../UserWeightChart/UserWeightChart";
-import UserCaloriesChart from "../UserCaloriesChart/UserCalories";
+import UserCaloriesChart from "../UserCaloriesChart/UserCaloriesChart";
+import Header from "../Header/Header";
+import UserPerformanceChart from "../UserPerformanceChart/UserPerformanceChart";
+
 
 const Dashboard = ({ supabase, session }) => {
   const {
@@ -28,40 +31,41 @@ const Dashboard = ({ supabase, session }) => {
 
 
   return (
-    
-
-      <div class="dashboard">
-
-        <div class="sidebar"> 
-          <Sidebar supabase={supabase} />
+  
+      <div className={styles.dashboard}>
+        
+        <div className={styles.sidebarContainer}>
+          <Sidebar/>
         </div>
 
-        <div class="header"> 
-          <h1>Welcome {session.user.email} </h1>
+        <div className={styles.widgetsContainer}>
 
-
-        </div>
-        <div class="another-item-chart"> 
-            <UserCaloriesChart supabase={supabase} session={session}/>
-        </div>
-        <div class="user-calories-chart"> 
-            <UserCaloriesChart supabase={supabase} session={session}/>
-        </div>
-        <div class="user-weight-chart">
-            <UserWeightChart supabase={supabase} session={session}/>
-        </div>
-
-
-{/*         
-        <div className="dashboard-content">
-
-          <div className="LineChart">
-            <UserWeightChart supabase={supabase} session={session}/>
+          <div className={styles.topContainer}>
+            <div className={styles.topChart}>
+              <UserCaloriesChart supabase={supabase} session={session}/>
+            </div>
+            <div className={styles.topChart}>
+              <UserCaloriesChart supabase={supabase} session={session}/>
+            </div>
+            <div className={styles.topChart}>
+              <UserCaloriesChart supabase={supabase} session={session}/>
+            </div>
           </div>
 
-        </div> */}
-    </div>
+          <div className={styles.bottomContainer}>
 
+            <div className={styles.bottomChart}>
+              <UserWeightChart supabase={supabase} session={session}/>
+            </div>
+            
+            <div className={styles.bottomChart}>
+              <UserPerformanceChart supabase={supabase} session={session}/>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
     
     
   );

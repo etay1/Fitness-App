@@ -41,40 +41,59 @@ const Sidebar = ({supabase}) => {
 
   return (
     <Box
-      sx={{
+    sx={{
+      "& .pro-sidebar-inner": {
+        background: `${style.getPropertyValue("--white-color")} !important`,
+        height: "100vh",
+        overflow: "hidden",
+      },
+      "& .pro-icon-wrapper": {
+        backgroundColor: "transparent !important",
+      },
+      "& .pro-inner-item": {
+        padding: "10px 20px 5px 20px !important",
+      },
+      "& .pro-inner-item:hover": {
+        color: "#868dfb !important",
+      },
+      "& .pro-inner-item:click": {
+        color: "#ffffff !important",
+      },
+      "& .pro-menu-item.active": {
+        color: "#ffffff !important",
+      },
+      "@media screen and (max-width: 768px)": {
         "& .pro-sidebar-inner": {
           background: `${style.getPropertyValue("--white-color")} !important`,
-          height: "100vh",
+          height: "270vh",
+          overflow: "hidden",
         },
-        "& .pro-icon-wrapper": {
-          backgroundColor: "transparent !important",
+        "& .pro-menu-item.click": {
+          width: "100vh",
         },
-        "& .pro-inner-item": {
-          padding: "10px 20px 5px 20px !important",
-        },
-        "& .pro-inner-item:hover": {
-          color: "#868dfb !important",
-        },
-        "& .pro-inner-item:click": {
-          color: "#ffffff !important",
-        },
-        "& .pro-menu-item.active": {
-          color: "#ffffff !important",
-        },
-        
-      }}
+      },
+    }}
+    
+    
     >
       <ProSidebar collapsed={isCollapsed}>
         <Menu iconShape="circle">
 
           {/* Menu Icon */}
-          <MenuItem
+          <MenuItem className="menu-burger-button"
             onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
               margin: "10px 0 20px 0",
               color: style.getPropertyValue("--black-color"),
               
+            }}
+            sx ={{
+              "@media screen and (max-width: 768px)": {
+                  "& .pro-menu-item.click": {
+                
+                  },
+                },
             }}
           >
             {!isCollapsed && (
@@ -166,13 +185,15 @@ const Sidebar = ({supabase}) => {
             />
             <br/>
             <br/>
-            <br/>
-            <br/>
             <Item
             title="Sign Out"
             icon={<LogoutIcon />}
             selected={selected}
             setSelected={setSelected}
+            sx ={{
+              "@media screen and (max-width: 768px)": {
+                },
+            }}
           />
           </Box>
         </Menu>

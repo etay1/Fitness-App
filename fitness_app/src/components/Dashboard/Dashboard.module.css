@@ -1,0 +1,63 @@
+/* CSS for the dashboard and containers */
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  background-color: var(--primary-color);
+}
+
+.bottomChart {
+  width: 580px;
+}
+.sidebarContainer {
+  display: flex;
+  position: relative;
+  height: 100vh;
+}
+
+.widgetsContainer {
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+  padding-left: 10px;
+  gap: 30px;
+}
+
+.topContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 60px; /* Reduce the gap for better spacing */
+  flex-wrap: nowrap;
+  overflow: auto; /* Add horizontal and vertical scrolling for smaller screens if necessary */
+}
+
+.bottomContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 50px; /* Reduce the gap for better spacing */
+}
+
+@media screen and (max-width: 768px) {
+  .dashboard {
+    flex-direction: row; /* Change to column layout for small screens */
+  }
+
+  .widgetsContainer {
+    padding-top: 20px; /* Adjust padding for better spacing on small screens */
+  }
+
+  .topContainer, .bottomContainer {
+    flex-direction: column; /* Display items in a column on small screens */
+    gap: 20px; /* Adjust the gap between items as needed */
+    overflow: hidden; /* Turn off both horizontal and vertical scrolling */
+  }
+
+  .topChart {
+    width: 355px;
+  }
+
+  .bottomChart {
+    width: 355px;
+  }
+}
