@@ -2,55 +2,55 @@ import { useState } from "react";
 import { HandleDatabaseError } from "../../utils/HandleDatabaseError";
 
 export function useExerciseForm(supabase, category, updateSuccessMessage) {
-	const [exerciseData, setExerciseData] = useState({
-		exerciseName: "",
-		description: "",
-		caloriesPerRep: 0,
-		caloriesPerDuration: 0,
-	});
-	const [isSuccess, setIsSuccess] = useState(false);
+  const [exerciseData, setExerciseData] = useState({
+    exerciseName: "",
+    description: "",
+    caloriesPerRep: 0,
+    caloriesPerDuration: 0,
+  });
+  const [isSuccess, setIsSuccess] = useState(false);
 
-	const handleInsertion = async (values) => {
-		const { exerciseName, caloriesPerRep, caloriesPerDuration, description } = values;
+  const handleInsertion = async (values) => {
+    const { exerciseName, caloriesPerRep, caloriesPerDuration, description } =
+      values;
 
-    console.log(exerciseName)
-    
+    console.log(exerciseName);
 
-		const tableName =
-			category === "cardio" ? "cardio_exercise" : "weight_exercise";
-		const calorieColumn =
-			category === "cardio" ? "calories_per_unit_duration" : "calories_per_rep";
-		const calories =
-			category === "cardio" ? caloriesPerDuration : caloriesPerRep;
+    const tableName =
+      category === "cardio" ? "cardio_exercise" : "weight_exercise";
+    const calorieColumn =
+      category === "cardio" ? "calories_per_unit_duration" : "calories_per_rep";
+    const calories =
+      category === "cardio" ? caloriesPerDuration : caloriesPerRep;
 
-		try {
-			const { data, error } = await supabase
-				.from(tableName)
-				.insert([
-					{ name: exerciseName, [calorieColumn]: calories, description },
-				]);
-			if (error) {
-				throw error;
-			}
-			setIsSuccess(true);
-			updateSuccessMessage(
-				`Successfully added ${
-					category === "cardio" ? "Cardio" : "Strength"
-				} Exercise.`
-			);
-		} catch (error) {
-			console.log("db error: ", error);
-			const errorCode = error.code;
-			HandleDatabaseError(errorCode, updateSuccessMessage);
-			setIsSuccess(false);
-		}
-	};
+    try {
+      const { data, error } = await supabase
+        .from(tableName)
+        .insert([
+          { name: exerciseName, [calorieColumn]: calories, description },
+        ]);
+      if (error) {
+        throw error;
+      }
+      setIsSuccess(true);
+      updateSuccessMessage(
+        `Successfully added ${
+          category === "cardio" ? "Cardio" : "Strength"
+        } Exercise.`
+      );
+    } catch (error) {
+      console.log("db error: ", error);
+      const errorCode = error.code;
+      HandleDatabaseError(errorCode, updateSuccessMessage);
+      setIsSuccess(false);
+    }
+  };
 
-	return {
-		category,
-		exerciseData,
-		isSuccess,
-		handleInsertion,
-	};
+  return {
+    category,
+    exerciseData,
+    isSuccess,
+    handleInsertion,
+  };
 }
 export default useExerciseForm;

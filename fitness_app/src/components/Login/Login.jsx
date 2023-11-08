@@ -6,35 +6,35 @@ import styles from "./login.module.css";
 
 // console.log(styles);
 export const Login = ({ supabase }) => {
-	const passwordPolicy = {
-		minLength: process.env.GOTRUE_PASSWORD_MIN_LENGTH || 6,
-	};
-	return (
-		<div className='page'>
-			<div className={`container ${styles["ctn"]}`}>
-				{/* container item 1 */}
-				<div className={`box ${styles["left-box"]}`}>
-					{/* left-box item 1 */}
-					<div>
-						<Auth
-							supabaseClient={supabase}
-							providers={[]}
-							passwordPolicy={passwordPolicy}
-							appearance={{
-								theme: ThemeSupa,
-								style: {
-									button: { background: "#047aed", color: "white" },
-									anchor: { color: "#047aed" },
-								},
-							}}
-						/>
-					</div>
-				</div>
+  const passwordPolicy = {
+    minLength: process.env.GOTRUE_PASSWORD_MIN_LENGTH || 6,
+  };
+  return (
+    <div className="page">
+      <div className={`container ${styles["ctn"]}`}>
+        {/* container item 1 */}
+        <div className={`box ${styles["left-box"]}`}>
+          {/* left-box item 1 */}
+          <div>
+            <Auth
+              supabaseClient={supabase}
+              providers={[]}
+              passwordPolicy={passwordPolicy}
+              appearance={{
+                theme: ThemeSupa,
+                style: {
+                  button: { background: "#047aed", color: "white" },
+                  anchor: { color: "#047aed" },
+                },
+              }}
+            />
+          </div>
+        </div>
 
-				<div className={`box ${styles["right-box"]}`}>
-					<img src={photo} alt='gym_photo' className={styles["img"]} />
-				</div>
-			</div>
-		</div>
-	);
+        <div className={`box ${styles["right-box"]}`}>
+          <img src={photo} alt="gym_photo" className={styles["img"]} />
+        </div>
+      </div>
+    </div>
+  );
 };
