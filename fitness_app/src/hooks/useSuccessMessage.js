@@ -7,7 +7,5 @@ export function useSuccessMessage() {
     setSuccessMessage(message);
   };
 
-  console.log(successMessage);
-
   return { successMessage, updateSuccessMessage };
 }

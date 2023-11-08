@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import useWeightValidationSchema from "../../hooks/useWeightValidationSchema";
-import  useUserWeightForm  from "../../hooks/useUserWeightForm";
+import useUserWeightForm from "../../hooks/useUserWeightForm";
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
 //import styles from "./weightForm.module.css";
 
@@ -19,30 +19,30 @@ import { useSuccessMessage } from "../../hooks/useSuccessMessage";
 //     userId: null,
 // };
 
-    
+
 
 const WeightForm = ({ closeAddUserWeightPopup, supabase, session }) => {
     const initialValues = {
         date: new Date().toISOString().slice(0, 10),
-        weight: 51,
-        user_id: session.user.id
+        weight: 0,
+        user_id: session.user.id,
     }
 
 
     const { isSuccess, handleInsertion } = useUserWeightForm(supabase);
     const { successMessage, updateSuccessMessage } = useSuccessMessage();
-    const { validationSchema, key } = useWeightValidationSchema(updateSuccessMessage);
+    const { validationSchema } = useWeightValidationSchema(updateSuccessMessage, session);
 
 
 
     return (
         <Formik
-            key={key}
             initialValues={initialValues}
             validationSchema={validationSchema}
             enableReinitialize={true}
             onSubmit={(values, formik) => {
                 handleInsertion(values, updateSuccessMessage);
+                console.log(isSuccess);
                 if (isSuccess) {
                     formik.resetForm();
                 }
@@ -99,9 +99,9 @@ const WeightForm = ({ closeAddUserWeightPopup, supabase, session }) => {
                                     onClick={() => {
                                         updateSuccessMessage("");
                                         formik.resetForm();
-                                        console.log("test");
+                                        console.log("test done button");
                                         closeAddUserWeightPopup();
-                                        
+
                                     }}
                                 >
                                     Done
@@ -111,7 +111,8 @@ const WeightForm = ({ closeAddUserWeightPopup, supabase, session }) => {
                                         className="form-btn"
                                         type="button"
                                         onClick={() => {
-                                            console.log(Formik.values);
+                                            console.log("test tiny button");
+                                            console.log(session.user.id);
                                         }}
                                     />
 
