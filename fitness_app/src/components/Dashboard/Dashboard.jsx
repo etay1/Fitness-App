@@ -24,15 +24,21 @@ const Dashboard = ({ supabase, session }) => {
 
   const formBtnCss = `${styles["form-btn"]} form-btn`;
 
-  console.log(styles);
   return (
-    // console.log(styles);
     <div className={styles.dashboard} id="dashboard">
       <h1>Welcome {session.user.email}</h1>
-      <button className={formBtnCss} onClick={() => supabase.auth.signOut()}>Sign Out</button>
-      <button className={formBtnCss} onClick={openExerciseModal}>Add Exercise</button>
-      <button className={formBtnCss} onClick={openAddSubSessionModal}>Add Sub Session</button>
-      <button className={formBtnCss} onClick={openUserWeightModal}>Add User Weight</button>
+      <button className={formBtnCss} onClick={() => supabase.auth.signOut()}>
+        Sign Out
+      </button>
+      <button className={formBtnCss} onClick={openExerciseModal}>
+        Add Exercise
+      </button>
+      <button className={formBtnCss} onClick={openAddSubSessionModal}>
+        Add Sub Session
+      </button>
+      <button className={formBtnCss} onClick={openUserWeightModal}>
+        Add User Weight
+      </button>
 
       <AddExercise
         isAddExercisePopupOpen={isExerciseModalOpen}
