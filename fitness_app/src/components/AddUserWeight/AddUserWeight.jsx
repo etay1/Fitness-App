@@ -8,16 +8,6 @@ function AddUserWeight({
   closeAddUserWeightPopup,
   session,
 }) {
-  // const {
-  //   date,
-  //   weight,
-  //   handleDateChange,
-  //   handleWeightChange,
-  //   handleInsertion,
-  //   successMessage,
-  //   isSuccess,
-  // } = useUserWeightForm(session.user.id);
-
   return (
     <div className={`modal ${isAddUserWeightPopupOpen ? "active" : ""}`}>
       <div className="overlay"></div>
