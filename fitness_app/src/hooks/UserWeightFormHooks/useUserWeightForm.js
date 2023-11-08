@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { supabase } from "../../supabase/client";
 
-export function useUserWeightForm({ session, updateSuccessMessage }) {
-  // console.log(session);
+export function useUserWeightForm( session, updateSuccessMessage ) {
+
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [weight, setUserWeight] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
-  // const { updateSuccessMessage } = useSuccessMessage();
 
-  // const userId = session.user.id;
   const userId = 2;
 
 

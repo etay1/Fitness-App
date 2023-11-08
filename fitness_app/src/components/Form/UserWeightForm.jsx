@@ -1,27 +1,27 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import useUserWeightValidationSchema from "../../hooks/UserWeightFormHooks/useUserWeightValidationSchema"
+import useUserWeightValidationSchema from "../../hooks/UserWeightFormHooks/useUserWeightValidationSchema";
 import { useUserWeightForm } from "../../hooks/UserWeightFormHooks/useUserWeightForm";
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
 import styles from "./form.module.css";
 
 const initialFormValues = {
 	date: "",
-    weight: 0,
+	weight: 0,
 };
 
-const UserWeightForm = ({ closeAddUserWeightPopup, session }) => {
+const UserWeightForm = ({closeAddUserWeightPopup, session}) => {
 	const { successMessage, updateSuccessMessage } = useSuccessMessage();
 
 	const { isSuccess, handleInsertion } = useUserWeightForm(
-        session,
-		updateSuccessMessage,
+		session,
+		updateSuccessMessage
 	);
 
 	const { validationSchema, key } = useUserWeightValidationSchema(
+		session,
 		updateSuccessMessage
 	);
-    
 
 	return (
 		<Formik
@@ -48,9 +48,7 @@ const UserWeightForm = ({ closeAddUserWeightPopup, session }) => {
 									name='date'
 									id='date'
 									className={
-										errors.date && touched.date
-											? styles["input-error"]
-											: null
+										errors.date && touched.date ? styles["input-error"] : null
 									}
 								/>
 								<ErrorMessage
@@ -59,7 +57,6 @@ const UserWeightForm = ({ closeAddUserWeightPopup, session }) => {
 									className={styles.error}
 								/>
 							</div>
-
 
 							<div className={styles["input-ctn"]}>
 								<label>Weight:</label>
@@ -79,7 +76,6 @@ const UserWeightForm = ({ closeAddUserWeightPopup, session }) => {
 									className={styles.error}
 								/>
 							</div>
-
 
 							<div className={styles["form-btn-ctn"]}>
 								<button

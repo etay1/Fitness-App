@@ -9,13 +9,13 @@ import styles from "./dashboard.module.css";
 const Dashboard = ({ supabase, session }) => {
 	const {
 		isOpen: isAddExerciseModalOpen,
-		openModal: openAddExerciseModal,
-		closeModal: closeAddExerciseModal,
+		openModal: openExerciseModal,
+		closeModal: closeExerciseModal,
 	} = useModalState(false);
 	const {
-		isOpen: isAddUserWeightModalOpen,
-		openModal: openAddUserWeightModal,
-		closeModal: closeAddUserWeightModal,
+		isOpen: isUserWeightModalOpen,
+		openModal: openUserWeightModal,
+		closeModal: closeUserWeightModal,
 	} = useModalState(false);
 	const {
 		isOpen: isAddSubSessionModalOpen,
@@ -31,13 +31,13 @@ const Dashboard = ({ supabase, session }) => {
 			<button className={formBtnCss} onClick={() => supabase.auth.signOut()}>
 				Sign Out
 			</button>
-			<button className={formBtnCss} onClick={openAddExerciseModal}>
+			<button className={formBtnCss} onClick={openExerciseModal}>
 				Add Exercise
 			</button>
 			<button className={formBtnCss} onClick={openAddSubSessionModal}>
 				Add Sub Session
 			</button>
-			<button className={formBtnCss} onClick={openAddUserWeightModal}>
+			<button className={formBtnCss} onClick={openUserWeightModal}>
 				Add User Weight
 			</button>
 
@@ -45,7 +45,7 @@ const Dashboard = ({ supabase, session }) => {
 
 			<AddExercise
 				isAddExercisePopupOpen={isAddExerciseModalOpen}
-				closeAddExercisePopup={closeAddExerciseModal}
+				closeAddExercisePopup={closeExerciseModal}
 				session={session}
 			/>
 
@@ -56,8 +56,8 @@ const Dashboard = ({ supabase, session }) => {
 			/>
 
 			<AddUserWeight
-				isAddUserWeightPopupOpen={isAddUserWeightModalOpen}
-				closeAddUserWeightPopup={closeAddUserWeightModal}
+				isUserWeightPopupOpen={isUserWeightModalOpen}
+				closeUserWeightPopup={closeUserWeightModal}
 				session={session}
 			/>
 		</div>

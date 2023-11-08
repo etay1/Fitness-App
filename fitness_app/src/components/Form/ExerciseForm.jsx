@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import useExerciseValidationSchema from "../../hooks/ExerciseFormHooks/useExerciseValidationSchema"
-import { useExerciseForm } from "../../hooks/ExerciseFormHooks/useExerciseForm";
+import useExerciseValidationSchema from "../../hooks/ExerciseFormHooks/useExerciseValidationSchema";
+import { useExerciseForm } from "../../hooks/ExerciseFormHooks/useExerciseForm"
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
 import styles from "./form.module.css";
 
