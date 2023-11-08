@@ -52,11 +52,11 @@ const SubSessionForm = ({ closeAddSubSessionPopup, category, supabase }) => {
                   as="select"
                   name="exerciseName"
                   id="exerciseName"
-                  className={
+                  className={`${styles["select-input"]} ${
                     errors.exerciseName && touched.exerciseName
                       ? styles["input-error"]
-                      : null
-                  }
+                      : ""
+                  }`}
                   // This onChange gets the ID from the exerciseList
                   // and assigns that id to exericse_id
                   onChange={(e) => {

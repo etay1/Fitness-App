@@ -15,7 +15,7 @@
 .input-ctn label {
   color: var(--primary-color);
 }
-
+.select-input,
 input[type="text"],
 input[type="number"],
 input[type="date"],
