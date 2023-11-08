@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import * as Yup from "yup";
-import { isStartTimeBeforeEndTime, areDatesEqual } from "../../../utils/CheckFormDates";
+import { isStartTimeBeforeEndTime } from "../utils/IsStartTimeBeforeEndTime";
 
-// Custom hook to manage the validation schema and form values
 export default function useSubSessionValidationSchema(
 	category,
 	updateSuccessMessage
@@ -14,53 +13,47 @@ export default function useSubSessionValidationSchema(
 		if (category === "strength") {
 			setValidationSchema(
 				Yup.object().shape({
-					dropDownSelection: Yup.string().required("Exercise Name is required"),
+					exerciseName: Yup.string().required("Exercise Name is required"),
+					exerciseId: Yup.number(),
 					startTime: Yup.string().required("Start Time is required"),
 					endTime: Yup.string()
 						.required("End Time is required")
 						.test(
-							"isBeforeEndTime",
-							"Start Time must be before End Time",
-							function (endTime) {
+							"is-before-end-time",
+							"Start time must be before end time",
+							function (value) {
 								const startTime = this.parent.startTime;
-								return isStartTimeBeforeEndTime(startTime, endTime);
-							}
-						)
-						.test(
-							"areDatesEqual",
-							"Start Time and End Time must have the same date",
-							function (endTime) {
-								const startTime = this.parent.startTime;
-								return areDatesEqual(startTime, endTime);
+								console.log("startTime: ", startTime, "endTime: ", value);
+								return isStartTimeBeforeEndTime(startTime, value);
 							}
 						),
-					sets: Yup.number()
-						.required("Sets is required")
-						.min(1, "Sets must be greater than 0"),
-					reps: Yup.number()
-						.required("Reps is required")
+					sets: Yup.number().required().min(1, "Sets must be greater than 0"),
+					repsPerSet: Yup.number()
+						.required()
 						.min(1, "Reps must be greater than 0"),
 				})
 			);
 		} else if (category === "cardio") {
 			setValidationSchema(
 				Yup.object().shape({
-					dropDownSelection: Yup.string().required("Exercise Name is required"),
+					exerciseName: Yup.string().required("Exercise Name is required"),
+					exerciseId: Yup.number(),
 					startTime: Yup.string().required("Start Time is required"),
 					endTime: Yup.string()
 						.required("End Time is required")
 						.test(
-							"isBeforeEndTime",
-							"Start Time must be before End Time",
-							function (endTime) {
+							"is-before-end-time",
+							"Start time must be before end time",
+							function (value) {
 								const startTime = this.parent.startTime;
-								return isStartTimeBeforeEndTime(startTime, endTime);
+								console.log("startTime: ", startTime, "endTime: ", value);
+								return isStartTimeBeforeEndTime(startTime, value);
 							}
 						),
 				})
 			);
 		}
-		console.log(category);
+		// console.log(category);
 		setKey((prevKey) => prevKey + 1);
 		updateSuccessMessage("");
 	}, [category]);

@@ -1,35 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import useSubSessionValidationSchema from "../../hooks/forms/SubSession/useSubSessionValidationSchema";
-import { useSubSessionForm } from "../../hooks/forms/SubSession/useSubSessionForm";
+import { useSubSessionForm } from "../../hooks/useSubSessionForm";
+import useSubSessionValidationSchema from "../../hooks/useSubSessionValidationSchema";
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
 import styles from "./form.module.css";
 
-const SubSessionForm = ({ closeAddSubSessionPopup, category, supabase }) => {
-	const { isSuccess, handleInsertion } = useSubSessionForm(supabase);
+const initialFormValues = {
+	exerciseName: "",
+	exercise_id: 0,
+	startTime: "",
+	endTime: "",
+	sets: "0",
+	repsPerSet: "0",
+};
 
+const SubSessionForm = ({ closeAddSubSessionPopup, category, supabase }) => {
 	const { successMessage, updateSuccessMessage } = useSuccessMessage();
+
+	const { isSuccess, exerciseList, handleInsertion } = useSubSessionForm(
+		supabase,
+		category,
+		updateSuccessMessage
+	);
 
 	const { validationSchema, key } = useSubSessionValidationSchema(
 		category,
 		updateSuccessMessage
 	);
 
-	const initialFormValues = {
-		dropDownSelection: "",
-		startTime: "",
-		endTime: "",
-		sets: 0,
-		repsPerSet: 0,
-	};
-
 	return (
 		<Formik
 			key={key}
 			initialValues={initialFormValues}
 			validationSchema={validationSchema}
+			enableReinitialize={true}
 			onSubmit={(values, formik) => {
-				console.log(values);
+				handleInsertion(values);
+				if (isSuccess) {
+					formik.resetForm();
+				}
 			}}
 		>
 			{(formik) => {
@@ -38,32 +47,51 @@ const SubSessionForm = ({ closeAddSubSessionPopup, category, supabase }) => {
 					<Form>
 						<div className={styles["form-ctn"]}>
 							<div className={styles["input-ctn"]}>
-								<label>Workout:</label>
+								<label>Exercise Name: </label>
 								<Field
 									as='select'
-									name='dropDownSelection'
-									id='dropDownSelection'
+									name='exerciseName'
+									id='exerciseName'
 									className={
-										errors.dropDownSelection && touched.dropDownSelection
+										errors.exerciseName && touched.exerciseName
 											? styles["input-error"]
 											: null
 									}
+									// This onChange gets the ID from the exerciseList
+									// and assigns that id to exericse_id
+									onChange={(e) => {
+										const selectedExerciseName = e.target.value;
+										const selectedExercise = exerciseList.find(
+											(exercise) => exercise.name === selectedExerciseName
+										);
+										const selectedExerciseId = selectedExercise
+											? selectedExercise.cardio_exercise_id ||
+											  selectedExercise.weight_exercise_id
+											: "";
+										formik.setFieldValue("exerciseName", selectedExerciseName);
+										formik.setFieldValue("exercise_id", selectedExerciseId);
+									}}
 								>
 									<option value=''>-- Select --</option>
-									<option value='option1'>Option 1</option>
-									<option value='option2'>Option 2</option>
-									<option value='option3'>Option 3</option>
+									{exerciseList.map((exercise, index) => {
+										return (
+											<option key={index} value={exercise.name}>
+												{exercise.name}
+											</option>
+										);
+									})}
 								</Field>
+
 								<ErrorMessage
-									name='dropDownSelection'
+									name='exerciseName'
 									component='span'
-									className='error'
+									className={styles.error}
 								/>
 							</div>
 							<div className={styles["input-ctn"]}>
-								<label>Start Time:</label>
+								<label>Start Time: </label>
 								<Field
-									type='datetime-local'
+									type='time'
 									name='startTime'
 									id='startTime'
 									className={
@@ -75,13 +103,13 @@ const SubSessionForm = ({ closeAddSubSessionPopup, category, supabase }) => {
 								<ErrorMessage
 									name='startTime'
 									component='span'
-									className='error'
+									className={styles.error}
 								/>
 							</div>
 							<div className={styles["input-ctn"]}>
-								<label>End Time:</label>
+								<label>End Time: </label>
 								<Field
-									type='datetime-local'
+									type='time'
 									name='endTime'
 									id='endTime'
 									className={
@@ -93,13 +121,12 @@ const SubSessionForm = ({ closeAddSubSessionPopup, category, supabase }) => {
 								<ErrorMessage
 									name='endTime'
 									component='span'
-									className='error'
+									className={styles.error}
 								/>
 							</div>
-
 							{category === "strength" && (
 								<div className={styles["input-ctn"]}>
-									<label>Sets:</label>
+									<label>Sets: </label>
 									<Field
 										type='number'
 										min='0'
@@ -112,14 +139,13 @@ const SubSessionForm = ({ closeAddSubSessionPopup, category, supabase }) => {
 									<ErrorMessage
 										name='sets'
 										component='span'
-										className='error'
+										className={styles.error}
 									/>
 								</div>
 							)}
-
 							{category === "strength" && (
 								<div className={styles["input-ctn"]}>
-									<label>Reps Per Set:</label>
+									<label>Reps per Set: </label>
 									<Field
 										type='number'
 										min='0'
@@ -134,7 +160,7 @@ const SubSessionForm = ({ closeAddSubSessionPopup, category, supabase }) => {
 									<ErrorMessage
 										name='repsPerSet'
 										component='span'
-										className='error'
+										className={styles.error}
 									/>
 								</div>
 							)}
@@ -157,7 +183,7 @@ const SubSessionForm = ({ closeAddSubSessionPopup, category, supabase }) => {
 									}`}
 									disabled={!(dirty && isValid)}
 								>
-									Add Exercise
+									Add Workout
 								</button>
 							</div>
 							<div className={styles["form-success-ctn"]}>
@@ -172,5 +198,4 @@ const SubSessionForm = ({ closeAddSubSessionPopup, category, supabase }) => {
 		</Formik>
 	);
 };
-
 export default SubSessionForm;

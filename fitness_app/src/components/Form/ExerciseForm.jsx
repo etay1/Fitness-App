@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import useExerciseValidationSchema from "../../hooks/forms/Exercise/useExerciseValidationSchema";
-import { useExerciseForm } from "../../hooks/forms/Exercise/useExerciseForm";
+import useExerciseValidationSchema from "../../hooks/useExerciseValidationSchema";
+import { useExerciseForm } from "../../hooks/useExerciseForm";
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
 import styles from "./form.module.css";
 
@@ -12,10 +12,14 @@ const initialFormValues = {
 	description: "",
 };
 
-const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
-	const { isSuccess, handleInsertion } = useExerciseForm(supabase);
-
+const ExerciseForm = ({ closeAddExercisePopup, supabase, category }) => {
 	const { successMessage, updateSuccessMessage } = useSuccessMessage();
+
+	const { isSuccess, handleInsertion } = useExerciseForm(
+		supabase,
+		category,
+		updateSuccessMessage
+	);
 
 	const { validationSchema, key } = useExerciseValidationSchema(
 		category,
@@ -29,8 +33,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
 			validationSchema={validationSchema}
 			enableReinitialize={true}
 			onSubmit={(values, formik) => {
-				handleInsertion(values, category, updateSuccessMessage);
-				console.log(isSuccess);
+				handleInsertion(values);
 				if (isSuccess) {
 					formik.resetForm();
 				}
@@ -56,7 +59,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
 								<ErrorMessage
 									name='exerciseName'
 									component='span'
-									className='error'
+									className={styles.error}
 								/>
 							</div>
 							{category === "strength" && (
@@ -76,7 +79,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
 									<ErrorMessage
 										name='caloriesPerRep'
 										component='span'
-										className='error'
+										className={styles.error}
 									/>
 								</div>
 							)}
@@ -97,7 +100,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
 									<ErrorMessage
 										name='caloriesPerDuration'
 										component='span'
-										className='error'
+										className={styles.error}
 									/>
 								</div>
 							)}
@@ -116,7 +119,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category, supabase }) => {
 								<ErrorMessage
 									name='description'
 									component='span'
-									className='error'
+									className={styles.error}
 								/>
 							</div>
 							<div className={styles["form-btn-ctn"]}>
