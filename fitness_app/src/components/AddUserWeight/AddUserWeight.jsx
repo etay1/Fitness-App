@@ -1,24 +1,15 @@
 import React from "react";
 import { supabase } from "../../supabase/client"
-//import useUserWeightForm from "../../hooks/useUserWeightForm";
+import useUserWeightForm from "../../hooks/useUserWeightForm";
 import WeightForm from "../Form/WeightForm";
 import styles from "./addUserWeight.module.css";
 
 function AddUserWeight({
   isAddUserWeightPopupOpen,
   closeAddUserWeightPopup,
-  session,
+  session
 }) {
-  // const {
-  //   date,
-  //   weight,
-  //   handleDateChange,
-  //   handleWeightChange,
-  //   handleInsertion,
-  //   successMessage,
-  //   isClicked,
-  // } = useUserWeightForm(session.user.id);
-
+  const { date, weight, successMessage, isClicked, isSuccess } = useUserWeightForm(session.user.id);
 
   return (
     <div className={`modal ${isAddUserWeightPopupOpen ? "active" : ""}`}>
@@ -27,7 +18,7 @@ function AddUserWeight({
           <WeightForm
             closeAddUserWeightPopup={closeAddUserWeightPopup}
             supabase={supabase}
-            session = {session}
+            session={session}
           />
         </div>
     </div>

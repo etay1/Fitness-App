@@ -21,17 +21,16 @@ import { useSuccessMessage } from "../../hooks/useSuccessMessage";
 
 
 
-const WeightForm = ({ closeAddUserWeightPopup, supabase, session }) => {
+const WeightForm = ({ closeAddUserWeightPopup, supabase}) => {
     const initialValues = {
         date: new Date().toISOString().slice(0, 10),
         weight: 0,
-        user_id: session.user.id,
     }
 
 
     const { isSuccess, handleInsertion } = useUserWeightForm(supabase);
     const { successMessage, updateSuccessMessage } = useSuccessMessage();
-    const { validationSchema } = useWeightValidationSchema(updateSuccessMessage, session);
+    const { validationSchema } = useWeightValidationSchema(updateSuccessMessage);
 
 
 
@@ -112,7 +111,6 @@ const WeightForm = ({ closeAddUserWeightPopup, supabase, session }) => {
                                         type="button"
                                         onClick={() => {
                                             console.log("test tiny button");
-                                            console.log(session.user.id);
                                         }}
                                     />
 

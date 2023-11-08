@@ -8,8 +8,6 @@ export default function useWeightValidationSchema(updateSuccessMessage, session)
             weight: Yup.number()
                 .min(51,"Please enter a weight above 50lbs")
                 .max(1499, "Please enter a weight below 1499lbs"),
-            user_id: Yup.string().equals([session.user.id], "Invalid user ID")
-                .required("User ID is required"),
         })
     );
 

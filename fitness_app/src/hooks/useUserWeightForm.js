@@ -14,7 +14,6 @@ const useUserWeightForm = (
     setDate(e.target.value);
   };
 
-
   const handleWeightChange = (e) => {
       setUserWeight(e.target.value);
   };
