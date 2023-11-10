@@ -15,18 +15,26 @@ function ExerciseRegistry() {
           <div className={styles["error"]}>Error: {error.toString()}</div>
         )}
         <div className={styles["strength-exercises"]}>
-          <h1 className={styles["category-title"]}> Weight Exercises</h1>
+          <h1 className={styles["category-title"]}>Weight Exercises</h1>
           <ul className={styles["exercise-list"]}>
             {strengthExercise.map((strengthExercise) => (
               <li className={styles["exercise-item"]} key={strengthExercise.id}>
-                <div className={styles["exercise-name"]}>
-                  {strengthExercise.name}
-                </div>
-                <div className={styles["exercise-description"]}>
-                  {strengthExercise.description}
-                </div>
-                <div className={styles["exercise-calories-per_unit"]}>
-                  {strengthExercise.calories_per_rep}
+                <div className={styles["exercise-details"]}>
+                  <div>
+                    <div className={styles["exercise-name"]}>
+                      {strengthExercise.name}
+                    </div>
+                    <div className={styles["exercise-description"]}>
+                      {strengthExercise.description}
+                    </div>
+                    <div className={styles["exercise-calories-per_unit"]}>
+                      {strengthExercise.calories_per_rep}
+                    </div>
+                  </div>
+                  <div className={styles["exercise-buttons"]}>
+                    <button className={styles["edit-button"]}>Edit</button>
+                    <button className={styles["delete-button"]}>Delete</button>
+                  </div>
                 </div>
               </li>
             ))}
@@ -37,14 +45,22 @@ function ExerciseRegistry() {
           <ul className={styles["exercise-list"]}>
             {cardioExercise.map((cardioExercise) => (
               <li className={styles["exercise-item"]} key={cardioExercise.id}>
-                <div className={styles["exercise-name"]}>
-                  {cardioExercise.name}
-                </div>
-                <div className={styles["exercise-description"]}>
-                  {cardioExercise.description}
-                </div>
-                <div className={styles["exercise-calories-per_unit"]}>
-                  {cardioExercise.calories_per_unit_duration}
+                <div className={styles["exercise-details"]}>
+                  <div>
+                    <div className={styles["exercise-name"]}>
+                      {cardioExercise.name}
+                    </div>
+                    <div className={styles["exercise-description"]}>
+                      {cardioExercise.description}
+                    </div>
+                    <div className={styles["exercise-calories-per_unit"]}>
+                      {cardioExercise.calories_per_unit_duration}
+                    </div>
+                  </div>
+                  <div className={styles["exercise-buttons"]}>
+                    <button className={styles["edit-button"]}>Edit</button>
+                    <button className={styles["delete-button"]}>Delete</button>
+                  </div>
                 </div>
               </li>
             ))}
