@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { useExerciseRegistry } from "../../hooks/useExerciseRegistry";
 import { useModalState } from "../../hooks/useModalState";
 import DeleteExercise from "../DeleteExercise/DeleteExercise";
@@ -12,6 +13,16 @@ function ExerciseRegistry() {
     openModal: openDeleteExerciseModal,
     closeModal: closeDeleteExerciseModal,
   } = useModalState(false);
+
+  const [exerciseId, setExerciseId] = useState(null);
+  const [exerciseType, setExerciseType] = useState(null);
+
+  const deleteExercise = (type, id) => {
+    setExerciseType(type);
+    setExerciseId(id);
+    openDeleteExerciseModal(type, id);
+    console.log(type, id);
+  };
 
   return (
     <div className={styles["exercise-registry"]}>
@@ -41,7 +52,17 @@ function ExerciseRegistry() {
                   </div>
                   <div className={styles["exercise-buttons"]}>
                     <button className={styles["edit-button"]}>Edit</button>
-                    <button className={styles["delete-button"]} onClick={openDeleteExerciseModal}>Delete</button>
+                    <button
+                      className={styles["delete-button"]}
+                      onClick={() =>
+                        deleteExercise(
+                          "strength",
+                          strengthExercise.weight_exercise_id
+                        )
+                      }
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
               </li>
@@ -52,7 +73,10 @@ function ExerciseRegistry() {
           <h1 className={styles["category-title"]}>Cardio Exercises</h1>
           <ul className={styles["exercise-list"]}>
             {cardioExercise.map((cardioExercise) => (
-              <li className={styles["exercise-item"]} key={cardioExercise.id}>
+              <li
+                className={styles["exercise-item"]}
+                key={cardioExercise.cardio_exercise_id}
+              >
                 <div className={styles["exercise-details"]}>
                   <div>
                     <div className={styles["exercise-name"]}>
@@ -67,7 +91,17 @@ function ExerciseRegistry() {
                   </div>
                   <div className={styles["exercise-buttons"]}>
                     <button className={styles["edit-button"]}>Edit</button>
-                    <button className={styles["delete-button"]}>Delete</button>
+                    <button
+                      className={styles["delete-button"]}
+                      onClick={() =>
+                        deleteExercise(
+                          "cardio",
+                          cardioExercise.cardio_exercise_id
+                        )
+                      }
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
               </li>
@@ -75,11 +109,9 @@ function ExerciseRegistry() {
           </ul>
         </div>
       </div>
-
       <DeleteExercise
         isDeleteExercisePopupOpen={isDeleteExerciseModalOpen}
         closeDeleteExercisePopup={closeDeleteExerciseModal}
-        // session={session}
       />
     </div>
   );

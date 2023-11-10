@@ -11,7 +11,6 @@ function DeleteExercise({
         <div className={styles["container"]}>
           <div>
             <h1 className={styles["prompt"]}>Confirm Deletion</h1>
-            {/* two buttons */}
             <div className={styles["buttons"]}>
               <button
                 className={styles["cancel-button"]}
