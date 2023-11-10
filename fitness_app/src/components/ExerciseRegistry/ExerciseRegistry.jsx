@@ -1,9 +1,17 @@
 import React from "react";
 import { useExerciseRegistry } from "../../hooks/useExerciseRegistry";
+import { useModalState } from "../../hooks/useModalState";
+import DeleteExercise from "../DeleteExercise/DeleteExercise";
 import styles from "./ExerciseRegistry.module.css";
 
 function ExerciseRegistry() {
   const { strengthExercise, cardioExercise, error } = useExerciseRegistry();
+
+  const {
+    isOpen: isDeleteExerciseModalOpen,
+    openModal: openDeleteExerciseModal,
+    closeModal: closeDeleteExerciseModal,
+  } = useModalState(false);
 
   return (
     <div className={styles["exercise-registry"]}>
@@ -33,7 +41,7 @@ function ExerciseRegistry() {
                   </div>
                   <div className={styles["exercise-buttons"]}>
                     <button className={styles["edit-button"]}>Edit</button>
-                    <button className={styles["delete-button"]}>Delete</button>
+                    <button className={styles["delete-button"]} onClick={openDeleteExerciseModal}>Delete</button>
                   </div>
                 </div>
               </li>
@@ -67,6 +75,12 @@ function ExerciseRegistry() {
           </ul>
         </div>
       </div>
+
+      <DeleteExercise
+        isDeleteExercisePopupOpen={isDeleteExerciseModalOpen}
+        closeDeleteExercisePopup={closeDeleteExerciseModal}
+        // session={session}
+      />
     </div>
   );
 }
