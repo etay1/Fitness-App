@@ -11,7 +11,12 @@
 }
 
 .title {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+.category-title {
+  font-size: 1.25rem;
   font-weight: 500;
   color: var(--primary-color);
 }
@@ -44,4 +49,20 @@
 .exercise-description {
   font-size: 1rem;
   color: #555;
+}
+
+.strength-exercises {
+  margin-top: 20px;
+}
+
+.cardio-exercises {
+  margin-top: 20px;
+}
+
+.cardio-exercises h2,
+.strength-exercises h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  margin-bottom: 10px;
 }

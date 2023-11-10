@@ -7,7 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import AddSubSession from "./components/AddSubSession/AddSubSession";
 import AddExercise from "./components/AddExercise/AddExercise";
 import AddUserWeight from "./components/AddUserWeight/AddUserWeight";
-import ExerciseRegistryView from "./components/ExerciseRegistry/ExerciseRegistryView";
+import ExerciseRegistry from "./components/ExerciseRegistry/ExerciseRegistry";
 import "./index.css";
 import PrivateRoute from "./utils/PrivateRoute";
 
@@ -27,7 +27,7 @@ ReactDOM.createRoot(root).render(
           <Route path="/add-user-weight" element={<AddUserWeight />} />
         </Route>
         <Route element={<PrivateRoute supabase={supabase} />}>
-          <Route path="/exercise-registry" element={<ExerciseRegistryView />} />
+          <Route path="/exercise-registry" element={<ExerciseRegistry />} />
         </Route>
       </Routes>
     </BrowserRouter>

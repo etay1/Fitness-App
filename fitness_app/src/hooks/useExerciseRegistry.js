@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { supabase } from "../supabase/client";
 
 export function useExerciseRegistry() {
-  const [exercises, setExercises] = useState([]);
+  const [strengthExercise, setStrengthExercise] = useState([])
+  const [cardioExercise, setCardioExercise] = useState([])
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -18,8 +19,8 @@ export function useExerciseRegistry() {
         if (cardioError || strengthError) {
           setError(cardioError || strengthError);
         } else {
-          const combinedData = [...cardioData, ...strengthData];
-          setExercises(combinedData);
+          setStrengthExercise(strengthData);
+          setCardioExercise(cardioData);
         }
       } catch (error) {
         setError(error);
@@ -28,5 +29,5 @@ export function useExerciseRegistry() {
     fetchExercises();
   }, []);
 
-  return { exercises, error };
+  return { strengthExercise, cardioExercise, error };
 }
