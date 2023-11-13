@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./DeleteExercise.module.css";
-import useExerciseDeletion from "../../hooks/ExerciseRegistryHooks/useExerciseDeletion"
+import useExerciseDeletion from "../../hooks/ExerciseRegistryHooks/useExerciseDeletion";
 import { supabase } from "../../supabase/client";
 
 function DeleteExercise({
@@ -9,7 +9,6 @@ function DeleteExercise({
   exerciseType,
   exerciseId,
 }) {
-
   const { confirmDeletion } = useExerciseDeletion();
 
   return (
@@ -27,7 +26,13 @@ function DeleteExercise({
               </button>
               <button
                 className={styles["delete-button"]}
-                onClick={() => confirmDeletion(exerciseType, exerciseId, closeDeleteExercisePopup)}
+                onClick={() =>
+                  confirmDeletion(
+                    exerciseType,
+                    exerciseId,
+                    closeDeleteExercisePopup
+                  )
+                }
               >
                 Delete
               </button>
