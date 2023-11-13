@@ -3,6 +3,7 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: -1;
 }
 
 .exercise-registry-header {
@@ -66,14 +67,12 @@
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 10px;
-} 
-
+}
 
 .exercise-description {
   font-size: 1rem;
   color: #555;
   margin-bottom: 10px;
-
 }
 
 .exercise-buttons {
