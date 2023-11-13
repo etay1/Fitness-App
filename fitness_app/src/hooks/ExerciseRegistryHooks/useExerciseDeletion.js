@@ -1,6 +1,9 @@
 import { supabase } from "../../supabase/client";
+import useRefreshPage from "../../hooks/useRefreshPage"; // Import the hook as a function
 
 function useExerciseDeletion() {
+  const handleRefresh = useRefreshPage(); // Call the hook as a function to get handleRefresh
+
   const confirmDeletion = async (type, id, closeDeleteExercisePopup) => {
     let tableName;
     let identifier;
@@ -26,6 +29,7 @@ function useExerciseDeletion() {
       } else {
         console.log("Exercise deleted successfully");
         closeDeleteExercisePopup();
+        handleRefresh(); // Now, handleRefresh is a function
 
       }
     }
