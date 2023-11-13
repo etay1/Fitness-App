@@ -18,21 +18,13 @@ function useExerciseDeletion() {
         .from(tableName)
         .delete()
         .eq(identifier, id);
-    
-        console.log(tableName, identifier, id)
 
-      console.log("data:", data);
-      console.log("error:", error);
+      console.log(tableName, identifier, id);
 
       if (error) {
         console.error("Error deleting exercise:", error);
       } else {
-        const rowsDeleted = data?.length;
-        if (rowsDeleted) {
-          console.log(`${rowsDeleted} rows deleted successfully`);
-        } else {
-          console.log("No rows deleted");
-        }
+        console.log("Exercise deleted successfully");
       }
     }
   };
