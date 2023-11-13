@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./DeleteExercise.module.css";
+import useExerciseDeletion from "../../hooks/ExerciseRegistryHooks/useExerciseDeletion"
 import { supabase } from "../../supabase/client";
 
 function DeleteExercise({
@@ -9,35 +10,7 @@ function DeleteExercise({
   exerciseId,
 }) {
 
-  // const { confirmDeletion } = useExerciseDeletion(); // Use the custom hook
-
-  const confirmDeletion = async (type, id) => {
-    let tableName;
-    let identifier;
-
-    if (type === "cardio") {
-      tableName = "cardio_exercise";
-      identifier = "cardio_exercise_id";
-    } else if (type === "strength") {
-      tableName = "weight_exercise";
-      identifier = "weight_exercise_id";
-    }
-
-    if (tableName && identifier) {
-      const { data, error } = await supabase
-        .from(tableName)
-        .delete()
-        .eq(identifier, id);
-
-      console.log(tableName,identifier, id);
-
-      if (error) {
-        console.error("Error deleting exercise:", error);
-      } else {
-        console.log("Exercise deleted successfully");
-      }
-    }
-  };
+  const { confirmDeletion } = useExerciseDeletion();
 
   return (
     <div className={`modal ${isDeleteExercisePopupOpen ? "active" : ""}`}>
