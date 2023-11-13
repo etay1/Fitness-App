@@ -27,7 +27,7 @@ function DeleteExercise({
               </button>
               <button
                 className={styles["delete-button"]}
-                onClick={() => confirmDeletion(exerciseType, exerciseId)}
+                onClick={() => confirmDeletion(exerciseType, exerciseId, closeDeleteExercisePopup)}
               >
                 Delete
               </button>

@@ -1,7 +1,7 @@
 import { supabase } from "../../supabase/client";
 
 function useExerciseDeletion() {
-  const confirmDeletion = async (type, id) => {
+  const confirmDeletion = async (type, id, closeDeleteExercisePopup) => {
     let tableName;
     let identifier;
 
@@ -25,6 +25,8 @@ function useExerciseDeletion() {
         console.error("Error deleting exercise:", error);
       } else {
         console.log("Exercise deleted successfully");
+        closeDeleteExercisePopup();
+
       }
     }
   };
