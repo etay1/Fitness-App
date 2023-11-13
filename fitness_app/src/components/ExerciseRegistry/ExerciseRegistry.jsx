@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useExerciseRegistry } from "../../hooks/useExerciseRegistry";
+import { useExerciseRegistry } from "../../hooks/ExerciseRegistryHooks/useExerciseRegistry";
 import { useModalState } from "../../hooks/useModalState";
 import DeleteExercise from "../DeleteExercise/DeleteExercise";
 import styles from "./ExerciseRegistry.module.css";
@@ -21,7 +21,6 @@ function ExerciseRegistry() {
     setExerciseType(type);
     setExerciseId(id);
     openDeleteExerciseModal(type, id);
-    console.log(type, id);
   };
 
   return (
@@ -112,6 +111,8 @@ function ExerciseRegistry() {
       <DeleteExercise
         isDeleteExercisePopupOpen={isDeleteExerciseModalOpen}
         closeDeleteExercisePopup={closeDeleteExerciseModal}
+        exerciseType={exerciseType}
+        exerciseId={exerciseId}
       />
     </div>
   );

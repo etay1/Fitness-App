@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../supabase/client";
+import { supabase } from "../../supabase/client";
 
 export function useExerciseRegistry() {
-  const [strengthExercise, setStrengthExercise] = useState([])
-  const [cardioExercise, setCardioExercise] = useState([])
+  const [strengthExercise, setStrengthExercise] = useState([]);
+  const [cardioExercise, setCardioExercise] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
