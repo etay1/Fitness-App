@@ -1,38 +1,48 @@
 import React, { useState, useEffect } from "react";
-import useFetchWeightData from "../../hooks/useFetchWeightData";
-import styles from "./UserWeightDisplay.module.css";
 import UseFetchMostRecentWeight from "../../hooks/UseFetchMostRecentWeight";
+import styles from "./UserWeightDisplay.module.css";
 
-
-const UserWeightDisplay = async ({ supabase, session }) => {
+const UserWeightDisplay = ({ supabase, session }) => {
     const [weights, setWeights] = useState([]);
     const [dates, setDates] = useState([]);
 
-    // Use useEffect to fetch data when the component mounts
     useEffect(() => {
         const fetchData = async () => {
-            const mostRecentWeightData = await UseFetchMostRecentWeight({
-                supabase,
-                userId: session.user.id,
-            });
+            try {
+                const mostRecentWeightData = await UseFetchMostRecentWeight({
+                    supabase,
+                    userId: session.user.id,
+                });
 
-            if (mostRecentWeightData) {
-                const { weight, date } = mostRecentWeightData;
-                setWeights([weight]);
-                setDates([date]);
+                if (mostRecentWeightData) {
+                    const { weight, date } = mostRecentWeightData;
+                    setWeights([weight]);
+                    setDates([date]);
+                }
+            } catch (error) {
+                console.error("Error fetching weight data:", error);
+                // Handle error appropriately
             }
         };
 
         fetchData();
     }, [supabase, session.user.id]);
+
     return (
         <div className={styles.userWeightDisplay}>
-            
+            {/* Render the fetched weight data */}
+            {weights.length > 0 && (
+                <div>
+                    <p>Weight: {weights[0]}</p>
+                    <p>Date: {dates[0]}</p>
+                </div>
+            )}
         </div>
-    )
-}
+    );
+};
 
 export default UserWeightDisplay;
+
 
 // const useFetchWeightData = async ({ supabase, session }) => {
 //     const [weights, setWeights] = useState([]);

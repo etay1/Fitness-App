@@ -1,4 +1,3 @@
-// weightUtils.js
 const UseFetchMostRecentWeight = async ({ supabase, userId }) => {
     const { data, error } = await supabase
         .from("user_weight")
