@@ -30,6 +30,7 @@ const AlterExerciseForm = ({
       key={key}
       initialValues={{
         exerciseName: exerciseName || "",
+        exerciseId: exerciseId || "",
         caloriesPerRep: exerciseType === "strength" ? exerciseCalories : 0,
         caloriesPerDuration: exerciseType === "cardio" ? exerciseCalories : 0,
         description: exerciseDesc || "",
