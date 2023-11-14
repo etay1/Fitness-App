@@ -9,6 +9,7 @@ import Sidebar from "../SideBar/SideBar";
 import UserCaloriesChart from "../UserCaloriesChart/UserCaloriesChart";
 import Header from "../Header/Header";
 import UserPerformanceChart from "../UserPerformanceChart/UserPerformanceChart";
+import UserWeightDisplay from "../UserWeightDisplay/UserWeightDisplay";
 
 
 const Dashboard = ({ supabase, session }) => {
@@ -41,7 +42,7 @@ const Dashboard = ({ supabase, session }) => {
 
           <div className={styles.topContainer}>
             <div className={styles.topChart}>
-              <UserCaloriesChart supabase={supabase} session={session}/>
+              <UserWeightDisplay supabase={supabase} session={session}/>
             </div>
             <div className={styles.topChart}>
               <UserCaloriesChart supabase={supabase} session={session}/>
