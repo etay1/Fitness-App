@@ -129,7 +129,7 @@ function ExerciseRegistry() {
                           cardioExercise.cardio_exercise_id,
                           cardioExercise.name,
                           cardioExercise.description,
-                          cardioExercise.calories_per_rep
+                          cardioExercise.calories_per_unit_duration
                         )
                       }
                     >

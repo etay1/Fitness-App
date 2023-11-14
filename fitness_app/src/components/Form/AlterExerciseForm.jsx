@@ -8,36 +8,32 @@ import { supabase } from "../../supabase/client";
 
 const AlterExerciseForm = ({
   closeEditExercisePopup,
-  exerciseType, // or category
+  exerciseType,
   exerciseId,
   exerciseName,
   exerciseDesc,
   exerciseCalories,
 }) => {
   const { successMessage, updateSuccessMessage } = useSuccessMessage();
-  const { handleAlter } = useAlterExerciseForm();
-  const { isSuccess, handleInsertion } = useAlterExerciseForm(
+  const { isSuccess, handleAlter } = useAlterExerciseForm(
     supabase,
-    exerciseType, // or category
     updateSuccessMessage
   );
 
   const { validationSchema, key } = useExerciseValidationSchema(
-    exerciseType, // or category
+    exerciseType,
     updateSuccessMessage
   );
-
-  const initialValues = {
-    exerciseName: exerciseName || "",
-    caloriesPerRep: exerciseCalories || 0,
-    caloriesPerDuration: exerciseCalories || 0,
-    description: exerciseDesc || "",
-  };
 
   return (
     <Formik
       key={key}
-      initialValues={initialValues}
+      initialValues={{
+        exerciseName: exerciseName || "",
+        caloriesPerRep: exerciseType === "strength" ? exerciseCalories : 0,
+        caloriesPerDuration: exerciseType === "cardio" ? exerciseCalories : 0,
+        description: exerciseDesc || "",
+      }}
       validationSchema={validationSchema}
       enableReinitialize={true}
       onSubmit={(values, formik) => {

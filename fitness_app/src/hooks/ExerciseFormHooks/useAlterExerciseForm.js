@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { HandleDatabaseError } from "../../utils/HandleDatabaseError";
+import { useSuccessMessage } from "../useSuccessMessage";
 
-export function useAlterExerciseForm(supabase, category, updateSuccessMessage) {
+export function useAlterExerciseForm(supabase, category) {
+  
   const [isSuccess, setIsSuccess] = useState(false);
-
+  const { successMessage, setSuccessMessage } = useSuccessMessage();
+  
   const handleAlter = async (values) => {
     const { exerciseId, exerciseName, caloriesPerRep, caloriesPerDuration, description } = values;
 
@@ -26,11 +29,11 @@ export function useAlterExerciseForm(supabase, category, updateSuccessMessage) {
       }
 
       setIsSuccess(true);
-      updateSuccessMessage(`Exercise updated successfully.`);
+      setSuccessMessage(`Exercise updated successfully.`);
     } catch (error) {
       console.error("db error: ", error);
       const errorCode = error.code;
-      HandleDatabaseError(errorCode, updateSuccessMessage);
+      HandleDatabaseError(errorCode, setSuccessMessage);
       setIsSuccess(false);
     }
   };
