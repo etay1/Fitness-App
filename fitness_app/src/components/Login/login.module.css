@@ -1,11 +1,11 @@
-.ctn-login {
+.ctn {
   background: linear-gradient(to right, var(--white-color), transparent),
     #6a6e6e;
   display: flex;
 }
 
-.left-box-lgn,
-.right-box-lgn {
+.left-box,
+.right-box {
   justify-content: center;
   align-items: center;
   display: flex;
@@ -13,7 +13,7 @@
   width: 100%;
 }
 
-.img-lgn {
+.img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -22,13 +22,13 @@
 
 /* Media Queries */
 @media (max-width: 768px) {
-  .ctn-login {
+  .ctn {
     background-color: var(--white-color);
     width: 80%;
     height: 80%;
   }
 
-  .right-box-lgn {
+  .right-box {
     display: none;
   }
 }

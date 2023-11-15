@@ -1,58 +1,23 @@
 import React from "react";
-import useUserWeightForm from "../../hooks/useUserWeightForm";
-import "./AddUserWeight.css";
+import useUserWeightForm from "../../hooks/UserWeightFormHooks/useUserWeightForm";
+import styles from "../Form/form.module.css";
+import UserWeightForm from "../Form/UserWeightForm";
 
-function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup }) {
-  const {
-    date,
-    weight,
-    handleDateChange,
-    handleWeightChange,
-    handleAddWeight,
-    successMessage,
-    isSuccess,
-  } = useUserWeightForm();
-
+function AddUserWeight({
+  isAddUserWeightPopupOpen,
+  closeAddUserWeightPopup,
+  session,
+}) {
   return (
     <div className={`modal ${isAddUserWeightPopupOpen ? "active" : ""}`}>
       <div className="overlay"></div>
       <div className="container">
-        <div className="user-weight-form">
-          <h1 className="title-form">Record Weight</h1>
-          <form>
-            <div className="input-container">
-              <label>Date:</label>
-              <input
-                type="date"
-                name="date"
-                value={date}
-                onChange={handleDateChange}
-              />
-            </div>
-            <div className="input-container">
-              <label>Weight (in lbs):</label>
-              <input
-                type="number"
-                name="weight"
-                value={weight}
-                onChange={handleWeightChange}
-              />
-            </div>
-          </form>
-          <div className="form-btn-ctn">
-            <button className="form-btn" onClick={closeAddUserWeightPopup}>
-              Cancel
-            </button>
-            <button
-              className="form-btn"
-              type="button"
-              onClick={handleAddWeight}
-            >
-              Record Weight
-            </button>
-          </div>
-
-          {isSuccess && <div className="message">{successMessage}</div>}
+        <div>
+          <h1 className={styles["title-form"]}>Record Weight</h1>
+          <UserWeightForm
+            closeAddUserWeightPopup={closeAddUserWeightPopup}
+            session={session}
+          />
         </div>
       </div>
     </div>

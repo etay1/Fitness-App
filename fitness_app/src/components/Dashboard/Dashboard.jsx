@@ -2,6 +2,7 @@ import React from "react";
 import AddExercise from "../AddExercise/AddExercise";
 import AddUserWeight from "../AddUserWeight/AddUserWeight";
 import AddSubSession from "../AddSubSession/AddSubSession";
+import { Link } from "react-router-dom";
 import { useModalState } from "../../hooks/useModalState";
 import styles from "./Dashboard.module.css";
 import { useEffect } from "react";
@@ -13,14 +14,14 @@ import UserPerformanceChart from "../UserPerformanceChart/UserPerformanceChart";
 
 const Dashboard = ({ supabase, session }) => {
   const {
-    isOpen: isExerciseModalOpen,
-    openModal: openExerciseModal,
-    closeModal: closeExerciseModal,
+    isOpen: isAddExerciseModalOpen,
+    openModal: openAddExerciseModal,
+    closeModal: closeAddExerciseModal,
   } = useModalState(false);
   const {
-    isOpen: isUserWeightModalOpen,
-    openModal: openUserWeightModal,
-    closeModal: closeWeightModal,
+    isOpen: isAddUserWeightModalOpen,
+    openModal: openAddUserWeightModal,
+    closeModal: closeAddUserWeightModal,
   } = useModalState(false);
   const {
     isOpen: isAddSubSessionModalOpen,
