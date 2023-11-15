@@ -14,7 +14,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import { supabase } from "../../supabase/client";
-import "./SideBar.modules.css"; 
+import styles from "./SideBar.modules.css";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   var style = getComputedStyle(document.body);

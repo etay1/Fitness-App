@@ -23,6 +23,7 @@
   padding-top: 50px;
   padding-left: 10px;
   gap: 30px;
+
 }
 
 .topContainer {
@@ -31,6 +32,7 @@
   gap: 60px; /* Reduce the gap for better spacing */
   flex-wrap: nowrap;
   overflow: auto; /* Add horizontal and vertical scrolling for smaller screens if necessary */
+
 }
 
 .bottomContainer {
