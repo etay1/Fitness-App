@@ -11,31 +11,14 @@ import UserCaloriesChart from "../UserCaloriesChart/UserCaloriesChart";
 import Header from "../Header/Header";
 import UserPerformanceChart from "../UserPerformanceChart/UserPerformanceChart";
 
-
 const Dashboard = ({ supabase, session }) => {
-  const {
-    isOpen: isAddExerciseModalOpen,
-    openModal: openAddExerciseModal,
-    closeModal: closeAddExerciseModal,
-  } = useModalState(false);
-  const {
-    isOpen: isAddUserWeightModalOpen,
-    openModal: openAddUserWeightModal,
-    closeModal: closeAddUserWeightModal,
-  } = useModalState(false);
-  const {
-    isOpen: isAddSubSessionModalOpen,
-    openModal: openAddSubSessionModal,
-    closeModal: closeAddSubSessionModal,
-  } = useModalState(false);
-
 
   return (
   
       <div className={styles.dashboard}>
         
         <div className={styles.sidebarContainer}>
-          <Sidebar/>
+          <Sidebar supabase={supabase} session={session}/>
         </div>
 
         <div className={styles.widgetsContainer}>
@@ -57,11 +40,12 @@ const Dashboard = ({ supabase, session }) => {
             <div className={styles.bottomChart}>
               <UserPerformanceChart supabase={supabase} session={session}/>
             </div>
-            
+                   
           </div>
 
         </div>
       </div>
+      
     
     
   );
