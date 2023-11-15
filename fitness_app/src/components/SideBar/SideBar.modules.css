@@ -1,0 +1,50 @@
+.pro-sidebar-inner {
+  background: var(--white-color) !important;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.pro-icon-wrapper {
+  background-color: transparent !important;
+}
+
+.pro-inner-item {
+  padding: 10px 20px 5px 20px !important;
+}
+
+.pro-inner-item:hover {
+  color: var(--light-grey-color) !important;
+}
+
+.pro-inner-item:click {
+  color: var(--white-color)  !important;
+}
+
+.pro-menu-item.active {
+  color: var(--white-color)  !important;
+}
+
+.sidebar-typography {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 15px 0 5px 10px !important;
+}
+
+.sign-out-button {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .pro-sidebar-inner {
+    background: var(--white-color)  !important;
+    height: 270vh !important;
+    overflow: hidden !important;
+  }
+
+  .pro-menu-item.click {
+    width: 100vh !important;
+  }
+}

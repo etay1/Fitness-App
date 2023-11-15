@@ -1,7 +1,7 @@
 /* CSS for the dashboard and containers */
 .dashboard {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: column; */
   overflow: hidden;
   background-color: var(--primary-color);
 }
