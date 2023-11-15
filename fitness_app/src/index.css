@@ -1,25 +1,26 @@
+/* * {
+  border: 1px solid red;
+} */
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-
 }
-
-/* Custom CSS */
-/* make a --primary color var */
 
 :root {
   --primary-color: #047aed;
   --white-color: #fff;
+  --black-color: #000;
+  --error-color: #e63946;
 }
 
 .page {
@@ -29,7 +30,6 @@ code {
   width: 100%;
   height: 100vh;
   background-color: var(--primary-color);
-  
 }
 
 .container {
@@ -40,11 +40,45 @@ code {
   width: 650px;
   background-color: var(--white-color);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  border-radius: 10px; 
-
+  border-radius: 10px;
+  z-index: 2;
 }
 
 .box {
-  flex: 1; 
-
+  flex: 1;
 }
+
+/* Modals */
+.modal {
+  display: none;
+  z-index: 0;
+}
+
+.modal.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 2;
+}
+
+/* Media Queries
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+  }
+} */
