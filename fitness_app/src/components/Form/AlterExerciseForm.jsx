@@ -38,7 +38,7 @@ const AlterExerciseForm = ({
       validationSchema={validationSchema}
       enableReinitialize={true}
       onSubmit={(values, formik) => {
-        handleAlter(values);
+        handleAlter(values, exerciseType);
         if (isSuccess) {
           formik.resetForm();
         }
