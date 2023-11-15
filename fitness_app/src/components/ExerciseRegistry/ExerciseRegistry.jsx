@@ -4,6 +4,7 @@ import { useExerciseRegistry } from "../../hooks/ExerciseRegistryHooks/useExerci
 import { useModalState } from "../../hooks/useModalState";
 import DeleteExercise from "../DeleteExercise/DeleteExercise";
 import styles from "./ExerciseRegistry.module.css";
+import AlterExercise from "../AlterExercise/AlterExercise";
 
 function ExerciseRegistry() {
   const { strengthExercise, cardioExercise, error } = useExerciseRegistry();
@@ -14,13 +15,31 @@ function ExerciseRegistry() {
     closeModal: closeDeleteExerciseModal,
   } = useModalState(false);
 
+  const {
+    isOpen: isEditExerciseModalOpen,
+    openModal: openEditExerciseModal,
+    closeModal: closeEditExerciseModal,
+  } = useModalState(false);
+
   const [exerciseId, setExerciseId] = useState(null);
   const [exerciseType, setExerciseType] = useState(null);
+  const [exerciseName, setExerciseName] = useState(null);
+  const [exerciseDesc, setExerciseDesc] = useState(null);
+  const [exerciseCalories, setExerciseCalories] = useState(null);
 
   const deleteExercise = (type, id) => {
     setExerciseType(type);
     setExerciseId(id);
     openDeleteExerciseModal(type, id);
+  };
+
+  const alterExercise = (type, id, name, desc, calories) => {
+    setExerciseType(type);
+    setExerciseId(id);
+    setExerciseName(name);
+    setExerciseDesc(desc);
+    setExerciseCalories(calories);
+    openEditExerciseModal(type, id, name, desc, calories);
   };
 
   return (
@@ -50,7 +69,20 @@ function ExerciseRegistry() {
                     </div>
                   </div>
                   <div className={styles["exercise-buttons"]}>
-                    <button className={styles["edit-button"]}>Edit</button>
+                    <button
+                      className={styles["edit-button"]}
+                      onClick={() =>
+                        alterExercise(
+                          "strength",
+                          strengthExercise.weight_exercise_id,
+                          strengthExercise.name,
+                          strengthExercise.description,
+                          strengthExercise.calories_per_rep
+                        )
+                      }
+                    >
+                      Edit
+                    </button>
                     <button
                       className={styles["delete-button"]}
                       onClick={() =>
@@ -89,7 +121,20 @@ function ExerciseRegistry() {
                     </div>
                   </div>
                   <div className={styles["exercise-buttons"]}>
-                    <button className={styles["edit-button"]}>Edit</button>
+                    <button
+                      className={styles["edit-button"]}
+                      onClick={() =>
+                        alterExercise(
+                          "cardio",
+                          cardioExercise.cardio_exercise_id,
+                          cardioExercise.name,
+                          cardioExercise.description,
+                          cardioExercise.calories_per_unit_duration
+                        )
+                      }
+                    >
+                      Edit
+                    </button>
                     <button
                       className={styles["delete-button"]}
                       onClick={() =>
@@ -113,6 +158,17 @@ function ExerciseRegistry() {
         closeDeleteExercisePopup={closeDeleteExerciseModal}
         exerciseType={exerciseType}
         exerciseId={exerciseId}
+      />
+
+      <AlterExercise
+        isEditExercisePopupOpen={isEditExerciseModalOpen}
+        closeEditExercisePopup={closeEditExerciseModal}
+        exerciseType={exerciseType}
+        category={exerciseType}
+        exerciseId={exerciseId}
+        exerciseName={exerciseName}
+        exerciseDesc={exerciseDesc}
+        exerciseCalories={exerciseCalories}
       />
     </div>
   );
