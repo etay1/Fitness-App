@@ -10,7 +10,7 @@ import UserCaloriesChart from "../UserCaloriesChart/UserCaloriesChart";
 import Header from "../Header/Header";
 import UserPerformanceChart from "../UserPerformanceChart/UserPerformanceChart";
 import UserWeightDisplay from "../UserWeightDisplay/UserWeightDisplay";
-
+import UserCardioSessionDisplay from "../UserCardioSessionDisplay/UserCardioSessionDisplay"
 
 const Dashboard = ({ supabase, session }) => {
   const {
@@ -45,7 +45,7 @@ const Dashboard = ({ supabase, session }) => {
               <UserWeightDisplay supabase={supabase} session={session}/>
             </div>
             <div className={styles.topChart}>
-              <UserCaloriesChart supabase={supabase} session={session}/>
+              <UserCardioSessionDisplay supabase={supabase} session={session}/>
             </div>
             <div className={styles.topChart}>
               <UserCaloriesChart supabase={supabase} session={session}/>
@@ -56,6 +56,9 @@ const Dashboard = ({ supabase, session }) => {
 
             <div className={styles.bottomChart}>
               <UserPerformanceChart supabase={supabase} session={session}/>
+            </div>
+            <div className={styles.bottomChart}>
+              
             </div>
             
           </div>

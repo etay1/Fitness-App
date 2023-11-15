@@ -10,7 +10,7 @@
     border-radius: 10px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 500px) {
     .userPerformanceChartContainer {
         width: 500px;
         height: 300px;

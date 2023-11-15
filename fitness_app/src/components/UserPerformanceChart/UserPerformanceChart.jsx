@@ -40,7 +40,7 @@ const UserPerformanceChart = ({ supabase, session }) => {
 
   return (
     <div className={styles.userPerformanceChartContainer}>
-      <canvas id="chartId" aria-label="chart" height="350" width="1000"></canvas>
+      <canvas id="chartId" aria-label="chart" height="350" width="500"></canvas>
     </div>
   );
 };
