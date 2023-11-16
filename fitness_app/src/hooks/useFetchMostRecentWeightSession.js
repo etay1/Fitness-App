@@ -1,8 +1,9 @@
-const UseFetchMostRecentCardioSession = async ({ supabase, userId }) => {
+const UseFetchMostRecentWeightSession = async ({ supabase, userId }) => {
     const { data, error } = await supabase
         .from("weight_exercise")
         .select("name, description, calories_per_rep")
         .order("weight_exercise_id", { ascending: false })
+        //.eq("session_id", 1)
         .limit(1);
 
     if (error) {
@@ -13,4 +14,4 @@ const UseFetchMostRecentCardioSession = async ({ supabase, userId }) => {
     return data[0]; // Return the most recent cardio session data
 };
 
-export default UseFetchMostRecentCardioSession;
+export default UseFetchMostRecentWeightSession;

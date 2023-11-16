@@ -25,7 +25,7 @@ const UserCardioSessionDisplay = ({ supabase, session }) => {
     }, [supabase, session.user.id]);
 
     // Render mostRecentCardioSession data here
-
+    
     return (
         <div>
             <div>
