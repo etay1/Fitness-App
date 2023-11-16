@@ -14,7 +14,6 @@ export function useAlterExerciseForm(supabase, updateSuccessMessage) {
 			caloriesPerDuration,
 			description,
 		} = values;
-		console.log(exerciseType);
 
 		const tableName =
 			exerciseType === "cardio" ? "cardio_exercise" : "weight_exercise";
@@ -26,17 +25,15 @@ export function useAlterExerciseForm(supabase, updateSuccessMessage) {
 				: "calories_per_rep";
 		const calories =
 			exerciseType === "cardio" ? caloriesPerDuration : caloriesPerRep;
-		console.log(supabase);
-		console.log(calorieColumn, exerciseId, calories, exerciseIdColumn);
 		try {
 			const { data, error } = await supabase
 				.from(tableName)
 				.update({
 					name: exerciseName,
 					description,
-					calories_per_rep: caloriesPerRep,
+					[calorieColumn]: calories,
 				})
-				.eq("weight_exercise_id", exerciseId)
+				.eq(exerciseIdColumn, exerciseId)
 				.select();
 
 			console.log(data, error);
