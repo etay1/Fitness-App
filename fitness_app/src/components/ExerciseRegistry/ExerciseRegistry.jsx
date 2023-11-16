@@ -8,15 +8,17 @@ import styles from "./ExerciseRegistry.module.css";
 import { useAuthStateListener } from "../../supabase/session";
 import { useLocation } from "react-router-dom"; // For elijah
 import { useEffect } from "react"; // For Elijah
+import Sidebar from "../SideBar/SideBar";
+import { supabase } from "../../supabase/client";
 
 function ExerciseRegistry() {
   const { strengthExercise, cardioExercise, error } = useExerciseRegistry();
   const session = useAuthStateListener();
-  
+
   // For Elijah
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  var clickIdentifier = params.get('clickIdentifier');
+  var clickIdentifier = params.get("clickIdentifier");
 
   const {
     isOpen: isAddExerciseModalOpen,
@@ -42,100 +44,113 @@ function ExerciseRegistry() {
 
   // For Elijah
   useEffect(() => {
-    if(clickIdentifier == "addexercise"){
+    if (clickIdentifier == "addexercise") {
       openAddExerciseModal();
     }
   }, [clickIdentifier]);
   // end region
 
   return (
-    <div className={styles["exercise-registry"]}>
-      <div className={styles["exercise-registry-header"]}>
-        <h1 className={styles["title"]}>Exercise Registry</h1>
+    <div className="page">
+      <div className="sidebar-container">
+        <Sidebar supabase={supabase} session={session} />
       </div>
-      <div className={styles["exercise-registry-buttons"]}>
-      <button className={styles["add-button"]}
-                    onClick={() => openAddExerciseModal()}                    
-                    >Add Exercise</button>
-        </div>
-      <div className={styles["exercise-registry-content"]}>
-        {error && (
-          <div className={styles["error"]}>Error: {error.toString()}</div>
-        )}
-        <div className={styles["strength-exercises"]}>
-          <h1 className={styles["category-title"]}>Weight Exercises</h1>
-          <ul className={styles["exercise-list"]}>
-            {strengthExercise.map((strengthExercise) => (
-              <li className={styles["exercise-item"]} key={strengthExercise.id}>
-                <div className={styles["exercise-details"]}>
-                  <div>
-                    <div className={styles["exercise-name"]}>
-                      {strengthExercise.name}
+      <div className="content">
+        <div className={styles["exercise-registry"]}>
+          <div className={styles["exercise-registry-header"]}>
+            <h1 className={styles["title"]}>Exercise Registry</h1>
+          </div>
+          <div className={styles["exercise-registry-buttons"]}>
+            <button
+              className={styles["add-button"]}
+              onClick={() => openAddExerciseModal()}
+            >
+              Add Exercise
+            </button>
+          </div>
+          <div className={styles["exercise-registry-content"]}>
+            {error && (
+              <div className={styles["error"]}>Error: {error.toString()}</div>
+            )}
+            <div className={styles["strength-exercises"]}>
+              <h1 className={styles["category-title"]}>Weight Exercises</h1>
+              <ul className={styles["exercise-list"]}>
+                {strengthExercise.map((strengthExercise) => (
+                  <li
+                    className={styles["exercise-item"]}
+                    key={strengthExercise.id}
+                  >
+                    <div className={styles["exercise-details"]}>
+                      <div>
+                        <div className={styles["exercise-name"]}>
+                          {strengthExercise.name}
+                        </div>
+                        <div className={styles["exercise-description"]}>
+                          {strengthExercise.description}
+                        </div>
+                        <div className={styles["exercise-calories-per_unit"]}>
+                          {strengthExercise.calories_per_rep}
+                        </div>
+                      </div>
+                      <div className={styles["exercise-buttons"]}>
+                        <button className={styles["edit-button"]}>Edit</button>
+                        <button
+                          className={styles["delete-button"]}
+                          onClick={() =>
+                            deleteExercise(
+                              "strength",
+                              strengthExercise.weight_exercise_id
+                            )
+                          }
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </div>
-                    <div className={styles["exercise-description"]}>
-                      {strengthExercise.description}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className={styles["cardio-exercises"]}>
+              <h1 className={styles["category-title"]}>Cardio Exercises</h1>
+              <ul className={styles["exercise-list"]}>
+                {cardioExercise.map((cardioExercise) => (
+                  <li
+                    className={styles["exercise-item"]}
+                    key={cardioExercise.cardio_exercise_id}
+                  >
+                    <div className={styles["exercise-details"]}>
+                      <div>
+                        <div className={styles["exercise-name"]}>
+                          {cardioExercise.name}
+                        </div>
+                        <div className={styles["exercise-description"]}>
+                          {cardioExercise.description}
+                        </div>
+                        <div className={styles["exercise-calories-per_unit"]}>
+                          {cardioExercise.calories_per_unit_duration}
+                        </div>
+                      </div>
+                      <div className={styles["exercise-buttons"]}>
+                        <button className={styles["edit-button"]}>Edit</button>
+                        <button
+                          className={styles["delete-button"]}
+                          onClick={() =>
+                            deleteExercise(
+                              "cardio",
+                              cardioExercise.cardio_exercise_id
+                            )
+                          }
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </div>
-                    <div className={styles["exercise-calories-per_unit"]}>
-                      {strengthExercise.calories_per_rep}
-                    </div>
-                  </div>
-                  <div className={styles["exercise-buttons"]}>
-                    <button className={styles["edit-button"]}>Edit</button>
-                    <button
-                      className={styles["delete-button"]}
-                      onClick={() =>
-                        deleteExercise(
-                          "strength",
-                          strengthExercise.weight_exercise_id
-                        )
-                      }
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className={styles["cardio-exercises"]}>
-          <h1 className={styles["category-title"]}>Cardio Exercises</h1>
-          <ul className={styles["exercise-list"]}>
-            {cardioExercise.map((cardioExercise) => (
-              <li
-                className={styles["exercise-item"]}
-                key={cardioExercise.cardio_exercise_id}
-              >
-                <div className={styles["exercise-details"]}>
-                  <div>
-                    <div className={styles["exercise-name"]}>
-                      {cardioExercise.name}
-                    </div>
-                    <div className={styles["exercise-description"]}>
-                      {cardioExercise.description}
-                    </div>
-                    <div className={styles["exercise-calories-per_unit"]}>
-                      {cardioExercise.calories_per_unit_duration}
-                    </div>
-                  </div>
-                  <div className={styles["exercise-buttons"]}>
-                    <button className={styles["edit-button"]}>Edit</button>
-                    <button
-                      className={styles["delete-button"]}
-                      onClick={() =>
-                        deleteExercise(
-                          "cardio",
-                          cardioExercise.cardio_exercise_id
-                        )
-                      }
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
       <DeleteExercise

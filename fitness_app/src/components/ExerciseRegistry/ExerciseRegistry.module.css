@@ -1,3 +1,7 @@
+.content {
+  display: flex;
+  width: fit-content;
+}
 .exercise-registry {
   background-color: #f5f5f5;
   padding: 20px;

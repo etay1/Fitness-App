@@ -38,6 +38,16 @@ code {
   height: 100vh;
 }
 
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: var(--white-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin-left: 20px; /* Adjust margin as needed to create space between sidebar and content */
+}
+
+
 .container {
   display: flex;
   justify-content: center;
