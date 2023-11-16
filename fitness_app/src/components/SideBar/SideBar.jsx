@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
@@ -19,6 +19,7 @@ import AddExercise from "../AddExercise/AddExercise";
 import AddUserWeight from "../AddUserWeight/AddUserWeight";
 import AddSubSession from "../AddSubSession/AddSubSession";
 import { useModalState } from "../../hooks/useModalState";
+import ExerciseRegistry from "../ExerciseRegistry/ExerciseRegistry";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   var style = getComputedStyle(document.body);
@@ -29,8 +30,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
       style={{
         color: style.getPropertyValue("--black-color"),
       }}
-      onClick={title === "Add New Exercises" ? () => supabase.auth.signOut() : () => setSelected(title)}
-
+      onClick={title === "Sign Out" ? () => supabase.auth.signOut() : () => setSelected(title)}
       icon={icon}
     >
       <Typography>{title}</Typography>
@@ -135,7 +135,8 @@ const Sidebar = ({ supabase, session }) => {
               title="Add New Exercises"
               icon={<FitnessCenterIcon />}
               selected={selected}
-              setSelected={setSelected}
+              setSelected={setSelected} 
+              to={`/exercise-registry?clickIdentifier=${"addexercise"}`}  // For Elijah 
             />
                <Typography
               className="sidebar-typography"

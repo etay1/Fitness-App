@@ -4,7 +4,7 @@ import AddUserWeight from "../AddUserWeight/AddUserWeight";
 import AddSubSession from "../AddSubSession/AddSubSession";
 import { Link } from "react-router-dom";
 import { useModalState } from "../../hooks/useModalState";
-import styles from "./Dashboard.module.css";
+import styles from "./dashboard.module.css";
 import { useEffect } from "react";
 import Sidebar from "../SideBar/SideBar";
 import UserCaloriesChart from "../UserCaloriesChart/UserCaloriesChart";

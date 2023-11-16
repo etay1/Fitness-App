@@ -3,10 +3,31 @@ import { useState } from "react";
 import { useExerciseRegistry } from "../../hooks/ExerciseRegistryHooks/useExerciseRegistry";
 import { useModalState } from "../../hooks/useModalState";
 import DeleteExercise from "../DeleteExercise/DeleteExercise";
+import AddExercise from "../AddExercise/AddExercise";
+import AddUserWeight from "../AddUserWeight/AddUserWeight";
+import AddSubSession from "../AddSubSession/AddSubSession";
 import styles from "./ExerciseRegistry.module.css";
+import { useAuthStateListener } from "../../supabase/session";
+import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom"; // For elijah
+import { useEffect } from "react"; // For Elijah
+import useQueryParams from "../../hooks/useSession";
 
 function ExerciseRegistry() {
   const { strengthExercise, cardioExercise, error } = useExerciseRegistry();
+  const session = useAuthStateListener();
+  
+  // For Elijah
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  var clickIdentifier = params.get('clickIdentifier');
+
+  const {
+    isOpen: isAddExerciseModalOpen,
+    openModal: openAddExerciseModal,
+    closeModal: closeAddExerciseModal,
+  } = useModalState(false);
+  // end region
 
   const {
     isOpen: isDeleteExerciseModalOpen,
@@ -23,11 +44,24 @@ function ExerciseRegistry() {
     openDeleteExerciseModal(type, id);
   };
 
+  // For Elijah
+  useEffect(() => {
+    if(clickIdentifier == "addexercise"){
+      openAddExerciseModal();
+    }
+  }, [clickIdentifier]);
+  // end region
+
   return (
     <div className={styles["exercise-registry"]}>
       <div className={styles["exercise-registry-header"]}>
         <h1 className={styles["title"]}>Exercise Registry</h1>
       </div>
+      <div className={styles["exercise-registry-buttons"]}>
+      <button className={styles["add-button"]}
+                    onClick={() => openAddExerciseModal()}                    
+                    >Add Exercise</button>
+        </div>
       <div className={styles["exercise-registry-content"]}>
         {error && (
           <div className={styles["error"]}>Error: {error.toString()}</div>
@@ -113,6 +147,11 @@ function ExerciseRegistry() {
         closeDeleteExercisePopup={closeDeleteExerciseModal}
         exerciseType={exerciseType}
         exerciseId={exerciseId}
+      />
+      <AddExercise
+        isAddExercisePopupOpen={isAddExerciseModalOpen}
+        closeAddExercisePopup={closeAddExerciseModal}
+        session={session}
       />
     </div>
   );
