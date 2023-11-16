@@ -87,16 +87,18 @@ const Sidebar = ({ supabase, session }) => {
               History
             </Typography>
             <Item
-              title="View History"
+              title="View Weight History"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              to={"/user-weight-registry"}
             />
             <Item
               title="Add Weight Entry"
               icon={<SportsGymnasticsIcon />}
               selected={selected}
               setSelected={setSelected}
+              to={`/user-weight-registry?clickIdentifier=${"adduserweight"}`} 
             />
             <Typography
               className="sidebar-typography"

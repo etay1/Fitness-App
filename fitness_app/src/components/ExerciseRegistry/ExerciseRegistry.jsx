@@ -4,14 +4,10 @@ import { useExerciseRegistry } from "../../hooks/ExerciseRegistryHooks/useExerci
 import { useModalState } from "../../hooks/useModalState";
 import DeleteExercise from "../DeleteExercise/DeleteExercise";
 import AddExercise from "../AddExercise/AddExercise";
-import AddUserWeight from "../AddUserWeight/AddUserWeight";
-import AddSubSession from "../AddSubSession/AddSubSession";
 import styles from "./ExerciseRegistry.module.css";
 import { useAuthStateListener } from "../../supabase/session";
-import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom"; // For elijah
 import { useEffect } from "react"; // For Elijah
-import useQueryParams from "../../hooks/useSession";
 
 function ExerciseRegistry() {
   const { strengthExercise, cardioExercise, error } = useExerciseRegistry();

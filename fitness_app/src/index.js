@@ -10,6 +10,7 @@ import AddUserWeight from "./components/AddUserWeight/AddUserWeight";
 import ExerciseRegistry from "./components/ExerciseRegistry/ExerciseRegistry";
 import "./index.css";
 import PrivateRoute from "./utils/PrivateRoute";
+import UserWeightRegistry from "./components/UserWeightRegistry/UserWeightRegistry";
 
 const root = document.getElementById("root");
 ReactDOM.createRoot(root).render(
@@ -29,6 +30,10 @@ ReactDOM.createRoot(root).render(
         <Route element={<PrivateRoute supabase={supabase} />}>
           <Route path="/exercise-registry" element={<ExerciseRegistry />} />
         </Route>
+        <Route element={<PrivateRoute supabase={supabase} />}>
+          <Route path="/user-weight-registry" element={<UserWeightRegistry />} />
+        </Route>
+
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
