@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import UseFetchMostRecentCardioSession from '../../hooks/useFetchMostRecentCardioSession';
+import styles from "../Dashboard/Dashboard.module.css";
 
 const UserCardioSessionDisplay = ({ supabase, session }) => {
     const [mostRecentCardioSession, setMostRecentCardioSession] = useState(null);
@@ -25,21 +26,21 @@ const UserCardioSessionDisplay = ({ supabase, session }) => {
     }, [supabase, session.user.id]);
 
     // Render mostRecentCardioSession data here
-    
-    return (
-        <div>
-            <div>
-                <h2>Most Recent Cardio Session</h2>
-                {mostRecentCardioSession ? (
-                    <div>
-                    <p>Name: {mostRecentCardioSession.name}</p>
-                    <p>Description: {mostRecentCardioSession.description}</p>
-                    <p>Calories Per Unit Duration: {mostRecentCardioSession.calories_per_unit_duration}</p>
-                    </div>
-                ) : (
-                    <p>Loading...</p>
-                )}
+
+return (
+    <div className={styles.widgetBox}>  
+        {mostRecentCardioSession ? (
+            <div className={styles.smallWidget}>
+                <h4 className={styles.smallWidget}>Name:</h4>
+                <p className={styles.smallWidget}> {mostRecentCardioSession.name}</p>
+                <h4 className={styles.smallWidget}>Description:</h4>
+                <p className={styles.smallWidget}> {mostRecentCardioSession.description}</p>
+                <h4 className={styles.smallWidget}>Calories Per Unit Duration:</h4>
+                <p className={styles.smallWidget}>  {mostRecentCardioSession.calories_per_unit_duration}</p>
             </div>
+            ) : (
+                <p className={styles.smallWidget}>Loading...</p>
+            )}
         </div>
     );
 };

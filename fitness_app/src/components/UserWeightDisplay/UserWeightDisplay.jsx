@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import UseFetchMostRecentWeight from "../../hooks/UseFetchMostRecentWeight";
-import styles from "./UserWeightDisplay.module.css";
+import styles from "../Dashboard/Dashboard.module.css";
 
 const UserWeightDisplay = ({ supabase, session }) => {
     const [weights, setWeights] = useState([]);
@@ -29,12 +29,14 @@ const UserWeightDisplay = ({ supabase, session }) => {
     }, [supabase, session.user.id]);
 
     return (
-        <div className={styles.userWeightDisplay}>
+        <div className={styles.widgetBox}>
             {/* Render the fetched weight data */}
             {weights.length > 0 && (
-                <div>
-                    <p>Weight: {weights[0]}</p>
-                    <p>Date: {dates[0]}</p>
+                <div className={styles.smallWidget}>
+                    <h3 className={styles.smallWidget}>Weight: </h3>
+                    <p className={styles.smallWidget}> {weights[0]}</p>
+                    <h3>Date: </h3>
+                    <p className={styles.smallWidget}> {dates[0]}</p>
                 </div>
             )}
         </div>
