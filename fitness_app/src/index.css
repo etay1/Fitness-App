@@ -29,7 +29,7 @@ code {
   display: flex;
   flex-direction: row;
   overflow: hidden;
-  background-color: var(--primary-color);
+  /* background-color: var(--primary-color); */
 }
 
 .sidebar-container {
