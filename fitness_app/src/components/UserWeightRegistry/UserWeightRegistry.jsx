@@ -26,8 +26,8 @@ function UserWeightRegistry() {
   // }, [clickIdentifier]);
 
   return (
-    <div className={styles["user-weight-registry"]}>
-      <div>
+    <div className="page">
+      <div className="sidebar-container">
         <Sidebar supabase={supabase} session={session} />
       </div>
 

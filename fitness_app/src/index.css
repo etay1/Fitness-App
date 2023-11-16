@@ -27,11 +27,15 @@ code {
 
 .page {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
+  flex-direction: row;
+  overflow: hidden;
   background-color: var(--primary-color);
+}
+
+.sidebar-container {
+  display: flex;
+  position: relative;
+  height: 100vh;
 }
 
 .container {
