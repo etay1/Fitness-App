@@ -1,47 +1,47 @@
-import React from 'react'
-import Sidebar from '../SideBar/SideBar'
-import { supabase } from '../../supabase/client'
-import { useAuthStateListener } from '../../supabase/session'
-import styles from './UserWeightRegistry.module.css'
-import { useEffect } from 'react'
-import { useModalState } from '../../hooks/useModalState'
-import { useLocation } from 'react-router-dom'
-import AddUserWeight from '../AddUserWeight/AddUserWeight'
+import React, { useEffect } from "react";
+import Sidebar from "../SideBar/SideBar";
+import { supabase } from "../../supabase/client";
+import { useAuthStateListener } from "../../supabase/session";
+import styles from "./UserWeightRegistry.module.css";
+import { useModalState } from "../../hooks/useModalState";
+import { useLocation } from "react-router-dom";
+import AddUserWeight from "../AddUserWeight/AddUserWeight";
 
-const UserWeightRegistry = () => {
-    
-    const session = useAuthStateListener();
-    const location = useLocation();
-    const params = new URLSearchParams(location.search);
-    var clickIdentifier = params.get('clickIdentifier');
+function UserWeightRegistry() {
+  const session = useAuthStateListener();
+  // const location = useLocation();
+  // const params = new URLSearchParams(location.search);
+  // var clickIdentifier = params.get('clickIdentifier');
 
-    const {
-        isOpen: isAddUserWeightModalOpen,
-        openModal: openAddUserWeightModal,
-        closeModal: closeAddUserWeightModal,
-      } = useModalState(false);
+  // const {
+  //   isOpen: isAddUserWeightModalOpen,
+  //   openModal: openAddUserWeightModal,
+  //   closeModal: closeAddUserWeightModal,
+  // } = useModalState(false);
 
-    useEffect(() => {
-        if(clickIdentifier == "adduserweight"){
-          openAddUserWeightModal();
-        }
-      }, [clickIdentifier]);
+  // useEffect(() => {
+  //   if (clickIdentifier === 'adduserweight') {
+  //     openAddUserWeightModal();
+  //   }
+  // }, [clickIdentifier]);
 
   return (
     <div className={styles["user-weight-registry"]}>
-        
-    <div>
-      <Sidebar supabase={supabase} session={session}/>
-    </div>
+      <div>
+        <Sidebar supabase={supabase} session={session} />
+      </div>
 
+      <div className={styles["user-weight-registry-header"]}>
+        <h1 className={styles["title"]}>User Weight Registry</h1>
+      </div>
 
-    <AddUserWeight
+      {/* <AddUserWeight
         isAddUserWeightPopupOpen={isAddUserWeightModalOpen}
         closeAddUserWeightPopup={closeAddUserWeightModal}
         session={session}
-      />
-  </div>
-    )
+      /> */}
+    </div>
+  );
 }
 
-export default UserWeightRegistry
+export default UserWeightRegistry;

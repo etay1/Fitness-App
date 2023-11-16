@@ -1,6 +1,14 @@
 .user-weight-registry {
-    display: flex;
-    flex-direction: row;
-    overflow: hidden;
-  }
-  
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  height: 100vh;
+  background-color: var(--primary-color);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
