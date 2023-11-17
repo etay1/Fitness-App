@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography } from "@mui/material";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
@@ -22,21 +22,32 @@ import { useModalState } from "../../hooks/useModalState";
 import ExerciseRegistry from "../ExerciseRegistry/ExerciseRegistry";
 
 
-const Item = ({ title, to, icon, selected, setSelected }) => {
+const Item = ({ title, to, icon, selected, setSelected, onClick}) => {
   var style = getComputedStyle(document.body);
-
-  if(title === "Sign Out"){
-    console.log(title);
-  }
   return (
     <MenuItem
       active={selected === title}
       style={{
         color: style.getPropertyValue("--black-color"),
       }}
-     onClick = {title === "Sign Out" ? () => supabase.auth.signOut() : () => setSelected(title)}
-
       icon={icon}
+      onClick={onClick}
+    >
+      <Typography>{title}</Typography>
+      <Link to={to} />
+    </MenuItem>
+  );
+};
+const SignOutItem = ({ title, to, icon, selected, setSelected, onClick }) => {
+  var style = getComputedStyle(document.body);
+  return (
+    <MenuItem
+      active={selected === title}
+      style={{
+        color: style.getPropertyValue("--black-color"),
+      }}
+      icon={icon}
+      onClick={onClick}
     >
       <Typography>{title}</Typography>
       <Link to={to} />
@@ -45,8 +56,14 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 };
 
 
+
 const Sidebar = ({ supabase, session }) => {
   var style = getComputedStyle(document.body);
+  const navigate = useNavigate();
+  const handleSignOut = () => {
+    console.log("works");
+    SignOut();
+  };
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
 
@@ -78,12 +95,12 @@ const Sidebar = ({ supabase, session }) => {
             )}
           </MenuItem>
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-            <Item
+            <Item 
               title="Dashboard"
-              to="/"
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              to="/"
             />
 
             <Typography
@@ -167,12 +184,13 @@ const Sidebar = ({ supabase, session }) => {
               setSelected={setSelected}
             />
 
-            <Item
+            <SignOutItem 
               className="sign-out-button"
               title="Sign Out"
               icon={<LogoutIcon />}
               selected={selected}
               setSelected={setSelected}
+              onClick={() => SignOut()}
             />
           </Box>
         </Menu>
@@ -182,5 +200,11 @@ const Sidebar = ({ supabase, session }) => {
     
   );
 };
+const SignOut = () => {
+  console.log("works");
+  supabase.auth.signOut();
+  console.log("gone past");
+  
+}
 
 export default Sidebar;

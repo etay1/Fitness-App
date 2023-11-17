@@ -2,12 +2,16 @@ import React from "react";
 import useUserWeightForm from "../../hooks/UserWeightFormHooks/useUserWeightForm";
 import styles from "../Form/form.module.css";
 import UserWeightForm from "../Form/UserWeightForm";
+import { useAuthStateListener } from "../../supabase/session";
 
-function AddUserWeight({
+function AddUserWeight(
+  {
   isAddUserWeightPopupOpen,
   closeAddUserWeightPopup,
   session,
-}) {
+  }
+){
+  session = useAuthStateListener();
   return (
     <div className={`modal ${isAddUserWeightPopupOpen ? "active" : ""}`}>
       <div className="overlay"></div>
