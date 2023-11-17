@@ -8,6 +8,7 @@ import AddSubSession from "./components/AddSubSession/AddSubSession";
 import AddExercise from "./components/AddExercise/AddExercise";
 import AddUserWeight from "./components/AddUserWeight/AddUserWeight";
 import ExerciseRegistry from "./components/ExerciseRegistry/ExerciseRegistry";
+import SessionRegistry from "./page/SessionRegistry/SessionRegistry";
 import "./index.css";
 import PrivateRoute from "./utils/PrivateRoute";
 
@@ -28,6 +29,9 @@ ReactDOM.createRoot(root).render(
         </Route>
         <Route element={<PrivateRoute supabase={supabase} />}>
           <Route path="/exercise-registry" element={<ExerciseRegistry />} />
+        </Route>
+        <Route element={<PrivateRoute supabase={supabase} />}>
+          <Route path="/session-registry" element={<SessionRegistry />} />
         </Route>
       </Routes>
     </BrowserRouter>
