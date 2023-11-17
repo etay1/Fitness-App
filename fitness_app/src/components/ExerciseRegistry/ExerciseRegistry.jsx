@@ -65,7 +65,7 @@ function ExerciseRegistry() {
                       {strengthExercise.description}
                     </div>
                     <div className={styles["exercise-calories-per_unit"]}>
-                      {strengthExercise.calories_per_rep}
+                      {strengthExercise.calories_per_rep} calories / rep
                     </div>
                   </div>
                   <div className={styles["exercise-buttons"]}>
@@ -117,7 +117,8 @@ function ExerciseRegistry() {
                       {cardioExercise.description}
                     </div>
                     <div className={styles["exercise-calories-per_unit"]}>
-                      {cardioExercise.calories_per_unit_duration}
+                      {cardioExercise.calories_per_unit_duration} calories / 15
+                      minutes
                     </div>
                   </div>
                   <div className={styles["exercise-buttons"]}>
