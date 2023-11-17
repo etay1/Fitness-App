@@ -4,6 +4,7 @@ import useUserWeightValidationSchema from "../../hooks/UserWeightFormHooks/useUs
 import { useUserWeightForm } from "../../hooks/UserWeightFormHooks/useUserWeightForm";
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
 import styles from "./form.module.css";
+import Button from "../Button/Button";
 
 const initialFormValues = {
   date: new Date().toISOString().slice(0, 10),
@@ -80,26 +81,25 @@ const UserWeightForm = ({ closeAddUserWeightPopup, session }) => {
               </div>
 
               <div className={styles["form-btn-ctn"]}>
-                <button
-                  className={styles["form-btn"]}
+                <Button
+                  text = "Done"
                   type="button"
                   onClick={() => {
-                    updateSuccessMessage("");
                     formik.resetForm();
+                    updateSuccessMessage("");
                     closeAddUserWeightPopup();
                   }}
                 >
-                  Done
-                </button>
-                <button
+                </Button>
+                <Button
+                  text="Add Exercise"
                   type="submit"
-                  className={`${styles["form-btn"]} ${
+                  className={`${
                     !(dirty && isValid) ? styles["disabled-btn"] : ""
                   }`}
                   disabled={!(dirty && isValid)}
-                >
-                  Add Exercise
-                </button>
+                > 
+                </Button>
               </div>
               <div className={styles["form-success-ctn"]}>
                 <div className={styles["form-success-message"]}>

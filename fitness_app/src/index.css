@@ -43,7 +43,7 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 550px;
+  height: 625px;
   width: 650px;
   background-color: var(--white-color);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -95,3 +95,5 @@ code {
     padding: 20px;
   }
 } */
+
+
