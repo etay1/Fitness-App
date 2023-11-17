@@ -21,16 +21,21 @@ import AddSubSession from "../AddSubSession/AddSubSession";
 import { useModalState } from "../../hooks/useModalState";
 import ExerciseRegistry from "../ExerciseRegistry/ExerciseRegistry";
 
+
 const Item = ({ title, to, icon, selected, setSelected }) => {
   var style = getComputedStyle(document.body);
 
+  if(title === "Sign Out"){
+    console.log(title);
+  }
   return (
     <MenuItem
       active={selected === title}
       style={{
         color: style.getPropertyValue("--black-color"),
       }}
-      onClick={title === "Sign Out" ? () => supabase.auth.signOut() : () => setSelected(title)}
+     onClick = {title === "Sign Out" ? () => supabase.auth.signOut() : () => setSelected(title)}
+
       icon={icon}
     >
       <Typography>{title}</Typography>
@@ -39,12 +44,14 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   );
 };
 
+
 const Sidebar = ({ supabase, session }) => {
   var style = getComputedStyle(document.body);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
 
   return (
+    <div className="overlay-sidebar">
     <Box>
       <ProSidebar collapsed={isCollapsed}>
         <Menu iconShape="circle">
@@ -171,6 +178,7 @@ const Sidebar = ({ supabase, session }) => {
         </Menu>
       </ProSidebar>
     </Box>
+    </div>
     
   );
 };

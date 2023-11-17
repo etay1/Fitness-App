@@ -14,36 +14,39 @@ import UserPerformanceChart from "../UserPerformanceChart/UserPerformanceChart";
 const Dashboard = ({ supabase, session }) => {
 
   return (
-  
+    
+    <div className="page">
       <div className={styles.dashboard}>
         
         <div className={styles.sidebarContainer}>
           <Sidebar supabase={supabase} session={session}/>
         </div>
 
-        <div className={styles.widgetsContainer}>
+        
+          <div className={styles.widgetsContainer}>
 
-          <div className={styles.topContainer}>
-            <div className={styles.topChart}>
-              <UserCaloriesChart supabase={supabase} session={session}/>
+            <div className={styles.topContainer}>
+              <div className={styles.topChart}>
+                <UserCaloriesChart supabase={supabase} session={session}/>
+              </div>
+              <div className={styles.topChart}>
+                <UserCaloriesChart supabase={supabase} session={session}/>
+              </div>
+              <div className={styles.topChart}>
+                <UserCaloriesChart supabase={supabase} session={session}/>
+              </div>
             </div>
-            <div className={styles.topChart}>
-              <UserCaloriesChart supabase={supabase} session={session}/>
+
+            <div className={styles.bottomContainer}>
+
+              <div className={styles.bottomChart}>
+                <UserPerformanceChart supabase={supabase} session={session}/>
+              </div>
+                    
             </div>
-            <div className={styles.topChart}>
-              <UserCaloriesChart supabase={supabase} session={session}/>
-            </div>
+
           </div>
-
-          <div className={styles.bottomContainer}>
-
-            <div className={styles.bottomChart}>
-              <UserPerformanceChart supabase={supabase} session={session}/>
-            </div>
-                   
-          </div>
-
-        </div>
+      </div>
       </div>
       
     
