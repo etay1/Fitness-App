@@ -80,7 +80,7 @@ const Sidebar = ({ supabase, session }) => {
             />
 
             <Typography
-              className="sidebar-typography"
+              className="sidebar-typography-history"
               variant="h6"
               color={style.getPropertyValue("--light-grey-color")}
             >
@@ -105,7 +105,7 @@ const Sidebar = ({ supabase, session }) => {
               variant="h6"
               color={style.getPropertyValue("--light-grey-color")}
             >
-              Sessions
+              Session
             </Typography>
             <Item
               title="View Session"
@@ -141,7 +141,7 @@ const Sidebar = ({ supabase, session }) => {
               to={`/exercise-registry?clickIdentifier=${"addexercise"}`}  // For Elijah 
             />
                <Typography
-              className="sidebar-typography"
+              className="sidebar-typography-blog"
               variant="h6"
               color={style.getPropertyValue("--light-grey-color")}
             >

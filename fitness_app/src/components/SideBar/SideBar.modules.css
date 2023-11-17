@@ -27,9 +27,21 @@
   .sidebar-typography {
     font-size: 16px;
     font-weight: bold;
-    margin: 15px 0 5px 10px !important;
+    margin: 15px 0 5px 3px !important;
+  }
+
+  .sidebar-typography-history {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 15px 0 5px 8px !important;
   }
   
+  .sidebar-typography-blog {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 15px 0 5px 19px !important;
+  }
+
   .sign-out-button {
     position: absolute;
     bottom: 0;
