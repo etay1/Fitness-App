@@ -30,7 +30,12 @@ textarea {
   color: var(--primary-color);
   text-align: center;
 }
-
+.form-ctn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 /* Buttons */
 .form-btn-ctn {
   display: flex;
@@ -48,7 +53,6 @@ textarea {
   border-radius: 4px;
   cursor: pointer;
   width: 100px;
-  
 }
 
 /* Form Validating*/

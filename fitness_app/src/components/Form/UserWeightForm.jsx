@@ -85,8 +85,8 @@ const UserWeightForm = ({ closeAddUserWeightPopup, session }) => {
                   text = "Done"
                   type="button"
                   onClick={() => {
-                    updateSuccessMessage("");
                     formik.resetForm();
+                    updateSuccessMessage("");
                     closeAddUserWeightPopup();
                   }}
                 >
