@@ -4,6 +4,7 @@ import useExerciseValidationSchema from "../../hooks/ExerciseFormHooks/useExerci
 import { useExerciseForm } from "../../hooks/ExerciseFormHooks/useExerciseForm";
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
 import styles from "./form.module.css";
+import Button from "../Button/Button";
 
 const initialFormValues = {
 	exerciseName: "",
@@ -123,26 +124,24 @@ const ExerciseForm = ({ closeAddExercisePopup, supabase, category }) => {
 								/>
 							</div>
 							<div className={styles["form-btn-ctn"]}>
-								<button
-									className={styles["form-btn"]}
+								<Button
+								     text = "Done"
+									//className={styles["form-btn"]}
 									type='button'
 									onClick={() => {
 										updateSuccessMessage("");
 										formik.resetForm();
 										closeAddExercisePopup();
 									}}
-								>
-									Done
-								</button>
-								<button
+								></Button>
+								<Button
+								    text = "Add Exercise"
 									type='submit'
-									className={`${styles["form-btn"]} ${
+									className={`${
 										!(dirty && isValid) ? styles["disabled-btn"] : ""
 									}`}
 									disabled={!(dirty && isValid)}
-								>
-									Add Exercise
-								</button>
+								></Button>	
 							</div>
 							<div className={styles["form-success-ctn"]}>
 								<div className={styles["form-success-message"]}>

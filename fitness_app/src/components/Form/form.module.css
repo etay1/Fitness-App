@@ -47,6 +47,8 @@ textarea {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  width: 100px;
+  
 }
 
 /* Form Validating*/

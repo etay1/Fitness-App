@@ -4,6 +4,7 @@ import { useSubSessionForm } from "../../hooks/SubSessionFormHooks/useSubSession
 import useSubSessionValidationSchema from "../../hooks/SubSessionFormHooks/useSubSessionValidationSchema";
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
 import styles from "./form.module.css";
+import Button from "../Button/Button";
 
 const initialFormValues = {
   exerciseName: "",
@@ -165,26 +166,25 @@ const SubSessionForm = ({ closeAddSubSessionPopup, category, supabase }) => {
                 </div>
               )}
               <div className={styles["form-btn-ctn"]}>
-                <button
-                  className={styles["form-btn"]}
+                <Button
+                  text="Done"
                   type="button"
                   onClick={() => {
                     updateSuccessMessage("");
                     formik.resetForm();
                     closeAddSubSessionPopup();
                   }}
-                >
-                  Done
-                </button>
-                <button
+                > 
+                </Button>
+                <Button
+                  text='Add Workout'
                   type="submit"
-                  className={`${styles["form-btn"]} ${
+                  className={` ${
                     !(dirty && isValid) ? styles["disabled-btn"] : ""
                   }`}
                   disabled={!(dirty && isValid)}
                 >
-                  Add Workout
-                </button>
+              </Button>
               </div>
               <div className={styles["form-success-ctn"]}>
                 <div className={styles["form-success-message"]}>
