@@ -1,13 +1,12 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { useExerciseRegistry } from "../../hooks/ExerciseRegistryHooks/useExerciseRegistry";
 import { useModalState } from "../../hooks/useModalState";
 import DeleteExercise from "../DeleteExercise/DeleteExercise";
 import AddExercise from "../AddExercise/AddExercise";
+import AlterExercise from "../AlterExercise/AlterExercise";
 import styles from "./ExerciseRegistry.module.css";
 import { useAuthStateListener } from "../../supabase/session";
-import { useLocation } from "react-router-dom"; // For elijah
-import { useEffect } from "react"; // For Elijah
 import Sidebar from "../SideBar/SideBar";
 import { supabase } from "../../supabase/client";
 
@@ -15,7 +14,6 @@ function ExerciseRegistry() {
   const { strengthExercise, cardioExercise, error } = useExerciseRegistry();
   const session = useAuthStateListener();
 
-  // For Elijah
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   var clickIdentifier = params.get("clickIdentifier");
@@ -25,7 +23,6 @@ function ExerciseRegistry() {
     openModal: openAddExerciseModal,
     closeModal: closeAddExerciseModal,
   } = useModalState(false);
-  // end region
 
   const {
     isOpen: isDeleteExerciseModalOpen,
@@ -33,8 +30,17 @@ function ExerciseRegistry() {
     closeModal: closeDeleteExerciseModal,
   } = useModalState(false);
 
+  const {
+    isOpen: isEditExerciseModalOpen,
+    openModal: openEditExerciseModal,
+    closeModal: closeEditExerciseModal,
+  } = useModalState(false);
+
   const [exerciseId, setExerciseId] = useState(null);
   const [exerciseType, setExerciseType] = useState(null);
+  const [exerciseName, setExerciseName] = useState(null);
+  const [exerciseDesc, setExerciseDesc] = useState(null);
+  const [exerciseCalories, setExerciseCalories] = useState(null);
 
   const deleteExercise = (type, id) => {
     setExerciseType(type);
@@ -42,13 +48,20 @@ function ExerciseRegistry() {
     openDeleteExerciseModal(type, id);
   };
 
-  // For Elijah
+  const alterExercise = (type, id, name, desc, calories) => {
+    setExerciseType(type);
+    setExerciseId(id);
+    setExerciseName(name);
+    setExerciseDesc(desc);
+    setExerciseCalories(calories);
+    openEditExerciseModal(type, id, name, desc, calories);
+  };
+
   useEffect(() => {
-    if (clickIdentifier == "addexercise") {
+    if (clickIdentifier === "addexercise") {
       openAddExerciseModal();
     }
   }, [clickIdentifier]);
-  // end region
 
   return (
     <div className="page">
@@ -89,11 +102,24 @@ function ExerciseRegistry() {
                           {strengthExercise.description}
                         </div>
                         <div className={styles["exercise-calories-per_unit"]}>
-                          {strengthExercise.calories_per_rep}
+                          {strengthExercise.calories_per_rep} calories / rep
                         </div>
                       </div>
                       <div className={styles["exercise-buttons"]}>
-                        <button className={styles["edit-button"]}>Edit</button>
+                        <button
+                          className={styles["edit-button"]}
+                          onClick={() =>
+                            alterExercise(
+                              "strength",
+                              strengthExercise.weight_exercise_id,
+                              strengthExercise.name,
+                              strengthExercise.description,
+                              strengthExercise.calories_per_rep
+                            )
+                          }
+                        >
+                          Edit
+                        </button>
                         <button
                           className={styles["delete-button"]}
                           onClick={() =>
@@ -128,11 +154,25 @@ function ExerciseRegistry() {
                           {cardioExercise.description}
                         </div>
                         <div className={styles["exercise-calories-per_unit"]}>
-                          {cardioExercise.calories_per_unit_duration}
+                          {cardioExercise.calories_per_unit_duration} calories /
+                          15 minutes
                         </div>
                       </div>
                       <div className={styles["exercise-buttons"]}>
-                        <button className={styles["edit-button"]}>Edit</button>
+                        <button
+                          className={styles["edit-button"]}
+                          onClick={() =>
+                            alterExercise(
+                              "cardio",
+                              cardioExercise.cardio_exercise_id,
+                              cardioExercise.name,
+                              cardioExercise.description,
+                              cardioExercise.calories_per_unit_duration
+                            )
+                          }
+                        >
+                          Edit
+                        </button>
                         <button
                           className={styles["delete-button"]}
                           onClick={() =>
@@ -163,6 +203,16 @@ function ExerciseRegistry() {
         isAddExercisePopupOpen={isAddExerciseModalOpen}
         closeAddExercisePopup={closeAddExerciseModal}
         session={session}
+      />
+      <AlterExercise
+        isEditExercisePopupOpen={isEditExerciseModalOpen}
+        closeEditExercisePopup={closeEditExerciseModal}
+        exerciseType={exerciseType}
+        category={exerciseType}
+        exerciseId={exerciseId}
+        exerciseName={exerciseName}
+        exerciseDesc={exerciseDesc}
+        exerciseCalories={exerciseCalories}
       />
     </div>
   );
