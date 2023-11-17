@@ -5,6 +5,7 @@ import { useAlterExerciseForm } from "../../hooks/ExerciseFormHooks/useAlterExer
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
 import styles from "./form.module.css";
 import { supabase } from "../../supabase/client";
+import Button from "../Button/Button.jsx";
 
 const AlterExerciseForm = ({
   closeEditExercisePopup,
@@ -128,26 +129,25 @@ const AlterExerciseForm = ({
                 />
               </div>
               <div className={styles["form-btn-ctn"]}>
-                <button
-                  className={styles["form-btn"]}
+                <Button
+                  text ="Done"
                   type="button"
                   onClick={() => {
                     updateSuccessMessage("");
                     formik.resetForm();
                     closeEditExercisePopup();
                   }}
-                >
-                  Done
-                </button>
-                <button
+                > 
+                </Button>
+                <Button
+                  text="Confirm"
                   type="submit"
-                  className={`${styles["form-btn"]} ${
+                  className={` ${
                     !(dirty && isValid) ? styles["disabled-btn"] : ""
                   }`}
                   disabled={!(dirty && isValid)}
                 >
-                  Confirm
-                </button>
+                </Button>
               </div>
               <div className={styles["form-success-ctn"]}>
                 <div className={styles["form-success-message"]}>

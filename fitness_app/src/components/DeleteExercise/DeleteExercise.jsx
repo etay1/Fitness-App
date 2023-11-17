@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./DeleteExercise.module.css";
 import useExerciseDeletion from "../../hooks/ExerciseRegistryHooks/useExerciseDeletion";
 import { supabase } from "../../supabase/client";
+import Button from "../Button/Button";
 
 function DeleteExercise({
   isDeleteExercisePopupOpen,
