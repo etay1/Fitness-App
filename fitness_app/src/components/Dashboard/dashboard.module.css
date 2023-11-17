@@ -15,21 +15,22 @@
     display: flex;
     position: relative;
     height: 100vh;
-    z-index: 1;
   }
   
   .widgetsContainer {
     display: flex;
     flex-direction: column;
     padding-top: 50px;
-    padding-left: 10px;
-    gap: 30px;
+    padding-left: 150px;
+    gap: 50px;
+    width: fit-content;
+    overflow: hidden;
   }
   
   .topContainer {
     display: flex;
     flex-direction: row;
-    gap: 60px; /* Reduce the gap for better spacing */
+    gap: 50px; /* Reduce the gap for better spacing */
     flex-wrap: nowrap;
     overflow: auto; /* Add horizontal and vertical scrolling for smaller screens if necessary */
   }
@@ -48,12 +49,20 @@
   
     .widgetsContainer {
       padding-top: 20px; /* Adjust padding for better spacing on small screens */
+      padding-left: 65px;
     }
   
-    .topContainer, .bottomContainer {
+    .topContainer {
       flex-direction: column; /* Display items in a column on small screens */
       gap: 20px; /* Adjust the gap between items as needed */
       overflow: hidden; /* Turn off both horizontal and vertical scrolling */
+    }
+
+    .bottomContainer {
+      flex-direction: column; /* Display items in a column on small screens */
+      gap: 20px; /* Adjust the gap between items as needed */
+      overflow: hidden; /* Turn off both horizontal and vertical scrolling */
+      height: fit-content;
     }
   
     .topChart {

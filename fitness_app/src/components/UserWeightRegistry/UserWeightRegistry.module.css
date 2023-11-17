@@ -12,3 +12,15 @@
   margin: 0;
   padding: 0;
 }
+
+.edit-button,
+.delete-button,
+.add-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}

@@ -19,10 +19,10 @@ const UserPerformanceChart = ({ supabase, session }) => {
     chartRef.current = new Chart(chartElement, {
       type: "line",
       data: {
-        labels: [1500, 1600, 1700, 1750, 1800, 1850, 1900, 1950, 1999, 2050],
+        labels: [1500, 1600, 1700, 1750, 1800, 1850, 1900, 1950, 1999, 2050, 2100, 2150, 2200, 2250, 2300],
         datasets: [
           {
-            data: [186, 205, 1321, 1516, 2107, 2191, 3133, 3221, 4783, 5478],
+            data: [186, 205, 1321, 1516, 2107, 2191, 3133, 3221, 4783, 5478, 6000, 7000, 8000, 9000, 10000],
             label: "America",
             borderColor: "#3cba9f",
             fill: false,
@@ -40,7 +40,7 @@ const UserPerformanceChart = ({ supabase, session }) => {
 
   return (
     <div className={styles.userPerformanceChartContainer}>
-      <canvas id="chartId" aria-label="chart" height="350" width="1000"></canvas>
+      <canvas className="performance-chart" id="chartId" aria-label="chart" height="350" width="1000"></canvas>
     </div>
   );
 };
