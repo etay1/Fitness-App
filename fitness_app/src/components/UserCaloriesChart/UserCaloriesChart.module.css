@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 300px; /* Add 'px' to specify height in pixels */
-    width: 100%; /* Use a relative width to fit the available space */
+    width: 100vh; /* Use a relative width to fit the available space */
     max-width: 300px; /* Add a maximum width to prevent items from getting too wide */
     background-color: var(--white-color);
     box-shadow: 0 0 6px 2px rgba(0,0,0,.1);

@@ -1,15 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import { Chart } from "chart.js";
-import styles from "./UserPerformanceChart.module.css";
+import styles from "./UserAnotherChart.module.css";
 
-const UserPerformanceChart = ({ supabase, session }) => {
+const UserAnotherChart = ({ supabase, session }) => {
   const chartRef = useRef(null);
 
   useEffect(() => {
     const color = getComputedStyle(document.body);
     Chart.defaults.backgroundColor = "#9BD0F5";
 
-    const chartElement = document.getElementById("performanceChartID");
+    const chartElement = document.getElementById("anotherChartID");
 
     // Check if the chart already exists and destroy it
     if (chartRef.current) {
@@ -17,7 +17,7 @@ const UserPerformanceChart = ({ supabase, session }) => {
     }
 
     chartRef.current = new Chart(chartElement, {
-      type: "bar",
+      type: "line",
       data: {
         labels: [1500, 1600, 1700, 1750, 1800, 1850, 1900, 1950, 1999, 2050, 2100, 2150, 2200, 2250, 2300],
         datasets: [
@@ -39,10 +39,10 @@ const UserPerformanceChart = ({ supabase, session }) => {
   }, []);
 
   return (
-    <div className={styles.userPerformanceChartContainer}>
-      <canvas className="performance-chart" id="performanceChartID" aria-label="chart" height="350" width="1000"></canvas>
+    <div className={styles.userAnotherChartContainer}>
+      <canvas className="another-chart" id="anotherChartID" aria-label="chart" height="350" width="1000"></canvas>
     </div>
   );
 };
 
-export default UserPerformanceChart;
+export default UserAnotherChart;

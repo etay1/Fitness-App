@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Login } from "./components/Login/Login";
 import Dashboard from "./components/Dashboard/Dashboard"; // Import it as the default export
 import { useAuthStateListener } from "./supabase/session";
+import UserWeightRegistry from "./components/UserWeightRegistry/UserWeightRegistry";
 
 function App({ supabase }) {
   const session = useAuthStateListener();

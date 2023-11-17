@@ -7,8 +7,8 @@
   }
   
   .bottomChart {
-    width: 580px;
-    right: 100px;
+    display: flex;
+    flex-direction: row;
   }
   
   .sidebarContainer {
@@ -21,25 +21,26 @@
     display: flex;
     flex-direction: column;
     padding-top: 50px;
-    padding-left: 150px;
+    padding-left: 30px;
     gap: 50px;
-    width: fit-content;
-    overflow: hidden;
+    display:flex;
+    width:100%;
+    overflow:auto;
+    max-width: fit-content;
   }
   
   .topContainer {
     display: flex;
     flex-direction: row;
-    gap: 50px; /* Reduce the gap for better spacing */
+    gap: 200px; /* Reduce the gap for better spacing */
     flex-wrap: nowrap;
     overflow: auto; /* Add horizontal and vertical scrolling for smaller screens if necessary */
   }
   
   .bottomContainer {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 50px; /* Reduce the gap for better spacing */
+    gap: 100px;
+
   }
   
   @media screen and (max-width: 768px) {

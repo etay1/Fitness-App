@@ -10,6 +10,7 @@ import Sidebar from "../SideBar/SideBar";
 import UserCaloriesChart from "../UserCaloriesChart/UserCaloriesChart";
 import Header from "../Header/Header";
 import UserPerformanceChart from "../UserPerformanceChart/UserPerformanceChart";
+import UserAnotherChart from "../UserAnotherChart/UserAnotherChart";
 
 const Dashboard = ({ supabase, session }) => {
 
@@ -41,7 +42,9 @@ const Dashboard = ({ supabase, session }) => {
 
               <div className={styles.bottomChart}>
                 <UserPerformanceChart supabase={supabase} session={session}/>
+                <UserAnotherChart/>
               </div>
+              
                     
             </div>
 

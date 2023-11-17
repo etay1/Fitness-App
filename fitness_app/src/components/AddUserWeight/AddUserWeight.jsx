@@ -11,7 +11,6 @@ function AddUserWeight(
   session,
   }
 ){
-  session = useAuthStateListener();
   return (
     <div className={`modal ${isAddUserWeightPopupOpen ? "active" : ""}`}>
       <div className="overlay"></div>

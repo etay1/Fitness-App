@@ -8,8 +8,8 @@ import { useLocation } from "react-router-dom";
 import AddUserWeight from "../AddUserWeight/AddUserWeight";
 
 function UserWeightRegistry() {
-  const session = useAuthStateListener();
 
+  const session = useAuthStateListener();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   var clickIdentifier = params.get("clickIdentifier");
