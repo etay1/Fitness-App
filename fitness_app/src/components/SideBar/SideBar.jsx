@@ -24,6 +24,7 @@ import ExerciseRegistry from "../ExerciseRegistry/ExerciseRegistry";
 
 const Item = ({ title, to, icon, selected, setSelected, onClick}) => {
   var style = getComputedStyle(document.body);
+
   return (
     <MenuItem
       active={selected === title}
@@ -40,6 +41,7 @@ const Item = ({ title, to, icon, selected, setSelected, onClick}) => {
 };
 const SignOutItem = ({ title, to, icon, selected, setSelected, onClick }) => {
   var style = getComputedStyle(document.body);
+
   return (
     <MenuItem
       active={selected === title}
@@ -60,13 +62,17 @@ const SignOutItem = ({ title, to, icon, selected, setSelected, onClick }) => {
 const Sidebar = ({ supabase, session }) => {
   var style = getComputedStyle(document.body);
   const navigate = useNavigate();
-  const handleSignOut = () => {
-    console.log("works");
-    SignOut();
-  };
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
 
+  const SignOut = () => {
+    console.log("works");
+    supabase.auth.signOut();
+    navigate("/");
+    console.log("gone past");
+    
+  }
+  
   return (
     <div className="overlay-sidebar">
     <Box>
@@ -98,8 +104,6 @@ const Sidebar = ({ supabase, session }) => {
             <Item 
               title="Dashboard"
               icon={<HomeOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
               to="/"
             />
 
@@ -200,11 +204,4 @@ const Sidebar = ({ supabase, session }) => {
     
   );
 };
-const SignOut = () => {
-  console.log("works");
-  supabase.auth.signOut();
-  console.log("gone past");
-  
-}
-
 export default Sidebar;
