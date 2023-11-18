@@ -10,7 +10,7 @@ export const Login = ({ supabase }) => {
     minLength: process.env.GOTRUE_PASSWORD_MIN_LENGTH || 6,
   };
   return (
-    <div className="page">
+    <div className={styles["login-page"]}>
       <div className={`container ${styles["ctn"]}`}>
         {/* container item 1 */}
         <div className={`box ${styles["left-box"]}`}>
