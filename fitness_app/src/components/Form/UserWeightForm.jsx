@@ -82,14 +82,15 @@ const UserWeightForm = ({ closeAddUserWeightPopup, session }) => {
 
               <div className={styles["form-btn-ctn"]}>
                 <Button
-                  text="Done"
+                  text = "Done"
                   type="button"
                   onClick={() => {
-                    updateSuccessMessage("");
                     formik.resetForm();
-                    closeAddUserWeightPopup(); // Invoke closeAddUserWeightPopup directly
+                    updateSuccessMessage("");
+                    closeAddUserWeightPopup();
                   }}
-                />
+                >
+                </Button>
                 <Button
                   text="Add Exercise"
                   type="submit"
@@ -97,7 +98,8 @@ const UserWeightForm = ({ closeAddUserWeightPopup, session }) => {
                     !(dirty && isValid) ? styles["disabled-btn"] : ""
                   }`}
                   disabled={!(dirty && isValid)}
-                ></Button>
+                > 
+                </Button>
               </div>
               <div className={styles["form-success-ctn"]}>
                 <div className={styles["form-success-message"]}>
