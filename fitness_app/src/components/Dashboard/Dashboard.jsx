@@ -5,63 +5,77 @@ import AddSubSession from "../AddSubSession/AddSubSession";
 import { Link } from "react-router-dom";
 import { useModalState } from "../../hooks/useModalState";
 import styles from "./dashboard.module.css";
+import { useEffect } from "react";
+import Sidebar from "../SideBar/SideBar";
+import UserCaloriesChart from "../UserCaloriesChart/UserCaloriesChart";
+import Header from "../Header/Header";
+import UserPerformanceChart from "../UserPerformanceChart/UserPerformanceChart";
+import UserAnotherChart from "../UserAnotherChart/UserAnotherChart";
 
 const Dashboard = ({ supabase, session }) => {
-  const {
-    isOpen: isAddExerciseModalOpen,
-    openModal: openAddExerciseModal,
-    closeModal: closeAddExerciseModal,
-  } = useModalState(false);
-  const {
-    isOpen: isAddUserWeightModalOpen,
-    openModal: openAddUserWeightModal,
-    closeModal: closeAddUserWeightModal,
-  } = useModalState(false);
-  const {
-    isOpen: isAddSubSessionModalOpen,
-    openModal: openAddSubSessionModal,
-    closeModal: closeAddSubSessionModal,
-  } = useModalState(false);
-
-  const formBtnCss = styles["form-btn"];
 
   return (
-    <div className={styles.dashboard} id="dashboard">
-      <h1>Welcome {session.user.email}</h1>
-      <button className={formBtnCss} onClick={() => supabase.auth.signOut()}>
-        Sign Out
-      </button>
-      <button className={formBtnCss} onClick={openAddExerciseModal}>
-        Add Exercise
-      </button>
-      <button className={formBtnCss} onClick={openAddSubSessionModal}>
-        Add Sub Session
-      </button>
-      <button className={formBtnCss} onClick={openAddUserWeightModal}>
-        Add User Weight
-      </button>
+    
+    <div className="page">
+      <div className={styles.dashboard}>
+        
+        <div className={styles.sidebarContainer}>
+          <Sidebar supabase={supabase} session={session}/>
+        </div>
 
-      <Link to="/exercise-registry">Exercise Registry</Link>
+        
+          <div className={styles.widgetsContainer}>
 
-      <AddExercise
-        isAddExercisePopupOpen={isAddExerciseModalOpen}
-        closeAddExercisePopup={closeAddExerciseModal}
-        session={session}
-      />
+            <div className={styles.topContainer}>
+              <div className={styles.topChart}>
+                <UserCaloriesChart supabase={supabase} session={session}/>
+              </div>
+              <div className={styles.topChart}>
+                <UserCaloriesChart supabase={supabase} session={session}/>
+              </div>
+              <div className={styles.topChart}>
+                <UserCaloriesChart supabase={supabase} session={session}/>
+              </div>
+            </div>
 
-      <AddSubSession
-        isAddSubSessionPopupOpen={isAddSubSessionModalOpen}
-        closeAddSubSessionPopup={closeAddSubSessionModal}
-        session={session}
-      />
+            <div className={styles.bottomContainer}>
 
-      <AddUserWeight
-        isAddUserWeightPopupOpen={isAddUserWeightModalOpen}
-        closeAddUserWeightPopup={closeAddUserWeightModal}
-        session={session}
-      />
-    </div>
+              <div className={styles.bottomChart}>
+                <UserPerformanceChart supabase={supabase} session={session}/>
+                <UserAnotherChart/>
+              </div>
+              
+                    
+            </div>
+
+          </div>
+      </div>
+      </div>
+      
+    
+    
   );
 };
+{/* <h1>Welcome {session.user.email} </h1>
+<button className="form-btn" onClick={() => supabase.auth.signOut()}>Sign Out</button>
+<button className="form-btn" onClick={openExerciseModal}>Add Exercise</button>
+<button className="form-btn" onClick={openAddSubSessionModal}>Add Sub Session</button>
+<button className="form-btn" onClick={openUserWeightModal}>Add User Weight</button>
+<AddExercise
+  isAddExercisePopupOpen={isExerciseModalOpen}
+  closeAddExercisePopup={closeExerciseModal}
+  session={session}
+/>
 
+<AddSubSession
+  isAddSubSessionPopupOpen={isAddSubSessionModalOpen}
+  closeAddSubSessionPopup={closeAddSubSessionModal}
+  session={session}
+/>
+
+<AddUserWeight
+  isAddUserWeightPopupOpen={isUserWeightModalOpen}
+  closeAddUserWeightPopup={closeWeightModal}
+  session={session}
+/> */}
 export default Dashboard;
