@@ -119,6 +119,7 @@ const Sidebar = ({ supabase, session }) => {
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              session={session}
               to={"/user-weight-registry"}
             />
             <Item
