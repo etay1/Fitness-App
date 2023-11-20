@@ -49,110 +49,106 @@ const AlterExerciseForm = ({
         const { errors, touched, isValid, dirty } = formik;
         return (
           <Form>
-            <div className={styles["form-ctn"]}>
+            <div className={styles["input-ctn"]}>
+              <label>Exercise Name:</label>
+              <Field
+                type="text"
+                name="exerciseName"
+                id="exerciseName"
+                className={
+                  errors.exerciseName && touched.exerciseName
+                    ? styles["input-error"]
+                    : null
+                }
+              />
+              <ErrorMessage
+                name="exerciseName"
+                component="span"
+                className={styles.error}
+              />
+            </div>
+            {exerciseType === "strength" && (
               <div className={styles["input-ctn"]}>
-                <label>Exercise Name:</label>
+                <label>Calories / rep:</label>
                 <Field
-                  type="text"
-                  name="exerciseName"
-                  id="exerciseName"
+                  type="number"
+                  min="0"
+                  name="caloriesPerRep"
+                  id="caloriesPerRep"
                   className={
-                    errors.exerciseName && touched.exerciseName
+                    errors.caloriesPerRep && touched.caloriesPerRep
                       ? styles["input-error"]
                       : null
                   }
                 />
                 <ErrorMessage
-                  name="exerciseName"
+                  name="caloriesPerRep"
                   component="span"
                   className={styles.error}
                 />
               </div>
-              {exerciseType === "strength" && (
-                <div className={styles["input-ctn"]}>
-                  <label>Calories / rep:</label>
-                  <Field
-                    type="number"
-                    min="0"
-                    name="caloriesPerRep"
-                    id="caloriesPerRep"
-                    className={
-                      errors.caloriesPerRep && touched.caloriesPerRep
-                        ? styles["input-error"]
-                        : null
-                    }
-                  />
-                  <ErrorMessage
-                    name="caloriesPerRep"
-                    component="span"
-                    className={styles.error}
-                  />
-                </div>
-              )}
-              {exerciseType === "cardio" && (
-                <div className={styles["input-ctn"]}>
-                  <label>Calories / 15 minutes:</label>
-                  <Field
-                    type="number"
-                    min="0"
-                    name="caloriesPerDuration"
-                    id="caloriesPerDuration"
-                    className={
-                      errors.caloriesPerDuration && touched.caloriesPerDuration
-                        ? styles["input-error"]
-                        : null
-                    }
-                  />
-                  <ErrorMessage
-                    name="caloriesPerDuration"
-                    component="span"
-                    className={styles.error}
-                  />
-                </div>
-              )}
+            )}
+            {exerciseType === "cardio" && (
               <div className={styles["input-ctn"]}>
-                <label>Description:</label>
+                <label>Calories / 15 minutes:</label>
                 <Field
-                  as="textarea"
-                  name="description"
-                  id="description"
+                  type="number"
+                  min="0"
+                  name="caloriesPerDuration"
+                  id="caloriesPerDuration"
                   className={
-                    errors.description && touched.description
+                    errors.caloriesPerDuration && touched.caloriesPerDuration
                       ? styles["input-error"]
                       : null
                   }
                 />
                 <ErrorMessage
-                  name="description"
+                  name="caloriesPerDuration"
                   component="span"
                   className={styles.error}
                 />
               </div>
-              <div className={styles["form-btn-ctn"]}>
-                <Button
-                  text ="Done"
-                  type="button"
-                  onClick={() => {
-                    updateSuccessMessage("");
-                    formik.resetForm();
-                    closeEditExercisePopup();
-                  }}
-                > 
-                </Button>
-                <Button
-                  text="Confirm"
-                  type="submit"
-                  className={` ${
-                    !(dirty && isValid) ? styles["disabled-btn"] : ""
-                  }`}
-                  disabled={!(dirty && isValid)}
-                >
-                </Button>
-              </div>
-              <div className={styles["form-success-ctn"]}>
-                <div className={styles["form-success-message"]}>
-                  {successMessage}
-                </div>
+            )}
+            <div className={styles["input-ctn"]}>
+              <label>Description:</label>
+              <Field
+                as="textarea"
+                name="description"
+                id="description"
+                className={
+                  errors.description && touched.description
+                    ? styles["input-error"]
+                    : null
+                }
+              />
+              <ErrorMessage
+                name="description"
+                component="span"
+                className={styles.error}
+              />
+            </div>
+            <div className={styles["form-btn-ctn"]}>
+              <Button
+                text="Done"
+                type="button"
+                onClick={() => {
+                  updateSuccessMessage("");
+                  formik.resetForm();
+                  closeEditExercisePopup();
+                }}
+              ></Button>
+              <Button
+                text="Confirm"
+                type="submit"
+                className={` ${
+                  !(dirty && isValid) ? styles["disabled-btn"] : ""
+                }`}
+                disabled={!(dirty && isValid)}
+              ></Button>
+            </div>
+            <div className={styles["form-success-ctn"]}>
+              <div className={styles["form-success-message"]}>
+                {successMessage}
               </div>
             </div>
           </Form>

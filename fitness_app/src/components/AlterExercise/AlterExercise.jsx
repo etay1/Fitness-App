@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./AlterExercise.module.css";
+import styles from "../Form/form.module.css";
 import AlterExerciseForm from "../Form/AlterExerciseForm";
 
 const AlterExercise = ({
