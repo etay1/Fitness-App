@@ -5,7 +5,7 @@ import styles from "./Registry.module.css";
 import { useModalState } from "../../hooks/useModalState";
 import AddUserWeight from "../AddUserWeight/AddUserWeight";
 import { useUserWeightRegistry } from "../../hooks/UserWeightFormHooks/useUserWeightRegistry";
-
+import { useSession } from "../../supabase/sessionContext";
 function UserWeightRegistry() {
 	const {
 		isOpen: isAddUserWeightModalOpen,
@@ -14,6 +14,7 @@ function UserWeightRegistry() {
 	} = useModalState(false);
 
 	const { userWeights, error } = useUserWeightRegistry();
+  const { session} = useSession();
 
 	return (
 		<div className='page'>
@@ -57,13 +58,12 @@ function UserWeightRegistry() {
 						</ul>
 					</div>
 				</div>
-			</div>
-			{/* 
       <AddUserWeight
         isAddUserWeightPopupOpen={isAddUserWeightModalOpen}
         closeAddUserWeightPopup={closeAddUserWeightModal}
-  
-      /> */}
+        session={session}
+      /> 
+			</div>
 		</div>
 	);
 }
