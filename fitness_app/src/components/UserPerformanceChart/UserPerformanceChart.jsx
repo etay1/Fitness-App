@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Chart } from "chart.js";
 import styles from "./UserPerformanceChart.module.css";
 
-const UserPerformanceChart = ({ supabase, session }) => {
+const UserPerformanceChart = ({ supabase }) => {
   const chartRef = useRef(null);
 
   useEffect(() => {

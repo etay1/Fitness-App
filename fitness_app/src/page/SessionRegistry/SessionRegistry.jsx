@@ -2,11 +2,9 @@ import React from "react";
 import styles from "../../components/ExerciseRegistry/ExerciseRegistry.module.css";
 import RegistryHeader from "../../components/ExerciseRegistry/RegistryHeader";
 import { useModalState } from "../../hooks/useModalState";
-import { useAuthStateListener } from "../../supabase/session";
 import AddExercise from "../../components/AddExercise/AddExercise";
 
 const SessionRegistry = () => {
-    const session = useAuthStateListener();
 	const {
 		isOpen: isAddSubSessionModalOpen,
 		openModal: openAddSubSessionModal,
@@ -33,7 +31,6 @@ const SessionRegistry = () => {
 			<AddExercise
 				isAddExercisePopupOpen={isAddExerciseModalOpen}
 				closeAddExercisePopup={closeAddExerciseModal}
-				session={session}
 			/>
 		</div>
 	);
