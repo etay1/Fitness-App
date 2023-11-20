@@ -74,8 +74,6 @@ const Sidebar = ({ supabase, session }) => {
   };
 
   return (
-    //why is this index lower than the other overlay?
-    // this syntax is fine since you added it to index.css but the actual selector should be equal to the other overlay
     <div className="overlay-sidebar">
       <Box>
         <ProSidebar collapsed={isCollapsed}>
