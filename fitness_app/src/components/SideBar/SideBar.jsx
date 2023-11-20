@@ -61,7 +61,7 @@ const SignOutItem = ({ title, to, icon, selected, setSelected, onClick }) => {
   );
 };
 
-const Sidebar = ({ supabase, session }) => {
+const Sidebar = ({ supabase }) => {
   var style = getComputedStyle(document.body);
   const navigate = useNavigate();
   const [isCollapsed, setIsCollapsed] = useState(false);
