@@ -8,6 +8,7 @@
     background: var(--white-color) !important;
     height: 100vh;
     overflow: hidden;
+    border-radius: 12px;
   }
   
   .pro-icon-wrapper {
