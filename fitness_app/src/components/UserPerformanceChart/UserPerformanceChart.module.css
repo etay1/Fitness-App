@@ -1,6 +1,6 @@
 .userPerformanceChartContainer {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     height: 325px;
     width: 125vh;
@@ -8,6 +8,7 @@
     box-shadow: 0 0 6px 2px rgba(0,0,0,.1);
     border-bottom: 2px solid transparent;
     border-radius: 10px;
+
 }
 
 @media screen and (max-width: 500px) {

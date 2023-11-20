@@ -7,6 +7,7 @@ import styles from "./Dashboard.module.css";
 import { useEffect } from "react";
 import Sidebar from "../SideBar/SideBar";
 import UserCaloriesChart from "../UserCaloriesChart/UserCaloriesChart";
+import UserWeightChart from "../UserWeightChart/UserWeightChart";
 import Header from "../Header/Header";
 import UserPerformanceChart from "../UserPerformanceChart/UserPerformanceChart";
 import UserWeightDisplay from "../UserWeightDisplay/UserWeightDisplay";
@@ -57,6 +58,9 @@ const Dashboard = ({ supabase, session }) => {
 
             <div className={styles.bottomChart}>
               <UserPerformanceChart supabase={supabase} session={session}/>
+            </div>
+            <div className={styles.bottomChart}>
+              <UserWeightChart supabase={supabase} session={session}/>
             </div>
             <div className={styles.bottomChart}>
               

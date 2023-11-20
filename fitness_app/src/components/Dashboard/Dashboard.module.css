@@ -80,6 +80,12 @@
   font-size: 30px;
 }
 
+.largeWidgetBox {
+  justify-content:space-evenly;
+  height: 300px;
+
+}
+
 @media screen and (max-width: 768px) {
   .dashboard {
     flex-direction: row; /* Change to column layout for small screens */
@@ -101,6 +107,6 @@
   }
 
   .bottomChart {
-    width: 355px;
+    padding: 10px 10;
   }
 }
