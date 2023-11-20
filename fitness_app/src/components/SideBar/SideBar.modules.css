@@ -1,3 +1,9 @@
+/* Remove every instance of !important this is very bad practice */
+
+/* Faizan you have to look at our other code. We use CSS modules. You cannot import global files */
+
+/* https://element.how/why-you-should-avoid-using-important-in-css/ */
+
 .pro-sidebar-inner {
     background: var(--white-color) !important;
     height: 100vh;
