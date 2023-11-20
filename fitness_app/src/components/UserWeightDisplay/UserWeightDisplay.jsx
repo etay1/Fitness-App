@@ -30,9 +30,9 @@ const UserWeightDisplay = ({ supabase, session }) => {
 
     return (
         <div className={styles.widgetBox}>
-            {/* Render the fetched weight data */}
             {weights.length > 0 && (
                 <div className={styles.smallWidget}>
+                    <h1>Most Recent Weight</h1>
                     <h3 className={styles.smallWidget}>Weight: </h3>
                     <p className={styles.smallWidget}> {weights[0]}</p>
                     <h3>Date: </h3>
