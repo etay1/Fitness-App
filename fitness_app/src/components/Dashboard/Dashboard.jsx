@@ -5,30 +5,30 @@ import UserCaloriesChart from "../UserCaloriesChart/UserCaloriesChart";
 import UserPerformanceChart from "../UserPerformanceChart/UserPerformanceChart";
 import UserAnotherChart from "../UserAnotherChart/UserAnotherChart";
 
-const Dashboard = ({ supabase }) => {
+const Dashboard = () => {
 	return (
 		<div className='page'>
 			<div className={styles.dashboard}>
 				<div className={styles.sidebarContainer}>
-					<Sidebar supabase={supabase} />
+					<Sidebar />
 				</div>
 
 				<div className={styles.widgetsContainer}>
 					<div className={styles.topContainer}>
 						<div className={styles.topChart}>
-							<UserCaloriesChart supabase={supabase} />
+							<UserCaloriesChart />
 						</div>
 						<div className={styles.topChart}>
-							<UserCaloriesChart supabase={supabase} />
+							<UserCaloriesChart />
 						</div>
 						<div className={styles.topChart}>
-							<UserCaloriesChart supabase={supabase} />
+							<UserCaloriesChart />
 						</div>
 					</div>
 
 					<div className={styles.bottomContainer}>
 						<div className={styles.bottomChart}>
-							<UserPerformanceChart supabase={supabase} />
+							<UserPerformanceChart />
 							<UserAnotherChart />
 						</div>
 					</div>

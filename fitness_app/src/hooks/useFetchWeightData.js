@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useSession } from "../supabase/sessionContext";
+import { supabase } from "../supabase/client";
 
-const useFetchWeightData = async ({ supabase }) => {
+const useFetchWeightData = async () => {
 	const [weights, setWeights] = useState([]);
 	const [dates, setDates] = useState([]);
 

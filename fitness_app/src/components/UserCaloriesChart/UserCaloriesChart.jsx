@@ -8,8 +8,8 @@ import Chart from "chart.js/auto";
 import styles from "./UserCaloriesChart.module.css";
 import { useSession } from "../../supabase/sessionContext";
 
-const UserCaloriesChart = ({ supabase }) => {
-	const { weights, dates } = useFetchWeightData({ supabase });
+const UserCaloriesChart = () => {
+	const { weights, dates } = useFetchWeightData();
 	var style = getComputedStyle(document.body);
 
 	const { session } = useSession();

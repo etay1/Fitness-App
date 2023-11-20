@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { supabase } from "./supabase/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AddSubSession from "./components/AddSubSession/AddSubSession";
@@ -18,27 +17,27 @@ ReactDOM.createRoot(root).render(
 		<SessionProvider>
 			<BrowserRouter>
 				<Routes>
-					<Route path='/' element={<App supabase={supabase} />} />
-					<Route element={<PrivateRoute supabase={supabase} />}>
+					<Route path='/' element={<App  />} />
+					<Route element={<PrivateRoute  />}>
 						<Route path='/add-exercise' element={<AddExercise />} />
 					</Route>
-					<Route element={<PrivateRoute supabase={supabase} />}>
+					<Route element={<PrivateRoute />}>
 						<Route path='/add-sub-session' exact element={<AddSubSession />} />
 					</Route>
-					<Route element={<PrivateRoute supabase={supabase} />}>
+					<Route element={<PrivateRoute />}>
 						<Route path='/add-user-weight' element={<AddUserWeight />} />
 					</Route>
-					<Route element={<PrivateRoute supabase={supabase} />}>
+					<Route element={<PrivateRoute />}>
 						<Route path='/exercise-registry' element={<ExerciseRegistry />} />
 					</Route>
-					<Route element={<PrivateRoute supabase={supabase} />}>
+					<Route element={<PrivateRoute />}>
 						<Route
 							path='/user-weight-registry'
 							element={<UserWeightRegistry />}
 						/>
 					</Route>
 
-					{/* <Route element={<PrivateRoute supabase={supabase} />}>
+					{/* <Route element={<PrivateRoute />}>
           <Route path="/session-registry" element={<SessionRegistry />} />
         </Route> */}
 				</Routes>
