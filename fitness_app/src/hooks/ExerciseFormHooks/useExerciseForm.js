@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { HandleDatabaseError } from "../../utils/HandleDatabaseError";
+import useRefreshPage from "../../hooks/useRefreshPage";
+
 
 export function useExerciseForm(supabase, category, updateSuccessMessage) {
   const [exerciseData, setExerciseData] = useState({
@@ -9,6 +11,7 @@ export function useExerciseForm(supabase, category, updateSuccessMessage) {
     caloriesPerDuration: 0,
   });
   const [isSuccess, setIsSuccess] = useState(false);
+  const handleRefresh = useRefreshPage();
 
   const handleInsertion = async (values) => {
     const { exerciseName, caloriesPerRep, caloriesPerDuration, description } =
@@ -38,6 +41,7 @@ export function useExerciseForm(supabase, category, updateSuccessMessage) {
           category === "cardio" ? "Cardio" : "Strength"
         } Exercise.`
       );
+      handleRefresh();
     } catch (error) {
       console.log("db error: ", error);
       const errorCode = error.code;
