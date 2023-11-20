@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import Sidebar from "../SideBar/SideBar";
 import { supabase } from "../../supabase/client";
-import { useAuthStateListener } from "../../supabase/session";
 import styles from "./Registry.module.css";
 import { useModalState } from "../../hooks/useModalState";
 import AddUserWeight from "../AddUserWeight/AddUserWeight";
+import { useAuthStateListener } from "../../supabase/session";
 
-function UserWeightRegistry() {
-  const session = useAuthStateListener();
+function UserWeightRegistry({ session }) {
   const {
     isOpen: isAddUserWeightModalOpen,
     openModal: openAddUserWeightModal,
@@ -21,15 +20,22 @@ function UserWeightRegistry() {
       </div>
 
       <div className="content">
-        <button
-          className={styles["add-button"]}
-          onClick={() => openAddUserWeightModal()}
-        >
-          Add User Weight
-        </button>
+        <div className={styles["registry-content"]}>
+          <div className={styles["registry-header"]}>
+            <h1 className={styles["registry-title"]}>User Weight Registry</h1>
+            <div>
+              <button
+                className={styles["add-button"]}
+                onClick={() => openAddUserWeightModal()}
+              >
+                Add User Weight
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-
-      {/* <AddUserWeight
+      {/* 
+      <AddUserWeight
         isAddUserWeightPopupOpen={isAddUserWeightModalOpen}
         closeAddUserWeightPopup={closeAddUserWeightModal}
         session={session}
