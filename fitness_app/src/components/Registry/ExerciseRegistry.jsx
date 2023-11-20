@@ -5,7 +5,7 @@ import { useModalState } from "../../hooks/useModalState";
 import DeleteExercise from "../DeleteExercise/DeleteExercise";
 import AddExercise from "../AddExercise/AddExercise";
 import AlterExercise from "../AlterExercise/AlterExercise";
-import styles from "./ExerciseRegistry.module.css";
+import styles from "./Registry.module.css";
 import { useAuthStateListener } from "../../supabase/session";
 import Sidebar from "../SideBar/SideBar";
 import { supabase } from "../../supabase/client";
@@ -13,10 +13,6 @@ import { supabase } from "../../supabase/client";
 function ExerciseRegistry() {
   const { strengthExercise, cardioExercise, error } = useExerciseRegistry();
   const session = useAuthStateListener();
-
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  var clickIdentifier = params.get("clickIdentifier");
 
   const {
     isOpen: isAddExerciseModalOpen,
@@ -57,23 +53,17 @@ function ExerciseRegistry() {
     openEditExerciseModal(type, id, name, desc, calories);
   };
 
-  useEffect(() => {
-    if (clickIdentifier === "addexercise") {
-      openAddExerciseModal();
-    }
-  }, [clickIdentifier]);
-
   return (
     <div className="page">
       <div className="sidebar-container">
         <Sidebar supabase={supabase} session={session} />
       </div>
       <div className="content">
-        <div className={styles["exercise-registry"]}>
-          <div className={styles["exercise-registry-header"]}>
-            <h1 className={styles["title"]}>Exercise Registry</h1>
+        <div className={styles["registry-content"]}>
+          <div className={styles["registry-header"]}>
+            <h1 className={styles["registry-title"]}>Exercise Registry</h1>
           </div>
-          <div className={styles["exercise-registry-buttons"]}>
+          <div>
             <button
               className={styles["add-button"]}
               onClick={() => openAddExerciseModal()}
@@ -81,31 +71,28 @@ function ExerciseRegistry() {
               Add Exercise
             </button>
           </div>
-          <div className={styles["exercise-registry-content"]}>
+          <div>
             {error && (
               <div className={styles["error"]}>Error: {error.toString()}</div>
             )}
-            <div className={styles["strength-exercises"]}>
+            <div className={styles["registry-data"]}>
               <h1 className={styles["category-title"]}>Weight Exercises</h1>
-              <ul className={styles["exercise-list"]}>
+              <ul className={styles["list"]}>
                 {strengthExercise.map((strengthExercise) => (
-                  <li
-                    className={styles["exercise-item"]}
-                    key={strengthExercise.id}
-                  >
-                    <div className={styles["exercise-details"]}>
+                  <li className={styles["item"]} key={strengthExercise.id}>
+                    <div className={styles["item-details"]}>
                       <div>
-                        <div className={styles["exercise-name"]}>
+                        <div className={styles["item-name"]}>
                           {strengthExercise.name}
                         </div>
-                        <div className={styles["exercise-description"]}>
+                        <div className={styles["item-description"]}>
                           {strengthExercise.description}
                         </div>
                         <div className={styles["exercise-calories-per_unit"]}>
                           {strengthExercise.calories_per_rep} calories / rep
                         </div>
                       </div>
-                      <div className={styles["exercise-buttons"]}>
+                      <div className={styles["button-ctn"]}>
                         <button
                           className={styles["edit-button"]}
                           onClick={() =>
@@ -137,20 +124,20 @@ function ExerciseRegistry() {
                 ))}
               </ul>
             </div>
-            <div className={styles["cardio-exercises"]}>
+            <div className={styles["registry-data"]}>
               <h1 className={styles["category-title"]}>Cardio Exercises</h1>
-              <ul className={styles["exercise-list"]}>
+              <ul className={styles["list"]}>
                 {cardioExercise.map((cardioExercise) => (
                   <li
-                    className={styles["exercise-item"]}
+                    className={styles["item"]}
                     key={cardioExercise.cardio_exercise_id}
                   >
-                    <div className={styles["exercise-details"]}>
+                    <div className={styles["item-details"]}>
                       <div>
-                        <div className={styles["exercise-name"]}>
+                        <div className={styles["item-name"]}>
                           {cardioExercise.name}
                         </div>
-                        <div className={styles["exercise-description"]}>
+                        <div className={styles["item-description"]}>
                           {cardioExercise.description}
                         </div>
                         <div className={styles["exercise-calories-per_unit"]}>
@@ -158,7 +145,7 @@ function ExerciseRegistry() {
                           15 minutes
                         </div>
                       </div>
-                      <div className={styles["exercise-buttons"]}>
+                      <div className={styles["button-ctn"]}>
                         <button
                           className={styles["edit-button"]}
                           onClick={() =>

@@ -7,10 +7,10 @@ import reportWebVitals from "./reportWebVitals";
 import AddSubSession from "./components/AddSubSession/AddSubSession";
 import AddExercise from "./components/AddExercise/AddExercise";
 import AddUserWeight from "./components/AddUserWeight/AddUserWeight";
-import ExerciseRegistry from "./components/ExerciseRegistry/ExerciseRegistry";
+import ExerciseRegistry from "./components/Registry/ExerciseRegistry";
 import "./index.css";
 import PrivateRoute from "./utils/PrivateRoute";
-import UserWeightRegistry from "./components/UserWeightRegistry/UserWeightRegistry";
+import UserWeightRegistry from "./components/Registry/UserWeightRegistry";
 
 const root = document.getElementById("root");
 ReactDOM.createRoot(root).render(
