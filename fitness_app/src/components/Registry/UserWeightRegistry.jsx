@@ -5,6 +5,7 @@ import styles from "./Registry.module.css";
 import { useModalState } from "../../hooks/useModalState";
 import AddUserWeight from "../AddUserWeight/AddUserWeight";
 import { useAuthStateListener } from "../../supabase/session";
+import { useUserWeightRegistry } from "../../hooks/UserWeightFormHooks/useUserWeightRegistry";
 
 function UserWeightRegistry({ session }) {
   const {
@@ -12,6 +13,8 @@ function UserWeightRegistry({ session }) {
     openModal: openAddUserWeightModal,
     closeModal: closeAddUserWeightModal,
   } = useModalState(false);
+
+  const { userWeights, error } = useUserWeightRegistry();
 
   return (
     <div className="page">
@@ -31,6 +34,28 @@ function UserWeightRegistry({ session }) {
                 Add User Weight
               </button>
             </div>
+          </div>
+          {error && (
+            <div className={styles["error"]}>Error: {error.toString()}</div>
+          )}
+          <div className={styles["registry-data"]}>
+            <h1 className={styles["category-title"]}>Weight Exercises</h1>
+            <ul className={styles["list"]}>
+              {userWeights.map((userWeight) => (
+                <li className={styles["item"]} key={userWeight.id}>
+                  <div className={styles["item-details"]}>
+                    <div>
+                      <div className={styles["item-name"]}>
+                        {new Date(userWeight.date).toLocaleDateString("en-US")}
+                      </div>
+                      <div className={styles["item-description"]}>
+                        {userWeight.weight} pounds
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
