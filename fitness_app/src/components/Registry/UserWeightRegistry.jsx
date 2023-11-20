@@ -46,7 +46,7 @@ function UserWeightRegistry() {
 									<div className={styles["item-details"]}>
 										<div>
 											<div className={styles["item-name"]}>
-												{new Date(userWeight.date).toLocaleDateString("en-US")}
+                        {userWeight.date}
 											</div>
 											<div className={styles["item-description"]}>
 												{userWeight.weight} pounds
