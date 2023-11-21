@@ -5,6 +5,7 @@ import { useExerciseForm } from "../../hooks/ExerciseFormHooks/useExerciseForm";
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
 import styles from "./form.module.css";
 import Button from "../Button/Button";
+import { supabase } from "../../supabase/client";
 
 const initialFormValues = {
 	exerciseName: "",
@@ -13,7 +14,7 @@ const initialFormValues = {
 	description: "",
 };
 
-const ExerciseForm = ({ closeAddExercisePopup, supabase, category }) => {
+const ExerciseForm = ({ closeAddExercisePopup, category }) => {
 	const { successMessage, updateSuccessMessage } = useSuccessMessage();
 
 	const { isSuccess, handleInsertion } = useExerciseForm(

@@ -1,15 +1,11 @@
 import React from "react";
-import { supabase } from "../../supabase/client";
 import ExerciseForm from "../Form/ExerciseForm";
 import CategoryToggle from "../CategoryToggle/CategoryToggle";
 import { useCategory } from "../../hooks/useCategory";
 import styles from "../Form/form.module.css";
-import { useSession } from "../../supabase/sessionContext";
-
 
 function AddExercise({ isAddExercisePopupOpen, closeAddExercisePopup }) {
 	const { category, changeCategory } = useCategory("strength");
-
 
 	return (
 		<div className={`modal ${isAddExercisePopupOpen ? "active" : ""}`}>
@@ -26,7 +22,6 @@ function AddExercise({ isAddExercisePopupOpen, closeAddExercisePopup }) {
 						<ExerciseForm
 							closeAddExercisePopup={closeAddExercisePopup}
 							category={category}
-							supabase={supabase}
 						/>
 					</div>
 				</div>

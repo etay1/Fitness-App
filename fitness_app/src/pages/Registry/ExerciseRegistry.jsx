@@ -7,7 +7,6 @@ import AddExercise from "../../components/AddExercise/AddExercise";
 import AlterExercise from "../../components/AlterExercise/AlterExercise";
 import styles from "./styles/Registry.module.css";
 import Sidebar from "../../components/SideBar/SideBar";
-import { supabase } from "../../supabase/client";
 
 function ExerciseRegistry() {
 	const { strengthExercise, cardioExercise, error } = useExerciseRegistry();
@@ -54,7 +53,7 @@ function ExerciseRegistry() {
 	return (
 		<div className='page'>
 			<div className='sidebar-container'>
-				<Sidebar supabase={supabase} />
+				<Sidebar />
 			</div>
 			<div className='content'>
 				<div className={styles["registry-content"]}>
