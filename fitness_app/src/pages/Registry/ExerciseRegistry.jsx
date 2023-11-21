@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useExerciseRegistry } from "../../hooks/ExerciseRegistryHooks/useExerciseRegistry";
 import { useModalState } from "../../hooks/useModalState";
-import DeleteExercise from "../../components/DeleteExercise/DeleteExercise";
-import AddExercise from "../../components/AddExercise/AddExercise";
-import AlterExercise from "../../components/AlterExercise/AlterExercise";
+import DeleteExercise from "../../components/popups/DeleteExercise/DeleteExercise";
+import AddExercise from "../../components/popups/AddExercise/AddExercise";
+import AlterExercise from "../../components/popups/AlterExercise/AlterExercise";
 import styles from "./styles/Registry.module.css";
 import Sidebar from "../../components/SideBar/SideBar";
 

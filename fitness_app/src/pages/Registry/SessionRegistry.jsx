@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles/Registry.module.css";
 import RegistryHeader from "./components/RegistryHeader";
 import { useModalState } from "../../hooks/useModalState";
-import AddExercise from "../../components/AddExercise/AddExercise";
+import AddExercise from "../../components/popups/AddExercise/AddExercise";
 
 const SessionRegistry = () => {
 	const {

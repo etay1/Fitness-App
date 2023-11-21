@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "../Form/form.module.css";
-import UserWeightForm from "../Form/UserWeightForm";
+import UserWeightForm from "../../forms/UserWeightForm";
+import styles from "../Popups.module.css";
 
 function AddUserWeight({ isAddUserWeightPopupOpen, closeAddUserWeightPopup }) {
 	return (

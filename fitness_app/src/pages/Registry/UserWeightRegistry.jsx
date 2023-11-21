@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "../../components/SideBar/SideBar";
 import { useModalState } from "../../hooks/useModalState";
-import AddUserWeight from "../../components/AddUserWeight/AddUserWeight";
+import AddUserWeight from "../../components/popups/AddUserWeight/AddUserWeight";
 import { useUserWeightRegistry } from "../../hooks/UserWeightFormHooks/useUserWeightRegistry";
 import styles from "./styles/Registry.module.css";
 

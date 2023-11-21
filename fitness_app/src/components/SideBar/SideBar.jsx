@@ -16,9 +16,9 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import TimelineIcon from "@mui/icons-material/Timeline";
 import styles from "./SideBar.modules.css";
-import AddExercise from "../AddExercise/AddExercise";
-import AddUserWeight from "../AddUserWeight/AddUserWeight";
-import AddSubSession from "../AddSubSession/AddSubSession";
+import AddExercise from "../popups/AddExercise/AddExercise";
+import AddUserWeight from "../popups/AddUserWeight/AddUserWeight";
+import AddSubSession from "../popups/AddSubSession/AddSubSession";
 import { useModalState } from "../../hooks/useModalState";
 import { supabase } from "../../supabase/client";
 

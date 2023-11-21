@@ -1,8 +1,8 @@
 import React from "react";
-import ExerciseForm from "../Form/ExerciseForm";
-import CategoryToggle from "../CategoryToggle/CategoryToggle";
-import { useCategory } from "../../hooks/useCategory";
-import styles from "../Form/form.module.css";
+import ExerciseForm from "../../forms/ExerciseForm";
+import CategoryToggle from "../../CategoryToggle/CategoryToggle";
+import { useCategory } from "../../../hooks/useCategory";
+import styles from "../Popups.module.css";
 
 function AddExercise({ isAddExercisePopupOpen, closeAddExercisePopup }) {
 	const { category, changeCategory } = useCategory("strength");
