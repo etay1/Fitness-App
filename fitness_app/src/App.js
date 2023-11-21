@@ -1,6 +1,6 @@
 import React from "react";
-import { Login } from "./components/Login/Login";
-import Dashboard from "./components/Dashboard/Dashboard"; // Import it as the default export
+import { Login } from "./pages/Login/Login";
+import Dashboard from "./pages/Dashboard/Dashboard"; // Import it as the default export
 import { useSession } from "./supabase/sessionContext";
 
 function App() {

@@ -5,7 +5,6 @@ import { ThemeSupa } from "@supabase/auth-ui-shared";
 import styles from "./login.module.css";
 import { supabase } from "../../supabase/client";
 
-// console.log(styles);
 export const Login = () => {
 	const passwordPolicy = {
 		minLength: process.env.GOTRUE_PASSWORD_MIN_LENGTH || 6,

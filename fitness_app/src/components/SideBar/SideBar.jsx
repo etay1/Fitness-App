@@ -20,7 +20,6 @@ import AddExercise from "../AddExercise/AddExercise";
 import AddUserWeight from "../AddUserWeight/AddUserWeight";
 import AddSubSession from "../AddSubSession/AddSubSession";
 import { useModalState } from "../../hooks/useModalState";
-import ExerciseRegistry from "../Registry/ExerciseRegistry";
 import { supabase } from "../../supabase/client";
 
 // Remove unncessary imports

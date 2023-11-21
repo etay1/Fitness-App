@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import Sidebar from "../SideBar/SideBar";
+import Sidebar from "../../components/SideBar/SideBar";
 import { supabase } from "../../supabase/client";
-import styles from "./Registry.module.css";
 import { useModalState } from "../../hooks/useModalState";
-import AddUserWeight from "../AddUserWeight/AddUserWeight";
+import AddUserWeight from "../../components/AddUserWeight/AddUserWeight";
 import { useUserWeightRegistry } from "../../hooks/UserWeightFormHooks/useUserWeightRegistry";
 import { useSession } from "../../supabase/sessionContext";
+import styles from "./styles/Registry.module.css";
 function UserWeightRegistry() {
 	const {
 		isOpen: isAddUserWeightModalOpen,

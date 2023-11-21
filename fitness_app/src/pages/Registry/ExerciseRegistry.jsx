@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useExerciseRegistry } from "../../hooks/ExerciseRegistryHooks/useExerciseRegistry";
 import { useModalState } from "../../hooks/useModalState";
-import DeleteExercise from "../DeleteExercise/DeleteExercise";
-import AddExercise from "../AddExercise/AddExercise";
-import AlterExercise from "../AlterExercise/AlterExercise";
-import styles from "./Registry.module.css";
-import Sidebar from "../SideBar/SideBar";
+import DeleteExercise from "../../components/DeleteExercise/DeleteExercise";
+import AddExercise from "../../components/AddExercise/AddExercise";
+import AlterExercise from "../../components/AlterExercise/AlterExercise";
+import styles from "./styles/Registry.module.css";
+import Sidebar from "../../components/SideBar/SideBar";
 import { supabase } from "../../supabase/client";
 
 function ExerciseRegistry() {

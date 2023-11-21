@@ -6,19 +6,21 @@ import reportWebVitals from "./reportWebVitals";
 import AddSubSession from "./components/AddSubSession/AddSubSession";
 import AddExercise from "./components/AddExercise/AddExercise";
 import AddUserWeight from "./components/AddUserWeight/AddUserWeight";
-import ExerciseRegistry from "./components/Registry/ExerciseRegistry";
+import ExerciseRegistry from "./pages/Registry/ExerciseRegistry";
 import "./index.css";
 import PrivateRoute from "./utils/PrivateRoute";
-import UserWeightRegistry from "./components/Registry/UserWeightRegistry";
+import UserWeightRegistry from "./pages/Registry/UserWeightRegistry";
 import { SessionProvider } from "./supabase/sessionContext";
+import SessionRegistry from "./pages/Registry/SessionRegistry";
+
 const root = document.getElementById("root");
 ReactDOM.createRoot(root).render(
 	<React.StrictMode>
 		<SessionProvider>
 			<BrowserRouter>
 				<Routes>
-					<Route path='/' element={<App  />} />
-					<Route element={<PrivateRoute  />}>
+					<Route path='/' element={<App />} />
+					<Route element={<PrivateRoute />}>
 						<Route path='/add-exercise' element={<AddExercise />} />
 					</Route>
 					<Route element={<PrivateRoute />}>
@@ -35,6 +37,9 @@ ReactDOM.createRoot(root).render(
 							path='/user-weight-registry'
 							element={<UserWeightRegistry />}
 						/>
+					</Route>
+					<Route element={<PrivateRoute />}>
+						<Route path='/session-registry' element={<SessionRegistry />} />
 					</Route>
 
 					{/* <Route element={<PrivateRoute />}>

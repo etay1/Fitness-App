@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "../../components/ExerciseRegistry/ExerciseRegistry.module.css";
-import RegistryHeader from "../../components/ExerciseRegistry/RegistryHeader";
+import styles from "./styles/Registry.module.css";
+import RegistryHeader from "./components/RegistryHeader";
 import { useModalState } from "../../hooks/useModalState";
 import AddExercise from "../../components/AddExercise/AddExercise";
 
