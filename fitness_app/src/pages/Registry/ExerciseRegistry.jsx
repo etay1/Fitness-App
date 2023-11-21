@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useExerciseRegistry } from "../../hooks/ExerciseRegistryHooks/useExerciseRegistry";
 import { useModalState } from "../../hooks/useModalState";
-import DeleteExercise from "../DeleteExercise/DeleteExercise";
-import AddExercise from "../AddExercise/AddExercise";
-import AlterExercise from "../AlterExercise/AlterExercise";
-import styles from "./Registry.module.css";
-import Sidebar from "../SideBar/SideBar";
-import { supabase } from "../../supabase/client";
+import DeleteExercise from "../../components/popups/DeleteExercise/DeleteExercise";
+import AddExercise from "../../components/popups/AddExercise/AddExercise";
+import AlterExercise from "../../components/popups/AlterExercise/AlterExercise";
+import styles from "./styles/Registry.module.css";
+import Sidebar from "../../components/SideBar/SideBar";
 
 function ExerciseRegistry() {
 	const { strengthExercise, cardioExercise, error } = useExerciseRegistry();
@@ -54,7 +53,7 @@ function ExerciseRegistry() {
 	return (
 		<div className='page'>
 			<div className='sidebar-container'>
-				<Sidebar supabase={supabase} />
+				<Sidebar />
 			</div>
 			<div className='content'>
 				<div className={styles["registry-content"]}>

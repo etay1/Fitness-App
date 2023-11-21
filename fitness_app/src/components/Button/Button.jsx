@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Form/form.module.css";
+import styles from "../forms/form.module.css";
 
 function Button({ text, type, onClick, className, disabled }) {
 	return (

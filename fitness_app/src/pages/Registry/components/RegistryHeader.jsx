@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./ExerciseRegistry.module.css";
+import styles from "../styles/Registry.module.css";
 
 const RegistryHeader = ({ page_title, button_name, onClickFunc }) => {
 

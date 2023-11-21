@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { Chart } from "chart.js";
-import styles from "./UserAnotherChart.module.css";
+import styles from "../styles/UserAnotherChart.module.css";
 
-const UserAnotherChart = ({ supabase, session }) => {
+const UserAnotherChart = () => {
   const chartRef = useRef(null);
 
   useEffect(() => {

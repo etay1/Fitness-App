@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./dashboard.module.css";
-import Sidebar from "../SideBar/SideBar";
-import UserCaloriesChart from "../UserCaloriesChart/UserCaloriesChart";
-import UserPerformanceChart from "../UserPerformanceChart/UserPerformanceChart";
-import UserAnotherChart from "../UserAnotherChart/UserAnotherChart";
+import styles from "./styles/dashboard.module.css";
+import Sidebar from "../../components/SideBar/SideBar";
+import UserCaloriesChart from "./components/UserCaloriesChart";
+import UserPerformanceChart from "./components/UserPerformanceChart";
+import UserAnotherChart from "./components/UserAnotherChart";
 
 const Dashboard = () => {
 	return (

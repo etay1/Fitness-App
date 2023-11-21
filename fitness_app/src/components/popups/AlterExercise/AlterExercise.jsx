@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "../Form/form.module.css";
-import AlterExerciseForm from "../Form/AlterExerciseForm";
+import AlterExerciseForm from "../../forms/AlterExerciseForm";
+import styles from "../Popups.module.css";
 
 const AlterExercise = ({
   isEditExercisePopupOpen,

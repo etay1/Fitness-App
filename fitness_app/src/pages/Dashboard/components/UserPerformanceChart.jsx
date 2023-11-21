@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Chart } from "chart.js";
-import styles from "./UserPerformanceChart.module.css";
+import styles from "../styles/UserPerformanceChart.module.css";
 
 const UserPerformanceChart = () => {
 	const chartRef = useRef(null);
