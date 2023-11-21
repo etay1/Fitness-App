@@ -2,8 +2,9 @@ import { useState } from "react";
 import { HandleDatabaseError } from "../../utils/HandleDatabaseError";
 import { useSuccessMessage } from "../useSuccessMessage";
 import useRefreshPage from "../../hooks/useRefreshPage";
+import { supabase } from "../../supabase/client";
 
-export function useAlterExerciseForm(supabase, updateSuccessMessage) {
+export function useAlterExerciseForm(updateSuccessMessage) {
   const [isSuccess, setIsSuccess] = useState(false);
   const handleRefresh = useRefreshPage();
   const handleAlter = async (values, exerciseType) => {

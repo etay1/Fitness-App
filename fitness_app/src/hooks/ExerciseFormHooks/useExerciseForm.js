@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { HandleDatabaseError } from "../../utils/HandleDatabaseError";
 import useRefreshPage from "../../hooks/useRefreshPage";
+import { supabase } from "../../supabase/client";
 
 
-export function useExerciseForm(supabase, category, updateSuccessMessage) {
+export function useExerciseForm(category, updateSuccessMessage) {
   const [exerciseData, setExerciseData] = useState({
     exerciseName: "",
     description: "",
