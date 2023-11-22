@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import useFetchWeightData from "../../../hooks/useFetchWeightData";
+import useFetchWeightData from "../../hooks/useFetchWeightData";
 import { LineChart } from "@mui/x-charts";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Chart from "chart.js/auto";
-import styles from "../styles/UserCaloriesChart.module.css";
-import { useSession } from "../../../supabase/sessionContext";
+import styles from "./UserCaloriesChart.module.css";
+import { useSession } from "../../supabase/sessionContext";
 
 const UserCaloriesChart = () => {
 	const { weights, dates } = useFetchWeightData();
