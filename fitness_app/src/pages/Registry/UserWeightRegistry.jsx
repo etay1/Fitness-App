@@ -4,6 +4,7 @@ import { useModalState } from "../../hooks/useModalState";
 import AddUserWeight from "../../components/popups/AddUserWeight/AddUserWeight";
 import { useUserWeightRegistry } from "../../hooks/UserWeightFormHooks/useUserWeightRegistry";
 import styles from "./styles/Registry.module.css";
+import Header from "./components/Header";
 
 function UserWeightRegistry() {
 	const {
@@ -21,23 +22,18 @@ function UserWeightRegistry() {
 			</div>
 			<div className='content'>
 				<div className={styles["registry-content"]}>
-					<div className={styles["registry-header"]}>
-						<h1 className={styles["registry-title"]}>User Weight Registry</h1>
-					</div>
-					<div>
-						<button
-							className={styles["add-button"]}
-							onClick={() => openAddUserWeightModal()}
-						>
-							Add User Weight
-						</button>
-					</div>
+					<Header
+						page_title='User Weight Registry'
+						button_name='Add Weight'
+						onClickFunc={openAddUserWeightModal}
+					/>
+
 					<div>
 						{error && (
 							<div className={styles["error"]}>Error: {error.toString()}</div>
 						)}
 						<div className={styles["registry-data"]}>
-							<h1 className={styles["category-title"]}>Weight Exercises</h1>
+							<h1 className={styles["category-title"]}>Weight History</h1>
 							<ul className={styles["list"]}>
 								{userWeights.map((userWeight) => (
 									<li className={styles["item"]} key={userWeight.id}>

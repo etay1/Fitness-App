@@ -132,6 +132,7 @@ const Sidebar = () => {
 								icon={<VisibilityIcon />}
 								selected={selected}
 								setSelected={setSelected}
+								to={"/session-registry"}
 							/>
 							<Typography
 								className='sidebar-typography'

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles/Registry.module.css";
-import RegistryHeader from "./components/RegistryHeader";
+import RegistryHeader from "./components/Header";
 import { useModalState } from "../../hooks/useModalState";
 import AddExercise from "../../components/popups/AddExercise/AddExercise";
 
@@ -26,6 +26,8 @@ const SessionRegistry = () => {
 						button_name='Add Session +'
 						onClickFunc={openAddExerciseModal}
 					/>
+
+					
 				</div>
 			</div>
 			<AddExercise

@@ -24,7 +24,7 @@ ReactDOM.createRoot(root).render(
 						<Route path='/add-exercise' element={<AddExercise />} />
 					</Route>
 					<Route element={<PrivateRoute />}>
-						<Route path='/add-sub-session' exact element={<AddSubSession />} />
+						<Route path='/add-sub-session' element={<AddSubSession />} />
 					</Route>
 					<Route element={<PrivateRoute />}>
 						<Route path='/add-user-weight' element={<AddUserWeight />} />
@@ -41,10 +41,6 @@ ReactDOM.createRoot(root).render(
 					<Route element={<PrivateRoute />}>
 						<Route path='/session-registry' element={<SessionRegistry />} />
 					</Route>
-
-					{/* <Route element={<PrivateRoute />}>
-          <Route path="/session-registry" element={<SessionRegistry />} />
-        </Route> */}
 				</Routes>
 			</BrowserRouter>
 		</SessionProvider>
