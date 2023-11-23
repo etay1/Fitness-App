@@ -7,6 +7,7 @@ import AddExercise from "../../components/popups/AddExercise/AddExercise";
 import AlterExercise from "../../components/popups/AlterExercise/AlterExercise";
 import styles from "./styles/Registry.module.css";
 import Sidebar from "../../components/SideBar/SideBar";
+import Header from "./components/Header";
 
 function ExerciseRegistry() {
 	const { strengthExercise, cardioExercise, error } = useExerciseRegistry();
@@ -57,17 +58,12 @@ function ExerciseRegistry() {
 			</div>
 			<div className='content'>
 				<div className={styles["registry-content"]}>
-					<div className={styles["registry-header"]}>
-						<h1 className={styles["registry-title"]}>Exercise Registry</h1>
-					</div>
-					<div>
-						<button
-							className={styles["add-button"]}
-							onClick={() => openAddExerciseModal()}
-						>
-							Add Exercise
-						</button>
-					</div>
+					<Header
+						page_title='Exercise Registry'
+						button_name='Add Exercise'
+						onClickFunc={openAddExerciseModal}
+					/>
+
 					<div>
 						{error && (
 							<div className={styles["error"]}>Error: {error.toString()}</div>

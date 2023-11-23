@@ -4,9 +4,9 @@ import styles from "../styles/Registry.module.css";
 const RegistryHeader = ({ page_title, button_name, onClickFunc }) => {
 
 	return (
-		<div className={styles["exercise-registry-header"]}>
-			<h1 className={styles["title"]}>{page_title}</h1>
-			<div className={styles["exercise-registry-buttons"]}>
+		<div className={styles["registry-header"]}>
+			<h1 className={styles["registry-title"]}>{page_title}</h1>
+			<div className={styles["registry-buttons"]}>
 				<button className={styles["add-button"]} onClick={() => onClickFunc()}>
 					{button_name}
 				</button>
