@@ -30,10 +30,6 @@ const SessionRegistry = () => {
 					
 				</div>
 			</div>
-			<AddExercise
-				isAddExercisePopupOpen={isAddExerciseModalOpen}
-				closeAddExercisePopup={closeAddExerciseModal}
-			/>
 		</div>
 	);
 };
