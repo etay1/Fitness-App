@@ -84,7 +84,7 @@ const Sidebar = () => {
 							style={{
 								//poor practice to use inline styles
 								margin: "10px 0 20px 0",
-								color: style.getPropertyValue("--black-color"),
+								color: style.getPropertyValue("--white-color"),
 							}}
 						>
 							{!isCollapsed && (

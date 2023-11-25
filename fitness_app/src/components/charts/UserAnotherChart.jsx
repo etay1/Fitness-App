@@ -1,29 +1,54 @@
 import React, { useEffect, useRef } from "react";
 import { Chart } from "chart.js";
 import styles from "./UserAnotherChart.module.css";
+import { useSession } from "../../supabase/sessionContext";
+import { supabase } from "../../supabase/client";
 
 const UserAnotherChart = () => {
+  const { session } = useSession();
   const chartRef = useRef(null);
 
   useEffect(() => {
-    const color = getComputedStyle(document.body);
-    Chart.defaults.backgroundColor = "#9BD0F5";
+    const fetchData = async () => {
+      try {
+        const { data: userWeight, error } = await supabase
+          .from("user_weight")
+          .select("weight, date")
+          .eq("user_id", session.user.id);
 
-    const chartElement = document.getElementById("anotherChartID");
+        if (error) {
+          throw new Error("Error fetching data from Supabase");
+        }
 
-    // Check if the chart already exists and destroy it
-    if (chartRef.current) {
-      chartRef.current.destroy();
-    }
+        const chartElement = document.getElementById("anotherChartID");
 
-    chartRef.current = new Chart(chartElement, {
+        // Check if the chart already exists and destroy it
+        if (chartRef.current) {
+          chartRef.current.destroy();
+        }
+
+        createChart(chartElement, userWeight);
+      } catch (error) {
+        console.error("Error in fetchData:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const createChart = (element, data) => {
+    const weights = data.map((dataPoint) => dataPoint.weight);
+    const dates = data.map((dataPoint) => dataPoint.date);
+
+    chartRef.current = new Chart(element, {
       type: "line",
       data: {
-        labels: [1500, 1600, 1700, 1750, 1800, 1850, 1900, 1950, 1999, 2050, 2100, 2150, 2200, 2250, 2300],
+        labels: dates,
         datasets: [
           {
-            data: [186, 205, 1321, 1516, 2107, 2191, 3133, 3221, 4783, 5478, 6000, 7000, 8000, 9000, 10000],
-            label: "America",
+            data: weights,
+            label: "Weight",
+            backgroundColor: "#9BD0F5",
             borderColor: "#3cba9f",
             fill: false,
           },
@@ -32,15 +57,21 @@ const UserAnotherChart = () => {
       options: {
         title: {
           display: true,
-          text: "Chart JS Line Chart Example",
+          text: "User Another Chart",
         },
       },
     });
-  }, []);
+  };
 
   return (
     <div className={styles.userAnotherChartContainer}>
-      <canvas className="another-chart" id="anotherChartID" aria-label="chart" height="350" width="1000"></canvas>
+      <canvas
+        className="another-chart"
+        id="anotherChartID"
+        aria-label="chart"
+        height="500"
+        width="1000"
+      ></canvas>
     </div>
   );
 };
