@@ -1,22 +1,23 @@
 // userAuthentication.js
 
 import { useState, useEffect } from "react";
+import { supabase } from "../supabase/client";
 
-const CheckAuthroization = (supabase) => {
-  const [error, setError] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+const CheckAuthroization = () => {
+	const [error, setError] = useState(null);
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  useEffect(() => {
-    const checkUser = async () => {
-      const user = await supabase.auth.getUser();
-      setError(user.error != null);
-      setIsAuthenticated(true);
-    };
+	useEffect(() => {
+		const checkUser = async () => {
+			const user = await supabase.auth.getUser();
+			setError(user.error != null);
+			setIsAuthenticated(true);
+		};
 
-    checkUser();
-  }, [supabase]);
+		checkUser();
+	}, [supabase]);
 
-  return { error, isAuthenticated };
+	return { error, isAuthenticated };
 };
 
 export default CheckAuthroization;
