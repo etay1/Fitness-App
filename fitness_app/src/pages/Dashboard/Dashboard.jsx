@@ -5,6 +5,7 @@ import UserCaloriesChart from "../../components/charts/UserCaloriesChart";
 import UserPerformanceChart from "../../components/charts/UserPerformanceChart";
 import UserAnotherChart from "../../components/charts/UserAnotherChart";
 import UserWeightDisplay from "../../components/widgets/UserWeightDisplay";
+import UserCardioSessionDisplay from "../../components/widgets/UserCardioSessionDisplay";
 
 const Dashboard = (supabase, session ) => {
 	return (
@@ -20,7 +21,7 @@ const Dashboard = (supabase, session ) => {
 							<UserWeightDisplay />
 						</div>
 						<div className={styles.topChart}>
-							<UserCaloriesChart />
+							<UserCardioSessionDisplay />
 						</div>
 						<div className={styles.topChart}>
 							<UserCaloriesChart />
