@@ -12,6 +12,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import UserWeightRegistry from "./pages/Registry/UserWeightRegistry";
 import { SessionProvider } from "./supabase/sessionContext";
 import SessionRegistry from "./pages/Registry/SessionRegistry";
+import AddSession from "./components/popups/AddSession/AddSession";
 
 const root = document.getElementById("root");
 ReactDOM.createRoot(root).render(
@@ -37,6 +38,9 @@ ReactDOM.createRoot(root).render(
 							path='/user-weight-registry'
 							element={<UserWeightRegistry />}
 						/>
+					</Route>
+					<Route element={<PrivateRoute />}>
+						<Route path='/add-sessio ' element={<AddSession />} />
 					</Route>
 					<Route element={<PrivateRoute />}>
 						<Route path='/session-registry' element={<SessionRegistry />} />

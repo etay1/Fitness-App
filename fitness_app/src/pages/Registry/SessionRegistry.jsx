@@ -11,10 +11,12 @@ const SessionRegistry = () => {
 		closeModal: closeAddSubSessionModal,
 	} = useModalState(false);
 	const {
-		isOpen: isAddExerciseModalOpen,
-		openModal: openAddExerciseModal,
-		closeModal: closeAddExerciseModal,
+		isOpen: isAddSessionModalOpen,
+		openModal: openAddSessionModal,
+		closeModal: closeAddSessionModal,
 	} = useModalState(false);
+
+
 
 	return (
 		<div className='page'>
@@ -24,7 +26,7 @@ const SessionRegistry = () => {
 					<RegistryHeader
 						page_title='Session Registry'
 						button_name='Add Session +'
-						onClickFunc={openAddExerciseModal}
+						onClickFunc={openAddSessionModal}
 					/>
 
 					
