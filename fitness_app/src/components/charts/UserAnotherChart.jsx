@@ -11,6 +11,23 @@ const UserAnotherChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // The session -> Cardio Session | Weight Session -> Cardio Exercise | Weight Exercise
+
+        // Calories Burned:
+        // Get the Session Date (All same date session calories would be coupled together)
+        // Get all the cardio and weight sessions that have the matching session ID
+        // Get all the cardio and weight exercise IDs that have session ID
+        // Multiply the time within the start time and end time of a cardio session by the calories per unit duration
+        // Multiply the time within the start time and end time of a weight session by the reps per set * set * calories per set
+        // Get the weight and cardio calories burned for the day
+        // Make an array for the days and calories burned for the day
+        // display
+        
+        const { data: session, error1 } = await supabase
+          .from('session')
+          .select('date')
+          console.log(session);
+
         const { data: userWeight, error } = await supabase
           .from("user_weight")
           .select("weight, date")

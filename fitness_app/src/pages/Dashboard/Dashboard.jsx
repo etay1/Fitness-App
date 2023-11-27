@@ -11,7 +11,6 @@ const Dashboard = () => {
 					<Sidebar />
 				</div>
 				
-
 				<div className={styles.widgetsContainer}>
 					<div className={styles.topContainer}>
 					</div>

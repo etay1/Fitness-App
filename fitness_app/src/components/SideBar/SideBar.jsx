@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography } from "@mui/material";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
@@ -12,7 +12,7 @@ import TimelineIcon from "@mui/icons-material/Timeline";
 import styles from "./SideBar.modules.css";
 import { supabase } from "../../supabase/client";
 
-const Item = ({ title, to, icon, selected, setSelected, onClick }) => {
+const Item = ({ title, to, icon, selected, onClick }) => {
 	var style = getComputedStyle(document.body);
 
 	return (
@@ -55,7 +55,7 @@ const Sidebar = () => {
 	};
 
 	return (
-		<div className={styles.overlaySidebar}>
+		<div className="overlay-sidebar">
 			<Box>
 				<ProSidebar collapsed={isCollapsed}>
 					<Menu iconShape='circle'>
@@ -75,7 +75,6 @@ const Sidebar = () => {
 
 						<Box paddingLeft={isCollapsed ? undefined : "10%"}>
 							<Item title='Dashboard' icon={<HomeOutlinedIcon />} to='/' />
-
 							<Typography
 								className={styles.sidebarTypographyHistory}
 								variant='h6'
@@ -151,7 +150,3 @@ const Sidebar = () => {
 };
 export default Sidebar;
 
-// Inline Styles:
-// it's essential to balance this concern with the practicality of the situation.
-// In some cases, using inline styles might be necessary, I get it but it's not good practice.
-// Again USE CSS MODULES
