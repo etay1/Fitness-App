@@ -36,20 +36,18 @@ const UserCaloriesTotalChart = () => {
   }, );
 
   const createChart = (element, data) => {
-    const labels = ['Weight Sessions', 'Cardio Sessions'];
     const calories = [data.totalCaloriesBurntWeight, data.totalCaloriesBurntCardio];
 
     chartRef.current = new Chart(element, {
       type: "line",
       data: {
-        labels,
         datasets: [
           {
             data: calories,
             label: "Calories",
             backgroundColor: "#FFD700", // Adjust the color as needed
             borderColor: "#FF4500", // Adjust the border color as needed
-            fill: true,
+            fill: false,
           },
         ],
       },
