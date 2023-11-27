@@ -6,6 +6,8 @@ import UserPerformanceChart from "../../components/charts/UserPerformanceChart";
 import UserAnotherChart from "../../components/charts/UserAnotherChart";
 import UserWeightDisplay from "../../components/widgets/UserWeightDisplay";
 import UserCardioSessionDisplay from "../../components/widgets/UserCardioSessionDisplay";
+import UserWeightSessionDisplay from "../../components/widgets/UserWeightSessionDisplay";
+import UserCaloriesTotalChart from "../../components/charts/UserCaloriesTotalChart";
 
 const Dashboard = (supabase, session ) => {
 	return (
@@ -24,13 +26,13 @@ const Dashboard = (supabase, session ) => {
 							<UserCardioSessionDisplay />
 						</div>
 						<div className={styles.topChart}>
-							<UserCaloriesChart />
+							<UserWeightSessionDisplay/>
 						</div>
 					</div>
 
 					<div className={styles.bottomContainer}>
 						<div className={styles.bottomChart}>
-							<UserPerformanceChart />
+							<UserCaloriesTotalChart />
 							<UserAnotherChart />
 						</div>
 					</div>
