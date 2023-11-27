@@ -1,18 +1,27 @@
-/* Remove every instance of !important this is very bad practice */
+@import url('react-pro-sidebar/dist/css/styles.css');
 
-/* Faizan you have to look at our other code. We use CSS modules. You cannot import global files */
+.pro-sidebar {
+  height: 100vh;
+  position: fixed;
+}
 
-/* https://element.how/why-you-should-avoid-using-important-in-css/ */
+.pro-sidebar-layout {
+  background-color: var(--white-color);
+}
 
 .pro-sidebar-inner {
-  background: var(--white-color) !important;
   height: 100vh;
   overflow: hidden;
   border-radius: 0px 8px 8px 8px;
 }
 
+.pro-icon {
+  background-color: var(--primary-color);
+  border-radius: 25px;
+}
+
 .pro-icon-wrapper {
-  background-color: transparent !important;
+  background-color: transparent;
 }
 
 .pro-inner-item {
@@ -31,32 +40,51 @@
   color: var(--primary-color);
 }
 
-.sidebar-typography {
+.sidebarTypography {
   font-size: 16px;
   font-weight: bold;
   margin: 15px 0 5px 3px;
+  color: var(--light-grey-color);
 }
 
-.sidebar-typography-history {
+.sidebarTypographyHistory {
   font-size: 16px;
   font-weight: bold;
   margin: 15px 0 5px 8px;
+  color: var(--light-grey-color);
 }
 
-.sidebar-typography-blog {
+.sidebarTypographyBlog {
   font-size: 16px;
   font-weight: bold;
-  margin: 15px 0 5px 19px;
+  margin: 15px 0 5px 20px;
 }
 
-.sign-out-button {
+.signOutButton {
   position: absolute;
   bottom: 0;
   width: 100%;
   padding: 10px;
 }
 
+.boxSidebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.menuBurgerButton {
+  margin: 10px 0px 20px 10px;
+	color: var(--white-color);
+}
+
 @media screen and (max-width: 768px) {
+  .pro-sidebar {
+    height: 100vh;
+    position: fixed;
+  }
+
   .pro-sidebar-inner {
     background: var(--white-color);
     height: 270vh;

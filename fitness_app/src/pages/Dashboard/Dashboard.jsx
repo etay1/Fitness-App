@@ -1,40 +1,31 @@
 import React from "react";
 import styles from "./dashboard.module.css";
 import Sidebar from "../../components/SideBar/SideBar";
-import UserCaloriesChart from "../../components/charts/UserCaloriesChart";
 import UserPerformanceChart from "../../components/charts/UserPerformanceChart";
 import UserAnotherChart from "../../components/charts/UserAnotherChart";
 
 const Dashboard = () => {
 	return (
-		<div className='page'>
 			<div className={styles.dashboard}>
-				<div className={styles.sidebarContainer}>
+				<div className="sidebar-container">
 					<Sidebar />
 				</div>
+				
 
 				<div className={styles.widgetsContainer}>
 					<div className={styles.topContainer}>
-						<div className={styles.topChart}>
-							<UserCaloriesChart />
-						</div>
-						<div className={styles.topChart}>
-							<UserCaloriesChart />
-						</div>
-						<div className={styles.topChart}>
-							<UserCaloriesChart />
-						</div>
 					</div>
 
 					<div className={styles.bottomContainer}>
 						<div className={styles.bottomChart}>
 							<UserPerformanceChart />
+						</div>
+						<div className={styles.bottomChart}>
 							<UserAnotherChart />
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 	);
 };
 {

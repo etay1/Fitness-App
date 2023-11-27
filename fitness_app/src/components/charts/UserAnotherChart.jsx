@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import { Chart } from "chart.js";
-import styles from "./UserAnotherChart.module.css";
+import { Chart } from "chart.js/auto";
+import styles from "./charts.module.css";
 import { useSession } from "../../supabase/sessionContext";
 import { supabase } from "../../supabase/client";
 
