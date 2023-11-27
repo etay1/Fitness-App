@@ -1,48 +1,50 @@
-import React, { useState, useEffect } from "react";
-import UseFetchMostRecentWeight from "../../hooks/UseFetchMostRecentWeight";
-import { useSession } from "../../supabase/sessionContext";
-import { supabase } from "../../supabase/client";
+import React, { useState, useEffect } from 'react';
+import UseFetchMostRecentWeightSession from '../../hooks/UseFetchMostRecentWeightSession';
+import { useSession } from '../../supabase/sessionContext';
+import { supabase } from '../../supabase/client';
 
 const UserWeightSessionDisplay = () => {
     const { session } = useSession();
-    const [weights, setWeights] = useState([]);
-    const [dates, setDates] = useState([]);
+    const [mostRecentWeightSession, setMostRecentWeightSession] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const mostRecentWeightData = await UseFetchMostRecentWeight({
+                const mostRecentWeightSessionData = await UseFetchMostRecentWeightSession({
                     supabase,
                     userId: session.user.id,
                 });
 
-                if (mostRecentWeightData) {
-                    const { weight, date } = mostRecentWeightData;
-                    setWeights([weight]);
-                    setDates([date]);
+                if (mostRecentWeightSessionData) {
+                    setMostRecentWeightSession(mostRecentWeightSessionData);
                 }
             } catch (error) {
-                console.error("Error fetching weight data:", error);
-                // Handle error appropriately
+                console.error('Error fetching most recent weight session', error);
             }
         };
 
         fetchData();
+
+
+
     }, []);
 
     return (
         <div>
-            {/* Render the fetched weight data */}
-            {weights.length > 0 && (
-                <div>
-                    <h3>Weight: </h3>
-                    <p> {weights[0]}</p>
-                    <h3>Date: </h3>
-                    <p> {dates[0]}</p>
-                </div>
-            )}
+            <div>
+                <h2>Most Recent Weight Session</h2>
+                {mostRecentWeightSession ? (
+                    <div>
+                        <p>Name: {mostRecentWeightSession.name}</p>
+                        <p>Description: {mostRecentWeightSession.description}</p>
+                        <p>Calories Per Rep: {mostRecentWeightSession.calories_per_rep}</p>
+                    </div>
+                ) : (
+                    <p>Loading...</p>
+                )}
+            </div>
         </div>
-    );
+    )
 };
 
 export default UserWeightSessionDisplay;
