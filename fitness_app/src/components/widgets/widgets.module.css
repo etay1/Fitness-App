@@ -1,0 +1,31 @@
+.widgetContainer {
+    display: flex;
+	height: 300px;
+	width: 300px;
+	background-color: var(--white-color);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	z-index: 2;
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+    object-fit: cover;
+}
+
+.widgetContainer .content {
+    padding: 20px;
+}
+
+.widgetContainer h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.widgetContainer p {
+    color: var(--light-grey-color);
+}
+
+ @media (max-width: 768px) {
+    .widgetContainer {
+        width: 100%;
+    }
+}
