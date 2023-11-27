@@ -16,8 +16,7 @@
 }
 
 .pro-icon {
-  background-color: var(--primary-color);
-  border-radius: 25px;
+  background-color: var(--white-color);
 }
 
 .pro-icon-wrapper {

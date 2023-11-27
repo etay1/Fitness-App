@@ -23,10 +23,16 @@ const UserAnotherChart = () => {
         // Make an array for the days and calories burned for the day
         // display
         
-        const { data: session, error1 } = await supabase
+        const { data: sessionDate, error1 } = await supabase
           .from('session')
           .select('date')
-          console.log(session);
+        
+        const{data: cardioExercise, error2} = await supabase
+          .from('cardio_session')
+          .select('cardio_exercise_id')
+          .eq("user_id", session.user.id);
+          console.log(cardioExercise);
+
 
         const { data: userWeight, error } = await supabase
           .from("user_weight")
