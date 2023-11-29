@@ -40,7 +40,7 @@ ReactDOM.createRoot(root).render(
 						/>
 					</Route>
 					<Route element={<PrivateRoute />}>
-						<Route path='/add-sessio ' element={<AddSession />} />
+						<Route path='/add-session' element={<AddSession />} />
 					</Route>
 					<Route element={<PrivateRoute />}>
 						<Route path='/session-registry' element={<SessionRegistry />} />

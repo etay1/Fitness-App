@@ -2,21 +2,14 @@ import React from "react";
 import styles from "./styles/Registry.module.css";
 import RegistryHeader from "./components/Header";
 import { useModalState } from "../../hooks/useModalState";
-import AddExercise from "../../components/popups/AddExercise/AddExercise";
+import AddSession from "../../components/popups/AddSession/AddSession";
 
 const SessionRegistry = () => {
-	const {
-		isOpen: isAddSubSessionModalOpen,
-		openModal: openAddSubSessionModal,
-		closeModal: closeAddSubSessionModal,
-	} = useModalState(false);
 	const {
 		isOpen: isAddSessionModalOpen,
 		openModal: openAddSessionModal,
 		closeModal: closeAddSessionModal,
 	} = useModalState(false);
-
-
 
 	return (
 		<div className='page'>
@@ -28,10 +21,12 @@ const SessionRegistry = () => {
 						button_name='Add Session +'
 						onClickFunc={openAddSessionModal}
 					/>
-
-					
 				</div>
 			</div>
+			<AddSession
+				isAddSessionPopupOpen={isAddSessionModalOpen}
+				closeAddSessionPopup={closeAddSessionModal}
+			/>
 		</div>
 	);
 };
