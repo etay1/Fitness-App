@@ -6,6 +6,9 @@ import { useSuccessMessage } from "../../hooks/useSuccessMessage";
 import styles from "./form.module.css";
 import Button from "../Button/Button";
 import { supabase } from "../../supabase/client";
+import SubSessionForm from "../forms/SubSessionForm";
+import AddSubSession from "../popups/AddSubSession/AddSubSession";
+import { useModalState } from "../../hooks/useModalState";
 
 const initialFormValues = {
 	date: new Date().toISOString().slice(0, 10),
@@ -16,13 +19,16 @@ const initialFormValues = {
 const SessionForm = ({ closeAddSessionPopup }) => {
 	const { successMessage, updateSuccessMessage } = useSuccessMessage();
 
-	const { isSuccess, handleInsertion } = useSessionForm(
-		updateSuccessMessage
-	);
+	const { isSuccess, handleInsertion } = useSessionForm(updateSuccessMessage);
 
-	const { validationSchema, key } = useSessionValidationSchema(
-		updateSuccessMessage
-	);
+	const { validationSchema, key } =
+		useSessionValidationSchema(updateSuccessMessage);
+
+	const {
+		isOpen: isAddSubSessionModalOpen,
+		openModal: openAddSubSessionModal,
+		closeModal: closeAddSubSessionModal,
+	} = useModalState(false);
 
 	return (
 		<Formik
@@ -94,6 +100,20 @@ const SessionForm = ({ closeAddSessionPopup }) => {
 									className={styles.error}
 								/>
 							</div>
+							<hr />
+							
+							<AddSubSession
+							isAddSubSessionPopupOpen={isAddSubSessionModalOpen}
+							closeAddSubSessionPopup={closeAddSubSessionModal}
+						/>
+							<div className={styles["form-btn-ctn"]}>
+								<Button
+									style={{ width: "100%" }}
+									text='Add Sub Session'
+									type='button'
+									onClick={() => openAddSubSessionModal()}
+								></Button>
+							</div>
 							<div className={styles["form-btn-ctn"]}>
 								<Button
 									text='Done'
@@ -104,6 +124,7 @@ const SessionForm = ({ closeAddSessionPopup }) => {
 										closeAddSessionPopup();
 									}}
 								></Button>
+
 								<Button
 									text='Add Session'
 									type='submit'
@@ -119,6 +140,7 @@ const SessionForm = ({ closeAddSessionPopup }) => {
 								</div>
 							</div>
 						</div>
+						
 					</Form>
 				);
 			}}

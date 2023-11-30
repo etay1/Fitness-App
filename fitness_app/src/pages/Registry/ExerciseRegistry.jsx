@@ -24,7 +24,7 @@ function ExerciseRegistry() {
 		closeModal: closeDeleteExerciseModal,
 	} = useModalState(false);
 
-	const {
+	const { 
 		isOpen: isEditExerciseModalOpen,
 		openModal: openEditExerciseModal,
 		closeModal: closeEditExerciseModal,
