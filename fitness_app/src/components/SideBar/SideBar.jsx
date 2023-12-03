@@ -21,6 +21,8 @@ import AddUserWeight from "../popups/AddUserWeight/AddUserWeight";
 import AddSubSession from "../popups/AddSubSession/AddSubSession";
 import { useModalState } from "../../hooks/useModalState";
 import { supabase } from "../../supabase/client";
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+
 
 // Remove unncessary imports
 
@@ -167,7 +169,20 @@ const Sidebar = () => {
 								selected={selected}
 								setSelected={setSelected}
 							/>
-
+<Typography
+								className='sidebar-typography-account-settings'
+								variant='h6'
+								color={style.getPropertyValue("--light-grey-color")}
+							>
+								Account Settings
+							</Typography>
+							<Item
+								title='Account-Settings'
+								icon={<ManageAccountsIcon />}
+								selected={selected}
+								setSelected={setSelected}
+								to={"/Account-Settings"}
+							/>
 							<SignOutItem
 								className='sign-out-button'
 								title='Sign Out'
