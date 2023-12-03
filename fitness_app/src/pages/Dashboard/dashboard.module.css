@@ -3,28 +3,29 @@
     flex-direction: row;
     overflow: hidden;
     background-color: var(--primary-color);
-    gap: 70px;
+    height: 100vh;
   }
 
   .widgetsContainer {
     display: flex;
-    flex: 1;
     flex-direction: column;
     padding-top: 50px;
     padding-left: 30px;
     gap: 50px;
     display:flex;
     width:100%;
-    overflow:auto;
+    overflow-y:auto;
     max-width: fit-content;
+    flex: 10;
+    margin-left: 70px;
   }
   
   .topContainer {
     display: flex;
     flex-direction: row;
-    gap: 200px; 
+    gap: 115px; 
     flex-wrap: nowrap;
-    overflow: auto; 
+    overflow-y: auto;
   }
   
   .bottomContainer {
@@ -41,6 +42,7 @@
   @media screen and (max-width: 768px) {
     .dashboard {
       flex-direction: row; 
+      gap: 50px;
     }
   
     .widgetsContainer {

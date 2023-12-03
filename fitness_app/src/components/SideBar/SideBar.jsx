@@ -75,12 +75,9 @@ const Sidebar = () => {
 
 						<Box paddingLeft={isCollapsed ? undefined : "10%"}>
 							<Item title='Dashboard' icon={<HomeOutlinedIcon />} to='/' />
-							<Typography
-								className={styles.sidebarTypographyHistory}
-								variant='h6'
-							>
-								History
-							</Typography>
+							<div className="sidebarTypograhy">
+								<h3>History</h3>
+							</div>
 							<Item
 								title='Weight History'
 								icon={<PeopleOutlinedIcon />}
@@ -88,12 +85,9 @@ const Sidebar = () => {
 								setSelected={setSelected}
 								to={"/user-weight-registry"}
 							/>
-							<Typography
-								className={styles.sidebarTypography}
-								variant='h6'
-							>
-								Session
-							</Typography>
+							<div className="sidebarTypograhy">
+								<h3>Session</h3>
+							</div>
 							<Item
 								title='View Session'
 								icon={<VisibilityIcon />}
@@ -101,12 +95,9 @@ const Sidebar = () => {
 								setSelected={setSelected}
 								to={"/session-registry"}
 							/>
-							<Typography
-								className={styles.sidebarTypography}
-								variant='h6'
-							>
-								Registry
-							</Typography>
+							<div className="sidebarTypograhy">
+								<h3>Registry</h3>
+							</div>
 							<Item
 								title='Browse Exercises'
 								icon={<TimelineIcon />}
@@ -114,12 +105,9 @@ const Sidebar = () => {
 								setSelected={setSelected}
 								to={"/exercise-registry"}
 							/>
-							<Typography
-								className={styles.sidebarTypographyBlog}
-								variant='h6'
-							>
-								Blog
-							</Typography>
+							<div className="sidebarTypograhy">
+								<h3>Blog</h3>
+							</div>
 							<Item
 								title='Read Articles'
 								icon={<TimelineIcon />}

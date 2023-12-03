@@ -10,7 +10,7 @@ import UserWeightDisplay from "../../components/widgets/UserWeightDisplay";
 const Dashboard = () => {
 	return (
 			<div className={styles.dashboard}>
-				<div className="sidebar-container">
+				<div className="sidebarContainer">
 					<Sidebar />
 				</div>
 				
