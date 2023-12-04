@@ -9,11 +9,12 @@ import UserWeightDisplay from "../../components/widgets/UserWeightDisplay";
 
 const Dashboard = () => {
 	return (
-			<div className={styles.dashboard}>
-				<div className="sidebarContainer">
-					<Sidebar />
-				</div>
-				
+		<div className='page'>
+			<div className='sidebarContainer'>
+				<Sidebar />
+			</div>
+
+			<div className='content'>
 				<div className={styles.widgetsContainer}>
 					<div className={styles.topContainer}>
 						<div className={styles.topChart}>
@@ -37,29 +38,8 @@ const Dashboard = () => {
 					</div>
 				</div>
 			</div>
+		</div>
 	);
 };
-{
-	/* <h1>Welcome {session.user.email} </h1>
-<button className="form-btn" onClick={() => supabase.auth.signOut()}>Sign Out</button>
-<button className="form-btn" onClick={openExerciseModal}>Add Exercise</button>
-<button className="form-btn" onClick={openAddSubSessionModal}>Add Sub Session</button>
-<button className="form-btn" onClick={openUserWeightModal}>Add User Weight</button>
-<AddExercise
-  isAddExercisePopupOpen={isExerciseModalOpen}
-  closeAddExercisePopup={closeExerciseModal}
 
-/>
-
-<AddSubSession
-  isAddSubSessionPopupOpen={isAddSubSessionModalOpen}
-  closeAddSubSessionPopup={closeAddSubSessionModal}
-
-/>
-
-<AddUserWeight
-  isAddUserWeightPopupOpen={isUserWeightModalOpen}
-  closeAddUserWeightPopup={closeWeightModal}
-/> */
-}
 export default Dashboard;
