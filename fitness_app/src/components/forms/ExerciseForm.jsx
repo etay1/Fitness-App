@@ -5,7 +5,6 @@ import { useExerciseForm } from "../../hooks/ExerciseFormHooks/useExerciseForm";
 import { useSuccessMessage } from "../../hooks/useSuccessMessage";
 import styles from "./form.module.css";
 import Button from "../Button/Button";
-import { supabase } from "../../supabase/client";
 
 const initialFormValues = {
 	exerciseName: "",
@@ -18,7 +17,6 @@ const ExerciseForm = ({ closeAddExercisePopup, category }) => {
 	const { successMessage, updateSuccessMessage } = useSuccessMessage();
 
 	const { isSuccess, handleInsertion } = useExerciseForm(
-		supabase,
 		category,
 		updateSuccessMessage
 	);
@@ -126,7 +124,7 @@ const ExerciseForm = ({ closeAddExercisePopup, category }) => {
 							</div>
 							<div className={styles["form-btn-ctn"]}>
 								<Button
-								     text = "Done"
+									text='Done'
 									//className={styles["form-btn"]}
 									type='button'
 									onClick={() => {
@@ -136,13 +134,13 @@ const ExerciseForm = ({ closeAddExercisePopup, category }) => {
 									}}
 								></Button>
 								<Button
-								    text = "Add Exercise"
+									text='Add Exercise'
 									type='submit'
 									className={`${
 										!(dirty && isValid) ? styles["disabled-btn"] : ""
 									}`}
 									disabled={!(dirty && isValid)}
-								></Button>	
+								></Button>
 							</div>
 							<div className={styles["form-success-ctn"]}>
 								<div className={styles["form-success-message"]}>

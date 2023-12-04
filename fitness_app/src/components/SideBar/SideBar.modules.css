@@ -2,7 +2,7 @@
 
 .pro-sidebar {
   height: 100vh;
-  position: fixed;
+  position: relative;
 }
 
 .pro-sidebar-layout {
