@@ -53,9 +53,7 @@ function ExerciseRegistry() {
 
 	return (
 		<div className='page'>
-			<div className='sidebar-container'>
-				<Sidebar />
-			</div>
+			<Sidebar />
 			<div className='content'>
 				<div className={styles["registry-content"]}>
 					<Header

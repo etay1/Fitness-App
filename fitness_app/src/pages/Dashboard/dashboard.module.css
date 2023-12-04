@@ -1,22 +1,11 @@
-/* CSS for the dashboard and containers */
 .dashboard {
     display: flex;
     flex-direction: row;
     overflow: hidden;
     background-color: var(--primary-color);
-  }
-  
-  .bottomChart {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .sidebarContainer {
-    display: flex;
-    position: relative;
     height: 100vh;
   }
-  
+
   .widgetsContainer {
     display: flex;
     flex-direction: column;
@@ -25,44 +14,52 @@
     gap: 50px;
     display:flex;
     width:100%;
-    overflow:auto;
+    overflow-y:auto;
     max-width: fit-content;
+    flex: 10;
+    margin-left: 70px;
   }
   
   .topContainer {
     display: flex;
     flex-direction: row;
-    gap: 200px; /* Reduce the gap for better spacing */
+    gap: 115px; 
     flex-wrap: nowrap;
-    overflow: auto; /* Add horizontal and vertical scrolling for smaller screens if necessary */
+    overflow-y: auto;
   }
   
   .bottomContainer {
     display: flex;
-    gap: 100px;
-
+    gap: 20px;
   }
+
+  .bottomChart {
+    display: flex;
+    flex-direction: row;
+  }
+  
   
   @media screen and (max-width: 768px) {
     .dashboard {
-      flex-direction: row; /* Change to column layout for small screens */
+      flex-direction: row; 
+      gap: 50px;
     }
   
     .widgetsContainer {
-      padding-top: 20px; /* Adjust padding for better spacing on small screens */
+      padding-top: 20px;
       padding-left: 65px;
     }
   
     .topContainer {
-      flex-direction: column; /* Display items in a column on small screens */
-      gap: 20px; /* Adjust the gap between items as needed */
-      overflow: hidden; /* Turn off both horizontal and vertical scrolling */
+      flex-direction: column; 
+      gap: 20px; 
+      overflow: hidden; 
     }
 
     .bottomContainer {
-      flex-direction: column; /* Display items in a column on small screens */
-      gap: 20px; /* Adjust the gap between items as needed */
-      overflow: hidden; /* Turn off both horizontal and vertical scrolling */
+      flex-direction: column;
+      gap: 20px; 
+      overflow: hidden; 
       height: fit-content;
     }
   
