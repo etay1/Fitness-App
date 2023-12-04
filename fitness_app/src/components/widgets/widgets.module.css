@@ -1,0 +1,49 @@
+.widgetContainer {
+    display: flex;
+	height: 300px;
+	width: 300px;
+	background-color: var(--white-color);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	z-index: 2;
+    object-fit: cover;
+    flex-direction: column;
+}
+
+.textContainer {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.imageContainer {
+    size: 50px;
+    width: 90px;
+    height: 90px;
+    color: var(--primary-color);
+    fill: var(--primary-color);
+    margin-left: 175px;
+    margin-top: -50px;
+}
+
+.widgetContainer .content {
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    padding-left: 100px;
+}
+
+.widgetContainer h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.widgetContainer p {
+    color: var(--light-grey-color);
+}
+
+ @media (max-width: 768px) {
+    .widgetContainer {
+        width: 100%;
+    }
+}

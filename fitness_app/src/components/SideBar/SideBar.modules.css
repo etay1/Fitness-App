@@ -1,69 +1,96 @@
-/* Remove every instance of !important this is very bad practice */
+@import url('react-pro-sidebar/dist/css/styles.css');
 
-/* Faizan you have to look at our other code. We use CSS modules. You cannot import global files */
+.pro-sidebar {
+  height: 100vh;
+  position: relative;
+}
 
-/* https://element.how/why-you-should-avoid-using-important-in-css/ */
+.pro-sidebar-layout {
+  background-color: var(--white-color);
+}
 
 .pro-sidebar-inner {
-  background: var(--white-color) !important;
   height: 100vh;
   overflow: hidden;
   border-radius: 0px 8px 8px 8px;
 }
 
+.pro-icon {
+  background-color: var(--white-color);
+}
+
 .pro-icon-wrapper {
-  background-color: transparent !important;
+  background-color: transparent;
 }
 
 .pro-inner-item {
-  padding: 10px 20px 5px 20px !important;
+  padding: 10px 20px 5px 20px;
 }
 
 .pro-inner-item:hover {
-  color: var(--light-grey-color) !important;
+  color: var(--light-grey-color);
 }
 
 .pro-inner-item:click {
-  color: var(--white-color) !important;
+  color: var(--white-color);
 }
 
 .pro-menu-item.active {
-  color: var(--primary-color) !important;
+  color: var(--primary-color);
 }
 
-.sidebar-typography {
+.sidebarTypography {
   font-size: 16px;
   font-weight: bold;
-  margin: 15px 0 5px 3px !important;
+  margin: 100px;
+  color: var(--light-grey-color);
 }
 
-.sidebar-typography-history {
+.sidebarTypographyHistory {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px 0 5px 8px;
+  color: var(--light-grey-color);
+}
+
+.sidebarTypographyBlog {
   font-size: 16px;
   font-weight: bold;
-  margin: 15px 0 5px 8px !important;
+  margin: 15px 0 5px 20px;
 }
 
-.sidebar-typography-blog {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 15px 0 5px 19px !important;
-}
-
-.sign-out-button {
+.signOutButton {
   position: absolute;
   bottom: 0;
   width: 100%;
   padding: 10px;
 }
 
+.boxSidebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.menuBurgerButton {
+  margin: 10px 0px 20px 10px;
+	color: var(--white-color);
+}
+
 @media screen and (max-width: 768px) {
+  .pro-sidebar {
+    height: 100vh;
+    position: fixed;
+  }
+
   .pro-sidebar-inner {
-    background: var(--white-color) !important;
-    height: 270vh !important;
-    overflow: hidden !important;
+    background: var(--white-color);
+    height: 270vh;
+    overflow: hidden;
   }
 
   .pro-menu-item.click {
-    width: 100vh !important;
+    width: 100vh;
   }
 }

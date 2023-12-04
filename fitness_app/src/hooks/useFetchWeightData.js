@@ -1,28 +1,30 @@
 import { useState } from "react";
 import { useSession } from "../supabase/sessionContext";
 import { supabase } from "../supabase/client";
+import { useEffect } from "react";
 
-const useFetchWeightData = async () => {
+const useFetchWeightData = () => {
 	const [weights, setWeights] = useState([]);
 	const [dates, setDates] = useState([]);
-
 	const { session } = useSession();
+	useEffect(() => {
+		const fetchData = async () => {
+		try {
+			const { data: userWeight, error } = await supabase
+			.from("user_weight")
+			.select("weight, date")
+			.eq("user_id", session.user.id);
 
-	console.log(session);
+			if (error) {
+			throw new Error("Error fetching data from Supabase");
+			}
+		} catch (error) {
+			console.error("Error in fetchData:", error);
+		}
+		};
 
-	const { data, error } = await supabase
-		.from("user_weight")
-		.select("weight, date")
-		.eq("user_id", session.user.id);
-
-	if (error) {
-		console.error(error);
-	} else {
-		const weights = data.map((weightObj) => weightObj.weight);
-		const dates = data.map((weightObj) => weightObj.date);
-		setWeights(weights);
-		setDates(dates);
-	}
+		fetchData();
+	}, []);
 
 	return {
 		weights,
@@ -31,3 +33,4 @@ const useFetchWeightData = async () => {
 };
 
 export default useFetchWeightData;
+

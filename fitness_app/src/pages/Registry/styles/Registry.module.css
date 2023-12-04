@@ -1,10 +1,11 @@
 /* Registry containers */
-
 .registry-content {
   background-color: #f5f5f5;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-left: 50px;
+  overflow: auto;
 }
 
 .registry-header {
