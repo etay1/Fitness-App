@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useSubSessionForm } from "../../hooks/SubSessionFormHooks/useSubSessionForm";
 import useSubSessionValidationSchema from "../../hooks/SubSessionFormHooks/useSubSessionValidationSchema";
@@ -18,28 +18,30 @@ const initialFormValues = {
 const SubSessionForm = ({ closeAddSubSessionPopup, category }) => {
 	const { successMessage, updateSuccessMessage } = useSuccessMessage();
 
-	const { isSuccess, exerciseList, handleInsertion } = useSubSessionForm(
-		category,
-		updateSuccessMessage
-	);
+	const {
+		isSuccess,
+		exerciseList,
+		subSessionValues,
+		handleInsertion,
+		saveValues,
+	} = useSubSessionForm(category, updateSuccessMessage);
 
 	const { validationSchema, key } = useSubSessionValidationSchema(
 		category,
 		updateSuccessMessage
 	);
 
+	// useEffect to log changes in subSessionValues
+	useEffect(() => {
+		console.log("subSessionValues changed:", subSessionValues);
+	}, [subSessionValues]);
 	return (
 		<Formik
 			key={key}
 			initialValues={initialFormValues}
 			validationSchema={validationSchema}
 			enableReinitialize={true}
-			onSubmit={(values, formik) => {
-				handleInsertion(values);
-				if (isSuccess) {
-					formik.resetForm();
-				}
-			}}
+			// onSubmit={handleSubmit}
 		>
 			{(formik) => {
 				const { errors, touched, isValid, dirty } = formik;
@@ -176,11 +178,18 @@ const SubSessionForm = ({ closeAddSubSessionPopup, category }) => {
 								></Button>
 								<Button
 									text='Add Workout'
-									type='submit'
+									type='button'
 									className={` ${
 										!(dirty && isValid) ? styles["disabled-btn"] : ""
 									}`}
 									disabled={!(dirty && isValid)}
+									onClick={() => {
+										saveValues(formik.values);
+										handleInsertion(subSessionValues);
+										console.log("saved values: ", subSessionValues);
+
+										closeAddSubSessionPopup();
+									}}
 								></Button>
 							</div>
 							<div className={styles["form-success-ctn"]}>

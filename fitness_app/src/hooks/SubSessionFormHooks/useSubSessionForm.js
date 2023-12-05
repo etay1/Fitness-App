@@ -5,6 +5,7 @@ import { supabase } from "../../supabase/client";
 export function useSubSessionForm(category, updateSuccessMessage) {
 	const [exerciseList, setExerciseList] = useState([]);
 	const [isSuccess, setIsSuccess] = useState(false);
+	const [subSessionValues, setSubSessionValues] = useState([]);
 	const [exerciseData, setExerciseData] = useState({
 		exerciseName: "",
 		startTime: 0,
@@ -34,6 +35,11 @@ export function useSubSessionForm(category, updateSuccessMessage) {
 		// Call the async function
 		fetchExerciseData();
 	}, [category]);
+
+	const saveValues = (values) => {
+		setSubSessionValues(values);
+	}
+
 
 	const handleInsertion = async (values) => {
 		try {
@@ -94,6 +100,9 @@ export function useSubSessionForm(category, updateSuccessMessage) {
 		exerciseData,
 		isSuccess,
 		exerciseList,
+		subSessionValues,
 		handleInsertion,
+		saveValues
+
 	};
 }

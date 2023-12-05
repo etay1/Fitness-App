@@ -101,11 +101,7 @@ const SessionForm = ({ closeAddSessionPopup }) => {
 								/>
 							</div>
 							<hr />
-							
-							<AddSubSession
-							isAddSubSessionPopupOpen={isAddSubSessionModalOpen}
-							closeAddSubSessionPopup={closeAddSubSessionModal}
-						/>
+
 							<div className={styles["form-btn-ctn"]}>
 								<Button
 									style={{ width: "100%" }}
@@ -140,7 +136,10 @@ const SessionForm = ({ closeAddSessionPopup }) => {
 								</div>
 							</div>
 						</div>
-						
+						<AddSubSession
+							isAddSubSessionPopupOpen={isAddSubSessionModalOpen}
+							closeAddSubSessionPopup={closeAddSubSessionModal}
+						/>
 					</Form>
 				);
 			}}

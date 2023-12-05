@@ -7,7 +7,7 @@ import AddExercise from "../../components/popups/AddExercise/AddExercise";
 import AlterExercise from "../../components/popups/AlterExercise/AlterExercise";
 import styles from "./styles/Registry.module.css";
 import Sidebar from "../../components/SideBar/SideBar";
-import Header from "./components/Header";
+import RegistryHeader from "./components/Header";
 
 function ExerciseRegistry() {
 	const { strengthExercise, cardioExercise, error } = useExerciseRegistry();
@@ -59,7 +59,7 @@ function ExerciseRegistry() {
 
 			<div className='content'>
 				<div className={styles["registry-content"]}>
-					<Header
+					<RegistryHeader
 						page_title='Exercise Registry'
 						button_name='Add Exercise'
 						onClickFunc={openAddExerciseModal}
