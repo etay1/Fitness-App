@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import AddSubSession from "./components/popups/AddSubSession/AddSubSession";
 import AddExercise from "./components/popups/AddExercise/AddExercise";
 import AddUserWeight from "./components/popups/AddUserWeight/AddUserWeight";
-import AccountSettings from "./components/forms/AccountSettings";
+import AccountSettings from "./pages/Registry/AccountSettings";
 import ExerciseRegistry from "./pages/Registry/ExerciseRegistry";
 import "./index.css";
 import PrivateRoute from "./utils/PrivateRoute";
