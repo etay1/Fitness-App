@@ -127,10 +127,10 @@ const Sidebar = () => {
 								variant='h6'
 								color={style.getPropertyValue("--light-grey-color")}
 							>
-								Account Settings
+								Account
 							</Typography>
 							<Item
-								title='Account Settings'
+								title='Account'
 								icon={<ManageAccountsIcon />}
 								selected={selected}
 								setSelected={setSelected}
