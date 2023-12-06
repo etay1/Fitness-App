@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "../../components/forms/AccountSettings.module.css";
-import Header from "../../components/Header/Header";
+import Header from "./components/Header";
 import Sidebar from "../../components/SideBar/SideBar";
 import AccountForm from "../../components/forms/AccountSettingsForm";
+import styles from "./styles/Registry.module.css";
 
 
 
@@ -17,7 +17,7 @@ const AccountSettings = ({ isSignup, onSubmit }) => {
             <div className='content'>
                 <div className={styles["account-settings"]}>
                   <Header
-                        page_title='Account-Settings'
+                        page_title='Account Settings'
                     />
      
                 </div>
