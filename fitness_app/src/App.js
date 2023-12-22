@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Login } from "./components/Login/Login";
-import Dashboard from "./components/Dashboard/Dashboard"; // Import it as the default export
-import { useAuthStateListener } from "./supabase/session";
+import React from "react";
+import { Login } from "./pages/Login/Login";
+import Dashboard from "./pages/Dashboard/Dashboard"; // Import it as the default export
+import { useSession } from "./supabase/sessionContext";
 
-function App({ supabase }) {
-  const session = useAuthStateListener();
 
-  return (
-    <div>
-      {session ? (
-        <Dashboard supabase={supabase} session={session} />
-      ) : (
-        <Login supabase={supabase} />
-      )}
-    </div>
-  );
+function App() {
+	const { session } = useSession();
+	return <div>{session ? <Dashboard /> : <Login />}</div>;
 }
 
 export default App;

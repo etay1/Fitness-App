@@ -1,0 +1,101 @@
+@import url('react-pro-sidebar/dist/css/styles.css');
+
+.pro-sidebar {
+  height: 100vh;
+  position: relative;
+}
+
+.pro-sidebar-layout {
+  background-color: var(--white-color);
+}
+
+.pro-sidebar-inner {
+  height: 100vh;
+  overflow: hidden;
+  border-radius: 0px 8px 8px 8px;
+}
+
+.pro-icon {
+  background-color: var(--white-color);
+}
+
+.pro-icon-wrapper {
+  background-color: transparent;
+}
+
+.pro-inner-item {
+  padding: 10px 20px 5px 20px;
+}
+
+.pro-inner-item:hover {
+  color: var(--light-grey-color);
+}
+
+.pro-inner-item:click {
+  color: var(--white-color);
+}
+
+.pro-menu-item.active {
+  color: var(--primary-color);
+}
+
+.sidebarTypography {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 100px;
+  color: var(--light-grey-color);
+}
+
+.sidebarTypographyHistory {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px 0 5px 8px;
+  color: var(--light-grey-color);
+}
+
+.sidebarTypographyBlog {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 15px 0 5px 20px;
+}
+
+.signOutButton {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+}
+
+.boxSidebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.menuBurgerButton {
+  margin: 10px 0px 20px 10px;
+	color: var(--white-color);
+}
+.sidebarTypographyBlog {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 15px 0 5px 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .pro-sidebar {
+    height: 100vh;
+    position: fixed;
+  }
+
+  .pro-sidebar-inner {
+    background: var(--white-color);
+    height: 270vh;
+    overflow: hidden;
+  }
+
+  .pro-menu-item.click {
+    width: 100vh;
+  }
+}

@@ -1,0 +1,73 @@
+.dashboard {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    background-color: var(--primary-color);
+    height: 100vh;
+  }
+
+  .widgetsContainer {
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    padding-left: 30px;
+    gap: 50px;
+    display:flex;
+    width:100%;
+    overflow-y:auto;
+    max-width: fit-content;
+    flex: 10;
+    margin-left: 70px;
+  }
+  
+  .topContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 115px; 
+    flex-wrap: nowrap;
+    overflow-y: auto;
+  }
+  
+  .bottomContainer {
+    display: flex;
+    gap: 20px;
+  }
+
+  .bottomChart {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+    .dashboard {
+      flex-direction: row; 
+      gap: 50px;
+    }
+  
+    .widgetsContainer {
+      padding-top: 20px;
+      padding-left: 65px;
+    }
+  
+    .topContainer {
+      flex-direction: column; 
+      gap: 20px; 
+      overflow: hidden; 
+    }
+
+    .bottomContainer {
+      flex-direction: column;
+      gap: 20px; 
+      overflow: hidden; 
+      height: fit-content;
+    }
+  
+    .topChart {
+      width: 355px;
+    }
+  
+    .bottomChart {
+      width: 355px;
+    }
+  }
