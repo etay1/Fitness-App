@@ -77,6 +77,11 @@
   margin: 10px 0px 20px 10px;
 	color: var(--white-color);
 }
+.sidebarTypographyBlog {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 15px 0 5px 20px;
+}
 
 @media screen and (max-width: 768px) {
   .pro-sidebar {

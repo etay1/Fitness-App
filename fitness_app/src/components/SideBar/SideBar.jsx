@@ -107,7 +107,7 @@ const Sidebar = () => {
 								setSelected={setSelected}
 								to={"/exercise-registry"}
 							/>
-							<div className="sidebarTypograhy">
+							<div className="sidebarTypograhyBlog">
 								<h3>Blog</h3>
 							</div>
 							<Item
@@ -127,7 +127,7 @@ const Sidebar = () => {
 								variant='h6'
 								color={style.getPropertyValue("--light-grey-color")}
 							>
-								Account Settings
+								Account
 							</Typography>
 							<Item
 								title='Account Settings'
