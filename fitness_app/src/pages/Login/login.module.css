@@ -1,0 +1,43 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--primary-color);
+}
+
+.ctn {
+  background: linear-gradient(to right, var(--white-color), transparent),
+    #6a6e6e;
+  display: flex;
+}
+
+.left-box,
+.right-box {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0 10px 10px 0;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .ctn {
+    background-color: var(--white-color);
+    width: 80%;
+    height: 80%;
+  }
+
+  .right-box {
+    display: none;
+  }
+}

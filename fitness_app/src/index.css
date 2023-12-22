@@ -1,13 +1,104 @@
+/* * {
+  border: 1px solid red;
+} */
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }
+
+:root {
+  --primary-color: #047aed;
+  --white-color: #fff;
+  --black-color: #000;
+  --error-color: #e63946;
+  --light-grey-color: #a3a3a3;
+  --dark-blue-color: #063970;
+}
+
+.page {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  background-color: var(--primary-color);
+}
+
+.sidebar-container {
+  display: flex;
+  position: relative;
+  height: 100vh;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: var(--white-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin-left: 20px; /* Adjust margin as needed to create space between sidebar and content */
+}
+
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 625px;
+	width: 650px;
+	background-color: var(--white-color);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	z-index: 2;
+}
+
+.box {
+	flex: 1;
+}
+
+/* Modals */
+.modal {
+	display: none;
+	z-index: 0;
+}
+
+.modal.active {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 10px;
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 2;
+}
+
+.overlay-sidebar {
+  z-index: 0;
+} 
+
+/* Media Queries
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+  }
+} */

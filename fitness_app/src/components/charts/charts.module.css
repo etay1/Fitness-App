@@ -1,0 +1,36 @@
+.userAnotherChartContainer {
+    display: flex;
+    height: 35vh;
+    width: 80vh;
+    background-color:var(--white-color);
+    box-shadow: 0 0 6px 2px rgba(0,0,0,.1);
+    border-bottom: 2px solid transparent;
+    border-radius: 10px;
+}
+
+.userPerformanceChartContainer {
+    display: flex;
+    height: 35vh;
+    width: 80vh;
+    background-color:var(--white-color);
+    box-shadow: 0 0 6px 2px rgba(0,0,0,.1);
+    border-bottom: 2px solid transparent;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .userPerformanceChartContainer {
+        justify-content: center;
+        align-items: center;
+        width: 48vh;
+    }
+    .userAnotherChartContainer {
+        justify-content: center;
+        align-items: center;
+        width: 48vh;
+    }
+
+}
+
+
+
